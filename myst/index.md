@@ -14,3 +14,4 @@ Below is a Python code block:
 
 ```{code-cell} python
 print("Hello, Myst!")
+```
