@@ -1,0 +1,16 @@
+{
+  "name": "DataJoint Book Development",
+  "build": {
+    "dockerfile": "Dockerfile" 
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "donjayamanne.jupyter",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  }
+}
+
