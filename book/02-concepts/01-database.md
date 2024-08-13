@@ -28,6 +28,15 @@ In essence, databases are designed to support the critical operations of data-dr
 ```{card} Database Management System (DBMS)
 A Database Management System (DBMS) serves as the core engine that powers a database.
 It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
+
+Summary of key traits:
+^^^^
+- structured
+- centralized (data consistency) --- appears as a single copy even if physically distibuted
+- can evolve over time 
+- supports operations of an organization, reflecting and eforcing its rules and constraints (data integrity)
+- support distributed, concurrent access 
+- support specific and precise queries through various interfaces to different users
 ```
 
 Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
