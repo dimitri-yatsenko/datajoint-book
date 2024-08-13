@@ -1,13 +1,13 @@
 ---
-title: Welcome
+title: The DataJoint Book
 date: 2024-08-12
 authors:
   - name: Dimitri Yatsenko
 ---
 
-# The DataJoint Book
+# Welcome
 
-Welcome to the **DataJoint Book**. This book provides a complete introduction to database programming for scientific data and computations.
+Welcome to **The DataJoint Book**. This book provides a complete introduction to database programming for scientific data and computations.
 
 ```{image} ./images/neuron.png
 :alt: contemplating neuron
