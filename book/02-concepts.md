@@ -44,7 +44,7 @@ Databases play a pivotal role in not just storing data, but also in ensuring tha
 This is crucial when databases are intended to mirror real-world processes and uphold specific business rules, especially when there are multiple concurrent interactions.
 
 ```{card} Data Integrity
-**Data Integrity:** A database's ability to define, express, and enforce the rules for valid states of stored data
+**Data Integrity:** is a database's ability to define, express, and enforce the rules for valid states of stored data
 ```
 
 ## Threats to Data Integrity
@@ -128,7 +128,7 @@ However, recent advancements have bridged this gap. Modern distributed systems, 
 DataJoint adheres to the classic ACID consistency model, leveraging serializable transactions or the master-part relationship, detailed further in the "Transactions" section.
 
 
-## Data Queries
+# Data Queries
 
 *Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
 
@@ -164,8 +164,7 @@ The predominant trend is to rely on shared data in the format of file repositori
 This leads to the pertinent question: Why this discernible hesitance towards databases?
 
 ```{card} Reasons for scientists' reluctance to use databases
-Reasons Behind Scientists' Reluctance to Use Databases
-^^^
+
 Gray *et al.* in their 2005 technical report titled "Scientific Data Management in the Coming Decade" {cite:p}`gray_scientific_2005` delved deep to unearth the reasons underpinning this avoidance:
 
 * Perceived lack of tangible benefits.

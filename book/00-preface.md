@@ -25,6 +25,11 @@ It includes theoretical concepts, practical examples, exercises, and resources.
 However, all examples will be also explained using SQL, introducing its essential syntax and concepts.
 Therefore, this book can be used to learn SQL, although in a somewhat opinionated flavor.
 
+## Focus on Neuroscience
+The tools and concepts in this book are general to all data-rich and computation-intensive disciplines.
+Yet the history of DataJoint and its most common applications stem from the field of systems neuroscience.
+This may explain a neuroscience focus of some of the examples in the book.
+
 # Contributions
 We welcome your contributions to this book as reviewers and contributors.
 Your contributions will be gratefully acknowledged.
