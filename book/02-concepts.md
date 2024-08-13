@@ -1,13 +1,19 @@
-# Concepts  
+---
+title: Concepts
+date: 2024-08-12
+authors:
+  - name: Dimitri Yatsenko
+---
 
-## Database
+
+# Database
 
 Although the word "database" is often used loosely to describe any colleciton of data, we’ll define it more narrowly:
 
 ```{card} Database 
 A **database** is a systematically organized collection of data that evolves over time, serving as the central repository for an organization's critical information.
 It supports essential operations by reflecting and enforcing the organization's rules and policies.
-A database is typically accessible to various users through defined interfaces, ensuring that the data is available, consistent, and reliable. Often, it functions as the system of record or single source of truth, accurately representing both the current and historical states of the organization's activities and decisions.
+A database is typically accessible to various users through defined interfaces, ensuring that the data is available, consistent, and reliable. Often, it functions as the **system of record** serving as the designated  **single source of truth**, accurately representing both the current and often historical states of the organization's activities and decisions.
 ```
 
 Databases are vital for the smooth and organized operation of diverse entities, from hotels and airlines to universities, banks, and research projects. They capture the current state of operations, enforce essential rules, enable valid transactions, and prevent errors or illegal actions.
@@ -16,7 +22,23 @@ You might wonder: aren’t databases also used for simpler tasks, like keeping a
 
 In essence, databases are designed to support the critical operations of data-driven organizations where multiple users collaborate effectively.
 
-## Data Integrity 
+```{card} Database Management System (DBMS)
+A Database Management System (DBMS) serves as the core engine that powers a database.
+It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
+```
+
+Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
+
+* A seat cannot be double-booked.
+* Reservations are confirmed only after all details are verified and payment is processed.
+
+A robust DBMS enforces such rules reliably, ensuring smooth operations.
+
+Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously. 
+
+
+
+# Data Integrity 
 
 Databases play a pivotal role in not just storing data, but also in ensuring that the stored data adheres to a particular structure and follows the rules and policies of the organization.
 This is crucial when databases are intended to mirror real-world processes and uphold specific business rules, especially when there are multiple concurrent interactions.
@@ -25,7 +47,7 @@ This is crucial when databases are intended to mirror real-world processes and u
 **Data Integrity:** A database's ability to define, express, and enforce the rules for valid states of stored data
 ```
 
-### Threats to Data Integrity
+## Threats to Data Integrity
 
 Databases need to be safeguarded against corruption. Such corruption can manifest in various forms, including:
 
@@ -38,8 +60,7 @@ Databases need to be safeguarded against corruption. Such corruption can manifes
 
 Each of these threats can compromise the accuracy and reliability of the data, leading to incorrect analyses, misinformed decisions, and potential operational disruptions.
 
-### Data Integrity in Databases
-
+## Data Integrity in Relational Databases
 Relational databases excel in their ability to define valid states for entities stored in the database and in preventing deviations from valid states.
 
 DataJoint in particular respects five primary forms of data integrity to address and counter these threats:
@@ -107,21 +128,6 @@ However, recent advancements have bridged this gap. Modern distributed systems, 
 DataJoint adheres to the classic ACID consistency model, leveraging serializable transactions or the master-part relationship, detailed further in the "Transactions" section.
 
 
-## Database Management System (DBMS)?
-
-A Database Management System (DBMS) serves as the core engine that powers a database.
-It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
-
-Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
-
-* A seat cannot be double-booked.
-* Reservations are confirmed only after all details are verified and payment is processed.
-
-A robust DBMS enforces such rules reliably, ensuring smooth operations.
-
-Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously. 
-
-
 ## Data Queries
 
 *Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
@@ -148,9 +154,9 @@ Each of these operations, though sourcing from the same foundational data, deman
 In contemporary data-driven scientific research, data queries prove invaluable.
 They enable researchers to select and aggregate specific data fragments essential for a given analysis or visualization, eliminating the need to retrieve the entirety of a dataset from its primary repository.
 
-## Databases in Science
+# Scientific Databases
 
-Neuroscience, a field rife with intricate data sets, often sees researchers navigating vast amounts of data while collaborating within extensive, multidisciplinary teams.
+Neuroscience, a field rife with intricate datasets, often sees researchers navigating vast amounts of data while collaborating within extensive, multidisciplinary teams.
 Given this complexity, the logical assumption would be that cutting-edge tools for data organization, manipulation, analysis, and querying would be central to their operations.
 However, this isn't the prevailing reality.
 Despite technological advancements, a significant portion of the scientific community still refrains from employing proper databases for their studies.

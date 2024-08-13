@@ -11,7 +11,7 @@ It is written for anyone interested in learning the fundemantals of relational d
 
 This guide provides an introduction to database programming in scientific settings. You'll learn how databases can help organize and manage the complex data involved in collaborative scientific research.
 
-Scientific databases are known for handling large numerical datasets and complex data structures. But it's not just about storing data. The data needs to work smoothly with the computational algorithms that process and interpret it. This requires effective code management and automation of computations across different computing systems.
+Scientific databases must large numerical datasets and complex data structures. But it's not just about storing data. The data needs to work smoothly with the computational algorithms that process and interpret it. This requires effective code management and automation of computations across different computing systems.
 
 ## DataJoint vs. SQL
 There are many ways to manage data, but relational databases are highly regarded for their structured approach.
@@ -25,7 +25,7 @@ It includes theoretical concepts, practical examples, exercises, and resources.
 However, all examples will be also explained using SQL, introducing its essential syntax and concepts.
 Therefore, this book can be used to learn SQL, although in a somewhat opinionated flavor.
 
-## Contributions
+# Contributions
 We welcome your contributions to this book as reviewers and contributors.
 Your contributions will be gratefully acknowledged.
 
