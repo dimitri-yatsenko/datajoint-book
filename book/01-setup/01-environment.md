@@ -1,4 +1,7 @@
-# Setup
+---
+title: Development Environment
+date: 2024-08-12
+---
 
 This book focuses on programming scientific databases with integrated computations, all implemented using the most popular scientific programming language today — [Python](https://www.python.org/).
 
