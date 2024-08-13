@@ -1,16 +1,21 @@
 {
-  "name": "DataJoint Book Development",
+  "name": "DataJoint Book Devcontainer",
   "build": {
-    "dockerfile": "Dockerfile" 
+    "dockerfile": "Dockerfile",
+    "context": ".."
   },
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
       "extensions": [
         "ms-python.python",
-        "donjayamanne.jupyter",
-        "yzhang.markdown-all-in-one"
-      ]
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
+      ]    
     }
-  }
+  },
+  "postCreateCommand": "service mysql start"
 }
 
