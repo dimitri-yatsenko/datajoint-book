@@ -1,11 +1,10 @@
 ---
-title: Preface and Scope
+title: Purpose and Scope
 date: 2024-08-12
 authors:
   - name: Dimitri Yatsenko
 ---
 
-# Purpose
 This book aims to explain the basics of relational database programming, focusing on scientific data that relies on complex computations.
 It is written for anyone interested in learning the fundemantals of relational database programming, focusing on solid theoretical foundations.
 
