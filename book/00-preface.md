@@ -17,10 +17,13 @@ Scientific databases are known for handling large numerical datasets and complex
 There are many ways to manage data, but relational databases are highly regarded for their structured approach.
 They help maintain data accuracy and offer powerful tools for querying data. The main language used in relational databases is SQL, which covers data definition, querying, modification, and procedural tasks.
 
-SQL, developed in the 70s and 80s, is still widely used, but it can be complex. That’s where DataJoint comes in—a modern take on the relational model, tailored for the scientific community. Like SQL, DataJoint also has tools for defining, manipulating, and querying data. The beauty of DataJoint is its simplicity, making it easier to learn database programming without getting too deep into SQL’s complexities.
+SQL, developed in the 70s and 80s, is still widely used, but it can be complex. That’s where DataJoint comes in—a modern take on the relational model, tailored for the scientific community.
+Like SQL, DataJoint provides tools for defining, manipulating, and querying data. The beauty of DataJoint is its simplicity, making it easier to learn database programming without getting too deep into SQL’s complexities.
 
-This guide explains the principles and uses of relational databases, with a focus on DataJoint, and occasionally comparing it with SQL.
+This guide explains the principles and uses of relational databases, using DataJoint in Python as the primary language for database interactions. 
 It includes theoretical concepts, practical examples, exercises, and resources.
+However, all examples will be also explained using SQL, introducing its essential syntax and concepts.
+Therefore, this book can be used to learn SQL, although in a somewhat opinionated flavor.
 
 ## Contributions
 We welcome your contributions to this book as reviewers and contributors.
