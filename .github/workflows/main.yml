@@ -6,7 +6,7 @@ on:
 env:
   # `BASE_URL` determines the website is served from, including CSS & JS assets
   # You may need to change this to `BASE_URL: ''`
-  BASE_URL: /${{ github.event.repository.name }}/book
+  BASE_URL: /${{ github.event.repository.name }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -34,11 +34,13 @@ jobs:
       - name: Install MyST Markdown
         run: npm install -g mystmd
       - name: Build HTML Assets
-        run: myst build --html
+        run: | 
+          cd book 
+          myst build --html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './_build/html'
+          path: './book/_build/html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
