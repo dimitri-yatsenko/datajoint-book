@@ -2,7 +2,7 @@
 
 ## Database
 
-The term "database" is often used loosely to mean any collection of data. But for this book, we’ll define it more clearly:
+Although the word "database" is often used loosely to describe any colleciton of data, we’ll define it more narrowly:
 
 ```{card} Database 
 A **database** is a systematically organized collection of data that evolves over time, serving as the central repository for an organization's critical information.
@@ -16,50 +16,9 @@ You might wonder: aren’t databases also used for simpler tasks, like keeping a
 
 In essence, databases are designed to support the critical operations of data-driven organizations where multiple users collaborate effectively.
 
-## Database Management System (DBMS)?
-
-A Database Management System (DBMS) serves as the core engine that powers a database.
-It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
-
-Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
-
-* A seat cannot be double-booked.
-* Reservations are confirmed only after all details are verified and payment is processed.
-
-A robust DBMS enforces such rules reliably, ensuring smooth operations.
-
-Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously.## Data Queries 
-
-
-## Data Queries
-
-*Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
-
-```{card} Data retrieval
-**Data Retrieval:** The process of fetching data from a *data repository* in its original, deposited form.
-```
-
-Databases, on the other hand, cater to a more diverse user base, each with distinct roles and interests pertaining to their organization or enterprise.  
-Catering to these varied needs requires databases to facilitate *data queries*, allowing users to request specific sections of stored data, often in a format that diverges from its original storage format.
-
-```{card} Data Query
-A **data query** is a function applied to stored data; it extracts and presents a specified segment of the database's data tailored for a particular analysis.
-The output often deviates from the original storage format.
-Database systems are equipped with sophisticated tools for defining and executing these precise queries.
-```
-
-Consider a university as an example.
-Students need functionalities to enroll in courses and view their academic records.
-Instructors, on the other hand, require access to class lists and a platform to input student grades.
-Meanwhile, a dean might wish to oversee the academic performance of every student within her department.
-Each of these operations, though sourcing from the same foundational data, demands unique selections and combinations of the data.
-
-In contemporary data-driven scientific research, data queries prove invaluable.
-They enable researchers to select and aggregate specific data fragments essential for a given analysis or visualization, eliminating the need to retrieve the entirety of a dataset from its primary repository.
-
 ## Data Integrity 
 
-Databases play a pivotal role in not just storing data, but also in ensuring that the stored data adheres to a particular structure and maintains its **integrity**.
+Databases play a pivotal role in not just storing data, but also in ensuring that the stored data adheres to a particular structure and follows the rules and policies of the organization.
 This is crucial when databases are intended to mirror real-world processes and uphold specific business rules, especially when there are multiple concurrent interactions.
 
 ```{card} Data Integrity
@@ -146,6 +105,48 @@ Traditional relational database systems, like Oracle, MySQL, and others, maintai
 However, recent advancements have bridged this gap. Modern distributed systems, like Spanner and CockroachDB, leverage data replication and consensus algorithms (e.g., Paxos, Raft) to offer high availability while maintaining strict consistency.
 
 DataJoint adheres to the classic ACID consistency model, leveraging serializable transactions or the master-part relationship, detailed further in the "Transactions" section.
+
+
+## Database Management System (DBMS)?
+
+A Database Management System (DBMS) serves as the core engine that powers a database.
+It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
+
+Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
+
+* A seat cannot be double-booked.
+* Reservations are confirmed only after all details are verified and payment is processed.
+
+A robust DBMS enforces such rules reliably, ensuring smooth operations.
+
+Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously. 
+
+
+## Data Queries
+
+*Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
+
+```{card} Data retrieval
+**Data Retrieval:** The process of fetching data from a *data repository* in its original, deposited form.
+```
+
+Databases, on the other hand, cater to a more diverse user base, each with distinct roles and interests pertaining to their organization or enterprise.  
+Catering to these varied needs requires databases to facilitate *data queries*, allowing users to request specific sections of stored data, often in a format that diverges from its original storage format.
+
+```{card} Data Query
+A **data query** is a function applied to stored data; it extracts and presents a specified segment of the database's data tailored for a particular analysis.
+The output often deviates from the original storage format.
+Database systems are equipped with sophisticated tools for defining and executing these precise queries.
+```
+
+Consider a university as an example.
+Students need functionalities to enroll in courses and view their academic records.
+Instructors, on the other hand, require access to class lists and a platform to input student grades.
+Meanwhile, a dean might wish to oversee the academic performance of every student within her department.
+Each of these operations, though sourcing from the same foundational data, demands unique selections and combinations of the data.
+
+In contemporary data-driven scientific research, data queries prove invaluable.
+They enable researchers to select and aggregate specific data fragments essential for a given analysis or visualization, eliminating the need to retrieve the entirety of a dataset from its primary repository.
 
 ## Databases in Science
 
