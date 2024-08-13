@@ -1,4 +1,4 @@
-# Creating a Table
+# Create a Table
 # Attributes 
 # Primary key
 # Basic Attribute Types 
