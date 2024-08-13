@@ -42,15 +42,14 @@ In 2017, Vathes received a Phase I SBIR grant to explore the commercial potentia
 
 By 2018, Vathes had added key members: Shan Shen, Thinh Nguyen, Chris Turner, and Raphael Guzman, who played crucial roles in developing DataJoint further and integrating it into the workflows of large labs that became our customers. Our growth, collaborations, and new team members helped shape our approach to data-driven projects. Collaborations with Prof. Carlos Brody and Prof. Karel Svoboda also significantly increased DataJoint's use.
 
+# Growth and Transformation
+2020 was a pivotal year for us. With a significant 5-year NIH grant, we began developing [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations for DataJoint pipelines in neurophysiology studies. This period also brought key leadership changes, including the addition of Dr. Kabilar Gunalan, who played a vital role in advancing the DataJoint Elements initiative.
+
+In 2021, we rebranded the company as **DataJoint** to better align with our core product, shifting our focus toward commercial technology for research collaboration. During this time, I transitioned to a full-time role as CEO.
+
 # The DataJoint Platform
-2020 was a turning point. A large 5-year NIH grant allowed us to develop [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations of DataJoint pipelines for neurophysiology studies. Following this, there were key leadership changes, with Dr. Kabilar Gunalan leading the DataJoint Elements initiative.
+In 2022, we received a Phase II SBIR commercialization grant from the NIH to develop an online collaborative platform—[**DataJoint Works**](https://works.datajoint.com). Monty Kosma, who joined the company that year, led the effort to build the platform. Monty later became a co-founder and President, guiding the company’s transformation from a consulting firm to a product-focused enterprise.
 
-In 2021, we rebranded the company as **DataJoint** to align with our core product, focusing on commercial tech for research collaboration. I took on a full-time role as CEO.
-In 2022, the NIH awarded us a Phase II SBIR commercialization grant to build an online collaborative platform—[**DataJoint Works**](https://works.datajoint.com).
-The effort to build the platform was led by Monty Kosma, who joined the company in 2022.
-He later joined as a new co-founder and Presidents, as the company transformed from consulting to a product-focused company.
+The **DataJoint Works** platform officially launched in 2024, with the first cohort of labs successfully operating their experiments on the platform.
 
-The DataJoint Works platform launched in 2024 and the first cohort of labs began operating their experiments using the platform.
-
-Today, the company combines community-driven open-source development of core tools with a powerful online platform for hosting and operating DataJoint pipelines.
-
+Today, DataJoint blends community-driven open-source development of core tools with a robust online platform for hosting and managing DataJoint pipelines.
