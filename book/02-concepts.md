@@ -1,55 +1,52 @@
-# The Basics of Databases
+# Concepts  
 
-## What is a Database?
+## Database
 
 The term "database" is often used loosely to mean any collection of data. But for this book, we’ll define it more clearly:
-```{card}
-A **database** is a structured collection of data that changes over time, used as a key part of an organization to reflect and enforce its rules and operations, and made accessible to different users in specific ways.
-A database often serves as the *system of record* for an enterprise, repeseting the *one source of truth* for the current and historial states of operations.
+
+```{card} Database 
+A **database** is a systematically organized collection of data that evolves over time, serving as the central repository for an organization's critical information.
+It supports essential operations by reflecting and enforcing the organization's rules and policies.
+A database is typically accessible to various users through defined interfaces, ensuring that the data is available, consistent, and reliable. Often, it functions as the system of record or single source of truth, accurately representing both the current and historical states of the organization's activities and decisions.
 ```
-From hotels to airlines, universities to banks, and even research projects—databases are essential for keeping these entities running smoothly and organized.
-They capture the current state of operations, enforce important rules, allow valid transactions, and prevent errors or illegal actions.
+
+Databases are vital for the smooth and organized operation of diverse entities, from hotels and airlines to universities, banks, and research projects. They capture the current state of operations, enforce essential rules, enable valid transactions, and prevent errors or illegal actions.
+
+You might wonder: aren’t databases also used for simpler tasks, like keeping a personal recipe book or an address list? While that's true, our definition focuses on the capabilities of a full-featured database system. For simpler needs, a tool like Google Sheets might suffice. However, for complex operations—such as managing a bank or an airline—a sophisticated database system is indispensable.
+
+In essence, databases are designed to support the critical operations of data-driven organizations where multiple users collaborate effectively.
+
+## Database Management System (DBMS)?
+
+A Database Management System (DBMS) serves as the core engine that powers a database.
+It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied. A DBMS manages data storage, manipulation, and querying, while also safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
+
+Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
+
+* A seat cannot be double-booked.
+* Reservations are confirmed only after all details are verified and payment is processed.
+
+A robust DBMS enforces such rules reliably, ensuring smooth operations.
+
+Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously.## Data Queries 
 
 
-## What is a Database Management System (DBMS)?
-A database management system (DBMS) is like the brain behind a database. It’s the tool that defines and enforces the structure of the data, making sure the rules of the organization are followed. A DBMS handles data storage, manipulation, and queries, while also protecting the structure and integrity of the data, especially when multiple people are using it at the same time.
-
-For example, think about an airline’s database for flight schedules and ticket bookings. The airline has several rules to follow:
-
-* A seat can’t be booked by two people at the same time.
-* Reservations are confirmed only when all details are verified and payment is made.
-* Cancellations are allowed only up to 24 hours before the flight.
-
-A proper  DBMS helps set up and enforce these rules without any problems.
-
-Data in a database is always changing, influenced by both people and computers. Even if there are disruptions like power outages, errors, or attacks, the system should recover without any lasting issues, returning to a normal state. For users, the database should work seamlessly, integrating actions without interference from others using it at the same time.
-
-## Is Our Definition Too Strict?
-You might wonder: aren’t databases used for simpler things, like a personal recipe book or an address list? That’s true, but our definition focuses on what only a full-featured database system can do. For simpler tasks, something like a Google spreadsheet might work fine. But for complex operations, like managing a bank or an airline, a sophisticated database system is essential.
-
-In short, the main purpose of databases is to support the critical operations of data-driven organizations that involve many different users working together.
-
-## Understanding Data Queries 
-
-### Data Repositories vs. Databases
+## Data Queries
 
 *Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
 
-```{card} 
+```{card} Data retrieval
 **Data Retrieval:** The process of fetching data from a *data repository* in its original, deposited form.
 ```
 
 Databases, on the other hand, cater to a more diverse user base, each with distinct roles and interests pertaining to their organization or enterprise.  
 Catering to these varied needs requires databases to facilitate *data queries*, allowing users to request specific sections of stored data, often in a format that diverges from its original storage format.
 
-```{card}
-**Data Query:** Essentially a function applied to stored data, it extracts and presents a specified segment of the database's data tailored for a particular analysis.
+```{card} Data Query
+A **data query** is a function applied to stored data; it extracts and presents a specified segment of the database's data tailored for a particular analysis.
 The output often deviates from the original storage format.
 Database systems are equipped with sophisticated tools for defining and executing these precise queries.
 ```
-
-
-### Practical Application of Data Queries
 
 Consider a university as an example.
 Students need functionalities to enroll in courses and view their academic records.
@@ -65,7 +62,7 @@ They enable researchers to select and aggregate specific data fragments essentia
 Databases play a pivotal role in not just storing data, but also in ensuring that the stored data adheres to a particular structure and maintains its **integrity**.
 This is crucial when databases are intended to mirror real-world processes and uphold specific business rules, especially when there are multiple concurrent interactions.
 
-```{card}
+```{card} Data Integrity
 **Data Integrity:** A database's ability to define, express, and enforce the rules for valid states of stored data
 ```
 
@@ -111,7 +108,7 @@ Databases are not merely storage systems; they should accurately represent an en
 This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously.
 This principle is known as **data consistency**.
 
-```{card}
+```{card} Data Consistency
 **Data Consistency:** A database's capability to present a singular, valid, and current version of its data to all users, even during concurrent access and modifications.
 Successful read queries should reflect the database's most recent state, while successful writes should immediately influence all subsequent read actions.
 ```
@@ -133,8 +130,7 @@ To achieve this, databases might temporarily limit access for some users during 
 
 Relational databases follow the ACID model, ensuring that operations are atomic, consistent, isolated, and durable.
 
-```{card}
-**ACID Model** for Database Transactions:
+```{card} ACID Model for Database Transactions
 - **A**tomic
 - **C**onsistent
 - **I**solated
@@ -160,7 +156,7 @@ Despite technological advancements, a significant portion of the scientific comm
 The predominant trend is to rely on shared data in the format of file repositories, systematically organized into folders under a uniform naming convention.
 This leads to the pertinent question: Why this discernible hesitance towards databases?
 
-```{card}
+```{card} Reasons for scientists' reluctance to use databases
 Reasons Behind Scientists' Reluctance to Use Databases
 ^^^
 Gray *et al.* in their 2005 technical report titled "Scientific Data Management in the Coming Decade" {cite:p}`gray_scientific_2005` delved deep to unearth the reasons underpinning this avoidance:
