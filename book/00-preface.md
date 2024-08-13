@@ -56,12 +56,14 @@ Although I had started working on a Python version of DataJoint in 2011, signifi
 
 My work at BCM coincided with the Tolias lab's participation in the [IARPA MICrONS project](https://www.iarpa.gov/research-programs/microns), which aimed to understand machine intelligence from cortical networks. DataJoint’s ability to manage a large, multidisciplinary team made it an essential tool, further boosting its adoption.
 
-## Starting a Business
-In 2016, four members of the Tolias lab—Dimitri Yatsenko, Jacob Reimer, Edgar Y. Walker, and Andreas Tolias—started a company,  Vathes LLC. This was in response to DARPA-funded effort to commercialize neuroscience data tools. In 2017, Vathes received a Phase I SBIR grant to explore the commercial potential of DataJoint. Edgar and Dimitri split their time between managing the company operations and their ongoing academic work.
+## Consulting Business
+In 2016, four members of the Tolias lab—Dimitri Yatsenko, Jacob Reimer, Edgar Y. Walker, and Andreas Tolias—started a company, Vathes LLC, to provide consluting services around DataJoint, providing data engineering services to research labs.
+This was in response to DARPA-funded effort to commercialize neuroscience data tools.
+In 2017, Vathes received a Phase I SBIR grant to explore the commercial potential of DataJoint. Edgar and Dimitri split their time between managing the company operations and their ongoing academic work.
 
 By 2018, Vathes had added key members: Shan Shen, Thinh Nguyen, Chris Turner, and Raphael Guzman, who played crucial roles in developing DataJoint further and integrating it into the workflows of large labs that became our customers. Our growth, collaborations, and new team members helped shape our approach to data-driven projects. Collaborations with Prof. Carlos Brody and Prof. Karel Svoboda also significantly increased DataJoint's use.
 
-## A Major Shift
+## The DataJoint Platform
 2020 was a turning point. A large 5-year NIH grant allowed us to develop [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations of DataJoint pipelines for neurophysiology studies. Following this, there were key leadership changes, with Dr. Kabilar Gunalan leading the DataJoint Elements initiative.
 
 In 2021, we rebranded the company as **DataJoint** to align with our core product, focusing on commercial tech for research collaboration. I took on a full-time role as CEO. 
@@ -69,7 +71,7 @@ In 2022, the NIH awarded us a Phase II SBIR commercialization grant to build an 
 The effort to build the platform was led by Monty Kosma, who joined the company in 2022. 
 He later joined as a new co-founder and Presidents, as the company transformed from consulting to a product-focused company.
 
-The DataJoint Works platform was launch in 2024 and a first cohort of labs began operating their experiments using the platform.
+The DataJoint Works platform launched in 2024 and the first cohort of labs began operating their experiments using the platform.
 
 Today, the company combines community-driven open-source development of core tools with a powerful online platform for hosting and operating DataJoint pipelines.
 
