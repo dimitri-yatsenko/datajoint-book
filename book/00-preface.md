@@ -1,5 +1,5 @@
 ---
-title: DataJoint Book Preface
+title: Preface
 date: 2024-08-12
 authors:
   - name: Dimitri Yatsenko
@@ -7,9 +7,27 @@ authors:
 
 # Preface
 
-## Purpose 
-The purpose of this book is to present in the clearest form the principles of relational database programming.
-Our focus is on scientific data that involve computations.
+## Purpose
+This book aims to clearly explain the basics of relational database programming, especially focusing on scientific data that requires calculations.
+
+### The Basics of Scientific Database Programming
+This guide provides an introduction to database programming in scientific settings. You'll learn how databases can help organize and manage the complex data involved in collaborative scientific research.
+
+Scientific databases are known for handling large numerical datasets and complex data structures. But it's not just about storing data. The data needs to work smoothly with the computational algorithms that process and interpret it. This requires effective code management and automation of computations across different computing systems.
+
+### Relational Databases: SQL and DataJoint
+There are many ways to manage data, but relational databases are highly regarded for their structured approach. They help maintain data accuracy and offer powerful tools for querying data. The main language used in relational databases is SQL, which covers data definition, querying, modification, and procedural tasks.
+
+SQL, developed in the 70s and 80s, is still widely used, but it can be complex. That’s where DataJoint comes in—a modern take on the relational model, tailored for the scientific community. Like SQL, DataJoint also has tools for defining, manipulating, and querying data. The beauty of DataJoint is its simplicity, making it easier to learn database programming without getting too deep into SQL’s complexities.
+
+This guide explains the principles and uses of relational databases, with a focus on DataJoint, and occasionally comparing it with SQL. It includes theoretical concepts, practical examples, exercises, and resources.
+
+### Target Audience
+This book is designed for anyone interested in learning the fundemantals  of relational database programming, focusing on solid theoretical foundations. 
+
+### Contributions
+We welcome your contributions to this book as reviewers and contributors.
+Your contributions will be gratefully acknowledged.
 
 
 ## History 
