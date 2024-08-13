@@ -7,8 +7,11 @@ authors:
 
 
 # Database
+We begin with defining a few key terms.
+These definitions may be more precise than most popular definitions provided by a casual search or by other textbooks and are used consistently through the book.
 
-Although the word "database" is often used loosely to describe any colleciton of data, we’ll define it more narrowly:
+We will start with the terms for *database*, *database system*, and *database management system*:
+
 
 ```{card} Database 
 A **database** is a systematically organized collection of data that evolves over time, serving as the central repository for an organization's critical information.
@@ -36,6 +39,28 @@ A robust DBMS enforces such rules reliably, ensuring smooth operations.
 
 Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously. 
 
+
+# Data Model
+```{card} Data Model
+A *data model* is a conceptual framework for working with data. It answers the questions:
+* What is the data made of? What are the basic constructs for creating and manipulating the data?
+* What are the basic operations for defining, creating, and manipulating the data? 
+* What tools exist for defining and enforcing data integrity: the rules for valid data interactions and for preventing invalid operaitons?
+```
+
+## Example: File System
+
+## Example: Spreadsheets
+
+## Example: Object Model
+
+## Schema 
+Data models can be divided into structured and self-describing. 
+
+## Exercise 
+As an exercise, describe other models you are familiar with in terms of its basic constructs, operations, and data integrity rules.
+
+# The Relational Data Model 
 
 
 # Data Integrity 
