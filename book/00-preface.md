@@ -33,49 +33,42 @@ Your contributions will be gratefully acknowledged.
 ## History 
 
 ```{image} ./images/cave-art.jpg
+---
 :alt: cave painting
 :width: 600px
-:align: center
+---
 ```
 
+### The Beginning of DataJoint
+In the fall of 2009, while I was a graduate student at Baylor College of Medicine (BCM), I started thinking about how database programming could be customized for scientific research. I wanted to create a database system that could naturally reflect the complexities of a scientific study and be easy for a research team to use. This led me to develop the first version of DataJoint for MATLAB, which I used in my neurophysiology experiments.
 
-### The Genesis of DataJoint
-In the fall of 2009, during my graduate tenure at Baylor College of Medicine (BCM), a novel thought intrigued me: could database programming be tailored for scientific applications? I envisioned databases that could naturally mirror the intricacies of a scientific study and be easily navigable by a research team. This led me to devise the initial version of DataJoint for MATLAB, which I employed for my neurophysiology experiments.
+### Early Work at BCM
+I was part of Dr. Andreas S. Tolias's new lab in BCM's Department of Neuroscience in 2008. The lab was focused on managing the complex data from neurophysiology experiments. A group of students and postdocs, including Alex Ecker, Philipp Berens, Andreas Hoenselaar, and R. James Cotton, had already started a MATLAB-based library called "Steinbruch," which used MySQL to link data through computational dependencies.
 
-### The Early Days at BCM
-The backdrop to this innovation was my association with Dr. Andreas S. Tolias's newly-minted lab in BCM's Department of Neuroscience in 2008. The lab's ambition was to adeptly manage the intricate data derived from  neurophysiology experiments.
-A group of pioneering students and postdocs in the lab, namely Alex Ecker, Philipp Berens, Andreas Hoenselaar, and R. James Cotton, had initiated "Steinbruch" --- a MATLAB-based library integrated with MySQL, focusing on data linked through computational dependencies.
+My goal was to design a database system based on strong principles, with a focus on data integrity and reliable transaction processing. I noticed that mainstream database models lacked computational dependencies, so I created DataJoint to fill that gap.
 
-My aspiration was clear: to architect a database design rooted in stringent principles, prioritizing data integrity and consistent transaction processing. I realized the glaring absence of computational dependencies in mainstream database models. DataJoint was my answer to this void.
+By 2011, DataJoint was fully integrated into our lab's workflow, thanks to early users like Manolis Froudarakis and Jacob Reimer. Dr. Tolias recognized its potential and supported its use, which led me to release DataJoint as an open-source project on [Google Code](https://code.google.com/archive/p/datajoint/).
 
-By 2011, DataJoint had seamlessly integrated into our lab's workflow, thanks to its early adopters, Manolis Froudarakis and Jacob Reimer. Recognizing its transformative power, Dr. Tolias championed its adoption. This validation led me to release DataJoint as an open-source project on [Google Code](https://code.google.com/archive/p/datajoint/).
+### Gaining Recognition
+By 2014, the year I completed my thesis, DataJoint had spread beyond our lab and was being used in research institutions worldwide. The first neuroscience papers using DataJoint were published by labs led by Laura Busse and Steffen Katzner at the University of Tübingen, Germany, in 2013.
+
+Although I had started working on a Python version of DataJoint in 2011, significant progress was made when two other lab members, Edgar Y. Walker and Fabian Sinz, worked with me from 2014 to 2015 to create a full Python package.
+
+My work at BCM coincided with the Tolias lab's participation in the [IARPA MICrONS project](https://www.iarpa.gov/research-programs/microns), which aimed to understand machine intelligence from cortical networks. DataJoint’s ability to manage a large, multidisciplinary team made it an essential tool, further boosting its adoption.
+
+### Starting a Business
+In 2016, four members of the Tolias lab—Dimitri Yatsenko, Jacob Reimer, Edgar Y. Walker, and Dr. Andreas S. Tolias—started a company called Vathes LLC. This was in response to DARPA's push to commercialize neuroscience data tools. In 2017, Vathes received a Phase I SBIR grant to explore the commercial potential of DataJoint. Edgar and I split our time between managing the company and our academic work.
+
+By 2018, we had added key members: Shan Shen, Thinh Nguyen, Chris Turner, and Raphael Guzman, who played crucial roles in developing DataJoint further and integrating it into the workflows of large labs that became our customers. Our growth, collaborations, and new team members helped shape our approach to data-driven projects. Collaborations with Prof. Carlos Brody and Prof. Karel Svoboda also significantly increased DataJoint's use.
+
+### A Major Shift
+2020 was a turning point. A large 5-year NIH grant allowed us to develop [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations of DataJoint pipelines for neurophysiology studies. Following this, there were key leadership changes, with Dr. Kabilar Gunalan leading the DataJoint Elements initiative.
+
+In 2021, we rebranded the company as **DataJoint** to align with our core product, focusing on commercial tech for research collaboration. I took on a full-time role as CEO. 
+In 2022, the NIH awarded us a Phase II SBIR commercialization grant to build an online collaborative platform—[**DataJoint Works**](https://works.datajoint.com).
+The effort to build the platform was led by Monty Kosma, who joined the company in 2022. 
+He later joined as a new co-founder and Presidents, as the company transformed from consulting to a product-focused company.
 
 
-In the autumn of 2009, while pursuing my graduate studies at Baylor College of Medicine (BCM), I began contemplating the potential of transforming database programming for use in scientific projects.
+Today, the company combines community-driven open-source development of core tools with a powerful online platform for hosting and operating DataJoint pipelines.
 
-### Rise to Prominence
-By 2014, the year I defended my thesis, DataJoint's influence had transcended our lab, finding a home in global research institutions.
-The first neuroscience publications relying on DataJoint came from Laura Busse and Steffen Katzner's labs at the University of Tübingen, Germany, in 2013.
-
-Although I had initiated a Python adaptation of DataJoint in 2011, its development only picked up momentum when two other researchers in the lab, Edgar Y. Walker and Fabian Sinz, collaborated with me between 2014 and 2015 to launch a full-fledged Python package.
-
-My postgraduate path at BCM coincided with the Tolias lab's involvement in the [IARPA MICrONS project](https://www.iarpa.gov/research-programs/microns) --- Machine Intelligence from Cortical Networks. DataJoint's prowess in coordinating a dispersed, multidisciplinary team was undeniable, amplifying its adoption.
-
-### Creating a Business 
-In 2016, four members of the Tolias lab --- Dimitri Yatsenko, Jacob Reimer, Edgar Y. Walker, and Dr. Andreas S. Tolias --- launched a commercial company, Vathes LLC, in response to DARPA's commercialization initiative for neuroscience data tools and, in 2017, Vathes was awarded a Phase I SBIR grant to gauge DataJoint's commercial viability.
-Edgar and I shared responsibilities managing the company on a part-time basis splitting our efforts with academic work.
-By 2018, we had added several key members: Shan Shen, Thinh Nguyen, Chris Turner, and Raphael Guzman, who would contribute substantially to DataJoint's further development and integration into the workflows of large labs who had become our customers.
-Our growth trajectory, collaborations, and team expansions significantly shaped our understanding and approach to data-driven projects.
-Notably, collaborations with Prof. Carlos Brody and Prof. Karel Svoboda further propelled DataJoint's adoption.
-
-### The Turning Point
-2020 was transformative.
-A sizable NIH grant of nearly $3.8 million to the company catalyzed the development of DataJoint Elements --- a collection of reference implementations of DataJoint pipelines for neurophysiology studies.
-Subsequent months saw key leadership changes, with Dr. Kabilar Gunalan spearheading the DataJoint Elements initiative.
-
-In 2021, with a renewed vision emphasizing commercial tech for research collaboration, Vathes underwent a metamorphosis --- evolving its governance, mission, and team dynamics.
-The company rebranded as **DataJoint**, aligning with its core product.
-By then I had switched to a full-time role in DataJoint as CEO as we onboarded seasoned industry professionals: Jason Kirkpatrick (COO) and Monty Kosma (CPO) to fast-track our commercial product development.
-In 2022, the NIH awarded DataJoint a Phase II commercialization grant to build an online collaborative platform.
-
-Today the company combines community-driven open-source development of core tools with a powerful online platform for hosting and operating DataJoint pipelines.
