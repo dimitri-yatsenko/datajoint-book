@@ -5,9 +5,9 @@ authors:
   - name: Dimitri Yatsenko
 ---
 
-# Purpose
+# Purpose and Scope
 This book aims to explain the basics of relational database programming, focusing on scientific data that relies on complex computations.
-It is written for anyone interested in learning the fundemantals of relational database programming, focusing on solid theoretical foundations. 
+It is written for anyone interested in learning the fundemantals of relational database programming, focusing on solid theoretical foundations.
 
 This guide provides an introduction to database programming in scientific settings. You'll learn how databases can help organize and manage the complex data involved in collaborative scientific research.
 
@@ -20,22 +20,28 @@ They help maintain data accuracy and offer powerful tools for querying data. The
 SQL, developed in the 70s and 80s, is still widely used, but it can be complex. That’s where DataJoint comes in—a modern take on the relational model, tailored for the scientific community.
 Like SQL, DataJoint provides tools for defining, manipulating, and querying data. The beauty of DataJoint is its simplicity, making it easier to learn database programming without getting too deep into SQL’s complexities.
 
-This guide explains the principles and uses of relational databases, using DataJoint in Python as the primary language for database interactions. 
+This guide explains the principles and uses of relational databases, using DataJoint in Python as the primary language for database interactions.
 It includes theoretical concepts, practical examples, exercises, and resources.
 However, all examples will be also explained using SQL, introducing its essential syntax and concepts.
 Therefore, this book can be used to learn SQL, although in a somewhat opinionated flavor.
+
+## Additional Resources
+This book provides a comprehensive tutorial for programming scientific databases using DataJoint from Python.
+The book  provides equivalent SQL
+If you are using this book to learn SQL programming, then we recommend supplementing your reading with additional learning resources for a more thorough treatment of SQL.
 
 ## Focus on Neuroscience
 The tools and concepts in this book are general to all data-rich and computation-intensive disciplines.
 Yet the history of DataJoint and its most common applications stem from the field of systems neuroscience.
 This may explain a neuroscience focus of some of the examples in the book.
 
+
 # Contributions
 We welcome your contributions to this book as reviewers and contributors.
 Your contributions will be gratefully acknowledged.
 
 
-# DataJoint History 
+# DataJoint History
 
 ```{image} ./images/cave-art.jpg
 ---
@@ -75,9 +81,9 @@ By 2018, Vathes had added key members: Shan Shen, Thinh Nguyen, Chris Turner, an
 ## The DataJoint Platform
 2020 was a turning point. A large 5-year NIH grant allowed us to develop [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations of DataJoint pipelines for neurophysiology studies. Following this, there were key leadership changes, with Dr. Kabilar Gunalan leading the DataJoint Elements initiative.
 
-In 2021, we rebranded the company as **DataJoint** to align with our core product, focusing on commercial tech for research collaboration. I took on a full-time role as CEO. 
+In 2021, we rebranded the company as **DataJoint** to align with our core product, focusing on commercial tech for research collaboration. I took on a full-time role as CEO.
 In 2022, the NIH awarded us a Phase II SBIR commercialization grant to build an online collaborative platform—[**DataJoint Works**](https://works.datajoint.com).
-The effort to build the platform was led by Monty Kosma, who joined the company in 2022. 
+The effort to build the platform was led by Monty Kosma, who joined the company in 2022.
 He later joined as a new co-founder and Presidents, as the company transformed from consulting to a product-focused company.
 
 The DataJoint Works platform launched in 2024 and the first cohort of labs began operating their experiments using the platform.
