@@ -8,7 +8,8 @@ authors:
 # Preface
 
 ## Purpose
-This book aims to clearly explain the basics of relational database programming, especially focusing on scientific data that requires calculations.
+This book aims to clearly explain the basics of relational database programming, especially focusing on scientific data that requires complex calculations.
+It is written for anyone interested in learning the fundemantals  of relational database programming, focusing on solid theoretical foundations. 
 
 ### The Basics of Scientific Database Programming
 This guide provides an introduction to database programming in scientific settings. You'll learn how databases can help organize and manage the complex data involved in collaborative scientific research.
@@ -22,15 +23,13 @@ SQL, developed in the 70s and 80s, is still widely used, but it can be complex. 
 
 This guide explains the principles and uses of relational databases, with a focus on DataJoint, and occasionally comparing it with SQL. It includes theoretical concepts, practical examples, exercises, and resources.
 
-### Target Audience
-This book is designed for anyone interested in learning the fundemantals  of relational database programming, focusing on solid theoretical foundations. 
 
 ### Contributions
 We welcome your contributions to this book as reviewers and contributors.
 Your contributions will be gratefully acknowledged.
 
 
-## History 
+## DataJoint History 
 
 ```{image} ./images/cave-art.jpg
 ---
