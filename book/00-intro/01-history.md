@@ -6,7 +6,7 @@ authors:
 ---
 
 
-```{image} ./images/cave-art.jpg
+```{image} ../images/cave-art.jpg
 ---
 :alt: cave painting
 :width: 600px
