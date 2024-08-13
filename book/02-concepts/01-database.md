@@ -6,8 +6,9 @@ authors:
 ---
 
 
-We begin with defining a few key terms.
-These definitions may be more precise than most popular definitions provided by a casual search or by other textbooks and are used consistently through the book.
+We begin by defining a few key concepts.
+These definitions may be more precise and strict than those found by a casual search or even by other textbooks.
+We will use these terms consistently the book.
 
 We will start with the terms for *database*, *database system*, and *database management system*:
 
