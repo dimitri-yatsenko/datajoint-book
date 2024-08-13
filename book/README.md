@@ -7,7 +7,7 @@ authors:
 
 # Welcome
 
-Welcome to **The DataJoint Book**. This book provides a complete introduction to database programming for scientific data and computations.
+Welcome to **The DataJoint Book**. It book provides a complete introduction to database programming for scientific data and computations.
 
 ```{image} ./images/neuron.png
 :alt: contemplating neuron

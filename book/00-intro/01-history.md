@@ -14,7 +14,7 @@ authors:
 ```
 
 # Early Work at BCM
-In the summer of 2008, I joined Dr. Andreas Tolias's new lab at Baylor College of Medicines's Department of Neuroscience.
+In the summer of 2008, I joined Dr. Andreas Tolias's new lab at Baylor College of Medicine's Department of Neuroscience.
 The lab was focused on complex neurophysiology experiments.
 A group of students and postdocs, including Alex Ecker, Philipp Berens, Andreas Hoenselaar, and R. James Cotton, had already started a MATLAB-based library called "Steinbruch," which used MySQL to link data through computational dependencies.
 
@@ -25,7 +25,8 @@ This led me to develop the first version of DataJoint for MATLAB, which I used i
 My goal was to design a database system based on strong principles, with a focus on data integrity and reliable transaction processing, with native support for computational dependencies and orchestration.
 I noticed that mainstream database models lacked computational dependencies, so I created DataJoint to fill that gap.
 
-By 2011, DataJoint was fully integrated into our lab's workflow, thanks to early users like Manolis Froudarakis and Jacob Reimer. Dr. Tolias recognized its potential and supported its use, which led me to release DataJoint as an open-source project on [Google Code](https://code.google.com/archive/p/datajoint/).
+By 2011, DataJoint was fully integrated into our lab's workflow, thanks to the early adopters Manolis Froudarakis and Jacob Reimer.
+Dr. Tolias recognized its potential and supported its use, which led me to release DataJoint as an open-source project on [Google Code](https://code.google.com/archive/p/datajoint/).
 
 # Gaining Recognition
 By 2014, the year I defended my Ph.D. thesis, DataJoint had already spread beyond the lab and was used in research institutions worldwide.
