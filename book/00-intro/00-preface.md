@@ -7,9 +7,13 @@ authors:
 
 # Purpose
 
-This book offers a clear and comprehensive introduction to the fundamental concepts of relational database programming, with a specific focus on scientific data that relies on complex computations. It is designed for anyone interested in building a strong theoretical foundation in relational database programming, particularly in the context of managing and analyzing scientific data.
+This book provides a clear and accessible introduction to the core concepts of relational database programming, with a special focus on scientific data that requires complex computations.
+It’s designed for anyone eager to build a solid understanding of relational database programming, especially in the context of managing and analyzing scientific data.
 
-In this guide, you’ll explore how databases can be used to organize and manage the intricate data involved in collaborative scientific research. Scientific databases often handle large numerical datasets and complex data structures. However, it's not just about data storage; the data must integrate seamlessly with computational algorithms that process and interpret it. This necessitates effective code management and the automation of computations across different computing systems.
+Through this guide, you’ll discover how databases can be effectively used to organize and manage the intricate data involved in collaborative scientific research.
+Scientific databases often deal with large numerical datasets and complex data structures.
+But it’s not just about storing data; it’s about seamlessly integrating that data with computational algorithms for processing and interpretation.
+This requires efficient code management and the automation of computations across various computing systems.
 
 # DataJoint vs. SQL
 
