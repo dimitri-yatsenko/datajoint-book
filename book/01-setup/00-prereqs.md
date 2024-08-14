@@ -20,7 +20,7 @@ Coding examples in this book require the following components:
 If you are using the DevContainer for this textbook, you are all set. All these required components are already configured.
 This will not allow you to run a sizeable project but will be sufficient for the tutorial exercises.
 
-# on DataJoint Works
+# On DataJoint Works
 For real projects, you can go to https://datajoint.com to request a comprehensive digital environment for implementing and operating collaborative data pipelines, either in the cloud or in local infrastructure. 
 
 DataJoint Works provides an integrated research environment that combines:
