@@ -40,3 +40,4 @@ The platform comes with technical support to address any issues with the setup a
 If you must set up a DataJoint pipeline using your own engineering resources and infrastructure, you can definitely do it!
 The tools are published in open source.
 This requires substantial skills in systems administration and database administration to set up all operations.
+You can begin by reverse engineering the DevContainer for this book and refer to the tutorials and documentation for each software component.
