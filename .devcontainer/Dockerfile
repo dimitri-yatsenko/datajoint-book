@@ -3,11 +3,15 @@ FROM ubuntu:22.04
 
 # Set environment variables for Conda
 ENV PATH /opt/conda/bin:$PATH
-ENV MYSQL_ROOT_PASSWORD=datajoint
+ENV MYSQL_ROOT_PASSWORD=dj_secret123
+ENV DJ_HOST=localhost
+ENV DJ_PASS=$MYSQL_ROOT_PASSWORD
+ENV DJ_USER=root
 
 # Install necessary system tools
 RUN apt-get update && apt-get install -y \
     wget \
+    vim \
     bzip2 \
     ca-certificates \
     curl \
@@ -27,7 +31,8 @@ RUN conda init bash && \
     conda install -n base -c conda-forge python=3.10 jupyterlab numpy pandas 'nodejs>20,<21' pip -y && \
     pip install mystmd && \
     pip install jupyterlab_myst && \
-    pip install datajoint
+    pip install datajoint && \ 
+    pip install ipython-sql
 
 # Set up shell to use Conda by default
 RUN echo "source /opt/conda/etc/profile.d/conda.sh && conda activate base" >> ~/.bashrc

@@ -42,7 +42,6 @@ In 2017, Vathes received a Phase I SBIR grant to explore the commercial potentia
 
 By 2018, Vathes had added key members: Shan Shen, Thinh Nguyen, Chris Turner, and Raphael Guzman, who played crucial roles in developing DataJoint further and integrating it into the workflows of large labs that became our customers. Our growth, collaborations, and new team members helped shape our approach to data-driven projects. Collaborations with Prof. Carlos Brody and Prof. Karel Svoboda also significantly increased DataJoint's use.
 
-# Growth and Transformation
 2020 was a pivotal year for us. With a significant 5-year NIH grant, we began developing [DataJoint Elements](https://datajoint.com/docs/elements)—a set of reference implementations for DataJoint pipelines in neurophysiology studies. This period also brought key leadership changes, including the addition of Dr. Kabilar Gunalan, who played a vital role in advancing the DataJoint Elements initiative.
 
 In 2021, we rebranded the company as **DataJoint** to better align with our core product, shifting our focus toward commercial technology for research collaboration. During this time, I transitioned to a full-time role as CEO.
