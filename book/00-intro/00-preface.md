@@ -1,6 +1,6 @@
 ---
-title: Database Programming for Scientific Research
-date: 2024-08-12
+title: Database Programming
+date: 2024-08-15
 authors:
   - name: Dimitri Yatsenko
 ---
