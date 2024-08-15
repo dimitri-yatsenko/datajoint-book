@@ -20,7 +20,7 @@ Welcome to **The DataJoint Book**. It book provides a complete introduction to d
 
 # License
 
-© DataJoint Inc., 2024. All rights reserved.
+© Dimitri Yatsenko, 2024. All rights reserved.
 
 This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](LICENSE.md).
 You may share the content as long as you give appropriate credit, do not use it for commercial purposes, and do not share any modifications.
