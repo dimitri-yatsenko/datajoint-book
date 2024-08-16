@@ -22,7 +22,7 @@ Each line connecting elements of the two sets is called a *tuple* and represents
 Then a relation can be thought of as a set of tuples.
 The number of tuples in a relation is called its *cardinality* and the number of domains participating in the relation is its *order*.
 This diagram shows binary relations.
-Relations can be binary, ternary, or of higher orders. 
+Relations can be binary, ternary, or of higher orders.
 
 Mathematically, a relation between two sets \( A \) (e.g., clinics) and \( B \) (e.g., species) is a subset of their Cartesian product \( A $\times$ B \). This means the relation is a collection of ordered pairs \((a, b)\), where each \( a \) is an element from set \( A \), and each \( b \) is an element from set \( B \). In the context of the diagram, each pair represents a specific connection, such as (Clinic 1, Dog) or (Clinic 3, Cow).
 
@@ -34,29 +34,8 @@ The development of relational theory as a formal mathematical framework is large
 
 Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets \( A \) and \( B \) is the set of all possible ordered pairs \((a, b)\) where \( a \) is from \( A \) and \( b \) is from \( B \). This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
 
-:::{tip} Exercise
-Extend the Clinic-Species example to a higher order to create a ternary relation. 
-:::
-:::{tip} Example Solution 
-:class: dropdown
-For example, you could add another domain for the treatments that clinics offer for each species. This will form a ternary relationship Clinic-Species-Treatment. 
-Think of another example.
-:::
- 
-:::{tip} Exercise
-Imagine that you have two binary relations: Clinic-Species and Species-Treatment
-How can two these  binary relations be joined into a ternary relation: Clinic-Species-Treatment?
-What would the rules be for forming this result?
-What will be the cardinality (number of elements) of the result?
-:::
 
-:::{tip}Exercise
-Imagine that we decide to remove the domain Species from a ternary relation: Clinic-Species-Treatment, turning it into a binary relation Clinic-Treatment.
-What would be the rules for this operation? 
-How would the cardinality (number of elements) change in the result?
-:::
-
-#  Mathematical Power 
+#  Mathematical Rigor
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
 
 One of the most important applications of relational theory is in the concept of **functions**. A function is a specific type of relation where each element in the domain (the first set) is associated with exactly one element in the codomain (the second set). Functions are essential in nearly every area of mathematics, from calculus to linear algebra.
@@ -79,7 +58,8 @@ Tarski demonstrated that every relation can be described by a formula in first-o
 
 # Relational Algebra and Calculus
 
-Relational algebra is a set of operations that can be used to manipulate and query relations in a formal way. It provides the foundation for querying relational databases, allowing us to combine, modify, and retrieve data stored in tables (relations).
+**Relational algebra** is a set of operations that can be used to transform relations in a formal way.
+It provides the foundation for querying relational databases, allowing us to combine, modify, and retrieve data stored in tables (relations).
 
 Examples of relational operators:
 
@@ -91,7 +71,7 @@ Examples of relational operators:
 - **Rename (ρ):** Renames the attributes of a relation.
 - **Join (⨝):** Combines related tuples from two relations based on a common attribute.
 
-Such operators together represent an algebra: ways to transform relations into other relations. 
+Such operators together represent an algebra: ways to transform relations into other relations.
 Some operators are binary, i.e. they accept two relations as inputs to produce another relation as output.
 The operators are *algebraically closed*, i.e. the operators take relations as inputs and produce relations as outputs.
 This means elementary operators can be combined in sophisticated ways to compose complex expressions.
@@ -121,14 +101,47 @@ This operation effectively merges the connections from both sets of values, prov
 
 Relational algebra, with its powerful operators, allows us to query and manipulate data in a structured and efficient way, forming the backbone of modern database systems. By understanding and applying these operators, we can perform complex data analysis and retrieval tasks with precision and clarity.
 
+Another formal language for deriving new relations from scratch or from from other  relations is **relational calculus**. 
+Rather than using relational operators, it relies on a *set-building notation* to generate relations.
+
+:::{note}
+The query notation of the SQL programming language combines concepts from both relational algebra and relational calculus.
+However, DataJoint's query language is based purely on relational algebra.
+:::
+
 :::{table} The difference in terminology  used in relational theory and relational databases.
 :widths: auto
 :align: center
-|  Theory | Databases  | Description  |
+|  Relational Theory | Database Programming  | Description  |
 |:--|:--|:--|
 | **Relation**                   | **Table** | A set of tuples that share the same attributes from each of the domains in the relation. |
 | **Domain**   | **Data Type** | The set of permissible values that an attribute can take in any tuple of a relation.  |
 | **Attribute**                  | **Column** | The positional values in the tuples of relation drawn from their corresponding domain.  |
-| **Attribute value** | **Field** | The positional value in a specific tuple. | 
+| **Attribute value** | **Field** | The positional value in a specific tuple. |
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
+:::
+
+## Exercises
+
+:::{tip} Exercise
+Extend the Clinic-Species example to a higher order to create a ternary relation.
+:::
+:::{tip} A Solution
+:class: dropdown
+For example, you could add another domain for the treatments that clinics offer for each species. This will form a ternary relationship Clinic-Species-Treatment.
+Think of another example.
+:::
+
+:::{tip} Exercise
+Imagine that you have two binary relations: `Clinic-Species` and `Species-Treatment`
+
+How can these two binary relations be joined into a ternary relation: `Clinic-Species-Treatment`?
+What would the rules be for forming this result?
+What will be the cardinality (number of elements) of the result?
+:::
+
+:::{tip}Exercise
+Imagine that we decide to remove the do
+What would be the rules for this operation?
+How would the cardinality (number of elements) change in the result?
 :::
