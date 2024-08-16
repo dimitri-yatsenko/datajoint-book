@@ -124,11 +124,12 @@ However, DataJoint's query language is based purely on relational algebra.
 ## Exercises
 
 :::{tip} Exercise
-Extend the Clinic-Species example to a higher order to create a ternary relation.
+Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
 :::
 :::{tip} A Solution
 :class: dropdown
-For example, you could add another domain for the treatments that clinics offer for each species. This will form a ternary relationship Clinic-Species-Treatment.
+For example, you could add another domain for the treatments that clinics offer for each species.
+This will form a ternary relation `Clinic-Species-Treatment`.
 Think of another example.
 :::
 
