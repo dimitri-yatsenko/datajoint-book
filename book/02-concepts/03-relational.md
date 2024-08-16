@@ -34,9 +34,27 @@ The development of relational theory as a formal mathematical framework is large
 
 Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets \( A \) and \( B \) is the set of all possible ordered pairs \((a, b)\) where \( a \) is from \( A \) and \( b \) is from \( B \). This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
 
-### Exercise
-Extend these example to a higher order, e.g. ternary relations.
+:::{tip} Exercise
+Extend the Clinic-Species example to a higher order to create a ternary relation. 
+:::
+:::{tip} Example Solution 
+:class: dropdown
+For example, you could add another domain for the treatments that clinics offer for each species. This will form a ternary relationship Clinic-Species-Treatment. 
+Think of another example.
+:::
  
+:::{tip} Exercise
+Imagine that you have two binary relations: Clinic-Species and Species-Treatment
+How can two these  binary relations be joined into a ternary relation: Clinic-Species-Treatment?
+What would the rules be for forming this result?
+What will be the cardinality (number of elements) of the result?
+:::
+
+:::{tip}Exercise
+Imagine that we decide to remove the domain Species from a ternary relation: Clinic-Species-Treatment, turning it into a binary relation Clinic-Treatment.
+What would be the rules for this operation? 
+How would the cardinality (number of elements) change in the result?
+:::
 
 #  Mathematical Power 
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
