@@ -1,6 +1,6 @@
 ---
 title: Relational Theory
-date: 2024-08-12
+date: 2024-08-20
 authors:
   - name: Dimitri Yatsenko
 ---
@@ -12,9 +12,11 @@ Imagine you have two set: one set representing clinics and another representing 
 A relation between these two sets would indicate, for example, which clinics treat which species.
 
 ```{figure} ../images/relations.png
----
-:name: mathematical relations
----
+:name: relations
+:width: 75 %
+:alt: mathematical relations
+
+Relations are mappings of elements of one set to elements of another domain (binary relations). Higher order relations map elements of three, four and and more sets.
 ```
 
 This diagram illustrates two different relations between "Clinics" and "Species." On the left side, the relation shows Clinic 1 is connected to "Dog," Clinic 2 is connected to "Horse," and Clinic 3 is connected to both "Goat" and "Cow." On the right side, the relation changes: Clinic 1 is now connected to "Dog," "Cat," and "Goat," Clinic 2 is connected to "Dog" and "Horse," and Clinic 3 is connected to "Goat."
@@ -29,10 +31,13 @@ Mathematically, a relation between two sets \( A \) (e.g., clinics) and \( B \) 
 These relations are not fixed and can change depending on the context or criteria, as shown by the two different values in the diagram. The flexibility and simplicity of relations make them a powerful tool for representing and analyzing connections in various domains.
 
 The concept of relations has a rich history that dates back to the mid-19th century. The groundwork for relational theory was first laid by Augustus De Morgan, an English mathematician and logician, who introduced early ideas related to relations in his work on logic and algebra. De Morgan's contributions were instrumental in setting the stage for the formalization of relations in mathematics.
+
 ```{figure} ../images/demorgan.jpg
----
-:name: Augustus De morgan
----
+:name: Augustus De Morgan
+:scale: 50 %
+
+[Augustus De Morgan](https://en.wikipedia.org/wiki/Augustus_De_Morgan) developed the fundamental concepts of relational theory, including operations on relations.
+
 ```
 
 The development of relational theory as a formal mathematical framework is largely credited to Georg Cantor, a German mathematician, in the late 19th century. Cantor is known as the father of set theory, which is the broader mathematical context in which relations are defined. His work provided a rigorous foundation for understanding how sets (collections of objects) interact with each other through relations.
@@ -40,11 +45,11 @@ The development of relational theory as a formal mathematical framework is large
 Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets \( A \) and \( B \) is the set of all possible ordered pairs \((a, b)\) where \( a \) is from \( A \) and \( b \) is from \( B \). This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
 
 ```{figure} ../images/georg_cantor.jpg
----
 :name: Georg Cantor
----
-```
+:scale: 50 %
 
+[Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) reframed relations in the context of Set Theory
+```
 
 #  Mathematical Rigor
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
@@ -74,9 +79,9 @@ A mathematical **relation** is defined as a subset of the **Cartesian product** 
 As with other types of sets in **set theory**, relations can be transformed and manipulated using set operators such as *union*, *intersection*, *difference*, *etc*.
 
 ```{figure} ../images/Ted-Codd.jpg
----
 :name: Ted Codd
----
+
+[Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) revolutionized database theory and practice by applying relational theory to data management and operations.
 ```
 
 Codd's model was largely derived from relational theory but differed sufficiently in its basic definitions to make a new type of algebra.
