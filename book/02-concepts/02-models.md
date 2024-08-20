@@ -1,5 +1,5 @@
 ---
-title: Data Model
+title: Data Models
 date: 2024-08-12
 authors:
   - name: Dimitri Yatsenko
@@ -14,21 +14,57 @@ A particular model is defined by answering the following questions:
 * What tools exist for defining and enforcing data integrity: the rules for valid data interactions and for preventing invalid operaitons?
 ```
 
-:::note Thought
-Before proceeding, think of the data models you are already familiar with.
-What are the building blocks for data in this model?
+# Examples of Data Models
+:::{note} Thought
+Before proceeding, think of several different data models you are already familiar with.
+Describe a common model in terms of the building blocks for representing and manipulating data?
 What are the principal operations for creating, manipulating, and querying data in this model?
 :::
 
-# Example: Binary File
-The simplest and least structured data model is that of a data file. 
-A file is simply a string of bits (1s and 0s). 
-For a tiny bit of structure, the bits are grouped into bytes (8 bits).
-The operations that a file supports are: changing the values of the bits and the length of the file.
+## Example: Binary File
 
-# Example: File System
+The data model of a binary file is the simplest and least constrained, consisting of a continuous sequence of bits (1s and 0s). These bits are typically grouped into bytes (8 bits each) for basic structure, but beyond this, binary files have no inherent organization or meaning. The interpretation of the data within a binary file is entirely dependent on the application that reads it.
 
-### Example: Spreadsheets
+The operations supported by a binary file are minimal:
+- **Reading and Writing Bits/Bytes**: You can read or modify the individual bits or bytes at specific locations within the file.
+- **Changing File Length**: You can increase or decrease the file's length by adding or removing bits/bytes.
+
+Binary files serve as a flexible, low-level data storage format, allowing applications to store any type of data without predefined structure, making them ideal for storing raw data, executable programs, or proprietary file formats.
+
+## Example: Hierarchical File System
+
+A hierarchical file system organizes data in a tree-like structure, where each file is stored within a directory (also known as a folder), and directories can contain other directories, forming a hierarchy. This model provides a logical and organized way to manage files on storage devices.
+
+- **Files**: The basic unit of data storage, each file contains a sequence of bytes and is identified by a unique name within its directory.
+- **Directories**: Directories (or folders) serve as containers for files and other directories, allowing for a nested structure. Each directory can hold multiple files and subdirectories.
+- **Paths**: The location of a file or directory is specified by a path, which traces the route through the directory hierarchy, starting from the root directory.
+
+Hierarchical file systems support a range of operations, including:
+- **Creating, Renaming, and Deleting Files/Directories**: Users can create new files and directories, rename them, or remove them.
+- **Navigating the Hierarchy**: Users can move through directories using paths to access files and subdirectories.
+- **Reading and Writing Files**: Files can be opened for reading or writing, allowing users to view or modify the contents.
+- **Managing Permissions**: File systems often include mechanisms for setting permissions, controlling who can read, write, or execute files.
+
+The hierarchical file system is one of the most familiar data models to scientists, who often think of data primarily in such terms. This model provides an organized way to store and retrieve data, making it easier to manage large collections of files across multiple directories.
+
+## Variable-Based Data Model
+
+The Variable-Based Data Model is fundamental to how most programming languages like JavaScript, C++, R, Julia, and Python handle data. In this model, variables act as containers or references that store data values, allowing programmers to manipulate and interact with data easily:
+
+- **Variables**: Named containers that hold data, which can be of various types such as numbers, text, or more complex structures like arrays and objects.
+
+- **Data Types**: Variables can store different types of data, including:
+  - **Primitive Types**: Simple data like numbers, booleans, and strings.
+  - **Composite Types**: complex data structures such as arrays (ordered collections), dictionaries (key-value pairs), objects, and myriad others.
+
+- **Operations**: Variables support diverse operations, including:
+  - **Assignment**: Storing or updating a value in a variable.
+  - **Arithmetic and Logic**: Performing calculations or logical comparisons.
+  - **Function Calls**: Passing variables to functions for processing.
+
+Programming languages differ vastly in how they constrain operations on variables. For example, a language can be strongly typed, restricting what values can be assigned to a variable.
+
+## Example: Spreadsheet
 
 Electronic spreadsheets are among the most widely used tools for data management and analysis across business, science, and everyday household tasks.
 
@@ -46,7 +82,7 @@ Users interact with spreadsheets by manually entering data or formulas into spec
 
 In addition to basic data entry, spreadsheets offer a wide range of features, including formatting options and the ability to create charts, making them versatile tools for data analysis and presentation.
 
-# Example: Dataframes
+## Example: Dataframes
 
 DataFrames are a fundamental data structure used in data analysis and manipulation, particularly in the fields of data science, statistics, and machine learning. They provide a powerful and flexible way to work with structured data, similar to tables in relational databases or spreadsheets, but with additional capabilities that make them ideal for complex data operations.
 
@@ -90,9 +126,9 @@ DataFrames support a wide range of operations, making them a powerful tool for d
 DataFrames have become an essential tool in modern data analysis, providing a structured yet flexible way to handle and manipulate data. Their ability to work with heterogeneous data types, combined with a rich set of operations, makes them ideal for tasks ranging from simple data exploration to complex data transformations and machine learning preparation. Whether in Python, R, or Julia, DataFrames have become a cornerstone of data science workflows.
 
 
-# Example: Object Model
+## Example: Object Model
 
-# Schema
+# Schema or Schemaless
 Data models can be divided into structured and self-describing.
 
 # Exercise
