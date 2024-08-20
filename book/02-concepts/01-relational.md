@@ -34,7 +34,7 @@ The concept of relations has a rich history that dates back to the mid-19th cent
 
 ```{figure} ../images/demorgan.jpg
 :name: Augustus De Morgan
-:scale: 50 %
+:width: 300px
 
 [Augustus De Morgan](https://en.wikipedia.org/wiki/Augustus_De_Morgan) developed the fundamental concepts of relational theory, including operations on relations.
 
@@ -46,7 +46,7 @@ Cantor's set theory introduced the idea that relations could be seen as subsets 
 
 ```{figure} ../images/georg_cantor.jpg
 :name: Georg Cantor
-:scale: 50 %
+:width: 300px
 
 [Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) reframed relations in the context of Set Theory
 ```

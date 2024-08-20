@@ -47,44 +47,7 @@ A robust DBMS enforces such rules reliably, ensuring smooth operations.
 
 Databases are dynamic, with data continuously updated by both users and systems. Even in the face of disruptions like power outages, errors, or cyberattacks, the DBMS should ensure that the system recovers quickly and returns to a stable state. For users, the database should function seamlessly, allowing actions to be performed without interference from others working on the system simultaneously.
 
-# Scientific Databases
+# Data models 
 
-Neuroscience, a field rife with intricate datasets, often sees researchers navigating vast amounts of data while collaborating within extensive, multidisciplinary teams.
-Given this complexity, the logical assumption would be that cutting-edge tools for data organization, manipulation, analysis, and querying would be central to their operations.
-However, this isn't the prevailing reality.
-Despite technological advancements, a significant portion of the scientific community still refrains from employing proper databases for their studies.
-The predominant trend is to rely on shared data in the format of file repositories, systematically organized into folders under a uniform naming convention.
-This leads to the pertinent question: Why this discernible hesitance towards databases?
-
-```{card} Reasons for scientists' reluctance to use databases
-
-Gray *et al.* in their 2005 technical report titled "Scientific Data Management in the Coming Decade" {cite:p}`gray_scientific_2005` delved deep to unearth the reasons underpinning this avoidance:
-
-* Perceived lack of tangible benefits.
-* Absence of efficient visualization/plotting tools.
-* A belief in the sufficiency of their programming language for data management.
-* Incompatibility with specific data types like arrays, spatial data, text, etc.
-* Mismatch with their data access patterns.
-* Concerns over speed and efficiency.
-* Inability to manipulate database data using regular application programs.
-* The cost implications of hiring database administrators.
-```
-
-These apprehensions are valid.
-Traditional database systems were primarily sculpted keeping in mind sectors like business, commerce, and web applications, not scientific computing.
-For scientists, there's a clear need for a system that offers more—more flexibility, support for unique scientific data types, and capabilities tailored for distributed computation and visualization.
-
-## The Limitations of File-based Systems
-
-The aforementioned concerns naturally lead one to ponder: What, if any, are the drawbacks of simply organizing data as a structured file repository?
-When do file systems falter?
-
-Files, in essence, are nothing but sequences of bytes tagged with specific names.
-They inherently lack structure or any meta-information.
-While they can be systematically arranged with discerning naming conventions into structured folders, the onus of adhering to any structural framework lies externally.
-Numerous *data standards*, such as [BIDS](https://bids.neuroimaging.io/) for brain imaging, essentially define their guidelines based on specific file/folder structures.
-But therein lies a challenge—the filesystem itself doesn't enforce this structure, necessitating the creation of separate data standards.
-The filesystem essentially passes on the challenge of efficient operations to the end processes that engage with them.
-To efficiently navigate data organized in files, there's a need for distinct efforts in crafting access patterns, generating indices for swift searches, and scripting common queries.
-In scenarios of shared distributed projects, there's also the added logistical challenge of data transfers, ensuring data integrity during concurrent access and modifications, and optimizing data operations.
+# Server-Client Architecture
 
