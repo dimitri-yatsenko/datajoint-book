@@ -17,7 +17,7 @@ A particular model is defined by answering the following questions:
 # Examples of Data Models
 :::{note} Thought
 Before proceeding, think of several different data models you are already familiar with.
-Describe a common model in terms of the building blocks for representing and manipulating data?
+Describe a common model in terms of the building blocks for representing and manipulating data.
 What are the principal operations for creating, manipulating, and querying data in this model?
 :::
 

@@ -1,28 +1,63 @@
 ---
 title: Development Environment
-date: 2024-08-12
+date: 2024-08-20
 ---
+This book is designed to teach database programming for scientific operations, using the most popular scientific programming language today—[Python](https://www.python.org/).
 
-This book focuses on programming scientific databases with integrated computations, all implemented using the most popular scientific programming language today — [Python](https://www.python.org/).
+### Executable Book Format
 
-Designed to be fully executable, this book adheres to the standards of the [Executable Books Project](https://executablebooks.org/). The entire development environment, including all dependencies, is containerized using Docker and DevContainer.
+Following the standards of the [Executable Books Project](https://executablebooks.org/), this book is fully executable. The entire development environment, including all dependencies, is containerized using Docker and DevContainer, ensuring that all examples and exercises can be run seamlessly.
 
-The main [GitHub repository](https://github.com/dimitri-yatsenko/datajoint-book) for this book includes a DevContainer setup that provides a complete development environment to run all examples and exercises. This environment is pre-configured with:
+### Using DevContainer
 
-- A MySQL database server running within the container
+The main [GitHub repository](https://github.com/dimitri-yatsenko/datajoint-book) for this book includes a DevContainer setup that provides a complete development environment. This environment is pre-configured with:
+
+- A MySQL database server
+- Minio server for storing large objects
 - MyST for generating the book
 - Python and Jupyter for programming examples
+- MySQL client and IPython SQL Magic for executing SQL commands
 - The DataJoint client library
 - Essential scientific programming libraries
 
-There are two primary methods to build and activate the DevContainer:
+If you use DevContainer for this book, everything you need is already set up. This configuration is sufficient for the tutorial exercises but may not be robust enough for large-scale, real-world collaborative projects.
 
-1. Using [Visual Studio Code](https://code.visualstudio.com/docs/devcontainers/tutorial)
-2. Using [GitHub CodeSpaces](https://docs.github.com/en/codespaces/getting-started/quickstart)
+### Setting Up DevContainer
 
-Detailed instructions for working with DevContainers are available in the documentation for MyST, Visual Studio Code, and GitHub CodeSpaces. Readers are encouraged to explore these resources to learn how to set up and operate the environment.
+There are two main methods to build and activate the DevContainer:
 
-All the tools used in this book are free, open-source, and adhere to good software governance principles, making them a robust foundation for any scientific data engineering project.
+1. **Using [Visual Studio Code](https://code.visualstudio.com/docs/devcontainers/tutorial)**
+2. **Using [GitHub CodeSpaces](https://docs.github.com/en/codespaces/getting-started/quickstart)**
 
-While the setup provided in this book is streamlined for educational purposes, it's important to note that real-world database setup, operations, and maintenance can be complex. Any large-scale, collaborative project will require significant investment in infrastructure and operational support.
+Detailed instructions for working with DevContainers can be found in the documentation for MyST, Visual Studio Code, and GitHub CodeSpaces. Readers are encouraged to explore these resources for guidance on setting up and operating the environment.
 
+### DataJoint Works for Real-Life Projects
+
+For real-life projects, consider setting up an account on [DataJoint Works](https://datajoint.com). This platform provides the computational infrastructure and programming environment needed to implement collaborative data pipelines, either in the cloud or on local infrastructure. DataJoint Works integrates:
+
+- Code management
+- User access management
+- Database operations
+- Automated computations
+- Electronic lab notebooks and visualization dashboards
+- Data navigation and exploration
+- Performance monitoring and optimization
+- Backups and recovery
+- Data export and publishing
+
+The platform also offers technical support for setup and configuration issues.
+
+### Do-It-Yourself Setup
+
+If you prefer to set up a DataJoint pipeline using your own resources, the tools are open source and available for you to use. However, this requires substantial skills in systems administration and database management. You can start by reverse-engineering the DevContainer provided with this book and referring to the tutorials and documentation for each software component.
+
+To run the coding examples in this book on your own setup, you'll need:
+
+- A MySQL server with user accounts and appropriate privileges
+- Object storage for large data objects (e.g., Minio or Ceph)
+- Python programming language
+- An Integrated Development Environment (IDE) like VSCode or PyCharm, or [Jupyter](https://jupyter.org)
+- Python libraries for scientific computations and the DataJoint Python client
+- IPython SQL magic
+
+While the setup provided in this book is streamlined for educational purposes, real-world database operations can be complex and may require significant infrastructure and support.
