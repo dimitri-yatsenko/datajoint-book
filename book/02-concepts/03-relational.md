@@ -5,7 +5,7 @@ authors:
   - name: Dimitri Yatsenko
 ---
 
-# Originals of  Relational Theory
+# Origins of  Relational Theory
 
 Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set of elements.
 Imagine you have two set: one set representing clinics and another representing animal species.
@@ -29,9 +29,9 @@ Mathematically, a relation between two sets \( A \) (e.g., clinics) and \( B \) 
 These relations are not fixed and can change depending on the context or criteria, as shown by the two different values in the diagram. The flexibility and simplicity of relations make them a powerful tool for representing and analyzing connections in various domains.
 
 The concept of relations has a rich history that dates back to the mid-19th century. The groundwork for relational theory was first laid by Augustus De Morgan, an English mathematician and logician, who introduced early ideas related to relations in his work on logic and algebra. De Morgan's contributions were instrumental in setting the stage for the formalization of relations in mathematics.
-```{figure} ../images/demorgan.png
+```{figure} ../images/demorgan.jpg
 ---
-:name: Georg Cantor
+:name: Augustus De morgan
 ---
 ```
 
