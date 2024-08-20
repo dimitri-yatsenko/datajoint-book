@@ -29,10 +29,21 @@ Mathematically, a relation between two sets \( A \) (e.g., clinics) and \( B \) 
 These relations are not fixed and can change depending on the context or criteria, as shown by the two different values in the diagram. The flexibility and simplicity of relations make them a powerful tool for representing and analyzing connections in various domains.
 
 The concept of relations has a rich history that dates back to the mid-19th century. The groundwork for relational theory was first laid by Augustus De Morgan, an English mathematician and logician, who introduced early ideas related to relations in his work on logic and algebra. De Morgan's contributions were instrumental in setting the stage for the formalization of relations in mathematics.
+```{figure} ../images/demorgan.png
+---
+:name: Georg Cantor
+---
+```
 
 The development of relational theory as a formal mathematical framework is largely credited to Georg Cantor, a German mathematician, in the late 19th century. Cantor is known as the father of set theory, which is the broader mathematical context in which relations are defined. His work provided a rigorous foundation for understanding how sets (collections of objects) interact with each other through relations.
 
 Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets \( A \) and \( B \) is the set of all possible ordered pairs \((a, b)\) where \( a \) is from \( A \) and \( b \) is from \( B \). This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
+
+```{figure} ../images/georg_cantor.jpg
+---
+:name: Georg Cantor
+---
+```
 
 
 #  Mathematical Rigor
@@ -46,8 +57,6 @@ Each tuple in such relation represents an edge in the graph.
 Graph theory helps in understanding complex networks, such as social networks, computer networks, and even biological networks.
 Thus theorems discovered or proven in relational theory also apply to graphs.
 
-Moreover, relational theory is the foundation of **database systems**. The relational model of databases, developed by Edgar F. Codd in the 1970s, uses relations (tables) to organize and query data efficiently. The power of relational databases lies in their ability to handle large amounts of data while maintaining the integrity and accessibility of the information through well-defined relations.
-
 Relational theory also extends to concepts like **equivalence relations** and **order relations**. Equivalence relations partition a set into disjoint subsets called equivalence classes, while order relations arrange elements in a sequence. These concepts are fundamental in areas such as algebra, topology, and analysis.
 
 Relational theory has been shown to deeply interconnected to  **first-order logic** and **predicate calculus** at the foundations of mathematics and logic.
@@ -55,6 +64,26 @@ Relational theory, which focuses on the study of relations between elements of s
 In first-order logic, predicates represent relations, and the logical statements describe how these relations interact.
 The equivalence between relational theory and first-order logic was notably formalized by Alfred Tarski in the 1930s.
 Tarski demonstrated that every relation can be described by a formula in first-order logic, establishing a profound connection between these mathematical frameworks that has since underpinned much of modern theoretical computer science and logic.
+
+# Relational Database Model
+The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the Turing Award.
+
+Working at IBM, Codd explored the possibility of working on data using concepts from set theory  {cite:p}`codd_relational_1970`.
+Codd was inspired by the concept of *set relations* and the \emph{calculus of relations} proposed by the British logician **Augustus De Morgan** and further developed by the American logician **Charles Sanders Peirce**  in the mid-XIX century {cite:p}`de1860syllabus`, {cite:p}`peirce1870description` --- theories rooted in well-established concepts of logic and set theory.
+A mathematical **relation** is defined as a subset of the **Cartesian product** of multiple sets.
+As with other types of sets in **set theory**, relations can be transformed and manipulated using set operators such as *union*, *intersection*, *difference*, *etc*.
+
+```{figure} ../images/Ted-Codd.jpg
+---
+:name: Ted Codd
+---
+```
+
+Codd's model was largely derived from relational theory but differed sufficiently in its basic definitions to make a new type of algebra.
+The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
+Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
+For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
+The design principles were defined through the rigorous but rather abstract principles, the **normal forms** {cite:p}`kent1983simple`.
 
 # Relational Algebra and Calculus
 
