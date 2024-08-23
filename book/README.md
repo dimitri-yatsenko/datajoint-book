@@ -1,5 +1,5 @@
 ---
-title: Programming Scientific Databases with DataJoint
+title: The DataJoint Book
 date: 2024-08-20
 authors:
   - name: Dimitri Yatsenko

@@ -7,25 +7,28 @@ authors:
 
 # Purpose
 
-This book provides a clear and accessible introduction to the core concepts of relational database programming, with a special focus on scientific data that requires complex computations.
-It’s designed for anyone eager to build a solid understanding of relational database programming, especially in the context of managing and analyzing scientific data.
+Primarily, this book is a comprehensive introduction to DataJoint for Python—a specialized framework for implementing scientific data pipelines that manage data and orchestrate computations in collaborative studies.
+At its core, DataJoint is an enhancement of the traditional relational database model. As such it enames scientists, data engineers, and programmers to design and query relational databases.
+But its main innovation is that introduces computational dependencies into the traditional model, allowing researchers to define, execute, and reproduce data processing pipelines with precision and efficiency. 
 
-Through this guide, you’ll discover how databases can be effectively used to organize and manage the intricate data involved in collaborative scientific research.
-Scientific databases often deal with large numerical datasets and complex data structures.
-But it’s not just about storing data; it’s about seamlessly integrating that data with computational algorithms for processing and interpretation.
-This requires efficient code management and the automation of computations across various computing systems.
+DataJoint empowers scientists to describe not just the structure of their data, but also the sequence of computations that transform raw data into meaningful results. This language integrates data storage, processing, and analysis into a unified system, ensuring that each step in the research process is transparent, reproducible, and easy to manage.
 
-# DataJoint vs. SQL
+By formalizing the relationships between data and computations, DataJoint eliminates the need for ad-hoc scripting and manual data wrangling, enabling researchers to focus on the scientific questions that matter most. Whether dealing with simple experiments or large-scale collaborative projects, DataJoint provides the tools necessary to handle data complexity, maintain data integrity, and foster collaboration across teams.
 
-There are various methods for managing data, but relational databases stand out for their structured approach. They maintain data accuracy and provide powerful tools for querying information. The primary language used in relational databases is SQL, which encompasses data definition, querying, modification, and procedural tasks.
+This book provides a clear and accessible introduction to the core concepts of relational database programming in the context of data science and research applications, such as neuroscience and machine learning, where complex computations are involved.  
+THe book is written to allow scientists and engineers to build a solid understanding of relational database programming from scratch. We assume that the reader is proficient in Python but assume no prior database experence. 
 
-Although SQL, developed in the 1970s and 1980s, remains widely used, it can be challenging to master. This is where DataJoint comes in—a modern implementation of the relational model, specifically tailored for the scientific community. Like SQL, DataJoint offers tools for defining, manipulating, and querying data. However, DataJoint’s simplicity makes it easier to learn database programming without delving too deeply into the complexities of SQL.
+## DataJoint and SQL: A Close Relationship
 
-This guide explores the principles and applications of relational databases using DataJoint in Python as the primary language for database interactions. It includes theoretical concepts, practical examples, exercises, and resources. Additionally, all examples will be explained using SQL, introducing its essential syntax and concepts. Therefore, this book can also serve as a resource for learning SQL, albeit with a specific focus.
+SQL, or Structured Query Language, is the standard language used to manage and manipulate relational databases. Developed in the 1970s by IBM researchers, SQL allows users to create, read, update, and delete data stored in tables, making it an essential tool for handling structured data.
 
-# Additional Resources
+DataJoint is built on the same relational theory as SQL but takes it a step further by using modern syntax directly from Python. DataJoint statements are automatically transpiled into SQL, meaning that while you write in Python, the underlying database operations are carried out using SQL. This approach combines the power of relational databases with the convenience of Python, making it accessible to scientists, data engineers, and programmers.
 
-This book provides a comprehensive tutorial on programming scientific databases using DataJoint from Python. While the book includes equivalent SQL examples, those who wish to learn SQL programming in greater depth are encouraged to supplement their reading with additional resources for a more thorough understanding of SQL.
+Just like SQL, DataJoint provides all the functionality needed to design databases, populate them with data, and query the results. However, with DataJoint, you can define not just the data structure, but also the sequence of computations that process and analyze your data, integrating storage and computation in a single framework.
+
+One of the unique advantages of using DataJoint is that practitioners can become proficient in relational database concepts without ever writing SQL directly. By working within DataJoint, users naturally develop a deep understanding of relational databases and how to manage complex data workflows.
+
+To make this book a comprehensive introduction to databases, we will also teach the equivalent SQL concepts and syntax alongside DataJoint. Throughout the chapters, you'll find executable examples and clear explanations of how SQL and DataJoint work together. As a result, not only will you learn how to use DataJoint effectively, but you'll also gain a solid foundation in SQL programming.
 
 # Focus on Neuroscience
 
@@ -33,6 +36,6 @@ The tools and concepts presented in this book are applicable to all data-rich an
 
 # Contributions
 
-We welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor. All contributions will be gratefully acknowledged.
-
-
+I welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor.
+All contributions will be gratefully acknowledged.
+Please feel free to contact me directly or submit an issue in the book's GitHub repository.

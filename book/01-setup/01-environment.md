@@ -31,7 +31,7 @@ There are two main methods to build and activate the DevContainer:
 
 Detailed instructions for working with DevContainers can be found in the documentation for MyST, Visual Studio Code, and GitHub CodeSpaces. Readers are encouraged to explore these resources for guidance on setting up and operating the environment.
 
-### DataJoint Works for Real-Life Projects
+### DataJoint Works
 
 For real-life projects, consider setting up an account on [DataJoint Works](https://datajoint.com). This platform provides the computational infrastructure and programming environment needed to implement collaborative data pipelines, either in the cloud or on local infrastructure. DataJoint Works integrates:
 
