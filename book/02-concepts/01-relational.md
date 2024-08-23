@@ -154,10 +154,7 @@ How would the cardinality (number of elements) change in the result?
 # Relational Database Model
 The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
-Working at IBM, Codd explored the possibility of working on data using concepts from set theory  {cite:p}`codd_relational_1970`.
-Codd was inspired by the concept of *set relations* and the \emph{calculus of relations} proposed by the British logician **Augustus De Morgan** and further developed by the American logician **Charles Sanders Peirce**  in the mid-XIX century {cite:p}`de1860syllabus`, {cite:p}`peirce1870description` --- theories rooted in well-established concepts of logic and set theory.
-A mathematical **relation** is defined as a subset of the **Cartesian product** of multiple sets.
-As with other types of sets in **set theory**, relations can be transformed and manipulated using set operators such as *union*, *intersection*, *difference*, *etc*.
+Working at IBM, Codd explored the possibility of translating the mathematic rigor of relational theory into powerful system for large-scale data management and operration @10.1145/362384.362685.
 
 ```{figure} ../images/Ted-Codd.jpg
 :name: Ted Codd
@@ -169,7 +166,7 @@ Codd's model was derived from relational theory but differed sufficiently in its
 The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
 Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
 For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
-The design principles were defined through the rigorous but rather abstract principles, the **normal forms** {cite:p}`kent1983simple`.
+The design principles were defined through the rigorous but rather abstract principles, the **normal forms** @10.1145/358024.358054.
 
 The relational data model is one of the most powerful and precise ways to store and manage structured data.
 At its core, this model organizes all data into tables--representing mathematical relations---where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
