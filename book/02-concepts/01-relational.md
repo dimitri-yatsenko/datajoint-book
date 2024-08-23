@@ -73,26 +73,6 @@ In first-order logic, predicates represent relations, and the logical statements
 The equivalence between relational theory and first-order logic was notably formalized by Alfred Tarski in the 1930s.
 Tarski demonstrated that every relation can be described by a formula in first-order logic, establishing a profound connection between these mathematical frameworks that has since underpinned much of modern theoretical computer science and logic.
 
-# Relational Database Model
-The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
-
-Working at IBM, Codd explored the possibility of working on data using concepts from set theory  {cite:p}`codd_relational_1970`.
-Codd was inspired by the concept of *set relations* and the \emph{calculus of relations} proposed by the British logician **Augustus De Morgan** and further developed by the American logician **Charles Sanders Peirce**  in the mid-XIX century {cite:p}`de1860syllabus`, {cite:p}`peirce1870description` --- theories rooted in well-established concepts of logic and set theory.
-A mathematical **relation** is defined as a subset of the **Cartesian product** of multiple sets.
-As with other types of sets in **set theory**, relations can be transformed and manipulated using set operators such as *union*, *intersection*, *difference*, *etc*.
-
-```{figure} ../images/Ted-Codd.jpg
-:name: Ted Codd
-
-[Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) revolutionized database theory and practice by applying relational theory to data management and operations.
-```
-
-Codd's model was derived from relational theory but differed sufficiently in its basic definitions to give birth to a new type of algebra.
-The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
-Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
-For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
-The design principles were defined through the rigorous but rather abstract principles, the **normal forms** {cite:p}`kent1983simple`.
-
 # Relational Algebra and Calculus
 
 **Relational algebra** is a set of operations that can be used to transform relations in a formal way.
@@ -171,21 +151,43 @@ What would be the rules for this operation?
 How would the cardinality (number of elements) change in the result?
 :::
 
-## Understanding the Relational Data Model
+# Relational Database Model
+The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
-The relational data model, introduced by E.F. Codd in 1970, is one of the most powerful and precise ways to store and manage structured data.
-At its core, this model organizes data into tables (often referred to as relations) where each table consists of rows (called tuples) and columns (called attributes). This approach allows for clear and consistent data organization, making it easier to store, retrieve, and manipulate data efficiently.
+Working at IBM, Codd explored the possibility of working on data using concepts from set theory  {cite:p}`codd_relational_1970`.
+Codd was inspired by the concept of *set relations* and the \emph{calculus of relations} proposed by the British logician **Augustus De Morgan** and further developed by the American logician **Charles Sanders Peirce**  in the mid-XIX century {cite:p}`de1860syllabus`, {cite:p}`peirce1870description` --- theories rooted in well-established concepts of logic and set theory.
+A mathematical **relation** is defined as a subset of the **Cartesian product** of multiple sets.
+As with other types of sets in **set theory**, relations can be transformed and manipulated using set operators such as *union*, *intersection*, *difference*, *etc*.
+
+```{figure} ../images/Ted-Codd.jpg
+:name: Ted Codd
+
+[Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) revolutionized database theory and practice by applying relational theory to data management and operations.
+```
+
+Codd's model was derived from relational theory but differed sufficiently in its basic definitions to give birth to a new type of algebra.
+The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
+Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
+For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
+The design principles were defined through the rigorous but rather abstract principles, the **normal forms** {cite:p}`kent1983simple`.
+
+The relational data model is one of the most powerful and precise ways to store and manage structured data.
+At its core, this model organizes all data into tables--representing mathematical relations---where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
 
 The relational model is built on several key principles, including:
 
 - **Data Representation:** All data is represented in the form of simple tables, with each table having a unique name and a well-defined structure.
-- **Domain Constraints:** Each column in a table is associated with a specific domain (a set of possible values), ensuring that the data entered is valid.
+- **Domain Constraints:** Each column in a table is associated with a specific domain (or *datatype*, a set of possible values), ensuring that the data entered is valid.
 - **Uniqueness Constraints:** This ensures that each row in a table is unique, often enforced through a primary key.
 - **Referential Constraints:** These ensure that relationships between tables remain consistent, typically enforced through foreign keys.
 - **Declarative Queries:** The model allows users to write queries that specify *what* data they want, without needing to know *how* the database will retrieve it.
 
-The most common way to interact with relational databases is through the Structured Query Language (SQL). SQL is a language specifically designed to define, manipulate, and query data within relational databases. It includes sublanguages for defining the structure
+The most common way to interact with relational databases is through the Structured Query Language (SQL).
+SQL is a language specifically designed to define, manipulate, and query data within relational databases.
+It includes sublanguages for defining data structure, manipulating data, and querying data.
 
+When speaking with database programmers and computer scientists, you will often run into different terminologies.
+Practical database programmers speak of tables and rows while theoretical data modelers may describe the same things as *relations* and *tuples*.
 
 :::{table} The difference in terminology  used in relational theory and relational databases.
 :widths: auto
@@ -198,4 +200,28 @@ The most common way to interact with relational databases is through the Structu
 | **Attribute value** | **Field** | The positional value in a specific tuple. |
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
+
+## The Entity-Relationship Model: Bringing Conceptual Clarity to Database Design
+
+The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
+
+To address this challenge, Peter Chen introduced the Entity-Relationship Model (ERM) in 1976. Chen, a computer scientist and professor, is widely recognized for his pioneering contributions to database technology. Born in Taiwan, he completed his undergraduate studies at National Taiwan University before earning his Ph.D. in Computer Science at Harvard University. His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
+
+The ERM is based on the intuitive idea that the world can be understood in terms of entities (things we want to track) and the relationships between them. It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
+
+The ERM provides:
+
+1. **A General Approach for Problem Analysis and Conceptual Modeling:** The ERM offers a structured way to analyze problems and model them conceptually before diving into schema design. This ensures that the database accurately reflects the real-world relationships it’s meant to represent.
+   
+2. **Diagramming Notation for Schema Design:** The ERM introduces a visual way to represent entities, their attributes, and the relationships between them. These diagrams, known as ER diagrams, are invaluable tools for database designers, helping them visualize and communicate their designs effectively.
+
+3. **Guidelines for Composing Meaningful Queries:** The ERM not only helps with schema design but also provides a method for forming valid data queries. These queries rely on foreign keys to match entities through the relationships they participate in, ensuring that the data retrieved is both accurate and meaningful.
+
+At the heart of the ERM is the concept of an *entity set*, which is an unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key. These entity sets can participate in relationships with other entity sets, forming the backbone of a relational database.
+
+A *relationship set* in the ERM is a collection of associations that link entities from different entity sets. These associations are defined by referential constraints, also known as foreign keys, which ensure that relationships between entities are maintained consistently.
+
+Although the ERM is best known for its approach to schema design, it also plays a crucial role in query formation. By relying on foreign keys and clearly defined relationships, queries can accurately retrieve data based on the connections between entities.
+
+ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
