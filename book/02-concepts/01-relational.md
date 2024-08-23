@@ -205,7 +205,7 @@ Practical database programmers speak of tables and rows while theoretical data m
 
 The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
 
-To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen) introduced the Entity-Relationship Model (ERM) in 1976: @10.1.1.523.6679.
+To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen) introduced the Entity-Relationship Model (ERM) in 1976: @10.1145/320434.320440.
 Chen, a computer scientist and professor, is widely recognized for his pioneering contributions to database technology. Born in Taiwan, he completed his undergraduate studies at National Taiwan University before earning his Ph.D. in Computer Science at Harvard University. His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
 
 The ERM is based on the intuitive idea that the world can be understood in terms of entities (things we want to track) and the relationships between them. It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
