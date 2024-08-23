@@ -201,7 +201,7 @@ Practical database programmers speak of tables and rows while theoretical data m
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
 
-# The Entity-Relationship Model: Bringing Conceptual Clarity to Database Design
+# Seeking Clarity: The Entity-Relationship Model
 
 The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
 
@@ -226,4 +226,15 @@ Although the ERM is best known for its approach to schema design, it also plays 
 
 ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
-# 
+```{mermaid}
+---
+title: Order example
+---
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+
+# Further simplification with DataJoint
