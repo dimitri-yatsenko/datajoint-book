@@ -7,8 +7,11 @@ authors:
 
 # Origins of  Relational Theory
 
-Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set of elements.
-Imagine you have two set: one set representing clinics and another representing animal species.
+Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets are of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and n-th order relations.
+
+If you are conversant in Set Theory, then an $n^{th}$ order relation is formally defined as a subset of a Cartesian product of $n$ sets. 
+
+Imagine two sets: one set representing clinics and another representing animal species.
 A relation between these two sets would indicate, for example, which clinics treat which species.
 
 ```{figure} ../images/relations.png
@@ -71,7 +74,7 @@ The equivalence between relational theory and first-order logic was notably form
 Tarski demonstrated that every relation can be described by a formula in first-order logic, establishing a profound connection between these mathematical frameworks that has since underpinned much of modern theoretical computer science and logic.
 
 # Relational Database Model
-The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the Turing Award.
+The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
 Working at IBM, Codd explored the possibility of working on data using concepts from set theory  {cite:p}`codd_relational_1970`.
 Codd was inspired by the concept of *set relations* and the \emph{calculus of relations} proposed by the British logician **Augustus De Morgan** and further developed by the American logician **Charles Sanders Peirce**  in the mid-XIX century {cite:p}`de1860syllabus`, {cite:p}`peirce1870description` --- theories rooted in well-established concepts of logic and set theory.
@@ -84,7 +87,7 @@ As with other types of sets in **set theory**, relations can be transformed and 
 [Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) revolutionized database theory and practice by applying relational theory to data management and operations.
 ```
 
-Codd's model was largely derived from relational theory but differed sufficiently in its basic definitions to make a new type of algebra.
+Codd's model was derived from relational theory but differed sufficiently in its basic definitions to give birth to a new type of algebra.
 The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
 Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
 For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
@@ -142,19 +145,6 @@ Rather than using relational operators, it relies on a *set-building notation* t
 The query notation of the SQL programming language combines concepts from both relational algebra and relational calculus.
 However, DataJoint's query language is based purely on relational algebra.
 :::
-
-:::{table} The difference in terminology  used in relational theory and relational databases.
-:widths: auto
-:align: center
-|  Relational Theory | Database Programming  | Description  |
-|:--|:--|:--|
-| **Relation**                   | **Table** | A set of tuples that share the same attributes from each of the domains in the relation. |
-| **Domain**   | **Data Type** | The set of permissible values that an attribute can take in any tuple of a relation.  |
-| **Attribute**                  | **Column** | The positional values in the tuples of relation drawn from their corresponding domain.  |
-| **Attribute value** | **Field** | The positional value in a specific tuple. |
-| **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
-:::
-
 ## Exercises
 
 :::{tip} Exercise
@@ -180,3 +170,32 @@ Imagine that we decide to remove the do
 What would be the rules for this operation?
 How would the cardinality (number of elements) change in the result?
 :::
+
+## Understanding the Relational Data Model
+
+The relational data model, introduced by E.F. Codd in 1970, is one of the most powerful and precise ways to store and manage structured data.
+At its core, this model organizes data into tables (often referred to as relations) where each table consists of rows (called tuples) and columns (called attributes). This approach allows for clear and consistent data organization, making it easier to store, retrieve, and manipulate data efficiently.
+
+The relational model is built on several key principles, including:
+
+- **Data Representation:** All data is represented in the form of simple tables, with each table having a unique name and a well-defined structure.
+- **Domain Constraints:** Each column in a table is associated with a specific domain (a set of possible values), ensuring that the data entered is valid.
+- **Uniqueness Constraints:** This ensures that each row in a table is unique, often enforced through a primary key.
+- **Referential Constraints:** These ensure that relationships between tables remain consistent, typically enforced through foreign keys.
+- **Declarative Queries:** The model allows users to write queries that specify *what* data they want, without needing to know *how* the database will retrieve it.
+
+The most common way to interact with relational databases is through the Structured Query Language (SQL). SQL is a language specifically designed to define, manipulate, and query data within relational databases. It includes sublanguages for defining the structure
+
+
+:::{table} The difference in terminology  used in relational theory and relational databases.
+:widths: auto
+:align: center
+|  Relational Theory | Database Programming & SQL  | Description  |
+|:--|:--|:--|
+| **Relation**                   | **Table** | A set of tuples that share the same attributes from each of the domains in the relation. |
+| **Domain**   | **Data Type** | The set of permissible values that an attribute can take in any tuple of a relation.  |
+| **Attribute**                  | **Column** | The positional values in the tuples of relation drawn from their corresponding domain.  |
+| **Attribute value** | **Field** | The positional value in a specific tuple. |
+| **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
+:::
+
