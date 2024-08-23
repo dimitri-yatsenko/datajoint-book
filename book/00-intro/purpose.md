@@ -8,8 +8,9 @@ authors:
 # Purpose
 
 Primarily, this book is a comprehensive introduction to DataJoint for Python—a specialized framework for implementing scientific data pipelines that manage data and orchestrate computations in collaborative studies.
-At its core, DataJoint is an enhancement of the traditional relational database model. As such it enames scientists, data engineers, and programmers to design and query relational databases.
-But its main innovation is that introduces computational dependencies into the traditional model, allowing researchers to define, execute, and reproduce data processing pipelines with precision and efficiency. 
+At its core, DataJoint is an enhancement of the traditional relational database model.
+As such, it enables scientists, data engineers, and programmers to design and query relational databases.
+But its main innovation is its introduction of computational dependencies as a first-class citizen in the relational database, allowing researchers to define, execute, and reproduce data processing pipelines with precision and efficiency. 
 
 DataJoint empowers scientists to describe not just the structure of their data, but also the sequence of computations that transform raw data into meaningful results. This language integrates data storage, processing, and analysis into a unified system, ensuring that each step in the research process is transparent, reproducible, and easy to manage.
 
@@ -32,7 +33,9 @@ To make this book a comprehensive introduction to databases, we will also teach 
 
 # Focus on Neuroscience
 
-The tools and concepts presented in this book are applicable to all data-rich and computation-intensive disciplines. However, the origins of DataJoint and its most common applications are rooted in systems neuroscience. As a result, some examples in the book may have a neuroscience focus.
+While the tools and concepts in this book are applicable to any computationally intensive field, DataJoint has its roots and most widespread applications in systems neuroscience. The development of DataJoint was closely tied to the needs of neuroscience research, and much of the support for this work has come from neuroscience-focused funding sources.
+
+As a result, some of the examples in this book will naturally have a neuroscience focus. However, these examples are chosen to illustrate broader principles and techniques that can be adapted to a wide range of scientific disciplines.
 
 # Contributions
 
