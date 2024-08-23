@@ -1,6 +1,6 @@
 ---
-title: Database Programming
-date: 2024-08-15
+title: Purpose
+date: 2024-08-22
 authors:
   - name: Dimitri Yatsenko
 ---
