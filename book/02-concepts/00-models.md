@@ -1,24 +1,25 @@
 ---
 title: Data Models
-date: 2024-08-12
+date: 2024-08-22
 authors:
   - name: Dimitri Yatsenko
 ---
 
 # Definition
 ```{card} Data Model
-A *data model* is a particular way of thinking about data. 
-A particular model is defined by answering the following questions:
-* What is the data made of? What are the basic constructs for creating and manipulating the data?
-* What are the basic operations for defining, creating, and manipulating the data?
-* What tools exist for defining and enforcing data integrity: the rules for valid data interactions and for preventing invalid operaitons?
+A *data model* is a conceptual framework that defines how data is organized, represented, and transformed. It gives us the components for creating blueprints for the structure and operations of data management systems, ensuring consistency and efficiency in data handling.
+
+Data management systems are built to accommodate these models, allowing us to manage data according to the principles laid out by the model. If you're studying data science or engineering, you’ve likely encountered different data models, each providing a unique approach to organizing and manipulating data.
+
+A data model is defined by considering the following key aspects:
+* What are the fundamental elements used to structure the data?
+* What operations are available for defining, creating, and manipulating the data?
+* What mechanisms exist to enforce the structure and rules governing valid data interactions?
 ```
 
 # Examples of Data Models
 :::{note} Thought
-Before proceeding, think of several different data models you are already familiar with.
-Describe a common model in terms of the building blocks for representing and manipulating data.
-What are the principal operations for creating, manipulating, and querying data in this model?
+Before moving forward, take a moment to consider the different data models you're already familiar with. Try to describe a common model by identifying the fundamental building blocks it uses to represent and manipulate data. What are the key operations for creating, modifying, and querying data within this model?
 :::
 
 ## Example: Binary File
@@ -124,6 +125,9 @@ DataFrames support a wide range of operations, making them a powerful tool for d
 - **I/O Operations**: DataFrames can easily read from and write to various file formats, including CSV, Excel, JSON, and SQL databases.
 
 DataFrames have become an essential tool in modern data analysis, providing a structured yet flexible way to handle and manipulate data. Their ability to work with heterogeneous data types, combined with a rich set of operations, makes them ideal for tasks ranging from simple data exploration to complex data transformations and machine learning preparation. Whether in Python, R, or Julia, DataFrames have become a cornerstone of data science workflows.
+
+## Example: Relational Data Model 
+The rest of this  book is about the relational data model and we introduce it properly in following sections.
 
 ## Example: Document Data Model (JSON and BSON)
 
@@ -334,52 +338,20 @@ The choice between using a structured or schemaless data model often depends on 
 Both approaches have their strengths and are often used together in hybrid systems, where some data is managed with a strict schema and other data is stored more flexibly.
 
 # Data models in science
-While business world gravitates toward structured data models to strictly enforce business order
+## The Use of Different Data Models in Science
+Business enterprises have long embraced structured databases to avoid breakdowns in data integrity and consistency—issues that can have serious financial and operational consequences. There relational databases and SQL rule supreme.
+Yet scientists tend to take less structured approaches. 
+In scientific research, the choice of data model plays a crucial role in how data is collected, stored, and analyzed. Due to the experimental nature of science, researchers frequently gravitate toward flexible, schemaless, unstructured data models. These models allow for the rapid collection of data without the constraints of a predefined structure, making them appealing in environments where the data requirements are not fully understood from the outset.
 
-Neuroscience, a field rife with intricate datasets, often sees researchers navigating vast amounts of data while collaborating within extensive, multidisciplinary teams.
-Given this complexity, the logical assumption would be that cutting-edge tools for data organization, manipulation, analysis, and querying would be central to their operations.
-However, this isn't the prevailing reality.
-Despite technological advancements, a significant portion of the scientific community still refrains from employing proper databases for their studies.
-The predominant trend is to rely on shared data in the format of file repositories, systematically organized into folders under a uniform naming convention.
-This leads to the pertinent question: Why this discernible hesitance towards databases?
+However, this flexibility comes with a cost. When scientists need to publish or share their findings, they often face the challenge of working with heterogeneous datasets that lack consistency and standardization. To address this, researchers may create "data standards" on top of these unstructured models, imposing rules and guidelines after the fact to ensure data can be effectively shared and understood by others. For example, the [Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io) standard imposes a uniform structure on a system of files and folders used in neuroimaging studies. Similarly, the [Neurodata Without Borders (NWB)](https://www.nwb.org/) standard imposes structure on top of a flexible HDF5 data model, commonly used in neuroscience research. Both of these standards accomplish this by using separate software programs to validate and access the datasets, ensuring that despite the underlying unstructured model, the data adheres to a consistent format.
 
-```{card} Reasons for scientists' reluctance to use databases
+While these standards help bring order to unstructured data, they often introduce additional complexity and require significant effort to enforce.
 
-Gray *et al.* in their 2005 technical report titled "Scientific Data Management in the Coming Decade" {cite:p}`gray_scientific_2005` delved deep to unearth the reasons underpinning this avoidance:
+Despite the appeal of unstructured models, there is a strong case for the use of structured data models in science. Structured models, which come with predefined schemas, allow for the data’s organization to evolve alongside the research itself. As scientific studies progress and new insights are gained, the schemas can be adjusted to reflect the emerging structure and logic of the study. This approach not only ensures consistency and integrity of the data but also simplifies the process of data sharing and publication.
 
-* Perceived lack of tangible benefits.
-* Absence of efficient visualization/plotting tools.
-* A belief in the sufficiency of their programming language for data management.
-* Incompatibility with specific data types like arrays, spatial data, text, etc.
-* Mismatch with their data access patterns.
-* Concerns over speed and efficiency.
-* Inability to manipulate database data using regular application programs.
-* The cost implications of hiring database administrators.
-```
+By adopting structured data models that are flexible enough to evolve, scientists can benefit from the best of both worlds—maintaining the ability to explore and experiment freely while ensuring that their data remains organized, consistent, and ready for dissemination.
 
-These apprehensions are valid.
-Traditional database systems were primarily sculpted keeping in mind sectors like business, commerce, and web applications, not scientific computing.
-For scientists, there's a clear need for a system that offers more—more flexibility, support for unique scientific data types, and capabilities tailored for distributed computation and visualization.
-
-## The Limitations of File-based Systems
-
-The aforementioned concerns naturally lead one to ponder: What, if any, are the drawbacks of simply organizing data as a structured file repository?
-When do file systems falter?
-
-Files, in essence, are nothing but sequences of bytes tagged with specific names.
-They inherently lack structure or any meta-information.
-While they can be systematically arranged with discerning naming conventions into structured folders, the onus of adhering to any structural framework lies externally.
-Numerous *data standards*, such as [BIDS](https://bids.neuroimaging.io/) for brain imaging, essentially define their guidelines based on specific file/folder structures.
-But therein lies a challenge—the filesystem itself doesn't enforce this structure, necessitating the creation of separate data standards.
-The filesystem essentially passes on the challenge of efficient operations to the end processes that engage with them.
-To efficiently navigate data organized in files, there's a need for distinct efforts in crafting access patterns, generating indices for swift searches, and scripting common queries.
-In scenarios of shared distributed projects, there's also the added logistical challenge of data transfers, ensuring data integrity during concurrent access and modifications, and optimizing data operations.
+DataJoint is built on the idea that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency. This structure is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses. As a consequence, DataJoint implements the relational data model, making it the gold standard for providing structure in dynamic research collaborations.
 
 # Exercises
 As an exercise, describe other models you are familiar with in terms of its basic constructs, operations, and data integrity rules.
-For example, what data models  are used by the following:
-
-* HDF5 or .MAT files
-* Graph databases
-* Vector database
-* Document database e.g. MongoDB
