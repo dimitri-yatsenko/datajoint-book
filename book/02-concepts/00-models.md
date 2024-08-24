@@ -16,11 +16,14 @@ A data model is defined by considering the following key aspects:
 * What operations are available for defining, creating, and manipulating the data?
 * What mechanisms exist to enforce the structure and rules governing valid data interactions?
 ```
+:::{hint} What data models do you already know?
+Before moving forward, take a moment to consider the different data models you're already familiar with. 
+Describe a common data model by naming the building blocks that the model uses to represent and manipulate data.
+What are the key operations for creating, modifying, and querying data within this data model?
+What constraints does the model impose to reduce errors?
+:::
 
 # Examples of Data Models
-:::{note} Thought
-Before moving forward, take a moment to consider the different data models you're already familiar with. Try to describe a common model by identifying the fundamental building blocks it uses to represent and manipulate data. What are the key operations for creating, modifying, and querying data within this model?
-:::
 
 ## Example: Binary File
 
@@ -337,21 +340,38 @@ The choice between using a structured or schemaless data model often depends on 
 
 Both approaches have their strengths and are often used together in hybrid systems, where some data is managed with a strict schema and other data is stored more flexibly.
 
-# Data models in science
-## The Use of Different Data Models in Science
-Business enterprises have long embraced structured databases to avoid breakdowns in data integrity and consistency—issues that can have serious financial and operational consequences. There relational databases and SQL rule supreme.
-Yet scientists tend to take less structured approaches. 
-In scientific research, the choice of data model plays a crucial role in how data is collected, stored, and analyzed. Due to the experimental nature of science, researchers frequently gravitate toward flexible, schemaless, unstructured data models. These models allow for the rapid collection of data without the constraints of a predefined structure, making them appealing in environments where the data requirements are not fully understood from the outset.
+# Data Models in Science
+Business enterprises have long relied on structured databases to maintain data integrity and consistency, as any breakdown in these areas can lead to serious financial and operational consequences.
+In these environments, relational databases and SQL are the dominant tools. 
 
-However, this flexibility comes with a cost. When scientists need to publish or share their findings, they often face the challenge of working with heterogeneous datasets that lack consistency and standardization. To address this, researchers may create "data standards" on top of these unstructured models, imposing rules and guidelines after the fact to ensure data can be effectively shared and understood by others. For example, the [Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io) standard imposes a uniform structure on a system of files and folders used in neuroimaging studies. Similarly, the [Neurodata Without Borders (NWB)](https://www.nwb.org/) standard imposes structure on top of a flexible HDF5 data model, commonly used in neuroscience research. Both of these standards accomplish this by using separate software programs to validate and access the datasets, ensuring that despite the underlying unstructured model, the data adheres to a consistent format.
+In contrast, scientific research often takes a less structured approach to data management.
+The experimental nature of science leads researchers to favor flexible, schemaless, unstructured data models.
+These models allow for the rapid collection of data without the constraints of a predefined structure, making them particularly appealing when the data requirements are not fully understood at the outset.
+
+However, this flexibility comes at a cost.
+When it comes time to publish or share findings, scientists often encounter challenges with heterogeneous datasets that lack consistency and standardization.
+To address this, researchers may develop "data standards" to impose rules and guidelines on these unstructured models, ensuring that data can be effectively shared and understood.
+For example, the [Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io) standard imposes a uniform structure on files and folders used in neuroimaging studies [@10.1038/sdata.2016.44].
+Similarly, the [Neurodata Without Borders (NWB)](https://www.nwb.org/) standard imposes structure on top of the flexible HDF5 data model commonly used in neuroscience research [@10.7554/eLife.78362].
+Both of these standards enforce structure by using programming interfaces that validate and access the datasets, ensuring that the data adheres to a consistent format despite the underlying unstructured model.
 
 While these standards help bring order to unstructured data, they often introduce additional complexity and require significant effort to enforce.
 
-Despite the appeal of unstructured models, there is a strong case for the use of structured data models in science. Structured models, which come with predefined schemas, allow for the data’s organization to evolve alongside the research itself. As scientific studies progress and new insights are gained, the schemas can be adjusted to reflect the emerging structure and logic of the study. This approach not only ensures consistency and integrity of the data but also simplifies the process of data sharing and publication.
+In recent years, concerns about scientific integrity have brought greater attention to proper data management serving as the foundation for reproducible science and valid findings.
+As science becomes more complex and interconnected, meticulous data handling—including reproducibility and data provenance—has become critical.
+Proper data management ensures that research findings can be reliably reproduced, which is essential for validating results and building on previous work.
+Moreover, maintaining clear records of **data provenance**—the detailed history of how data is collected, processed, and analyzed—provides transparency and accountability, helping to prevent issues such as data manipulation and fostering trust in scientific outcomes.
+As the volume of data increases and research becomes more collaborative, the emphasis on reproducibility and provenance is not just a best practice; it is a necessity for advancing knowledge, maintaining public trust, and ensuring the long-term credibility of science.
 
-By adopting structured data models that are flexible enough to evolve, scientists can benefit from the best of both worlds—maintaining the ability to explore and experiment freely while ensuring that their data remains organized, consistent, and ready for dissemination.
+There is now a strong case for the use of structured data models in science, models that enforce data integrity from the outset.
+Structured models, which come with predefined schemas, allow the organization of data to evolve alongside the research.
+As studies progress and new insights are gained, schemas can be adjusted to reflect the emerging structure and logic of the study.
+This approach not only ensures consistency and integrity but also simplifies data sharing and publication.
 
-DataJoint is built on the idea that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency. This structure is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses. As a consequence, DataJoint implements the relational data model, making it the gold standard for providing structure in dynamic research collaborations.
+**DataJoint** is built on the principle that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency.
+This structure is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
+By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
 
-# Exercises
-As an exercise, describe other models you are familiar with in terms of its basic constructs, operations, and data integrity rules.
+:::{hint} Execrise
+As an exercise, think of other models you are familiar with in terms of its basic constructs, operations, and data integrity rules.
+:::
