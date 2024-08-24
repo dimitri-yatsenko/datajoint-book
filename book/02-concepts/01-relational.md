@@ -39,8 +39,7 @@ The concept of relations has a rich history that dates back to the mid-19th cent
 :name: Augustus De Morgan
 :width: 300px
 
-[Augustus De Morgan](https://en.wikipedia.org/wiki/Augustus_De_Morgan) developed the fundamental concepts of relational theory, including operations on relations.
-
+[Augustus De Morgan](https://en.wikipedia.org/wiki/Augustus_De_Morgan) (1806-1871) developed the original fundamental concepts of relational theory, including operations on relations.
 ```
 
 The development of relational theory as a formal mathematical framework is largely credited to Georg Cantor, a German mathematician, in the late 19th century. Cantor is known as the father of set theory, which is the broader mathematical context in which relations are defined. His work provided a rigorous foundation for understanding how sets (collections of objects) interact with each other through relations.
@@ -51,7 +50,7 @@ Cantor's set theory introduced the idea that relations could be seen as subsets 
 :name: Georg Cantor
 :width: 300px
 
-[Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) reframed relations in the context of Set Theory
+[Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) (1845-1918) reframed relations in the context of Set Theory
 ```
 
 #  Mathematical Rigor
@@ -154,20 +153,20 @@ How would the cardinality (number of elements) change in the result?
 # Relational Database Model
 The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
-Working at IBM, Codd explored the possibility of translating the mathematic rigor of relational theory into powerful system for large-scale data management and operration @10.1145/362384.362685.
+Working at IBM, Codd explored the possibility of translating the mathematic rigor of relational theory into powerful system for large-scale data management and operation [@10.1145/362384.362685].
 
 ```{figure} ../images/Ted-Codd.jpg
 :name: Edgar F. Codd
 :width: 300px
 
-[Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) revolutionized database theory and practice by applying relational theory to data management and operations.
+[Edgar F. Codd](https://en.wikipedia.org/wiki/Edgar_F._Codd) (1923-2003) revolutionized database theory and practice by translating the mathematical theory of relations to data management and operations.
 ```
 
 Codd's model was derived from relational theory but differed sufficiently in its basic definitions to give birth to a new type of algebra.
 The relational data model gave mathematicians a rigorous theory for optimizing data organization and storage and to construct queries.
 Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations.
 For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
-The design principles were defined through the rigorous but rather abstract principles, the **normal forms** @10.1145/358024.358054.
+The design principles were defined through the rigorous but rather abstract principles, the **normal forms** [@10.1145/358024.358054].
 
 The relational data model is one of the most powerful and precise ways to store and manage structured data.
 At its core, this model organizes all data into tables--representing mathematical relations---where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
@@ -203,7 +202,7 @@ Practical database programmers speak of tables and rows while theoretical data m
 
 The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
 
-To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen) introduced the Entity-Relationship Model (ERM) in 1976 [@10.1145/320434.320440, @10.1007/978-3-642-59412-0_17].
+To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen) introduced the Entity-Relationship Model (ERM) in 1976 [@10.1145/320434.320440], [@10.1007/978-3-642-59412-0_17].
 Chen, a Taiwanese-born American computer scientist, completed his undergraduate studies at National Taiwan University before earning his Ph.D. in Computer Science at Harvard University. His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
 
 ```{figure} ../images/PChen.jpeg

@@ -317,8 +317,9 @@ Two broad families of data models are distinguished by whether or not they suppo
 These two approaches represent different philosophies in how data structure is defined, managed, and validated.
 
 ```{card} Schema
-A **schema** is the detailed specification data structure separate from any sample of the data.
-Structured data models provide a way to define a schema. Unstructured or self-describing data models communicate structure through samples data.
+A **schema** is the detailed formal specification of data structure in a database that exists separately from any sample of the data.
+Structured data models provide ways to define a schema explicitly.
+Unstructured or self-describing data models do not rely on schemas; instead, they communicate data structure through examples, using samples of data.
 ```
 
 **Self-describing** or **schemaless** data models allow instances of the data to define their own structure.
