@@ -7,9 +7,10 @@ authors:
 
 # Origins of  Relational Theory
 
-Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets are of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and n-th order relations.
+Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets are of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and $n^{th}$ order relations.
 
 If you are conversant in Set Theory, then an $n^{th}$ order relation is formally defined as a subset of a Cartesian product of $n$ sets. 
+Many useful operations can be modeled as operations on such relations.
 
 Imagine two sets: one set representing clinics and another representing animal species.
 A relation between these two sets would indicate, for example, which clinics treat which species.
@@ -29,7 +30,9 @@ The number of tuples in a relation is called its *cardinality* and the number of
 This diagram shows binary relations.
 Relations can be binary, ternary, or of higher orders.
 
-Mathematically, a relation between two sets \( A \) (e.g., clinics) and \( B \) (e.g., species) is a subset of their Cartesian product \( A $\times$ B \). This means the relation is a collection of ordered pairs \((a, b)\), where each \( a \) is an element from set \( A \), and each \( b \) is an element from set \( B \). In the context of the diagram, each pair represents a specific connection, such as (Clinic 1, Dog) or (Clinic 3, Cow).
+Mathematically, a relation between two sets: $A$ (e.g., *clinics*) and $B$ (e.g., *species*) is a subset of their Cartesian product $A \times B$.
+This means the relation is a collection of ordered pairs $a, b$, where each $a$ is an element from set $A$, and each $b$ is an element from set $B$.
+In the context of the diagram, each pair represents a specific connection, such as (Clinic 1, Dog) or (Clinic 3, Cow).
 
 These relations are not fixed and can change depending on the context or criteria, as shown by the two different values in the diagram. The flexibility and simplicity of relations make them a powerful tool for representing and analyzing connections in various domains.
 
@@ -44,7 +47,7 @@ The concept of relations has a rich history that dates back to the mid-19th cent
 
 The development of relational theory as a formal mathematical framework is largely credited to Georg Cantor, a German mathematician, in the late 19th century. Cantor is known as the father of set theory, which is the broader mathematical context in which relations are defined. His work provided a rigorous foundation for understanding how sets (collections of objects) interact with each other through relations.
 
-Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets \( A \) and \( B \) is the set of all possible ordered pairs \((a, b)\) where \( a \) is from \( A \) and \( b \) is from \( B \). This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
+Cantor's set theory introduced the idea that relations could be seen as subsets of Cartesian products, where the Cartesian product of two sets $A$ and $B$ is the set of all possible ordered pairs $(a, b)$ where $a$ is from $A$ and $b$ is from $B$. This formalization allowed for the systematic study of relations and their properties, leading to the development of modern mathematical logic, database theory, and many other fields.
 
 ```{figure} ../images/georg_cantor.jpg
 :name: Georg Cantor

@@ -386,11 +386,12 @@ Structured models, which come with predefined schemas, allow the organization of
 As studies progress and new insights are gained, schemas can be adjusted to reflect the emerging structure and logic of the study.
 This approach not only ensures consistency and integrity but also simplifies data sharing and publication.
 
-**DataJoint** is built on the principle that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency.
+**DataJoint** is designed to support structured databases for scientific projects. 
+It is built on the principle that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency.
 This structure is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
 By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
 
-:::{hint} Execrise
-1. Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
+:::{hint} Exercise
+Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
 What data models govern the following data formats:  CSV, XML, MATLAB files, HDF5, YAML, *etc*?
 :::

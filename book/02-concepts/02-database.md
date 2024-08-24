@@ -6,10 +6,12 @@ authors:
 ---
 
 # Definition
-In this book, we will use the term *database* in a more specialized sense than what you might find through a casual search or in other textbooks. Our definition is stricter, emphasizing the critical role of databases in complex operations.
+In this book, we will use the term *database* in a more specialized sense than what you might find through a casual search or in other texts.
+Our definition is stricter, emphasizing the critical role of databases in complex operations.
 
 ```{card} Database
-A **database** is a dynamic, systematically organized collection of data that serves as an integral part of a real-world enterprise. It supports the enterprise’s operations and is accessed by a variety of users in different ways. Examples of enterprises that rely on databases include hotels, airlines, stores, hospitals, universities, banks, and scientific experiments.
+A **database** is a dynamic, systematically organized collection of data that plays an integral role in a real-world enterprise.
+It supports the enterprise’s operations and is accessed by a variety of users in different ways. Examples of enterprises that rely on databases include hotels, airlines, stores, hospitals, universities, banks, and scientific experiments.
 
 The database not only tracks the current state of the enterprise’s processes but also enforces essential *business rules*, ensuring that only valid transactions occur and preventing errors or inconsistencies. It serves as the **system of record**, the **single source of truth**, accurately reflecting both the current and historical states of the organization’s activities and decisions.
 
