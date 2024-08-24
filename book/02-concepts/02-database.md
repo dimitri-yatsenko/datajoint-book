@@ -31,7 +31,7 @@ In summary, databases are designed to support the critical operations of data-dr
 ```{card} Database Management Systems (DBMS)
 A Database Management System is the computational engine that powers a database.
 It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied.
-A DBMS manages data storage, efficiently executes data updates and queries while safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
+A DBMS manages data storage and efficiently executes data updates and queries while safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
 ```
 Consider an airline's database for flight schedules and ticket bookings. The airline must adhere to several key rules:
 
@@ -44,8 +44,9 @@ Databases are dynamic, with data continuously updated by both users and systems.
 
 # Data models for databases
 Databases have been built on a variety of data models. 
+As Guy Harrison describes in his 2015 book "Next Generation Databases" [@10.1007/978-1-4842-1329-2], the database industry has undergone three major revolutions:
+1. Pre-relational (1950-1972)
+2. Relational (1972-2005)
+3. The Next Generation (2005-future)
 
-
-
-# Server-Client Architecture
-
+The impact of the relational data model was so great that the last two revolutions in databases have been defined by first embracing and then diverging from the relational model.

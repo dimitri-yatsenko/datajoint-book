@@ -16,6 +16,10 @@ A data model is defined by considering the following key aspects:
 * What operations are available for defining, creating, and manipulating the data?
 * What mechanisms exist to enforce the structure and rules governing valid data interactions?
 ```
+
+Innovations in data models have spurred progress by creating new mental tools for us to think about data and to communicate with machines and with each other.
+Scientists and engineers who become well-versed in effective data models can collaborate more efficiently because they share a common conceptual framework.
+
 :::{hint} What data models do you already know?
 Before moving forward, take a moment to consider the different data models you're already familiar with. 
 Describe a common data model by naming the building blocks that the model uses to represent and manipulate data.
@@ -308,7 +312,18 @@ The Graph Data Model is powerful for applications where relationships are as imp
 
 # Schema vs. Schemaless Data Models
 
-Data models can generally be categorized into two broad types: **structured** and **self-describing** (often referred to as schemaless). These two approaches represent different philosophies in how data structure is defined, managed, and validated.
+Two broad families of data models are distinguished by whether or not they support **schemas**: specifications of data structure apart from any instance of the data. 
+**Structured data models** provide a data definition language (DDL) for defining schemas. Schemas are then used for enforcing or validating structure in the data written into the database. Relational databases are the prime example of structured data with elaborate schemas capable of expressing complex relationships between entities.
+These two approaches represent different philosophies in how data structure is defined, managed, and validated.
+
+```{card} Schema
+A **schema** is the detailed specification data structure separate from any sample of the data.
+Structured data models provide a way to define a schema. Unstructured or self-describing data models communicate structure through samples data.
+```
+
+**Self-describing** or **schemaless** data models allow instances of the data to define their own structure.
+Many common file formats such as JSON, YAML, and HDF5 contain self-describing data: the names of entities, their attributes names and types, and their hierarchical relationships are encoded in each instance of the data.
+Both structured and schemaless data formats can be attractive in various scenarios. Schemaless approaches may be more suitable for exploratory analysis where each data instance may differ in structure. Structured approaches become necessary for large-scale automated operations for uniformity and efficiency.
 
 ## Structured Data Models
 
@@ -357,6 +372,8 @@ Both of these standards enforce structure by using programming interfaces that v
 
 While these standards help bring order to unstructured data, they often introduce additional complexity and require significant effort to enforce.
 
+## Scientific Integrity Depends on Data Integrity 
+
 In recent years, concerns about scientific integrity have brought greater attention to proper data management serving as the foundation for reproducible science and valid findings.
 As science becomes more complex and interconnected, meticulous data handling—including reproducibility and data provenance—has become critical.
 Proper data management ensures that research findings can be reliably reproduced, which is essential for validating results and building on previous work.
@@ -373,5 +390,6 @@ This structure is essential for effective collaboration while still allowing the
 By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
 
 :::{hint} Execrise
-As an exercise, think of other models you are familiar with in terms of its basic constructs, operations, and data integrity rules.
+1. Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
+What data models govern the following data formats:  CSV, XML, MATLAB files, HDF5, YAML, *etc*?
 :::
