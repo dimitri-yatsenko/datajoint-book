@@ -13,10 +13,10 @@ Our definition is stricter, emphasizing the critical role of databases in comple
 A **database** is a dynamic, systematically organized collection of data that plays an integral role in a real-world enterprise.
 It supports the enterprise’s operations and is accessed by a variety of users in different ways. Examples of enterprises that rely on databases include hotels, airlines, stores, hospitals, universities, banks, and scientific experiments.
 
-The database not only tracks the current state of the enterprise’s processes but also enforces essential *business rules*, ensuring that only valid transactions occur and preventing errors or inconsistencies. It serves as the **system of record**, the **single source of truth**, accurately reflecting both the current and historical states of the organization’s activities and decisions.
+The database not only tracks the current state of the enterprise’s processes but also enforces essential *business rules*, ensuring that only valid transactions occur and preventing errors or inconsistencies. It serves as the **system of record**, the **single source of truth**, accurately reflecting the current state and ongoing activities.
 
-**Key traits**:
-- Structured data that reflects the logic of the enterprise’s operations
+**Key traits of databases**:
+- Structured data reflects the logic of the enterprise’s operations
 - Supports the organization’s operations by reflecting and enforcing its rules and constraints (data integrity)
 - Ability to evolve over time
 - Facilitates distributed, concurrent access by multiple users
@@ -51,4 +51,5 @@ As Guy Harrison describes in his 2015 book "Next Generation Databases" [@10.1007
 2. Relational (1972-2005)
 3. The Next Generation (2005-future)
 
-The impact of the relational data model was so great that the last two revolutions in databases have been defined by first embracing and then diverging from the relational model.
+The impact of the relational data model has been so great that the last two revolutions in databases have been defined by first embracing and then diverging from the relational model.
+

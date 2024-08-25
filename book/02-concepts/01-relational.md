@@ -214,7 +214,8 @@ Chen, a Taiwanese-born American computer scientist, completed his undergraduate 
 
 Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the Entity-Relationship Model.
 ```
-The ERM is based on the intuitive idea that the world can be understood in terms of entities (things we want to track) and the relationships between them. It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
+The ERM is based on the intuitive idea that the world can be understood in terms of *entities* (things we want to track) and the *relationships* between them.
+It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
 
 The ERM provides:
 
@@ -232,6 +233,7 @@ Although the ERM is best known for its approach to schema design, it also plays 
 
 ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
+
 ```{mermaid}
 ---
 title: Order example
@@ -246,3 +248,7 @@ erDiagram
 # DataJoint: Further Simplification
 DataJoint solves a major dilemma in how relational databases are taught today [@10.48550/arXiv.1807.11104]
 
+
+# Exercises
+1. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
+  What are its entities and relationships? Explain what operations this database supports.

@@ -386,9 +386,9 @@ Structured models, which come with predefined schemas, allow the organization of
 As studies progress and new insights are gained, schemas can be adjusted to reflect the emerging structure and logic of the study.
 This approach not only ensures consistency and integrity but also simplifies data sharing and publication.
 
-**DataJoint** is designed to support structured databases for scientific projects. 
-It is built on the principle that even in rapidly evolving projects, explicitly structuring data is crucial for maintaining integrity and consistency.
-This structure is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
+## DataJoint supports structured databases in research
+DataJoint promotes the discipline, even in fast-evolving projects, for explicitly structuring data to continuously maintain data integrity and consistency.
+Structureed data is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
 By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
 
 :::{hint} Exercise
