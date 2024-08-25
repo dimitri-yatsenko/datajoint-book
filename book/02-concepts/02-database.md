@@ -31,7 +31,7 @@ Databases are crucial for the smooth and organized operation of various entities
 In summary, databases are designed to support the critical operations of data-driven organizations, enabling effective collaboration among multiple users.
 
 ```{card} Database Management Systems (DBMS)
-A Database Management System is the computational engine that powers a database.
+A Database Management System is a software system that serves as the computational engine powering a database.
 It defines and enforces the structure of the data, ensuring that the organization’s rules are consistently applied.
 A DBMS manages data storage and efficiently executes data updates and queries while safeguarding the data’s structure and integrity, particularly in environments with multiple concurrent users.
 ```
@@ -53,3 +53,23 @@ As Guy Harrison describes in his 2015 book "Next Generation Databases" [@10.1007
 
 The impact of the relational data model has been so great that the last two revolutions in databases have been defined by first embracing and then diverging from the relational model.
 
+The NOSQL revolution, starting in the early 2000s, was propelled by a few factors:
+ * The need to scale databases beyond the capabilities of the existing relational database management systems at the time. 
+ * The need to represent data structures that are difficult to express in relational constructs: e.g. vectors, JSON documents, data streams.
+ * The need for simpler data models where relational databases were simply overkill of complexity: e.g. key-value stores.
+
+This led to an explosion of new database architectures. 
+
+In the meantime, relational databases did not stay in place, adopted new capabilities for scalability and versatility.
+
+A modern relational database management system can accommodate diverse data models and serve a variaty of data handling jobs that can reasonably replace a variety of software systems.  
+
+A number of articles describe how one can simplify system design replacing many components with a relatioanl datababse: [Just use Postgres for everything](https://www.amazingcto.com/postgres-for-everything/):
+
+:::{iframe} https://www.youtube.com/watch?v=lYsQ_riVC4Y
+:width: 50%
+Just use Postgres for everything
+:::
+
+The website https://db-engines.com/en/ranking keeps track of the most popular DBMS. 
+The relational data model dominates, although many of the popular database systems support other models, allowing for deviations from the relational data model.

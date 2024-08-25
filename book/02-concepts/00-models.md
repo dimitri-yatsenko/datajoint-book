@@ -387,11 +387,12 @@ As studies progress and new insights are gained, schemas can be adjusted to refl
 This approach not only ensures consistency and integrity but also simplifies data sharing and publication.
 
 ## DataJoint supports structured databases in research
-DataJoint promotes the discipline, even in fast-evolving projects, for explicitly structuring data to continuously maintain data integrity and consistency.
+
+DataJoint is dedicate to the idea that data discipline must start early in science projects, even in fast-evolving phases of research, for explicitly structuring data to continuously maintain data integrity and consistency.
 Structureed data is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
 By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
 
-:::{hint} Exercise
-Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
+# Exercises
+
+1. Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
 What data models govern the following data formats:  CSV, XML, MATLAB files, HDF5, YAML, *etc*?
-:::

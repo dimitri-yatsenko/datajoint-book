@@ -56,7 +56,7 @@ Cantor's set theory introduced the idea that relations could be seen as subsets 
 [Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) (1845-1918) reframed relations in the context of Set Theory
 ```
 
-#  Mathematical Rigor
+#  Mathematical Foundations
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
 
 One of the most important applications of relational theory is in the concept of **functions**. A function is a specific type of relation where each element in the domain (the first set) is associated with exactly one element in the codomain (the second set). Functions are essential in nearly every area of mathematics, from calculus to linear algebra.
@@ -176,7 +176,7 @@ Practical database programmers speak of tables and rows while theoretical data m
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
 
-# Seeking Clarity: The Entity-Relationship Model
+# The Entity-Relationship Model
 
 The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
 
@@ -202,9 +202,10 @@ The ERM provides:
 
 3. **Guidelines for Composing Meaningful Queries:** The ERM not only helps with schema design but also provides a method for forming valid data queries. These queries rely on foreign keys to match entities through the relationships they participate in, ensuring that the data retrieved is both accurate and meaningful.
 
-At the heart of the ERM is the concept of an *entity set*, which is an unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key. These entity sets can participate in relationships with other entity sets, forming the backbone of a relational database.
+An **entity set** in the ERM is an unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key.
+These entity sets can participate in relationships with other entity sets, forming the backbone of a relational database.
 
-A *relationship set* in the ERM is a collection of associations that link entities from different entity sets. These associations are defined by referential constraints, also known as foreign keys, which ensure that relationships between entities are maintained consistently.
+A **relationship set** in the ERM is a collection of associations that link entities from different entity sets. These associations are defined by referential constraints, also known as foreign keys, which ensure that relationships between entities are maintained consistently.
 
 Although the ERM is best known for its approach to schema design, it also plays a crucial role in query formation. By relying on foreign keys and clearly defined relationships, queries can accurately retrieve data based on the connections between entities.
 
@@ -216,13 +217,12 @@ ERM diagrams have become an essential tool for database designers, enabling clea
 title: Order example
 ---
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    EMPLOYEE ||--o{ EMP-PROJ : works-for
+    PROJECT ||--o{ EMP-PROJ : is-run-by 
 ```
 
 
-# DataJoint: Further Simplification
+# The DataJoint Model
 DataJoint solves a major dilemma in how relational databases are taught today [@10.48550/arXiv.1807.11104]
 
 
@@ -231,14 +231,14 @@ DataJoint solves a major dilemma in how relational databases are taught today [@
 1.  Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
  
   **One possible soluton**: 
-    Add another domain for the treatments that clinics offer for each species.
-	This will form a ternary relation `Clinic-Species-Treatment`.
-	Now think of another example.
+  Add another domain for the treatments that clinics offer for each species.
+  This will form a ternary relation `Clinic-Species-Treatment`.
+  Now think of yet another way to extend the relation to a higher order.
 
 2. Imagine that you have two binary relations: `Clinic-Species` and `Species-Treatment`.
 How can these two binary relations be joined into a ternary relation: `Clinic-Species-Treatment`?
 What would the rules be for forming this result?
-What will be the cardinality (number of elements) of the result?
+What will be the cardinality (number of tuples) of the result?
 
 3. Imagine that we decide to remove the domain `Species` from the relation `Clinic-Species-Treatment`, producing a new binary relation `Clinic-Treatment`.  How will the number of tuples be affected? What will be the 
 What would be the rules for this operation?
