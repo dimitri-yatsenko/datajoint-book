@@ -153,9 +153,9 @@ The relational model is built on several key principles, including:
 
 - **Data Representation:** All data is represented in the form of simple tables, with each table having a unique name and a well-defined structure.
 - **Domain Constraints:** Each column in a table is associated with a specific domain (or *datatype*, a set of possible values), ensuring that the data entered is valid.
-- **Uniqueness Constraints:** This ensures that each row in a table is unique, often enforced through a primary key.
-- **Referential Constraints:** These ensure that relationships between tables remain consistent, typically enforced through foreign keys.
-- **Declarative Queries:** The model allows users to write queries that specify *what* data they want, without needing to know *how* the database will retrieve it.
+- **Uniqueness Constraints:** ensure that each row in a table is unique, enforced through a primary key.
+- **Referential Constraints:** ensure that relationships between tables remain consistent, enforced through foreign keys.
+- **Declarative Queries:** The model allows users to write queries that specify *what* data they want rather than *how* the database will retrieve it.
 
 The most common way to interact with relational databases is through the Structured Query Language (SQL).
 SQL is a language specifically designed to define, manipulate, and query data within relational databases.
@@ -180,8 +180,8 @@ Practical database programmers speak of tables and rows while theoretical data m
 
 The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
 
-To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen) introduced the Entity-Relationship Model (ERM) in 1976 [@10.1145/320434.320440], [@10.1007/978-3-642-59412-0_17].
-Chen, a Taiwanese-born American computer scientist, completed his undergraduate studies at National Taiwan University before earning his Ph.D. in Computer Science at Harvard University. His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
+To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen), a Taiwanese-born American computer scientist with a Ph.D. from Harvard, introduced the Entity-Relationship Model (ERM) in 1976: @10.1145/320434.320440, @10.1007/978-3-642-59412-0_17.
+His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
 
 ```{figure} ../images/PChen.jpeg
 :name: Peter Chen
@@ -230,7 +230,7 @@ DataJoint solves a major dilemma in how relational databases are taught today [@
 
 1.  Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
  
-  One possible soluton: 
+  **One possible soluton**: 
     Add another domain for the treatments that clinics offer for each species.
 	This will form a ternary relation `Clinic-Species-Treatment`.
 	Now think of another example.
