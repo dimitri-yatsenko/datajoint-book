@@ -7,6 +7,8 @@ authors:
 
 # Purpose
 
+## Introducing DataJoint 
+
 Primarily, this book is a comprehensive introduction to DataJoint for Python—a specialized framework for implementing scientific data pipelines that manage data and orchestrate computations in collaborative studies.
 At its core, DataJoint is an enhancement of the traditional relational database model.
 As such, it enables scientists, data engineers, and programmers to design and query relational databases.
@@ -30,6 +32,9 @@ Just like SQL, DataJoint provides all the functionality needed to design databas
 One of the unique advantages of using DataJoint is that practitioners can become proficient in relational database concepts without ever writing SQL directly. By working within DataJoint, users naturally develop a deep understanding of relational databases and how to manage complex data workflows.
 
 To make this book a comprehensive introduction to databases, we will also teach the equivalent SQL concepts and syntax alongside DataJoint. Throughout the chapters, you'll find executable examples and clear explanations of how SQL and DataJoint work together. As a result, not only will you learn how to use DataJoint effectively, but you'll also gain a solid foundation in SQL programming.
+
+# Scientific Operations 
+Review what it takes to operate a scientific project: @10.48550/arXiv.2401.00077
 
 # Focus on Neuroscience
 
