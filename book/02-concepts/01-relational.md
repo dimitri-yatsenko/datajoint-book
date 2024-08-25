@@ -127,31 +127,6 @@ Rather than using relational operators, it relies on a *set-building notation* t
 The query notation of the SQL programming language combines concepts from both relational algebra and relational calculus.
 However, DataJoint's query language is based purely on relational algebra.
 :::
-## Exercises
-
-:::{tip} Exercise
-Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
-:::
-:::{tip} A Solution
-:class: dropdown
-For example, you could add another domain for the treatments that clinics offer for each species.
-This will form a ternary relation `Clinic-Species-Treatment`.
-Think of another example.
-:::
-
-:::{tip} Exercise
-Imagine that you have two binary relations: `Clinic-Species` and `Species-Treatment`
-
-How can these two binary relations be joined into a ternary relation: `Clinic-Species-Treatment`?
-What would the rules be for forming this result?
-What will be the cardinality (number of elements) of the result?
-:::
-
-:::{tip}Exercise
-Imagine that we decide to remove the do
-What would be the rules for this operation?
-How would the cardinality (number of elements) change in the result?
-:::
 
 # Relational Database Model
 The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
@@ -217,6 +192,8 @@ Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the
 The ERM is based on the intuitive idea that the world can be understood in terms of *entities* (things we want to track) and the *relationships* between them.
 It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
 
+In ERM, the concept of a *relation* is most replaced with those of *entity sets* and *relationship sets*. 
+
 The ERM provides:
 
 1. **A General Approach for Problem Analysis and Conceptual Modeling:** The ERM offers a structured way to analyze problems and model them conceptually before diving into schema design. This ensures that the database accurately reflects the real-world relationships it’s meant to represent.
@@ -250,5 +227,22 @@ DataJoint solves a major dilemma in how relational databases are taught today [@
 
 
 # Exercises
-1. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
+
+1.  Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
+ 
+  One possible soluton: 
+    Add another domain for the treatments that clinics offer for each species.
+	This will form a ternary relation `Clinic-Species-Treatment`.
+	Now think of another example.
+
+2. Imagine that you have two binary relations: `Clinic-Species` and `Species-Treatment`.
+How can these two binary relations be joined into a ternary relation: `Clinic-Species-Treatment`?
+What would the rules be for forming this result?
+What will be the cardinality (number of elements) of the result?
+
+3. Imagine that we decide to remove the domain `Species` from the relation `Clinic-Species-Treatment`, producing a new binary relation `Clinic-Treatment`.  How will the number of tuples be affected? What will be the 
+What would be the rules for this operation?
+How would the cardinality (number of elements) change in the result?
+
+4. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
   What are its entities and relationships? Explain what operations this database supports.
