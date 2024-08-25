@@ -67,7 +67,7 @@ A modern relational database management system can accommodate diverse data mode
 A number of articles describe how one can simplify system design replacing many components with a relatioanl datababse: [Just use Postgres for everything](https://www.amazingcto.com/postgres-for-everything/):
 
 :::{iframe} https://www.youtube.com/watch?v=lYsQ_riVC4Y
-:width: 50%
+:width: 100%
 Just use Postgres for everything
 :::
 
