@@ -211,20 +211,20 @@ Although the ERM is best known for its approach to schema design, it also plays 
 
 ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
-```{figure} images/employee-project-erd.svg
+```{figure} ../images/employee-project-erd.svg
 Entity-relationship diagram in Chen ER notation.
 ```
 
 :::{figure}
 ```{mermaid}
 ---
-title: Enhanced Entity Relationship Diagram
+title: Crow's Foot notation.
 ---
 erDiagram
     EMPLOYEE ||--o{ EMP-PROJ : works-for
     PROJECT ||--o{ EMP-PROJ  : is-run-by 
 ```
-Entity-relationship diagram in Chen ER notation.
+Entity-relationship diagram using Crow's foot notation.
 :::
 
 
@@ -256,3 +256,5 @@ How would the cardinality (number of elements) change in the result?
 
 4. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
   What are its entities and relationships? Explain what operations this database supports.
+
+5. Learn to draw diagrams in Crow's foot notation using Mermaid: https://mermaid.js.org/syntax/entityRelationshipDiagram.html
