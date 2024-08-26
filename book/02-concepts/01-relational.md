@@ -212,10 +212,14 @@ Although the ERM is best known for its approach to schema design, it also plays 
 ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
 ```{figure} ../images/employee-project-erd.svg
+:align: center 
+
 Entity-relationship diagram in Chen ER notation.
 ```
 
 :::{figure}
+:align: center
+
 ```{mermaid}
 ---
 title: Crow's Foot notation.
