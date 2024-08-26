@@ -54,9 +54,9 @@ Databases have evolved through various data models over the decades. As Guy Harr
 
 The relational data model has had a profound impact, shaping the last two revolutions in database technology.
 Initially, the industry embraced the relational model, which offered a structured, standardized way to organize and query data.
-However, as data needs evolved, the limitations of the relational model prompted the rise of alternative approaches, leading to the NOSQL revolution in the early 2000s.
+However, as data needs evolved, the limitations of the relational model prompted the rise of alternative approaches, leading to the NoSQL revolution in the early 2000s.
 
-## The NOSQL Revolution
+## The NoSQL Revolution
 
 The NOSQL movement emerged in response to several key challenges:
 

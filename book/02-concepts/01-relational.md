@@ -212,14 +212,20 @@ Although the ERM is best known for its approach to schema design, it also plays 
 ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
 
 
+:::{figure}
+
 ```{mermaid}
 ---
 title: Order example
 ---
 erDiagram
     EMPLOYEE ||--o{ EMP-PROJ : works-for
-    PROJECT ||--o{ EMP-PROJ : is-run-by 
+    PROJECT ||--o{ EMP-PROJ  : is-run-by 
 ```
+
+Entity-relationship diagram in Chen notation.
+:::
+
 
 
 # The DataJoint Model
@@ -228,12 +234,15 @@ DataJoint solves a major dilemma in how relational databases are taught today [@
 
 # Exercises
 
-1.  Extend the `Clinic-Species` relation to a higher order, e.g. a ternary relation.
- 
-  **One possible soluton**: 
-  Add another domain for the treatments that clinics offer for each species.
-  This will form a ternary relation `Clinic-Species-Treatment`.
-  Now think of yet another way to extend the relation to a higher order.
+1.  Extend the binary relation  `Clinic-Species` to a higher order, e.g. a ternary relation.
+
+:::{hint} Possible soluton 
+
+Add a third domain, `Treatment`, for the treatments that clinics offer for each species.
+This will allow forming a ternary relation `Clinic-Species-Treatment`.
+
+Now think of yet another way to extend the relation to a higher order.
+:::
 
 2. Imagine that you have two binary relations: `Clinic-Species` and `Species-Treatment`.
 How can these two binary relations be joined into a ternary relation: `Clinic-Species-Treatment`?

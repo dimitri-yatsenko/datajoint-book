@@ -5,23 +5,36 @@ authors:
   - name: Dimitri Yatsenko
 ---
 
-# Purpose
+# Introducing DataJoint
 
-## Introducing DataJoint 
+This book is a comprehensive guide to DataJoint for Python, a specialized framework designed to implement scientific data pipelines that manage data and orchestrate computations in collaborative studies. At its core, DataJoint builds upon the traditional relational database model, enabling scientists, data engineers, and programmers to design and query relational databases. However, DataJoint’s main innovation lies in introducing computational dependencies as a first-class feature within the relational database. This allows researchers to define, execute, and reproduce data processing pipelines with precision and efficiency.
 
-Primarily, this book is a comprehensive introduction to DataJoint for Python—a specialized framework for implementing scientific data pipelines that manage data and orchestrate computations in collaborative studies.
-At its core, DataJoint is an enhancement of the traditional relational database model.
-As such, it enables scientists, data engineers, and programmers to design and query relational databases.
-But its main innovation is its introduction of computational dependencies as a first-class citizen in the relational database, allowing researchers to define, execute, and reproduce data processing pipelines with precision and efficiency. 
+# Purpose of This Book
 
-DataJoint empowers scientists to describe not just the structure of their data, but also the sequence of computations that transform raw data into meaningful results. This language integrates data storage, processing, and analysis into a unified system, ensuring that each step in the research process is transparent, reproducible, and easy to manage.
+This book aims to introduce database programming for data science and scientific computing, using DataJoint as the central tool. DataJoint can be viewed as a data model, a database programming language, and a software framework all in one. Throughout the book, you will learn a rigorous database design methodology, which also serves as a general introduction to relational database programming—albeit with a unique perspective. To support this learning, code examples are provided in both DataJoint and SQL (Structured Query Language), the most common language for interacting with relational databases.
 
-By formalizing the relationships between data and computations, DataJoint eliminates the need for ad-hoc scripting and manual data wrangling, enabling researchers to focus on the scientific questions that matter most. Whether dealing with simple experiments or large-scale collaborative projects, DataJoint provides the tools necessary to handle data complexity, maintain data integrity, and foster collaboration across teams.
+# The Art of Programming
 
-This book provides a clear and accessible introduction to the core concepts of relational database programming in the context of data science and research applications, such as neuroscience and machine learning, where complex computations are involved.  
-THe book is written to allow scientists and engineers to build a solid understanding of relational database programming from scratch. We assume that the reader is proficient in Python but assume no prior database experence. 
+Programming is often thought of as a way to communicate with computers, but it is, more importantly, the art of communicating clearly and precisely with other humans about our intent and methods. Different programming paradigms offer different tools for this communication. While generating valid and efficient instructions for machines is crucial, the primary goal is to write code that humans can easily read, understand, and extend. This is especially important in dynamic, collaborative projects that evolve over time.
 
-## DataJoint and SQL: A Close Relationship
+In the context of database design, clear communication is essential. The structure of the data and its integrity constraints must reflect the underlying logic of the problem the database is intended to solve. DataJoint is designed with simplicity and clarity in mind, ensuring that the intention behind the database design and the correctness of query results are easily conveyed.
+
+# DataJoint as a System for Organizing Projects
+
+DataJoint can be thought of as a system for organizing data-centric projects. Over more than a decade of use in large, multi-lab projects, DataJoint has proven effective in helping teams manage shared data workflows in dynamic environments with rapidly evolving analysis pipelines and shifting project priorities. This book not only covers the technical aspects of using DataJoint but also addresses issues related to team organization and project resource management.
+
+DataJoint empowers scientists to describe not just the structure of their data, but also the sequence of computations that transform raw data into meaningful results. It integrates data storage, processing, and analysis into a unified system, ensuring that each step in the research process is transparent, reproducible, and easy to manage.
+
+# Benefits of Using DataJoint
+
+By formalizing the relationships between data and computations, DataJoint eliminates the need for ad-hoc scripting and manual data wrangling. This allows researchers to focus on the scientific questions that matter most. Whether working on simple experiments or large-scale collaborative projects, DataJoint provides the tools necessary to handle data complexity, maintain data integrity, and foster collaboration across teams.
+
+# Who This Book Is For
+
+This book provides a clear and accessible introduction to the core concepts of relational database programming in the context of data science and research applications, such as neuroscience and machine learning, where complex computations are involved. It is designed to help scientists and engineers build a solid understanding of relational database programming from scratch. While the book assumes that readers are proficient in Python, no prior experience with databases is required.
+
+
+# DataJoint and SQL: A Close Relationship
 
 SQL, or Structured Query Language, is the standard language used to manage and manipulate relational databases. Developed in the 1970s by IBM researchers, SQL allows users to create, read, update, and delete data stored in tables, making it an essential tool for handling structured data.
 
