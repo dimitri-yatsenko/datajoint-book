@@ -15,7 +15,7 @@ This book aims to introduce database programming for data science and scientific
 
 # The Art of Programming
 
-Programming is often thought of as a way to communicate with computers, but it is, more importantly, the art of communicating clearly and precisely with other humans about our intent and methods. Different programming paradigms offer different tools for this communication. While generating valid and efficient instructions for machines is crucial, the primary goal is to write code that humans can easily read, understand, and extend. This is especially important in dynamic, collaborative projects that evolve over time.
+Programming is often thought of as a way to communicate with computers, but it is, more importantly, the art of thinking clearly and communicating precisely with other humans (an now AI agents too) about our intent and approach. Different programming paradigms offer different tools for this communication. While generating valid and efficient instructions for machines is crucial, the primary goal is to write code that humans can easily read, understand, and extend. This is especially important in dynamic, collaborative projects that evolve over time.
 
 In the context of database design, clear communication is essential. The structure of the data and its integrity constraints must reflect the underlying logic of the problem the database is intended to solve. DataJoint is designed with simplicity and clarity in mind, ensuring that the intention behind the database design and the correctness of query results are easily conveyed.
 
@@ -46,7 +46,7 @@ One of the unique advantages of using DataJoint is that practitioners can become
 
 To make this book a comprehensive introduction to databases, we will also teach the equivalent SQL concepts and syntax alongside DataJoint. Throughout the chapters, you'll find executable examples and clear explanations of how SQL and DataJoint work together. As a result, not only will you learn how to use DataJoint effectively, but you'll also gain a solid foundation in SQL programming.
 
-# Scientific Operations 
+# The Birth of SciOps
 Review what it takes to operate a scientific project: @10.48550/arXiv.2401.00077
 
 # Focus on Neuroscience

@@ -18,7 +18,7 @@ In the summer of 2008, I joined Dr. Andreas Tolias's new lab at Baylor College o
 The lab was focused on complex neurophysiology experiments.
 A group of students and postdocs, including Alex Ecker, Philipp Berens, Andreas Hoenselaar, and R. James Cotton, had already started a MATLAB-based library called "Steinbruch," which used MySQL to link data through computational dependencies.
 
-In the fall of 2009, I started thinking about how relational database could be adapted to scientific research.
+In the fall of 2009, I started thinking about how relational database principles could be adapted for scientific data analysis.
 I wanted to create a database system that could naturally reflect the complexities of a scientific study and be easy for a research team to use.
 This led me to develop the first version of DataJoint for MATLAB, which I used in my neurophysiology experiments.
 
