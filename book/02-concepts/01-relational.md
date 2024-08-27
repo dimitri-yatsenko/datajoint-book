@@ -228,7 +228,7 @@ erDiagram
     EMPLOYEE ||--o{ EMP-PROJ : works-for
     PROJECT ||--o{ EMP-PROJ  : is-run-by 
 ```
-Entity-relationship diagram using Crow's foot notation.
+Entity-relationship diagram using [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
 
 
@@ -261,4 +261,6 @@ How would the cardinality (number of elements) change in the result?
 4. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
   What are its entities and relationships? Explain what operations this database supports.
 
-5. Learn to draw diagrams in Crow's foot notation using Mermaid: https://mermaid.js.org/syntax/entityRelationshipDiagram.html
+5. Work through the example of an multiplayer online role-playing game  database model in Chen's EM notation listed on the [ERM Wikipedia page](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Crow's_foot_notation)
+
+5. Learn to create diagrams in Crow's Foot notation using Mermaid: https://mermaid.js.org/syntax/entityRelationshipDiagram.html
