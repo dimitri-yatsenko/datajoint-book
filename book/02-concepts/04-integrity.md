@@ -26,9 +26,10 @@ Such corruption can manifest in various forms, including:
 
 Each of these threats can compromise the accuracy and reliability of the data, leading to incorrect analyses, misinformed decisions, and potential operational disruptions.
 ```
-The art of database 
 
 # Data Integrity in Relational Databases
+The art of database design is in translating real-world rules of business operations into the rules of data integrity supported by the database system. 
+
 Relational databases provide the richest set of tools for defining and enforcing **data integrity costraints**.
 The art of database design is the translation of the rules of the real-world enterprise into the language of data intergrity constraints offered by the data model.
 
@@ -51,5 +52,5 @@ This may require implementing all-or-nothing (atomic) transactions that prevent 
 
 6. **Data consistency:** ensures a singular, valid, and current version of its data to all users, even during concurrent access and modifications.
 
-By adhering to these principles, DataJoint ensures that the data stored within its databases remains accurate, reliable, and representative of the real-world processes it is intended to reflect.
+Proper implementation of these constrains ensures that the data stored within its databases remains accurate, reliable, and representative of the real-world processes it is intended to reflect.
 

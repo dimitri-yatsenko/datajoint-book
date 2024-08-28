@@ -6,28 +6,27 @@ authors:
 ---
 
 # Data Queries
+In the context of data management, it’s important to distinguish between data retrieval and data queries.
 
-*Data repositories* are a broad category within data management systems, primarily designed to deposit and fetch data.
+**Data repositories** are a broad category of systems designed primarily for storing and retrieving data. These repositories, such as Dropbox or Google Drive, offer basic functionalities like authentication and access control for sharing data, but they don't provide advanced tools for manipulating or analyzing the data.
 
 ```{card} Data retrieval
-**Data Retrieval:** The process of fetching data from a *data repository* in its original, deposited form.
+**Data retrieval** refers to the process of retrieving data from a **data repository** in its original form, exactly as it was deposited.
 ```
 
-Databases, on the other hand, cater to a more diverse user base, each with distinct roles and interests pertaining to their organization or enterprise.  
-Catering to these varied needs requires databases to facilitate *data queries*, allowing users to request specific sections of stored data, often in a format that diverges from its original storage format.
+In contrast, databases are designed to serve a more diverse group of users, each with different roles and needs within an organization or enterprise. To accommodate these varying requirements, databases support data queries, which allow users to request specific portions of the stored data. These queries often present the data in a format that differs from how it was originally stored, tailored to the user’s specific needs.
 
 ```{card} Data Query
-A **data query** is a function applied to stored data; it extracts and presents a specified segment of the database's data tailored for a particular analysis.
-The output often deviates from the original storage format.
-Database systems are equipped with sophisticated tools for defining and executing these precise queries.
+A **data query** is a function applied to stored data that extracts and presents a specific segment of the database's information for a particular analysis.
+The output often differs from the original storage format, providing customized views of the data.
 ```
 
-Consider a university as an example.
-Students need functionalities to enroll in courses and view their academic records.
-Instructors, on the other hand, require access to class lists and a platform to input student grades.
-Meanwhile, a dean might wish to oversee the academic performance of every student within her department.
-Each of these operations, though sourcing from the same foundational data, demands unique selections and combinations of the data.
+For example, consider a university setting:
+* Students need to enroll in courses and view their academic records.
+* Instructors require access to class lists and a platform to input grades.
+* Deans may need to oversee the academic performance of all students within their departments.
 
-In contemporary data-driven scientific research, data queries prove invaluable.
-They enable researchers to select and aggregate specific data fragments essential for a given analysis or visualization, eliminating the need to retrieve the entirety of a dataset from its primary repository.
+Although these tasks rely on the same underlying data, each requires a different selection and combination of that data, tailored to the specific needs of the user.
 
+In modern data-driven scientific research, data queries enable researchers to select and aggregate specific data fragments necessary for their analysis or visualization.
+This targeted approach eliminates the need to retrieve entire datasets from their primary repository, making the process more efficient and focused.
