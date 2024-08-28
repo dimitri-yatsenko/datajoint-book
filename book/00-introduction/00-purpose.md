@@ -47,7 +47,9 @@ One of the unique advantages of using DataJoint is that practitioners can become
 To make this book a comprehensive introduction to databases, we will also teach the equivalent SQL concepts and syntax alongside DataJoint. Throughout the chapters, you'll find executable examples and clear explanations of how SQL and DataJoint work together. As a result, not only will you learn how to use DataJoint effectively, but you'll also gain a solid foundation in SQL programming.
 
 # The Birth of SciOps
-Review what it takes to operate a scientific project: @10.48550/arXiv.2401.00077
+DataJoint plays a crucial role in the operation of scientific projects, fitting into a broader process that coordinates efforts in data acquisition, processing, analysis, visualization, sharing, and publishing. It acts as a foundational building block, helping to transform research labs into efficient data generation machines. DataJoint’s unique strength lies in its ability to dynamically manage the entire data pipeline, including the evolving data structure, code, software dependencies, and collaborative interactions.
+
+Recognizing the need for more structured and scalable approaches in scientific research, we recently partnered with other neuroinformatics leaders to define a roadmap for enhancing operations in neuroscience projects. This roadmap is designed to guide research teams from ad hoc processes toward automated and scalable collaborations, enabling them to tackle more significant and complex problems while collaborating more broadly. The ultimate goal is to achieve closed-loop studies that seamlessly integrate human ingenuity with AI efficiency [@10.48550/arXiv.2401.00077].
 
 # Focus on Neuroscience
 
