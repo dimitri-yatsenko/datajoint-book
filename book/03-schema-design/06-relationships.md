@@ -1,4 +1,0 @@
-# Modeling relationships
-
-## Sequencies 
-

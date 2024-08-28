@@ -1,2 +1,0 @@
-# Foreign keys
-# Diagrams
