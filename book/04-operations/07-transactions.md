@@ -1,4 +1,4 @@
-# Upholding Data Consistency
+# Transactions
 This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously.
 This principle is known as **data consistency**.
 
