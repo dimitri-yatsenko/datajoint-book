@@ -23,8 +23,10 @@ A relation between these two sets would indicate, for example, which clinics tre
 Relations are mappings of elements of one set to elements of another domain (binary relations). Higher order relations map elements of three, four and and more sets.
 ```
 
-This diagram illustrates two different relations between "Clinics" and "Species." On the left side, the relation shows Clinic 1 is connected to "Dog," Clinic 2 is connected to "Horse," and Clinic 3 is connected to both "Goat" and "Cow." On the right side, the relation changes: Clinic 1 is now connected to "Dog," "Cat," and "Goat," Clinic 2 is connected to "Dog" and "Horse," and Clinic 3 is connected to "Goat."
-Each line connecting elements of the two sets is called a *tuple* and represents an ordered pairing of values from the corresponding domains.
+This diagram illustrates two different relations between "Clinics" and "Species."
+On the left side, the relation shows Clinic 1 is connected to "goat," Clinic 2 is connected to "dog," and Clinic 3 is connected to both "goat" and "cow."
+On the right side, the relation changes: Clinic 1 is now connected to "dog," "horse," and "goat," Clinic 2 is connected to "dog" and "horse," and Clinic 3 is connected to "goat."
+Each line connecting elements of the two sets is called a **tuple** and represents an ordered pairing of values from the corresponding domains.
 Then a relation can be thought of as a set of tuples.
 The number of tuples in a relation is called its *cardinality* and the number of domains participating in the relation is its *order*.
 This diagram shows binary relations.
