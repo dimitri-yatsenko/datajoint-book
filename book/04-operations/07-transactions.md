@@ -1,10 +1,4 @@
 # Transactions
-This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously.
-This principle is known as **data consistency**.
-
-:::{card} Data Consistency
-Successful read queries should reflect the most recent writes, while successful writes should immediately influence all subsequent read actions.
-:::
 
 Databases are not merely storage systems; they should accurately represent an enterprise's current state.
 This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously.
