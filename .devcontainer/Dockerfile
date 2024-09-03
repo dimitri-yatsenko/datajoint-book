@@ -32,7 +32,8 @@ RUN conda init bash && \
     pip install mystmd && \
     pip install jupyterlab_myst && \
     pip install datajoint && \ 
-    pip install ipython-sql
+    pip install ipython-sql && \
+    pip install Faker
 
 # Set up shell to use Conda by default
 RUN echo "source /opt/conda/etc/profile.d/conda.sh && conda activate base" >> ~/.bashrc
