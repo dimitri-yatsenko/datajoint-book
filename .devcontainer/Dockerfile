@@ -28,7 +28,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 
 # Install additional tools or packages as needed in the base environment
 RUN conda init bash && \
-    conda install -n base -c conda-forge python=3.10 jupyterlab numpy pandas 'nodejs>20,<21' pip -y && \
+    conda install -n base -c conda-forge python=3.10 python-graphviz jupyterlab numpy pandas 'nodejs>20,<21' pip -y && \
     pip install mystmd && \
     pip install jupyterlab_myst && \
     pip install datajoint && \ 
