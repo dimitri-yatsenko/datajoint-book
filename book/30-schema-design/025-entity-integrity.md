@@ -1,6 +1,10 @@
 # Entity Integrity
-**Entity integrity** is the gurantee provided by the database of a 1:1 correspondence between real-world entities and their digital representations.
-As such, it is a prerequite for all other aspects of data integrity.
+
+As databases must represent an accurate mapping between real-world entities and their digital representations for accurately representing data and its transformations, the first essential aspect of data integrity is *entity integrity*.
+
+```{card}
+**Entity integrity** is the gurantee of a 1:1 correspondence between real-world entities and their digital representations.
+```
 
 For entity integrity, each real-world entity must be represented by exactly one unique record in the database; conversely, each record must correspond to a single, distinct real-world entity.
 
