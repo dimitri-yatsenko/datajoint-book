@@ -4,19 +4,22 @@ As databases must represent an accurate mapping between real-world entities and 
 
 ```{card}
 **Entity integrity** is the gurantee of a 1:1 correspondence between real-world entities and their digital representations.
+
+Each real-world entity must be represented by exactly one unique record in the database; conversely, each record must correspond to a single, distinct real-world entity.
 ```
 
-For entity integrity, each real-world entity must be represented by exactly one unique record in the database; conversely, each record must correspond to a single, distinct real-world entity.
-
 Imagine what kinds of difficulties would arise if entity integrity broke down in the systems you interact with every day.
-For example, what would happen if your university or HR department had two different identifies for you in their records?
-What would happen if they occasionally updated your records with another person's information?  
-What if the same ocurred in your dentist's office?
+* For example, what would happen if your university or company HR department had two different identifies for you in their records?
+* What would happen your HR department occasionally updated your records with another person's information?  
+* What if the same ocurred in your dentist's office?
 
 Without entity integrity, it is impossible to maintain other aspects of integrity within the database.
 For example, a foreign key relationship assumes that every referenced entity exists uniquely and correctly in the database—an assumption that can only hold true if entity integrity is enforced.
 
 # Challenges to Entity Integrity
+It is perhaps no coincidence that the word *integrity* is synonymous with *honesty* and entity integrity often relies on the the participants' knowledge, honesty, trust, transparency, and open communication.
+However, for large and complex data operations, entity integrity must be designed into the system.
+
 The challenge of ensuring entity integrity lies in the fact that it cannot be fully solved by the database system alone.
 A reliable system for identifying objects in the real world must be established outside the database to ensure that each entity has a unique and persistent identifier that can be consistently used across all related data records by all participants.
 
@@ -33,7 +36,7 @@ The SSN allows for the accurate and consistent representation of individuals acr
 **Question**: What abuses would become possible if a person could obtain two SSNs or if two persons could share the same SSN?
 
 **Learn more** about the history and uses of the SSN:
-  * [History of establishing SSN.](https://www.ssa.gov/history/ssn/firstcard.html)
+  * [History of establishing the SSN.](https://www.ssa.gov/history/ssn/firstcard.html)
   * [How the SSN works.](https://www.ssa.gov/policy/docs/ssb/v69n2/v69n2p55.html)
   * [IRS timeline.](https://www.irs.gov/irs-history-timeline)
 
