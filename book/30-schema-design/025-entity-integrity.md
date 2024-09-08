@@ -5,7 +5,7 @@ As databases must represent an accurate mapping between real-world entities and 
 ```{card}
 **Entity integrity** is the gurantee of a 1:1 correspondence between real-world entities and their digital representations.
 
-Each real-world entity must be represented by exactly one unique record in the database; conversely, each record must correspond to a single, distinct real-world entity.
+Within the domain that is governed by the data management process, each real-world entity must be represented by exactly one unique record in the database; conversely, each record must correspond to a single, distinct real-world entity.
 ```
 
 Imagine what kinds of difficulties would arise if entity integrity broke down in the systems you interact with every day.
