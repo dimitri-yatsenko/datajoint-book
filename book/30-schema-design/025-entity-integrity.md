@@ -31,7 +31,7 @@ The SSN would be assigned at birth or at entering the country for employment and
 Establishing and enforcing such a system is not easy and takes a considerable effort.
 The SSN allows for the accurate and consistent representation of individuals across various government databases, ensuring that each person is correctly identified. 
 
-**Question**: Why didn't the US government need to assign unique identifiers to tax payers when it began levying federal taxes in 1913?
+**Question**: Why do you think the US government did not have the need to assign unique identifiers to tax payers when it began levying federal taxes in 1913?
 
 **Question**: What abuses would become possible if a person could obtain two SSNs or if two persons could share the same SSN?
 
@@ -41,13 +41,14 @@ The SSN allows for the accurate and consistent representation of individuals acr
   * [IRS timeline.](https://www.irs.gov/irs-history-timeline)
 
 Similar rigor is required for identifying other objects in the real world:
-* VIN for all vehicles
-* Animal identification number for pets and domestic animals
-* Registration numbers for aircraft
+* [Vehicle Identification Number](https://www.iso.org/standard/52200.html), regulated by the International Organization for Standardization.
+* [Radio-frequency Identification for Animals](https://en.wikipedia.org/wiki/ISO_11784_and_ISO_11785) for implanted microchips in animals.
+* [US Aircraft Registration numbers](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/forming_nnumber), the N-numbers seen on the tails, regulated by the FAA. 
 
-In summary, designing a database may need to begin with designing good identification processes in the enterprise that it supports.
+These examples demonstrate that establishing a rigorous system for identification may require costly standardization efforts with many systems for enforcement and coordination.
 
-When a neuroscience lab sets out to establish a data management process, the first thing it needs to do is to establish a uniform system to identify test subjects, experiments, and protocols.
+When a science lab sets out to establish a data management process for its experiment, the first step is to establish a uniform system for identifying test subjects, experiments, protocols, and treatments.
+Standard nomenclatures are established to standardize names across all institutions and labs must be aware of them and follow them.
 
 # Entity Integrity in Schema Design
 
@@ -62,18 +63,50 @@ For instance, if a table is named `Person`, the database must enforce entity int
 However, if the table uses identifiers that do not ensure a 1:1 mapping to actual persons—such as cell phone numbers, which might be shared or changed—a more appropriate table name should be chosen, like `UserAccount`, to reflect the specific entity type being represented.
 This clarity helps avoid confusion and ensures that the database design accurately mirrors the real-world relationships it models.
 
-2. **Primary Keys and Unique Indexes**
+2. **Establish identification tracking**
+For all entities track by the database, select a way to identify entities and track their identity overtime. 
 
-Every table in a relational database must have a primary key, and the primary key attributes cannot be nullable. This requirement is crucial for maintaining entity integrity, as it prevents the creation of records that cannot be uniquely identified.
-The table may haveother unique indexes that enforce a 1:1 correspondence between records and the real-world entities they represent.
-Secondary unique indexes can enforce uniqueness on other attributes that need to be unique across the table but may be nullable.
-For example, for the `Person` table, unique indexes can be enforced on email addresses, usernames, drivers licenses, cellphone numebrs, or social security numbers.
-These indexes ensure no duplicate entries for attributes intended to be unique, further supporting entity integrity.
+3. **Choose Primary Keys and Unique Indexes**
 
-Depending on the business needs, entity integrity may be loosened.
-One business may tolerate multiple digital identities per person while another may allow multiple persons sharing a digital identities. 
-Other business would require strict 1:1 match.
-These requirements would lead to different approaches to managing identities and enforcing entity integrity.
+Every table in a relational database must have a **primary key**, and the attributes of the primary key cannot be nullable. This requirement is essential for maintaining **entity integrity**, as it prevents the creation of records that cannot be uniquely identified.
+
+In addition to the primary key, a table may have **secondary unique indexes** to help enforce a one-to-one correspondence between records and the real-world entities they represent. These unique indexes can be applied to other attributes that need to be unique across the table but are allowed to be nullable.
+
+For example, in a `Person` table, unique indexes might be enforced on attributes like **email addresses**, **usernames**, **driver’s licenses**, **cellphone numbers**, or **Social Security numbers**. These indexes ensure that no duplicate entries exist for attributes that are intended to be unique, further supporting entity integrity.
+
+## Looser Entity Integrity
+
+Depending on the business needs, **entity integrity** requirements can vary. Some businesses may allow multiple digital identities per person, while others may tolerate multiple people sharing a single digital identity. Other businesses may require a strict one-to-one match between real-world entities and their digital representations.
+
+- **Example 1: Gym Memberships**  
+  A gym may enforce that no two people use the same membership (ensuring uniqueness per membership). However, they may not need to prevent an individual from opening multiple memberships, leading to looser enforcement of entity integrity.
+
+- **Example 2: Grocery Store Discount Cards (2010s)**  
+  An example of looser but sufficient entity integrity was the use of **grocery store discount cards** in the 2010s. Grocery stores issued discount cards to shoppers to qualify them for discounts, but they did not strictly enforce a one-to-one mapping between cards and individual shoppers. Instead, they gathered enough information to track general shopping habits while allowing for multiple people to use the same card or for individuals to use multiple cards.
+
+This flexibility in entity integrity allows businesses to balance strict data rules with practical needs for customer management and data collection.
+
+
+## Using Natural Keys
+
+A table can be designed with a **natural primary key**, which is an identifier that exists in the real world. For example, a Social Security Number (SSN) can serve as a natural key for a person because it is a unique number used and recognized in real-world systems.
+
+In some cases, a natural key already exists, or one can be specifically created for data management purposes and then introduced into the real world to be permanently associated with physical entities.
+
+For instance, grocery and hardware stores use **SKU (Stock Keeping Unit)** numbers to track inventory. Each item is assigned an SKU, and store clerks can look it up for specific products.
+
+Other common examples of natural keys include **phone numbers** and **email addresses**, which are often used as unique identifiers in phone apps and online services.
+
+Phone numbers, in particular, have become popular as identifiers as mobile phones have evolved from being associated with homes or offices to being personal devices carried by individuals.
+
+# Using Surrogate Keys
+
+In many cases, it makes more sense to use a **surrogate key** as the primary key in a database. A surrogate key has no relationship to the real world and is used solely within the database for identification purposes. These keys are often generated automatically as an **auto-incrementing number** or a **random string** like a UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier).
+
+When using surrogate keys, entity integrity can still be maintained by using other unique attributes (such as secondary unique indexes) to help identify and match entities to their digital representations.
+
+Surrogate keys are especially useful for entities that exist only in digital form (e.g., social media posts, email messages) and don’t need to be uniquely identified outside of the digital system. In these cases, surrogate keys are an appropriate and efficient choice.
+
 
 # Practical Examples of Ensuring Entity Integrity
 Consider the importance and challenges of entity integrity in the following scenarios.
