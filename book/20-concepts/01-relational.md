@@ -231,8 +231,6 @@ erDiagram
 ```
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
-```
-
 
 :::{figure}
 ```{mermaid}
