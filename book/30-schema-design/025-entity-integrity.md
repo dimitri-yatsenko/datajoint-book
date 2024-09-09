@@ -41,9 +41,9 @@ The SSN allows for the accurate and consistent representation of individuals acr
   * [IRS timeline.](https://www.irs.gov/irs-history-timeline)
 
 Similar rigor is required for identifying other objects in the real world:
-* [Vehicle Identification Number](https://www.iso.org/standard/52200.html), regulated by the International Organization for Standardization.
-* [Radio-frequency Identification for Animals](https://en.wikipedia.org/wiki/ISO_11784_and_ISO_11785) for implanted microchips in animals.
-* [US Aircraft Registration numbers](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/forming_nnumber), the N-numbers seen on the tails, regulated by the FAA. 
+  * [Vehicle Identification Number](https://www.iso.org/standard/52200.html), regulated by the International Organization for Standardization.
+  * [Radio-Frequency Identification for Animals](https://en.wikipedia.org/wiki/ISO_11784_and_ISO_11785) for implanted microchips in animals.
+  * [US Aircraft Registration numbers](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/forming_nnumber), the N-numbers seen on the tails, regulated by the FAA. 
 
 These examples demonstrate that establishing a rigorous system for identification may require costly standardization efforts with many systems for enforcement and coordination.
 
@@ -54,7 +54,7 @@ Standard nomenclatures are established to standardize names across all instituti
 
 Several key aspects of relational database design contribute to maintaining entity integrity:
 
-1. **Clear Table Definitions Reflecting Entity Types**
+## Step 1. Determine Entity Types
 
 Each table in a relational database should clearly indicate the type of real-world entity it represents.
 The table name plays a crucial role in conveying this information.
@@ -63,10 +63,11 @@ For instance, if a table is named `Person`, the database must enforce entity int
 However, if the table uses identifiers that do not ensure a 1:1 mapping to actual persons—such as cell phone numbers, which might be shared or changed—a more appropriate table name should be chosen, like `UserAccount`, to reflect the specific entity type being represented.
 This clarity helps avoid confusion and ensures that the database design accurately mirrors the real-world relationships it models.
 
-2. **Establish identification tracking**
-For all entities track by the database, select a way to identify entities and track their identity overtime. 
+## Step 2. Establish Entity Identification 
+For all entities tracked by the database, determine how the entities will be identified in the physical world.
+This may require establishing and enforcing an identification system.
 
-3. **Choose Primary Keys and Unique Indexes**
+## Step 3. Define Primary Keys and Secondary Unique Indexes
 
 Every table in a relational database must have a **primary key**, and the attributes of the primary key cannot be nullable. This requirement is essential for maintaining **entity integrity**, as it prevents the creation of records that cannot be uniquely identified.
 
