@@ -227,6 +227,17 @@ Entity-relationship diagram in Chen ER notation.
 title: Crow's Foot notation.
 ---
 erDiagram
+    EMPLOYEE ||--|| PROJECT : assigned-to
+```
+Entity-relationship diagram using [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
+:::
+
+
+```{mermaid}
+---
+title: Crow's Foot notation.
+---
+erDiagram
     EMPLOYEE ||--o{ EMP-PROJ : works-for
     PROJECT ||--o{ EMP-PROJ  : is-run-by 
 ```
