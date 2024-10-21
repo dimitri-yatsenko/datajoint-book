@@ -254,6 +254,32 @@ DataJoint diagram for the same design
 # The DataJoint Model
 DataJoint solves a major dilemma in how relational databases are taught today [@10.48550/arXiv.1807.11104]
 
+Compared to SQL and ERM, the DataJoint model focuses on **conceptual clarity, efficiency, and workflow management**. By enforcing **entity normalization**, simplifying dependency declarations, offering a rich query algebra, and visualizing relationships through schema diagrams, DataJoint makes relational database programming more intuitive and robust for complex data pipelines.
+
+## 1. **Entity Normalization**  
+- DataJoint enforces **entity normalization**, ensuring that every entity set (table) is well-defined, with each element belonging to the same type, sharing the same attributes, and distinguished by the same primary key.
+- This principle reduces redundancy and avoids data anomalies, similar to Boyce-Codd Normal Form, but with a more intuitive structure than traditional SQL.
+
+## 2. **Simplified Schema Definition and Dependency Management**  
+- DataJoint introduces a **schema definition language** that is more expressive and less error-prone than SQL.  
+- Dependencies are explicitly declared using **arrow notation (->)**, making referential constraints easier to understand and visualize.
+- The dependency structure is enforced as an **acyclic directed graph**, which simplifies workflows by preventing circular dependencies.
+
+## 3. **Integrated Query Operators producing a Relational Algebra**  
+- DataJoint introduces **five query operators** (restrict, join, project, aggregate, and union) with algebraic closure, allowing them to be combined seamlessly.  
+- These operators are designed to maintain **operational entity normalization**, ensuring query outputs remain valid entity sets.
+
+## 4. **Diagramming Notation for Conceptual Clarity**  
+- DataJoint’s **schema diagrams** simplify the representation of relationships between entity sets compared to ERM diagrams.  
+- Relationships are expressed as dependencies between entity sets, which are visualized using solid or dashed lines for **primary** and **secondary dependencies**, respectively.
+
+## 5. **Unified Logic for Binary Operators**  
+- DataJoint simplifies **binary operations** by requiring attributes involved in joins or comparisons to be **homologous** (i.e., sharing the same origin).  
+- This avoids the ambiguity and pitfalls of **natural joins** in SQL, ensuring more predictable query results.
+
+## 6. **Optimized Data Pipelines for Scientific Workflows**  
+- DataJoint treats the database as a **data pipeline** where each entity set defines a step in the workflow. This makes it ideal for **scientific experiments** and **complex data processing**, such as in neuroscience.
+- Its **MATLAB and Python libraries** transpile DataJoint queries into SQL, bridging the gap between scientific programming and relational databases.
 
 # Exercises
 
