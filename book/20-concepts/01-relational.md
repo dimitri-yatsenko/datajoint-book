@@ -244,6 +244,12 @@ erDiagram
 Entity-relationship diagram in Crow's Foot notation, including an explicit relationship set. 
 :::
 
+```{figure} ../images/employee-project-datajoint.svg
+:align: center
+
+DataJoint diagram for the same design
+```
+
 
 # The DataJoint Model
 DataJoint solves a major dilemma in how relational databases are taught today [@10.48550/arXiv.1807.11104]
