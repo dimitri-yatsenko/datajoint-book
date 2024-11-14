@@ -1,7 +1,7 @@
 # Transactions
 
 Databases are not merely storage systems; they should accurately represent an enterprise's current state.
-This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously.
+This means that all users, irrespective of their interactions, should view and engage with the same data simultaneously seeing the results of each other's interactions without breaking data integrity.
 This principle is known as **data consistency**.
 
 ```{card} Data Consistency
