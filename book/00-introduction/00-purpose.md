@@ -7,7 +7,7 @@ authors:
 
 # Introducing DataJoint
 
-This book is a comprehensive guide to *DataJoint for Python* — a specialized framework designed to implement scientific data pipelines that manage data and orchestrate computations in collaborative studies. At its core, DataJoint builds upon the traditional relational database model, enabling scientists, data engineers, and programmers to design and query relational databases. However, DataJoint’s main innovation lies in introducing computational dependencies as a first-class feature within the relational database. This allows researchers to define, execute, and reproduce data processing pipelines with precision and efficiency.
+This book is a comprehensive guide to *DataJoint for Python* — a specialized framework designed to implement scientific data pipelines that manage data and orchestrate computations in collaborative and AI-powered scientific projects. At its core, DataJoint builds upon the traditional relational database model, enabling scientists, data engineers, and programmers to design and query relational databases. However, DataJoint’s main innovation lies in introducing computational dependencies as a first-class feature within the relational database. This allows researchers to define, execute, and reproduce data processing pipelines with precision and efficiency.
 
 # Purpose of This Book
 
@@ -57,8 +57,12 @@ While the tools and concepts in this book are applicable to any computationally 
 
 As a result, some of the examples in this book will naturally have a neuroscience focus. However, these examples are chosen to illustrate broader principles and techniques that can be adapted to a wide range of scientific disciplines.
 
-# Contributions
+# AI Integration
+As of early 2025, it has become unmistakably clear that AI assistance is no longer a temporary trend but a transformative force reshaping the programming landscape. AI is rapidly becoming an indispensable companion in software development, enhancing productivity, enabling more sophisticated workflows, and fundamentally altering how we approach problem-solving and manage knowledge in collaborative projects.
 
-I welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor.
+In this book, we will explore the profound impact of AI on database schema design, computational orchestration, and data queries. These core elements of scientific data management and analysis are poised for significant evolution within AI-infused environments. From automating repetitive tasks to providing intelligent recommendations, AI tools can streamline database design, optimize computational workflows, and offer insights that were previously out of reach.
+
+# Contributions
+I, Dimitri Yatsenko, am the principal author of this book but I welcome and appreciate your contributions, whether as a reviewer or as a contributor.
 All contributions will be gratefully acknowledged.
 Please feel free to contact me directly or submit an issue in the book's GitHub repository.

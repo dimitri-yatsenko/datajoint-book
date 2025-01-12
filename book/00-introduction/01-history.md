@@ -47,8 +47,11 @@ By 2018, Vathes had added key members: Shan Shen, Thinh Nguyen, Chris Turner, an
 In 2021, we rebranded the company as **DataJoint** to better align with our core product, shifting our focus toward commercial technology for research collaboration. During this time, I transitioned to a full-time role as CEO.
 
 # The DataJoint Platform
-In 2022, we received a Phase II SBIR commercialization grant from the NIH to develop an online collaborative platform—[**DataJoint Works**](https://works.datajoint.com). Monty Kosma, who joined the company that year, led the effort to build the platform. Monty later became a co-founder and President, guiding the company’s transformation from a consulting firm to a product-focused enterprise.
 
-The **DataJoint Works** platform officially launched in 2024, with the first cohort of labs successfully operating their experiments on the platform.
+In 2022, we were awarded a Phase II SBIR commercialization grant from the NIH to develop an innovative online collaborative platform: DataJoint Works. This marked a significant milestone in our journey, enabling us to expand our capabilities beyond traditional consulting services. Monty Kosma, who joined the company that year, spearheaded the development of the platform, bringing his vision and leadership to the forefront. Monty's contributions were instrumental, and he later became a co-founder and President, guiding DataJoint's transformation from a consulting firm into a product-focused enterprise.
 
-Today, DataJoint blends community-driven open-source development of core tools with a robust online platform for hosting and managing DataJoint pipelines.
+The **DataJoint Works** platform officially launched in 2024, empowering the first cohort of labs to seamlessly operate their experiments using its robust and intuitive features. This milestone demonstrated the potential of DataJoint Works to revolutionize how scientific data is managed and shared, setting a strong foundation for its adoption across the research community.
+
+In the fall of 2024, the company entered a new phase of growth with the addition of Jim Olson, a seasoned executive with a proven track record. Jim had previously served as CEO of Flywheel.io, a leading data operations platform, where he established himself as a visionary leader in the field. Joining DataJoint as CEO in December 2024, Jim brought fresh perspectives and strategic insights, positioning the company to scale its impact and reach new heights in the years ahead.
+
+Today, DataJoint exemplifies a harmonious blend of community-driven open-source development and a powerful online platform for hosting and managing DataJoint pipelines. This dual approach ensures that our tools remain accessible, reliable, and continuously evolving, while providing researchers with a secure, collaborative environment to advance their work.
