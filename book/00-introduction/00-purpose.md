@@ -10,8 +10,10 @@ authors:
 This book is a comprehensive guide to *DataJoint for Python* — a specialized framework designed to implement scientific data pipelines that manage data and orchestrate computations in collaborative and AI-powered scientific projects. At its core, DataJoint builds upon the traditional relational database model, enabling scientists, data engineers, and programmers to design and query relational databases. However, DataJoint’s main innovation lies in introducing computational dependencies as a first-class feature within the relational database. This allows researchers to define, execute, and reproduce data processing pipelines with precision and efficiency.
 
 Existing documentation for DataJoint can be found here:
-* Current documentation: https://datajoint.com/docs/core/datajoint-python/  (hosted at https://github.com/datajoint/datajoint-python/)
-* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ (hosted at https://github.com/datajoint/datajoint-docs-original)
+* Current documentation: https://datajoint.com/docs/core/datajoint-python/  
+  - hosted at https://github.com/datajoint/datajoint-python/
+* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ 
+  - hosted at https://github.com/datajoint/datajoint-docs-original
 
 # Purpose of This Book
 
