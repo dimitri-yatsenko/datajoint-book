@@ -252,7 +252,10 @@ DataJoint diagram for the same design
 
 
 # The DataJoint Model
-DataJoint solves a major dilemma in how relational databases are taught today [@10.48550/arXiv.1807.11104]
+DataJoint is a conceptual refinement of the relational data model offering a more expressive and rigorous framework for database programming [@10.48550/arXiv.1807.11104].
+The DataJoint model facilitates clear conceptual modeling, efficient schema design, and precise and flexible data queries. The model has emerged over a decade of continuous development of complex data pipelines for neuroscience experiments [@10.1101/031658]. DataJoint has allowed researchers with no prior knowledge of databases to collaborate effectively on common data pipelines sustaining data integrity and supporting flexible access. DataJoint is currently implemented as client libraries in MATLAB and Python. These libraries work by transpiling DataJoint queries into SQL before passing them on to conventional relational database systems that serve as the backend, in combination with bulk storage systems for storing large contiguous data objects.
+
+DataJoint solves a major dilemma in how relational databases are taught today:
 
 Compared to SQL and ERM, the DataJoint model focuses on **conceptual clarity, efficiency, and workflow management**. By enforcing **entity normalization**, simplifying dependency declarations, offering a rich query algebra, and visualizing relationships through schema diagrams, DataJoint makes relational database programming more intuitive and robust for complex data pipelines.
 

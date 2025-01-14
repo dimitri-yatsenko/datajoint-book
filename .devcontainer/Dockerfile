@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
     /bin/bash /tmp/miniconda.sh -b -p /opt/conda && \
     rm /tmp/miniconda.sh && \
-    conda clean --all -f -y 
+    conda clean --all -f -y && \
+    conda install -n base libarchive -c main --force-reinstall --solver classic
 
 # Install additional tools or packages as needed in the base environment
 RUN conda init bash && \

@@ -10,8 +10,8 @@ authors:
 This book is a comprehensive guide to *DataJoint for Python* — a specialized framework designed to implement scientific data pipelines that manage data and orchestrate computations in collaborative and AI-powered scientific projects. At its core, DataJoint builds upon the traditional relational database model, enabling scientists, data engineers, and programmers to design and query relational databases. However, DataJoint’s main innovation lies in introducing computational dependencies as a first-class feature within the relational database. This allows researchers to define, execute, and reproduce data processing pipelines with precision and efficiency.
 
 Existing documentation for DataJoint can be found here:
-* Current documentation: https://datajoint.com/docs/core/datajoint-python/
-* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ 
+* Current documentation: https://datajoint.com/docs/core/datajoint-python/  (hosted at https://github.com/datajoint/datajoint-python/)
+* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ (hosted at https://github.com/datajoint/datajoint-docs-original)
 
 # Purpose of This Book
 
@@ -67,6 +67,7 @@ As of early 2025, it has become unmistakably clear that AI assistance is no long
 In this book, we will explore the profound impact of AI on database schema design, computational orchestration, and data queries. These core elements of scientific data management and analysis are poised for significant evolution within AI-infused environments. From automating repetitive tasks to providing intelligent recommendations, AI tools can streamline database design, optimize computational workflows, and offer insights that were previously out of reach.
 
 # Contributions
-I, Dimitri Yatsenko, am the principal author of this book but I welcome and appreciate your contributions, whether as a reviewer or as a contributor.
+I, Dimitri Yatsenko, am the principal author of this book, although some of the text is carried over from prior documentation written by our broader team, so my role is both as author and editor.
+I welcome and appreciate your contributions, whether as a reviewer or as a contributor.
 All contributions will be gratefully acknowledged.
 Please feel free to contact me directly or submit an issue in the book's GitHub repository.
