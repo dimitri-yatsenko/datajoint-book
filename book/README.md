@@ -29,6 +29,18 @@ You may share the content as long as you
 * do not use it for commercial purposes
 * do not make modifications
 
+# Official Documentation
+Official documentation for DataJoint can be found here:
+
+* Overall documentation: https://datajoint.com/docs
+
+* DataJoint-Python Official Documentation: https://datajoint.com/docs/core/datajoint-python/  
+  - hosted at https://github.com/datajoint/datajoint-python/
+
+* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ 
+  - hosted at https://github.com/datajoint/datajoint-docs-original
+
+
 # Contributions
 
 We welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor.
