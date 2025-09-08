@@ -91,7 +91,8 @@ project:
     
 site:
   template: book-theme
-  path_prefix: /datajoint-book
+  options: 
+    path_prefix: /datajoint-book
 
 # options:
 #  favicon: favicon.ico
