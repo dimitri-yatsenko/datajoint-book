@@ -20,3 +20,15 @@ We welcome and appreciate your contributions to this book, whether as a reviewer
 All contributions will be gratefully acknowledged.
 You may suggest modifications by submitting an issue in the main [GitHub repository](https://github.com/dimitri-yatsenko/datajoint-book) for this book.
 For more substrantial contributions and collaborations, including co-authorship and publications, please contact Dimitri Yatsenko.
+
+# Deployment
+
+The MyST static site deployment instructions are provided here: https://mystmd.org/guide/deployment
+
+Inside the devcontainer:
+
+```shell
+$ cd book
+$ myst build --html
+$ npx serve _build/html
+```
