@@ -44,9 +44,6 @@ jobs:
           cd book
           myst build --html
 
-      - name: Display myst build log for debugging
-        run: cat book/_build/logs/myst.build.json
-
       - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v3 
         with:
