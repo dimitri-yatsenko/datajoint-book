@@ -8,6 +8,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  # `BASE_URL` determines the website served from, including CSS and JS assets
+  BASE URL: /${{ github.event.repository.name }}
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -36,7 +40,9 @@ jobs:
         run: npm install -g mystmd
 
       - name: Build HTML assets
-        run: myst build book/myst.yml --html # It's good practice to specify the config file
+        run: |
+          cd book
+          myst build --html
 
       - name: Display myst build log for debugging
         run: cat book/_build/logs/myst.build.json
