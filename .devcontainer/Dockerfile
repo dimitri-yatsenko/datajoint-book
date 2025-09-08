@@ -21,18 +21,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 #  Download and install Miniconda
-#  RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-#    /bin/bash /tmp/miniconda.sh -b -p /opt/conda && \
-#    rm /tmp/miniconda.sh && \
-#    conda clean --all -f -y && \
-#    conda install -n base libarchive -c main --force-reinstall --solver classic
-
-#  Download and install Miniconda
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
     /bin/bash /tmp/miniconda.sh -b -p /opt/conda && \
     rm /tmp/miniconda.sh && \
     conda config --set auto_update_conda false && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     conda clean --all -f -y && \
     conda install -n base libarchive -c main --force-reinstall --solver classic
 

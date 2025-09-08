@@ -1,6 +1,6 @@
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-# Datajoint Book
+# DataJoint Book
 
 Welcome to the [DataJoint Book](https://dimitri-yatsenko.github.io/datajoint-book), a comprehensive
 introduction to relational database programming in the context of scientific computing and data science.
