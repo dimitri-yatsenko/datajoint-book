@@ -38,6 +38,9 @@ jobs:
       - name: Build HTML assets
         run: myst build book/myst.yml --html # It's good practice to specify the config file
 
+      - name: List build output
+        run: ls -R book
+
       - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v3 
         with:
