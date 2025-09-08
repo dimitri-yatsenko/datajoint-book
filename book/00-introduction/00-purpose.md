@@ -13,6 +13,12 @@ This book is a comprehensive guide to *DataJoint for Python* — a specialized f
 
 This book aims to introduce database programming for data science and scientific computing, using DataJoint as the central tool. DataJoint can be viewed as a data model, a database programming language, and a software framework all in one. Throughout the book, you will learn a rigorous database design methodology, which also serves as a general introduction to relational database programming—albeit with a unique perspective. To support this learning, code examples are provided in both DataJoint and SQL (Structured Query Language), the most common language for interacting with relational databases.
 
+The principles in this book aren't just academic; they were forged in the crucible of one of the most ambitious data challenges in modern science. My journey began in computer science, but a mid-career PhD in neuroscience led me to confront the reality of large-scale scientific data.
+
+In projects like **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w]—a nine-year effort to map a piece of the brain—we faced a deluge of data from electron microscopy, neurophysiology, and animal behavior. The traditional approach of managing data with scripts, spreadsheets, and ad-hoc folder structures simply collapsed under this complexity. It was slow, error-prone, and made collaboration nearly impossible.
+
+This challenge led directly to the creation of **DataJoint**, a tool designed to bring the rigor of relational databases to the dynamic and evolving world of scientific research.
+
 # The Art of Programming
 
 Programming is often thought of as a way to communicate with computers, but it is, more importantly, the art of thinking clearly and communicating precisely with other humans (an now AI agents too) about our intent and approach. Different programming paradigms offer different tools for this communication. While generating valid and efficient instructions for machines is crucial, the primary goal is to write code that humans can easily read, understand, and extend. This is especially important in dynamic, collaborative projects that evolve over time.
@@ -47,9 +53,16 @@ One of the unique advantages of using DataJoint is that practitioners can become
 To make this book a comprehensive introduction to databases, we will also teach the equivalent SQL concepts and syntax alongside DataJoint. Throughout the chapters, you'll find executable examples and clear explanations of how SQL and DataJoint work together. As a result, not only will you learn how to use DataJoint effectively, but you'll also gain a solid foundation in SQL programming.
 
 # The Birth of SciOps
+Throughout this book, our goal is to learn how to implement **Scientific Operations (SciOps)**.
+This is the practice of building reliable, efficient, and scalable data workflows.
+Most research begins at "Level 1" maturity with ad-hoc processes.
+By applying the principles of database design, we can progress toward automated, shareable, and eventually AI-enabled pipelines that accelerate discovery.
+
 DataJoint plays a crucial role in the operation of scientific projects, fitting into a broader process that coordinates efforts in data acquisition, processing, analysis, visualization, sharing, and publishing. It acts as a foundational building block, helping to transform research labs into efficient data generation machines. DataJoint’s unique strength lies in its ability to dynamically manage the entire data pipeline, including the evolving data structure, code, software dependencies, and collaborative interactions.
 
 Recognizing the need for more structured and scalable approaches in scientific research, we recently partnered with other neuroinformatics leaders to define a roadmap for enhancing operations in neuroscience projects. This roadmap is designed to guide research teams from ad hoc processes toward automated and scalable collaborations, enabling them to tackle more significant and complex problems while collaborating more broadly. The ultimate goal is to achieve closed-loop studies that seamlessly integrate human ingenuity with AI efficiency [@10.48550/arXiv.2401.00077].
+
+This book provides the foundational database skills to build that ladder, moving your research from fragile scripts to a robust, queryable, and collaborative scientific enterprise.
 
 # Focus on Neuroscience
 
