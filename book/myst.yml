@@ -3,15 +3,19 @@ version: 1
 project:
   # id: 78d24bb1-c442-4ac3-9af6-0ba2578883ac
   title: The DataJoint Book
-  description: A thorough introduction to scientific database programming and data operations.
-  # keywords: [DataJoint, DataOps, relational databases, SQL, Python]
+  subtitle: Scientific Database Programming and Data Operations
+  description: Scientific database programming and data operations.
+  keywords: [DataJoint, DataOps, relational databases, SQL, Python]
   authors: Dimitri Yatsenko
   github: https://github.com/dimitri-yatsenko/datajoint-book
+
   # use implicit table of contents 
   # To autogenerate a Table of Contents, run "myst init --write-toc"
+
 site:
   template: book-theme
   path_prefix: /datajoint-book
+
 # options:
 #  favicon: favicon.ico
 #   logo: site_logo.png
