@@ -2,15 +2,12 @@
 
 # Datajoint Book
 
-Welcome to DataJoint book, a comprehensive introduction to relational database programming in the context of scientific computing and data science.
-
-This is a companion book to the [DataJoint Book](https://dimitri-yatsenko.datajoint.io/datajoint-book).
-It contains exercises and assignments for a semester-long course for Database Systems programming.
-The course covers the basic concepts for designing, populating, and querying relational databases.
+Welcome to the [DataJoint Book](https://dimitri-yatsenko.github.io/datajoint-book), a comprehensive
+introduction to relational database programming in the context of scientific computing and data science.
 
 # License
 
-© DataJoint Inc., 2024. All rights reserved.
+© DataJoint Inc., 2024--2025, All rights reserved.
 
 This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](LICENSE.md).
 You may share the content as long as you 
