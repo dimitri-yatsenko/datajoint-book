@@ -1,6 +1,5 @@
 ---
 title: The DataJoint Book
-date: 2024-08-20
 authors:
   - name: Dimitri Yatsenko
 ---
@@ -23,7 +22,8 @@ Welcome to **The DataJoint Book**. It book provides a complete introduction to d
 
 # License
 
-This work is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](LICENSE.md).
+This work is licensed under the [CC BY-NC-ND 4.0 International License](LICENSE.md).
+
 You may share the content as long as you
 * give appropriate credit
 * do not use it for commercial purposes
@@ -35,7 +35,7 @@ Official documentation for DataJoint can be found here:
 * General Documentation: https://datajoint.com/docs
 * DataJoint Specs:
   - Version 2.0:  https://github.com/datajoint/datajoint-specs/blob/main/SPECS_2_0.md
-* DataJoint-Python Official Documentation: https://datajoint.com/docs/core/datajoint-python/  
+* Python API: https://datajoint.com/docs/core/datajoint-python/  
 
 
 # Contributions
