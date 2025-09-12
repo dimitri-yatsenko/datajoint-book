@@ -8,11 +8,16 @@
     "vscode": {
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
+        "python.defaultInterpreterPath": "/opt/conda/bin/python",
+        "python.terminal.activateEnvironment": false  // since conda is auto-activated
       },
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
         "ms-azuretools.vscode-docker"
+        "ExecutableBookProject.myst-highlight", // MyST syntax highlighting
+        "ms-python.black-formatter", // Python formatting
+        "ms-vscode.vscode-json" // JSON support
       ]    
     }
   },

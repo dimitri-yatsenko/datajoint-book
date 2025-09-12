@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Using a more current LTS version
-          cache: 'npm'      # ⚡️ Cache npm packages for faster subsequent runs
+          cache: 'npm'      # Cache npm packages for faster subsequent runs
 
       - name: Install MyST Markdown
         run: npm install -g mystmd
@@ -48,6 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3 
         with:
           path: './book/_build/html'
+          retention-days: 1  # save storage 
 
   deploy:
     # Requires the build job to succeed

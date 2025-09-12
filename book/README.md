@@ -5,7 +5,7 @@ authors:
   - name: Dimitri Yatsenko
 ---
 
-© Dimitri Yatsenko, 2024. All rights reserved.
+© Dimitri Yatsenko, 2024-2025. All rights reserved.
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
@@ -32,13 +32,10 @@ You may share the content as long as you
 # Official Documentation
 Official documentation for DataJoint can be found here:
 
-* Overall documentation: https://datajoint.com/docs
-
+* General Documentation: https://datajoint.com/docs
+* DataJoint Specs:
+  - Version 2.0:  https://github.com/datajoint/datajoint-specs/blob/main/SPECS_2_0.md
 * DataJoint-Python Official Documentation: https://datajoint.com/docs/core/datajoint-python/  
-  - hosted at https://github.com/datajoint/datajoint-python/
-
-* Legacy documentation: https://datajoint.github.io/datajoint-docs-original/python/ 
-  - hosted at https://github.com/datajoint/datajoint-docs-original
 
 
 # Contributions
