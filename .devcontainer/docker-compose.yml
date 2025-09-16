@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DJ_HOST: db
+      DJ_USER: dev
+      DJ_PASS: devpass
+      DJ_PORT: 3306
+    working_dir: /workspace
+    networks:
+      - devcontainer
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: devpass
+    volumes:
+      - ./init-dev-privileges.sql:/docker-entrypoint-initdb.d/init-dev-privileges.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 5s
+      start_period: 30s
+    networks:
+      - devcontainer
+
+networks:
+  devcontainer:
+    driver: bridge

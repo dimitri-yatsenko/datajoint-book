@@ -1,26 +1,27 @@
 {
   "name": "DataJoint Book Devcontainer",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8888],
+  "postStartCommand": "until nc -z $MYSQL_HOST $MYSQL_PORT; do echo 'Waiting for MySQL...'; sleep 2; done && jupyter notebook --ip 0.0.0.0 --no-browser --allow-root --port 8888 &",
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": "/bin/bash",
         "python.defaultInterpreterPath": "/opt/conda/bin/python",
-        "python.terminal.activateEnvironment": false  // since conda is auto-activated
+        "python.terminal.activateEnvironment": false 
       },
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "ms-azuretools.vscode-docker"
-        "ExecutableBookProject.myst-highlight", // MyST syntax highlighting
-        "ms-python.black-formatter", // Python formatting
-        "ms-vscode.vscode-json" // JSON support
+        "ms-azuretools.vscode-docker",
+        "ExecutableBookProject.myst-highlight",
+        "ms-python.black-formatter",
+        "ms-vscode.vscode-json"
       ]    
     }
   },
-  "postCreateCommand": "service mysql start"
+  "remoteUser": "root"
 }
 
