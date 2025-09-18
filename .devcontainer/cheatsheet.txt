@@ -1,0 +1,13 @@
+docker compose up --build -d
+docker compose ps -a
+docker compose exec app bash
+docker compose down 
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+# in home folder 
+devcontainer build --workspace-folder .
+devcontainer up --workspace-folder .
+devcontainer exec --workspace-folder . bash
+
