@@ -229,13 +229,27 @@ The composite primary key `(state, district)` ensures that:
 
 For tracking marathon champions, you need both the **year** and the **division** (men's or women's) to uniquely identify each champion.
 
+(DataJoint)
+```python
+@schema
+class MarathonChampion(dj.Manual):
+    definition = """
+    year : int
+    division : enum('men', 'women')
+    ---
+    name : varchar(60)
+    country : char(2)
+    time_in_seconds : decimal(8,3)
+    """
+```
+(Equivalent SQL)
 ```sql
 CREATE TABLE marathon_champions (
     year YEAR NOT NULL,
     division ENUM('men', 'women') NOT NULL,
     name VARCHAR(60) NOT NULL,
     country CHAR(2) NOT NULL,
-    time TIME NOT NULL,
+    time_in_seconds : decimal(8,3) NOT NULL,
     PRIMARY KEY (year, division)
 );
 ```
