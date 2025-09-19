@@ -79,72 +79,6 @@ In addition to the primary key, a table may have **secondary unique indexes** to
 
 For example, in a `Person` table, unique indexes might be enforced on attributes like **email addresses**, **usernames**, **driver’s licenses**, **cellphone numbers**, or **Social Security numbers**. These indexes ensure that no duplicate entries exist for attributes that are intended to be unique, further supporting entity integrity.
 
-# Normalization Principle
-
-A fundamental principle in database design is **normalization**—the practice of organizing data to minimize redundancy and dependency. One key aspect of normalization is that **each table should represent one distinct entity class**.
-
-## Why Separate Entity Types?
-
-Different entity types have different:
-- **Identification systems**: How they are uniquely identified
-- **Attributes**: What properties they have
-- **Relationships**: How they connect to other entities
-- **Business rules**: What constraints apply to them
-
-## Example: Pet Shop Database
-
-Consider designing a database for a pet shop. You might be tempted to put everything in one table:
-
-```sql
--- BAD DESIGN: Mixing different entity types
-CREATE TABLE pet_shop_data (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    type VARCHAR(20),  -- 'cat', 'dog', 'employee', 'customer'
-    breed VARCHAR(30),
-    salary DECIMAL(10,2),
-    phone VARCHAR(20),
-    address TEXT
-);
-```
-
-This design violates the normalization principle because it mixes:
-- **Pets** (cats, dogs) with attributes like breed
-- **Employees** with attributes like salary
-- **Customers** with attributes like phone and address
-
-## Better Design: Separate Tables
-
-```sql
--- GOOD DESIGN: Separate entity types
-CREATE TABLE pet (
-    pet_id INT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    species ENUM('cat', 'dog', 'bird', 'fish') NOT NULL,
-    breed VARCHAR(30),
-    birth_date DATE,
-    owner_id INT
-);
-
-CREATE TABLE employee (
-    employee_id INT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    position VARCHAR(30) NOT NULL,
-    salary DECIMAL(10,2) NOT NULL,
-    hire_date DATE NOT NULL
-);
-
-CREATE TABLE customer (
-    customer_id INT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    phone VARCHAR(20),
-    email VARCHAR(100),
-    address TEXT
-);
-```
-
-Each table now represents a distinct entity class with appropriate attributes and identification systems.
-
 ## Looser Entity Integrity
 
 Depending on the business needs, **entity integrity** requirements can vary. Some businesses may allow multiple digital identities per person, while others may tolerate multiple people sharing a single digital identity. Other businesses may require a strict one-to-one match between real-world entities and their digital representations.
@@ -208,6 +142,21 @@ Sometimes, a single column cannot uniquely identify a record. In these cases, we
 
 Consider tracking U.S. representatives. A single district number (like "District 1") is not sufficient because there are multiple District 1s across different states. To uniquely identify a representative, you need both the **state** and the **district number**.
 
+(DataJoint)
+```python
+@schema
+class USRepresentative(dj.Manual):
+    definition = """
+    state : char(2)
+    district : tinyint unsigned
+    ---
+    name : varchar(60)
+    party : char(1)
+    phone : varchar(20)
+    office_room : varchar(20)
+    """
+```
+(Equivalent SQL)
 ```sql
 CREATE TABLE us_representative (
     state CHAR(2) NOT NULL,
@@ -229,7 +178,8 @@ The composite primary key `(state, district)` ensures that:
 
 For tracking marathon champions, you need both the **year** and the **division** (men's or women's) to uniquely identify each champion.
 
-(DataJoint)
+::::{tab-set}
+::: {tab-item} DataJoint
 ```python
 @schema
 class MarathonChampion(dj.Manual):
@@ -242,7 +192,8 @@ class MarathonChampion(dj.Manual):
     time_in_seconds : decimal(8,3)
     """
 ```
-(Equivalent SQL)
+:::
+::: {tab-item} SQL
 ```sql
 CREATE TABLE marathon_champions (
     year YEAR NOT NULL,
@@ -253,7 +204,8 @@ CREATE TABLE marathon_champions (
     PRIMARY KEY (year, division)
 );
 ```
-
+:::
+::::
 This design ensures that each year has exactly one men's champion and one women's champion, preventing duplicate entries for the same year-division combination.
 
 ## When to Use Composite Primary Keys
