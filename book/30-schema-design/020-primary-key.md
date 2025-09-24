@@ -200,7 +200,7 @@ CREATE TABLE marathon_champions (
     division ENUM('men', 'women') NOT NULL,
     name VARCHAR(60) NOT NULL,
     country CHAR(2) NOT NULL,
-    time_in_seconds : decimal(8,3) NOT NULL,
+    time_in_seconds DECIMAL(8,3) NOT NULL,
     PRIMARY KEY (year, division)
 );
 ```

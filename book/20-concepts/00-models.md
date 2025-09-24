@@ -21,7 +21,7 @@ Innovations in data models have spurred progress by creating new mental tools fo
 Scientists and engineers who become well-versed in effective data models can collaborate more efficiently because they share a common conceptual framework.
 
 :::{hint} What data models do you already know?
-Before moving forward, take a moment to consider the different data models you're already familiar with. 
+Before moving forward, take a moment to consider the different data models you're already familiar with. Perhaps you've worked with a spreadsheet, a database, or a programming language but didn't know that they were distinct data models.
 Describe a common data model by naming the building blocks that the model uses to represent and manipulate data.
 What are the key operations for creating, modifying, and querying data within this data model?
 What constraints does the model impose to reduce errors?
