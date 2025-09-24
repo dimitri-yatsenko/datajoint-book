@@ -29,6 +29,72 @@ A reliable system for identifying objects in the real world must be established 
 
 This requires setting up a disciplined process outside the database.
 
+## The Three Questions of Entity Integrity
+
+When designing a database system, you must be able to answer three fundamental questions about entity integrity:
+
+1. **How do I prevent duplicate records?** - Ensure that the same real-world entity cannot be represented by multiple database records.
+
+2. **How do I prevent entities sharing the same record?** - Ensure that different real-world entities cannot be represented by the same database record.
+
+3. **How do I match entities?** - When a real-world entity comes to you, how do you find its corresponding record in the database?
+
+### Example: Laboratory Mice Database
+
+Consider a neuroscience laboratory that needs to track mice used in experiments:
+
+**Question 1: How do I prevent duplicate records?**
+- Each mouse gets a unique ear tag number when it arrives at the lab
+- The database enforces that no two mice can have the same ear tag number
+- Before inserting a new mouse record, the system checks if that ear tag already exists
+
+**Question 2: How do I prevent entities sharing the same record?**
+- Each ear tag number can only be assigned to one mouse
+- If a mouse dies and the ear tag is reused, the old record must be properly archived or marked as inactive
+
+**Question 3: How do I match entities?**
+- When a researcher brings a mouse to the lab, they can look up the mouse by its ear tag number
+- The database can quickly find the mouse's record using the ear tag as the primary key
+- All related experiment records can be linked to this mouse through the ear tag
+
+## Entity Integrity in Practice
+
+The three questions of entity integrity must be answered not just in theory, but in practice through your database design and business processes.
+
+### Example: University Student Database
+
+**Question 1: How do I prevent duplicate records?**
+- Each student gets a unique student ID number when they enroll
+- The database enforces that no two students can have the same student ID
+- Before inserting a new student record, the system checks if that student ID already exists
+
+**Question 2: How do I prevent entities sharing the same record?**
+- Each student ID can only be assigned to one person
+- If a student graduates and the ID is reused years later, the old record must be properly archived
+
+**Question 3: How do I match entities?**
+- When a student comes to the registrar's office, they can look up their record by student ID
+- The database can quickly find the student's record using the student ID as the primary key
+- All related records (grades, courses, payments) can be linked to this student through the student ID
+
+### Example: Laboratory Animal Database
+
+**Question 1: How do I prevent duplicate records?**
+- Each animal gets a unique ear tag or microchip ID when it arrives at the lab
+- The database enforces that no two animals can have the same ID
+- Before inserting a new animal record, the system checks if that ID already exists
+
+**Question 2: How do I prevent entities sharing the same record?**
+- Each ID can only be assigned to one animal
+- If an animal dies and the ID is reused, the old record must be properly archived or marked as inactive
+
+**Question 3: How do I match entities?**
+- When a researcher brings an animal to the lab, they can look up the animal by its ID
+- The database can quickly find the animal's record using the ID as the primary key
+- All related experiment records can be linked to this animal through the ID
+
+If you can answer these three questions clearly for your domain, then you have designed for entity integrity.
+
 For example, establishing the Social Security system in the United States required a reliable identification of workers by all employers to report their income across their entire careers.
 For this purpose, in 1936, the Federal Government established a new process to ensure that each US worker would be assigned a unique number, the Social Security Number (SSN).
 The SSN would be assigned at birth or at entering the country for employment and no person would be allowed to have two such numbers. 
