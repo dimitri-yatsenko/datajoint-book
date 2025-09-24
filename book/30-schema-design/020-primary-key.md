@@ -65,17 +65,19 @@ The three questions of entity integrity must be answered not just in theory, but
 
 **Question 1: How do I prevent duplicate records?**
 - Each student gets a unique student ID number when they enroll
-- The database enforces that no two students can have the same student ID
+- To ensure that the student has not previously registered, additional verification is performed to search the existing records. The student may be asked to provide other names that they have used in the past.
+- Additional uniqueness constraints may be imposed on other attributes such as drivers license number, passport number, email, social security number, cellphone, etc.
 - Before inserting a new student record, the system checks if that student ID already exists
 
 **Question 2: How do I prevent entities sharing the same record?**
-- Each student ID can only be assigned to one person
-- If a student graduates and the ID is reused years later, the old record must be properly archived
+- Each student ID can only be assigned to one person.
+- At registration, the university will issue a photo ID card to the student that allows verifying that another student is not pretending to be the student in the records.
+- If a student graduates and the ID is reused years later, the old record must be properly archived, although in most systems, such IDs are retired and not reused.
 
 **Question 3: How do I match entities?**
-- When a student comes to the registrar's office, they can look up their record by student ID
-- The database can quickly find the student's record using the student ID as the primary key
-- All related records (grades, courses, payments) can be linked to this student through the student ID
+- When a student comes to the registrar's office, they can look up their record by student ID.
+- The database can quickly find the student's record using the student ID as the primary key.
+- All related records (grades, courses, payments) can be linked to this student through the student ID.
 
 ### Example: Laboratory Animal Database
 
