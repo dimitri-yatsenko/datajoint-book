@@ -3,12 +3,11 @@ title: Purpose
 ---
 
 ## This Book
-This book is a comprehensive guide to *DataJoint for Python*, a framework for building reliable and scalable scientific data workflows.
+This book is an introductory guide to *DataJoint for Python*, a framework for building reliable and scalable scientific data workflows.
 It is designed for collaborative, data-intensive research, where the complexity of data and computations requires a principled approach.
 
 DataJoint was developed to overcome the limitations of managing research with scripts, spreadsheets, and complex folder structures—an approach that is often slow, error-prone, and difficult to scale.
 The value of a more rigorous framework was demonstrated in ambitious projects like **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w]. A nine-year effort to map a piece of the brain, MICrONS generated a deluge of data from electron microscopy, neurophysiology, and animal behavior. A project of this scale and complexity would have been intractable with traditional methods. DataJoint, already a mature framework by the start of the project, proved essential for managing the data pipeline and enabling a large team to collaborate effectively.
-
 
 Most research begins with ad-hoc processes, managing data with scripts, spreadsheets, and complex folder structures. This approach often proves slow, error-prone, and difficult to scale, especially in collaborative projects. This challenge became starkly apparent during my work on **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w], a nine-year effort to map a piece of the brain that generated a deluge of data from electron microscopy, neurophysiology, and animal behavior.
 
