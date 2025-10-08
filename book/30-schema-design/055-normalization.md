@@ -179,9 +179,7 @@ DataJoint takes a different, more intuitive approach to normalization that emerg
 
 > **Every relation (table) must represent a well-defined entity type, and all attributes in that table must describe that entity type directly and only that entity type.**
 
-This principle applies to both:
-1. **Schema design** (the structure of your database tables)
-2. **Query results** (the relations returned by queries)
+This principle guides schema design, ensuring that each table represents a coherent entity type.
 
 ### What This Means in Practice
 
@@ -1225,78 +1223,6 @@ class StudentMajor(dj.Manual):
 
 The `declaration_date` is not a property of the student or the major—it's a property of the relationship between them.
 
-## Normalization in Query Results
-
-A unique aspect of DataJoint's normalization principle is that it applies to **query results**, not just schema design.
-
-### Normalized Query Results
-
-When you execute a query in DataJoint, the result should also represent a well-defined entity type:
-
-**Example: Well-normalized query**
-
-```python
-# Query result represents "students with their enrollment count"
-Student.aggr(Enrollment, enrollment_count='COUNT(*)')
-```
-
-Result:
-```
-┌────────────┬──────┬──────────────────┐
-│ student_id │ name │ enrollment_count │
-├────────────┼──────┼──────────────────┤
-│ 1          │ Alice│ 3                │
-│ 2          │ Bob  │ 5                │
-└────────────┴──────┴──────────────────┘
-```
-
-**Entity type**: "Students with enrollment statistics"
-**All attributes**: Describe the student (including computed statistics about that student)
-
-### Why This Matters
-
-Traditional SQL allows queries that mix unrelated entity types:
-
-**Potentially confusing SQL query**:
-```sql
-SELECT 
-    s.student_id,
-    s.name,
-    c.course_id,
-    c.title,
-    d.dept_name,
-    p.professor_name
-FROM student s
-JOIN enrollment e ON s.student_id = e.student_id
-JOIN course c ON e.course_id = c.course_id
-JOIN department d ON c.dept_id = d.dept_id
-JOIN professor p ON c.professor_id = p.professor_id
-```
-
-**Question**: What entity type does this result represent?
-- Students? No, multiple rows per student
-- Courses? No, multiple rows per course
-- Enrollments? Closer, but also includes department and professor info
-
-**Answer**: This is a denormalized join mixing multiple entity types. It's valid SQL but doesn't represent a clear entity type.
-
-### DataJoint Encourages Entity-Focused Queries
-
-DataJoint's query language encourages you to think about what entity type you're querying:
-
-```python
-# Clear: Querying students
-Student & 'name LIKE "A%"'
-
-# Clear: Querying enrollments with student and course info
-Enrollment * Student * Course
-
-# Clear: Students with their enrollment count (still student entities)
-Student.aggr(Enrollment, enrollment_count='COUNT(*)')
-```
-
-Each query result has a clear primary key (the entity being queried) and all attributes describe that entity.
-
 ## Practical Normalization Guidelines
 
 When designing DataJoint schemas, follow these practical rules:
@@ -1720,7 +1646,7 @@ class Friendship(dj.Manual):
 - **Method**: Design tables to represent one entity type each
 - **Era**: Post-ER model (leverages conceptual clarity)
 - **Focus**: Semantic meaning of entities and relationships
-- **Unique extension**: Applies to both schema design AND query results
+- **Key principles**: Immutability of tuples, schemas as workflows, permanent vs. changeable attributes
 
 ### The Unified Principle
 
@@ -1731,7 +1657,7 @@ When this principle is followed:
 - Insertion anomalies are eliminated (entities can exist independently)
 - Deletion anomalies are eliminated (deleting one entity doesn't affect others)
 - Schema structure is clear (one entity type per table)
-- Queries are meaningful (results represent coherent entity types)
+- Data integrity is maintained through immutable tuples and explicit dependencies
 
 ### Practical Application
 
