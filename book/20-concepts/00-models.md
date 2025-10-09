@@ -17,8 +17,9 @@ A data model is defined by considering the following key aspects:
 * What mechanisms exist to enforce the structure and rules governing valid data interactions?
 ```
 
-Innovations in data models have spurred progress by creating new mental tools for us to think about data and to communicate with machines and with each other.
-Scientists and engineers who become well-versed in effective data models can collaborate more efficiently because they share a common conceptual framework.
+Innovations in data models have spurred progress by creating new mental tools for us to think about data and to communicate with machines and with each other. Scientists and engineers who become well-versed in effective data models can collaborate more efficiently because they share a common conceptual framework.
+
+**This book focuses on DataJoint**, a data model that reinterprets relational database theory through the lens of **computational workflows**. While rooted in classical relational concepts, DataJoint introduces new constructs and semantics specifically designed for scientific computing, where tracking provenance and maintaining computational validity are as important as storing and querying data.
 
 :::{hint} What data models do you already know?
 Before moving forward, take a moment to consider the different data models you're already familiar with. Perhaps you've worked with a spreadsheet, a database, or a programming language but didn't know that they were distinct data models.
@@ -134,7 +135,10 @@ DataFrames support a wide range of operations, making them a powerful tool for d
 DataFrames have become an essential tool in modern data analysis, providing a structured yet flexible way to handle and manipulate data. Their ability to work with heterogeneous data types, combined with a rich set of operations, makes them ideal for tasks ranging from simple data exploration to complex data transformations and machine learning preparation. Whether in Python, R, or Julia, DataFrames have become a cornerstone of data science workflows.
 
 ## Example: Relational Data Model 
-The rest of this  book is about the relational data model and we introduce it properly in following sections.
+
+The **relational data model**, introduced by Edgar F. Codd in 1970, revolutionized data management by organizing data into tables (relations) with well-defined relationships. This model emphasizes data integrity, consistency, and powerful query capabilities through a formal mathematical foundation.
+
+The rest of this book focuses on the relational model, but specifically through **DataJoint**—a modern interpretation that extends classical relational theory to explicitly support computational workflows. We introduce these concepts properly in following sections.
 
 ## Example: Document Data Model (JSON and BSON)
 
@@ -386,11 +390,42 @@ Structured models, which come with predefined schemas, allow the organization of
 As studies progress and new insights are gained, schemas can be adjusted to reflect the emerging structure and logic of the study.
 This approach not only ensures consistency and integrity but also simplifies data sharing and publication.
 
-## DataJoint supports structured databases in research
+However, traditional structured databases, designed primarily for business transactions, don't naturally capture the **computational workflows** central to scientific research. Science isn't just about storing data—it's about transforming raw observations into analyzed results through defined processing steps. This is where DataJoint's reinterpretation of relational databases becomes essential.
 
-DataJoint is dedicate to the idea that data discipline must start early in science projects, even in fast-evolving phases of research, for explicitly structuring data to continuously maintain data integrity and consistency.
-Structureed data is essential for effective collaboration while still allowing the data to adapt quickly as the project progresses.
-By adopting structured data models that are flexible enough to evolve, scientists can enjoy the best of both worlds—retaining the freedom to explore and experiment while ensuring that their data remains organized, consistent, and ready for dissemination.
+## Example: DataJoint—Relational Databases as Computational Workflows
+
+**DataJoint** represents a distinctive reinterpretation of the relational data model, specifically designed for scientific computing. While built on Codd's relational theory, DataJoint introduces a fundamentally different perspective: **databases as computational workflows that mix manual and automated steps**.
+
+### Key Innovation: Workflows, Not Just Storage
+
+Traditional relational databases focus on **storing and retrieving data**. DataJoint extends this to explicitly model **computational pipelines** with provenance tracking and computational validity. What makes DataJoint unique is treating the **schema itself as the workflow specification**.
+
+```
+Session (manual) 
+    ↓
+Recording (imported from instruments)
+    ↓
+FilteredRecording (computed automatically)
+    ↓
+SpikeSorting (computed automatically)
+    ↓
+NeuronStatistics (computed automatically)
+```
+
+This isn't just documentation—it's the actual dependency structure enforced by the database. When upstream data changes, downstream results **must** be recomputed or deleted. There's no way to silently invalidate the pipeline.
+This transforms ad-hoc research workflows into **rigorous, reproducible scientific operations**, bridging the gap between exploratory science and production-grade data management.
+
+### DataJoint as a New Data Model
+
+While rooted in relational theory, DataJoint constitutes a **distinct data model** because it:
+
+1. **Redefines the purpose**: From data storage → workflow specification
+2. **Introduces new constructs**: Table types with computational roles (Manual, Imported, Computed, Lookup)
+3. **Changes operational semantics**: Immutability as the default, UPDATE as exception
+4. **Adds new operations**: `populate()` for automatic computation
+5. **Enforces new constraints**: Computational validity, not just relational consistency
+
+DataJoint demonstrates that data discipline can start early in research projects, even during fast-evolving exploratory phases. By providing structured, workflow-aware data management that can evolve alongside the science, DataJoint offers researchers the best of both worlds: the freedom to explore and the rigor to ensure their findings remain valid and reproducible.
 
 # Exercises
 
