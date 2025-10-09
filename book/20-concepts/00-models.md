@@ -1,11 +1,6 @@
----
-title: Data Models
-date: 2024-08-22
-authors:
-  - name: Dimitri Yatsenko
----
+# Data Models
 
-# Definition
+## Definition
 ```{card} Data Model
 A *data model* is a conceptual framework that defines how data is organized, represented, and transformed. It gives us the components for creating blueprints for the structure and operations of data management systems, ensuring consistency and efficiency in data handling.
 
@@ -28,9 +23,9 @@ What are the key operations for creating, modifying, and querying data within th
 What constraints does the model impose to reduce errors?
 :::
 
-# Examples of Data Models
+## Examples of Data Models
 
-## Example: Binary File
+### Example: Binary File
 
 The data model of a binary file is the simplest and least constrained, consisting of a continuous sequence of bits (1s and 0s). These bits are typically grouped into bytes (8 bits each) for basic structure, but beyond this, binary files have no inherent organization or meaning. The interpretation of the data within a binary file is entirely dependent on the application that reads it.
 
@@ -40,7 +35,7 @@ The operations supported by a binary file are minimal:
 
 Binary files serve as a flexible, low-level data storage format, allowing applications to store any type of data without predefined structure, making them ideal for storing raw data, executable programs, or proprietary file formats.
 
-## Example: Hierarchical File System
+### Example: Hierarchical File System
 
 A hierarchical file system organizes data in a tree-like structure, where each file is stored within a directory (also known as a folder), and directories can contain other directories, forming a hierarchy. This model provides a logical and organized way to manage files on storage devices.
 
@@ -56,7 +51,7 @@ Hierarchical file systems support a range of operations, including:
 
 The hierarchical file system is one of the most familiar data models to scientists, who often think of data primarily in such terms. This model provides an organized way to store and retrieve data, making it easier to manage large collections of files across multiple directories.
 
-## Examples: Variables in programming languages
+### Example: Variables in programming languages
 
 The Variable-Based Data Model is fundamental to how most programming languages like JavaScript, C++, R, Julia, and Python handle data. In this model, variables act as containers or references that store data values, allowing programmers to manipulate and interact with data easily:
 
@@ -73,7 +68,7 @@ The Variable-Based Data Model is fundamental to how most programming languages l
 
 Programming languages differ vastly in how they constrain operations on variables. For example, a language can be strongly typed, restricting what values can be assigned to a variable.
 
-## Example: Spreadsheet
+### Example: Spreadsheet
 
 Electronic spreadsheets are among the most widely used tools for data management and analysis across business, science, and everyday household tasks.
 
@@ -91,11 +86,11 @@ Users interact with spreadsheets by manually entering data or formulas into spec
 
 In addition to basic data entry, spreadsheets offer a wide range of features, including formatting options and the ability to create charts, making them versatile tools for data analysis and presentation.
 
-## Example: Dataframes
+### Example: Dataframes
 
 DataFrames are a fundamental data structure used in data analysis and manipulation, particularly in the fields of data science, statistics, and machine learning. They provide a powerful and flexible way to work with structured data, similar to tables in relational databases or spreadsheets, but with additional capabilities that make them ideal for complex data operations.
 
-A DataFrame is essentially a two-dimensional, labeled data structure with columns of potentially different types. It can be thought of as a table where each column can contain different types of data (e.g., integers, floats, strings). DataFrames are most commonly associated with libraries like `Pandas` in Python and `DataFrames.jl` in Julia.
+A DataFrame is essentially a two-dimensional, labeled data structure with columns of potentially different types. It can be thought of as a table where each column can contain different types of data (e.g., integers, floats, strings). DataFrames are most commonly associated with libraries like `Pandas` and `Polars` in Python and `DataFrames.jl` in Julia.
 
 The concept of DataFrames originated from the statistical programming language R, where DataFrames have been a core data structure for many years.
 The idea was later adopted and popularized in the Python ecosystem with the Pandas library, introduced by Wes McKinney in 2008.
@@ -134,17 +129,17 @@ DataFrames support a wide range of operations, making them a powerful tool for d
 
 DataFrames have become an essential tool in modern data analysis, providing a structured yet flexible way to handle and manipulate data. Their ability to work with heterogeneous data types, combined with a rich set of operations, makes them ideal for tasks ranging from simple data exploration to complex data transformations and machine learning preparation. Whether in Python, R, or Julia, DataFrames have become a cornerstone of data science workflows.
 
-## Example: Relational Data Model 
+###  Example: Relational Data Model 
 
 The **relational data model**, introduced by Edgar F. Codd in 1970, revolutionized data management by organizing data into tables (relations) with well-defined relationships. This model emphasizes data integrity, consistency, and powerful query capabilities through a formal mathematical foundation.
 
 The rest of this book focuses on the relational model, but specifically through **DataJoint**—a modern interpretation that extends classical relational theory to explicitly support computational workflows. We introduce these concepts properly in following sections.
 
-## Example: Document Data Model (JSON and BSON)
+### Example: Document Data Model (JSON and BSON)
 
 The Document Data Model, commonly exemplified by JSON (JavaScript Object Notation), organizes data as key-value pairs within structured documents. This flexible, text-based format is widely used for data interchange between systems, particularly in web applications and APIs.
 
-### History
+#### History
 - **1999**: JSON was developed by Douglas Crockford as a lightweight data interchange format. The goal was to create a simple, human-readable format that could easily be parsed and generated by machines.
 
 - **2001**: JSON began to gain popularity as it was adopted for use in web applications, particularly with the rise of AJAX (Asynchronous JavaScript and XML), which allowed for dynamic content updates in web pages without requiring a full page reload.
@@ -155,7 +150,7 @@ The Document Data Model, commonly exemplified by JSON (JavaScript Object Notatio
 
 - **Present**: JSON is now the de facto standard for data exchange in web APIs, configuration files, and NoSQL databases, due to its simplicity, flexibility, and wide support across programming languages.
 
-### Structure
+#### Structure
 
 - **Key-Value Pairs**: The fundamental building block of JSON is the key-value pair. Each key is a string, and it maps to a value, which can be a primitive type (such as a number or string) or a more complex type (such as an object or array).
 
@@ -169,7 +164,7 @@ The Document Data Model, commonly exemplified by JSON (JavaScript Object Notatio
   - **Booleans**: `true` or `false`.
   - **Null**: Represents an empty or non-existent value.
 
-### Supported Operations
+#### Supported Operations
 
 The Document Data Model supports a variety of operations, including:
 
@@ -181,7 +176,7 @@ The Document Data Model supports a variety of operations, including:
 
 - **Parsing and Querying**: JSON data can be parsed into native data structures in most programming languages, and tools like JSONPath can be used to query specific parts of a JSON document.
 
-### Common Uses
+#### Common Uses
 
 The JSON data model is widely used in various scenarios, particularly in web development and data interchange:
 
@@ -191,15 +186,15 @@ The JSON data model is widely used in various scenarios, particularly in web dev
 
 The Document Data Model, with JSON as its most common implementation, offers flexibility and simplicity for handling structured data, making it an ideal choice for many modern applications.
 
-## Example: Key-Value Data Model
+### Example: Key-Value Data Model
 
 The Key-Value Data Model is a simple and efficient way of storing, retrieving, and managing data, where each piece of data is stored as a pair consisting of a unique key and its associated value. This model is particularly popular in scenarios where fast data access and scalability are critical.
 
-### Historical Background
+#### Historical Background
 
 The Key-Value Data Model has its roots in early database systems but gained significant prominence with the rise of NoSQL databases in the late 2000s. As web applications grew in complexity and scale, traditional relational databases struggled to keep up with the demand for fast, distributed, and scalable data storage. This led to the development and adoption of key-value stores, which offered a more flexible and efficient approach to handling large-scale, distributed data.
 
-### Structure
+#### Structure
 
 - **Keys**: Unique identifiers that are used to retrieve the associated values. Keys are typically simple data types like strings or integers.
 
@@ -207,7 +202,7 @@ The Key-Value Data Model has its roots in early database systems but gained sign
 
 The simplicity of this model allows for extremely fast lookups, as the database can quickly find the value associated with a given key without the need for complex queries or joins.
 
-### Supported Operations
+#### Supported Operations
 
 The Key-Value Data Model supports a limited but powerful set of operations:
 
@@ -221,7 +216,7 @@ The Key-Value Data Model supports a limited but powerful set of operations:
 
 These operations are typically executed in constant time, making key-value stores highly efficient for many applications.
 
-### Prominent Implementations
+#### Prominent Implementations
 
 The Key-Value Data Model has been implemented in several prominent systems, particularly in the realm of NoSQL databases:
 
@@ -233,7 +228,7 @@ The Key-Value Data Model has been implemented in several prominent systems, part
 
 - **Couchbase**: A NoSQL database that combines the simplicity of a key-value store with the power of a document store, supporting both key-value operations and complex queries.
 
-### Common Uses
+#### Common Uses
 
 The Key-Value Data Model is particularly well-suited for:
 
@@ -247,11 +242,11 @@ The Key-Value Data Model is particularly well-suited for:
 
 The Key-Value Data Model’s simplicity, speed, and scalability make it a fundamental tool in modern computing, particularly for applications that require quick access to data and need to scale horizontally across distributed systems.
 
-## Example: Graph Data Model
+### Example: Graph Data Model
 
 The Graph Data Model is designed to represent and manage complex relationships between data entities. Unlike traditional data models that focus on storing data in tables or documents, the graph data model emphasizes the connections (or edges) between data points (or nodes). This model is particularly well-suited for scenarios where understanding and traversing relationships is crucial.
 
-### Historical Background
+#### Historical Background
 
 The roots of the Graph Data Model can be traced back to the field of mathematics, specifically graph theory, which was first formalized in the 18th century by the Swiss mathematician Leonhard Euler. Euler's solution to the famous **Königsberg Bridge Problem** in 1736 is often regarded as the founding moment of graph theory. The problem involved finding a path that would cross each of the seven bridges in Königsberg exactly once, leading Euler to develop a new type of mathematical structure: the graph.
 
@@ -261,7 +256,7 @@ The rise of the internet and social networks in the late 1990s and early 2000s f
 
 Today, the Graph Data Model is integral to many modern applications, from social networks and recommendation systems to knowledge graphs and biological network analysis.
 
-### Structure
+#### Structure
 
 - **Nodes (Vertices)**: The fundamental units in a graph, nodes represent entities or objects in the data model. Each node can store various attributes or properties, such as a name, age, or category, depending on the application.
 
@@ -271,7 +266,7 @@ Today, the Graph Data Model is integral to many modern applications, from social
 
 - **Graph**: A graph is a collection of nodes and edges. Graphs can be simple, representing basic relationships, or highly complex, with numerous interconnected nodes and edges, forming intricate networks.
 
-### Supported Operations
+#### Supported Operations
 
 The Graph Data Model supports a wide range of operations, particularly focused on traversing and analyzing relationships:
 
@@ -285,7 +280,7 @@ The Graph Data Model supports a wide range of operations, particularly focused o
 
 - **Graph Algorithms**: Running algorithms specifically designed for graphs, such as finding the shortest path, detecting cycles, or identifying clusters and communities within the graph.
 
-### Common Uses
+#### Common Uses
 
 The Graph Data Model is highly versatile and is used in a variety of applications where relationships and connections are critical:
 
@@ -299,7 +294,7 @@ The Graph Data Model is highly versatile and is used in a variety of application
 
 - **Knowledge Graphs**: Structuring and querying large sets of knowledge, such as Wikipedia or Google Knowledge Graph, where entities and their relationships are modeled to provide more relevant search results and insights.
 
-### Prominent Implementations
+#### Prominent Implementations
 
 Several database systems and tools are designed to work specifically with the Graph Data Model:
 
@@ -314,7 +309,7 @@ Several database systems and tools are designed to work specifically with the Gr
 The Graph Data Model is powerful for applications where relationships are as important as the data itself, offering a way to model and analyze complex networks of interconnected entities.
 
 
-# Schema vs. Schemaless Data Models
+## Schema vs. Schemaless Data Models
 
 Two broad families of data models are distinguished by whether or not they support **schemas**: specifications of data structure apart from any instance of the data. 
 **Structured data models** provide a data definition language (DDL) for defining schemas. Schemas are then used for enforcing or validating structure in the data written into the database. Relational databases are the prime example of structured data with elaborate schemas capable of expressing complex relationships between entities.
@@ -330,7 +325,7 @@ Unstructured or self-describing data models do not rely on schemas; instead, the
 Many common file formats such as JSON, YAML, and HDF5 contain self-describing data: the names of entities, their attributes names and types, and their hierarchical relationships are encoded in each instance of the data.
 Both structured and schemaless data formats can be attractive in various scenarios. Schemaless approaches may be more suitable for exploratory analysis where each data instance may differ in structure. Structured approaches become necessary for large-scale automated operations for uniformity and efficiency.
 
-## Structured Data Models
+### Structured Data Models
 
 In structured data models, the structure of the data is defined separately from the data itself. This predefined structure is known as a **schema**. A schema acts as a blueprint for the data, specifying the types of data that can be stored, the relationships between different data elements, and any constraints or rules that must be followed. 
 
@@ -340,7 +335,7 @@ In structured data models, the structure of the data is defined separately from 
 
 - **Example**: The quintessential example of a structured data model is the **relational database model**, where data is organized into tables with clearly defined columns and relationships. Each table has a schema that dictates what kind of data it can hold, ensuring that every entry conforms to the expected format.
 
-## Self-Describing (Schemaless) Data Models
+### Self-Describing (Schemaless) Data Models
 
 In contrast, self-describing or schemaless data models do not require a predefined schema. Instead, the structure of the data is embedded within the data itself, allowing for greater flexibility and adaptability.
 
@@ -350,7 +345,7 @@ In contrast, self-describing or schemaless data models do not require a predefin
 
 - **Example**: A common example of a self-describing data model is **JSON (JavaScript Object Notation)**. In JSON, data is stored as key-value pairs, where the structure is defined within each data entry. This allows for varying structures within the same dataset, enabling a more dynamic and flexible approach to data management.
 
-## Choosing Between Structured and Schemaless Models
+### Choosing Between Structured and Schemaless Models
 
 The choice between using a structured or schemaless data model often depends on the specific needs of the application:
 
@@ -360,7 +355,7 @@ The choice between using a structured or schemaless data model often depends on 
 
 Both approaches have their strengths and are often used together in hybrid systems, where some data is managed with a strict schema and other data is stored more flexibly.
 
-# Data Models in Science
+## Data Models in Science
 Business enterprises have long relied on structured databases to maintain data integrity and consistency, as any breakdown in these areas can lead to serious financial and operational consequences.
 In these environments, relational databases and SQL are the dominant tools. 
 
@@ -377,7 +372,7 @@ Both of these standards enforce structure by using programming interfaces that v
 
 While these standards help bring order to unstructured data, they often introduce additional complexity and require significant effort to enforce.
 
-## Scientific Integrity Depends on Data Integrity 
+### Scientific Integrity Depends on Data Integrity 
 
 In recent years, concerns about scientific integrity have brought greater attention to proper data management serving as the foundation for reproducible science and valid findings.
 As science becomes more complex and interconnected, meticulous data handling—including reproducibility and data provenance—has become critical.
@@ -392,7 +387,7 @@ This approach not only ensures consistency and integrity but also simplifies dat
 
 However, traditional structured databases, designed primarily for business transactions, don't naturally capture the **computational workflows** central to scientific research. Science isn't just about storing data—it's about transforming raw observations into analyzed results through defined processing steps. This is where DataJoint's reinterpretation of relational databases becomes essential.
 
-## Example: DataJoint—Relational Databases as Computational Workflows
+## DataJoint: Relational Databases as Computational Workflows
 
 **DataJoint** represents a distinctive reinterpretation of the relational data model, specifically designed for scientific computing. While built on Codd's relational theory, DataJoint introduces a fundamentally different perspective: **databases as computational workflows that mix manual and automated steps**.
 
@@ -427,7 +422,7 @@ While rooted in relational theory, DataJoint constitutes a **distinct data model
 
 DataJoint demonstrates that data discipline can start early in research projects, even during fast-evolving exploratory phases. By providing structured, workflow-aware data management that can evolve alongside the science, DataJoint offers researchers the best of both worlds: the freedom to explore and the rigor to ensure their findings remain valid and reproducible.
 
-# Exercises
+## Exercises
 
 1. Think of additional data models you might be familiar with in terms of their basic constructs, operations, and data integrity rules.
 What data models govern the following data formats:  CSV, XML, MATLAB files, HDF5, YAML, *etc*?
