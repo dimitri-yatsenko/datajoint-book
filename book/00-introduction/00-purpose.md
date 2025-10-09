@@ -2,50 +2,73 @@
 title: Purpose
 ---
 
-## This Book
-This book is an introductory guide to *DataJoint for Python*, a framework for building reliable and scalable scientific data workflows.
-It is designed for collaborative, data-intensive research, where the complexity of data and computations requires a principled approach.
+## Why This Book Exists
 
-DataJoint was developed to overcome the limitations of managing research with scripts, spreadsheets, and complex folder structures—an approach that is often slow, error-prone, and difficult to scale.
-The value of a more rigorous framework was demonstrated in ambitious projects like **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w]. A nine-year effort to map a piece of the brain, MICrONS generated a deluge of data from electron microscopy, neurophysiology, and animal behavior. A project of this scale and complexity would have been intractable with traditional methods. DataJoint, already a mature framework by the start of the project, proved essential for managing the data pipeline and enabling a large team to collaborate effectively.
+Most research starts with scripts, spreadsheets, and folder structures—an approach that works until it doesn't. For small projects with a single researcher, these ad-hoc methods suffice. But as data grows and teams expand, the cracks appear: lost data, irreproducible results, and pipelines that break whenever priorities shift.
 
-Most research begins with ad-hoc processes, managing data with scripts, spreadsheets, and complex folder structures. This approach often proves slow, error-prone, and difficult to scale, especially in collaborative projects. This challenge became starkly apparent during my work on **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w], a nine-year effort to map a piece of the brain that generated a deluge of data from electron microscopy, neurophysiology, and animal behavior.
+This reality hit hard during **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w], a nine-year effort to map brain circuitry that generated petabytes of data from electron microscopy, neurophysiology, and behavior. Traditional methods collapsed under this complexity. The project demanded something better: a framework that could maintain data integrity, track computational provenance, and enable a large team to collaborate effectively.
 
-The traditional methods simply collapsed under this complexity. This experience led directly to the creation of **DataJoint**, a tool designed to bring the rigor of relational databases to the dynamic and evolving world of scientific research. 
+That framework was **DataJoint**—a tool that brings the rigor of relational databases to the dynamic, evolving world of scientific research. This book teaches you to build the same kind of robust, scalable data workflows, whether you're processing terabytes or gigabytes, working solo or in a team. 
 
 ```{admonition} Key Innovation
-DataJoint builds upon the relational database model but introduces a crucial innovation: it treats computational dependencies as a first-class feature. This allows you to define, execute, and reproduce entire data processing pipelines with precision and efficiency. @10.48550/arXiv.1807.11104
-``` 
+DataJoint treats computational dependencies as a first-class feature of the database. You define not just data structures, but entire processing pipelines—from raw inputs through intermediate steps to final results. Every computation is trackable, reproducible, and automatically managed. [@10.48550/arXiv.1807.11104]
+```
 
-By integrating data storage, processing, and analysis into a unified system, DataJoint empowers you to describe not just the structure of your data, but the full sequence of computations that transform raw inputs into meaningful results. This formalized approach eliminates the need for ad-hoc scripting and manual data wrangling, ensuring every step is transparent, reproducible, and easy to manage.
+## Databases as Workflows
 
-## The Goal: Rigor in Scientific Operations (SciOps)
-Throughout this book, our goal is to learn how to implement rigorous Scientific Operations (SciOps). This is the practice of building reliable, efficient, and scalable data workflows. Most research begins at "Level 1" maturity with ad-hoc processes. By applying the principles of database design, we can progress toward automated, shareable, and eventually AI-enabled pipelines that accelerate discovery.
+Here's what makes DataJoint different: **your database schema IS your data processing pipeline**.
 
-Recognizing the need for more structured approaches in research, we recently partnered with other neuroinformatics leaders to define a roadmap for enhancing operations in neuroscience projects. This roadmap is designed to guide research teams from ad-hoc processes toward automated and scalable collaborations, enabling them to tackle more significant problems. The ultimate goal is to achieve closed-loop studies that seamlessly integrate human ingenuity with AI efficiency [@10.48550/arXiv.2401.00077].
+Traditional databases store and retrieve data. DataJoint does that too, but it also tracks what gets computed from what. Each table plays a specific role in your workflow:
 
-## A Principled Approach to Scientific Data
+- **Manual tables**: Source data entered by researchers
+- **Imported tables**: Data acquired from instruments or external sources
+- **Computed tables**: Results automatically derived from upstream data
+- **Lookup tables**: Reference data and parameters
 
-Programming is often seen as a way to communicate with machines, but it is more importantly the art of thinking clearly and communicating precisely with other people. The primary goal is to write code that humans can easily read, understand, and extend, especially in dynamic, collaborative projects.
+This workflow perspective shapes everything:
 
-In database design, this clarity is paramount. The structure of the data and its integrity constraints must reflect the logic of the problem you are solving. DataJoint is designed with simplicity and clarity in mind, helping teams manage shared data workflows where analysis pipelines and project priorities rapidly evolve. It acts as a foundational building block for transforming research labs into efficient data generation machines, helping guide teams from ad-hoc processes toward automated and scalable collaborations. This book provides the foundational database skills to build that ladder, moving your research from fragile scripts to a robust, queryable, and collaborative scientific enterprise.
+**Schema as Map**: Your database diagram becomes a visual flowchart showing exactly how data moves from raw inputs to final results. Dependencies are explicit, not hidden in scattered scripts.
+
+**Intelligent Diagrams**: Different table types get distinct visual styles. One glance tells you what's manual, what's automatic, and how everything connects.
+
+**Provenance, Not Just Integrity**: Foreign keys mean more than "this ID exists." They mean "this result was computed FROM this input." When upstream data changes, DataJoint ensures you can't accidentally keep stale downstream results. This is why DataJoint emphasizes INSERT and DELETE over UPDATE—changing input data without recomputing outputs breaks your science, even if the database technically remains consistent.
+
+For scientific computing, this workflow-centric design is transformative. Your database doesn't just store results—it guarantees they're valid, reproducible, and traceable back to their origins.
+
+## The Goal: Rigorous Scientific Operations
+
+This book teaches **Scientific Operations (SciOps)**—the practice of building reliable, efficient, and scalable data workflows. Think of it as DevOps for research: applying software engineering principles to scientific data pipelines.
+
+Most research starts at "Level 1" maturity: ad-hoc scripts and manual processes. This book guides you through progressively more sophisticated approaches, from basic database design through automated pipelines and ultimately to AI-enabled workflows that accelerate discovery.
+
+This progression isn't theoretical. We've worked with neuroinformatics leaders to define a practical roadmap for research operations [@10.48550/arXiv.2401.00077]. The ultimate goal: closed-loop studies where human insight and computational power work seamlessly together.
+
+## Clarity as a Design Principle
+
+Good code is written for humans first, machines second. This is doubly true for databases, where your schema becomes the shared mental model for your entire team.
+
+DataJoint emphasizes clarity: your database structure should directly reflect your scientific logic. When designed well, a DataJoint schema becomes self-documenting—new team members can understand your workflow by simply looking at the diagram.
+
+This book provides the skills to transform research operations: from fragile scripts to robust, queryable, collaborative systems. Not because you need enterprise-scale infrastructure, but because clear thinking and good design make science better.
 
 ## Who This Book Is For
 
-This book provides an accessible introduction to relational database programming for data science and research applications, such as neuroscience and machine learning. It is designed to help scientists and engineers build a solid understanding from scratch. While proficiency in Python is assumed, no prior experience with databases is required.
+Scientists and engineers working with data-intensive research—neuroscience, machine learning, bioinformatics, or any field where data complexity demands rigor. We assume you know Python but have never touched databases. By the end, you'll be fluent in both DataJoint and SQL.
 
-## Learning DataJoint and SQL
+## DataJoint and SQL: Two Languages, One Foundation
 
-**SQL (Structured Query Language)** is the standard language for managing relational databases. DataJoint is built on the same relational theory but uses a modern Python-based syntax. DataJoint statements are automatically converted into SQL, combining the power of relational databases with the convenience of Python.
+**SQL (Structured Query Language)** powers virtually every relational database. DataJoint wraps SQL in Pythonic syntax, automatically translating your code into optimized queries.
 
-While you can become proficient in relational concepts using DataJoint without ever writing SQL directly, this book aims to be a comprehensive introduction to databases. Therefore, we will teach the equivalent SQL concepts and syntax alongside DataJoint, with executable examples for both. You will not only learn DataJoint but also gain a solid foundation in SQL programming.
+You could learn DataJoint without ever seeing SQL. But this book teaches both, side by side. You'll understand not just *what* works but *why*—and you'll be able to work directly with SQL when needed.
 
-## The Role of AI and Neuroscience
+## AI and Domain Context
 
-As of 2025, AI assistance has become a transformative force in programming. This book will explore the impact of AI on database schema design, computation, and queries, as these core elements are poised for significant evolution in AI-infused environments.
+AI is transforming how we write code. This book explores how AI assistance impacts database design, computation, and queries—treating AI as a practical tool rather than a distant future.
 
-Furthermore, DataJoint has its roots in systems neuroscience, and many examples in this book are drawn from that field. However, these examples are chosen to illustrate broader principles and techniques that can be adapted to any computationally intensive discipline.
+Many examples come from neuroscience, reflecting DataJoint's origins. But the principles apply everywhere data is complex and pipelines are essential. Think of neuroscience examples as concrete illustrations of general patterns you'll adapt to your own field.
 
-## Contributions
+## Contributing
 
-I, Dimitri Yatsenko, am the principal author and editor of this book, which incorporates text from prior documentation written by our broader team. I welcome your contributions, whether as a reviewer or a contributor. All contributions will be gratefully acknowledged. Please feel free to contact me directly or submit an issue in the book's GitHub repository.
+This book is a living document. Contributions, corrections, and suggestions are welcome—submit an issue on GitHub or contact me directly. All contributors will be acknowledged.
+
+*— Dimitri Yatsenko, Principal Author*
