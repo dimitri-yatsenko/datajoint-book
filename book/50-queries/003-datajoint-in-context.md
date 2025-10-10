@@ -52,7 +52,7 @@ Codd's central argument was that users and applications needed to be "protected 
 
 ### A Relational Model for Data: Core Principles of Relations, Tuples, and Domains
 
-In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Codd proposed a radical new approach grounded in the mathematical theory of relations. Instead of representing data as a graph of interconnected records, he proposed representing it as a simple collection of "relations." In its mathematical sense, a relation \(R\) on a collection of sets \(S_1, S_2, \ldots, S_n\) (which Codd called "domains") is simply a set of \(n\)-tuples, where each tuple's \(j\)-th element is drawn from the domain \(S_j\).
+In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Codd proposed a radical new approach grounded in the mathematical theory of relations. Instead of representing data as a graph of interconnected records, he proposed representing it as a simple collection of "relations." In its mathematical sense, a relation $R$ on a collection of sets $S_1, S_2, \ldots, S_n$ (which Codd called "domains") is simply a set of $n$-tuples, where each tuple's $j$-th element is drawn from the domain $S_j$.
 
 When visualized, a relation can be thought of as a table (though Codd himself used the term "array" in his original paper), but with a set of strict mathematical properties:
 
