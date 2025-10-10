@@ -1,4 +1,6 @@
-# Queries in Context: A Comparison with Traditional Models
+# Queries in Context
+
+A Comparison with Traditional Models
 
 > **Note for Readers:** This chapter provides historical and theoretical context for DataJoint's design by comparing it with traditional relational databases, SQL, and the Entity-Relationship Model. **If you're primarily interested in learning how to use DataJoint**, you can skip this chapter and proceed directly to the practical query operator chapters. This material is intended for readers who want to understand:
 > - Why DataJoint makes certain design choices
@@ -14,9 +16,9 @@
 
 At its core, a database query is a formal question posed to a collection of stored data. More powerfully, queries can be understood as functions that operate on this data to present a precise cross-section, tailored rigorously and efficiently for the analysis at hand. A query language provides a universal, declarative method for specifying the desired result, leaving the complex procedural details of how to locate, retrieve, and combine the data to the database management system. This ability to ask flexible, ad-hoc questions of large datasets is a fundamental departure from older, more rigid methods of data handling and a cornerstone of modern data analysis.
 
-This approach stands in stark contrast to the typical research workflow where data is managed in files and folders.  In such environments, researchers often store data in a variety of formats, organized within a hierarchy of directories, avoiding databases [@10.1145/1107499.1107503]. To analyze this data, they must write custom scripts that manually navigate the directory structure, open individual files, parse their contents, and combine the necessary information. While seemingly straightforward for simple tasks, this file-based approach presents significant challenges as data complexity and scale increase.
+This approach stands in stark contrast to the typical research workflow where data is managed in files and folders.  In such environments, researchers often store data in a variety of formats, organized within a hierarchy of directories. To analyze this data, they must write custom scripts that manually navigate the directory structure, open individual files, parse their contents, and combine the necessary information. While seemingly straightforward for simple tasks, this file-based approach presents significant challenges as data complexity and scale increase.
 
-The file-and-folder method is fraught with inherent problems that hinder efficient and reliable research:
+The file-and-folder method is fraught with inherent problems that hinder efficient and reliable research [@10.1145/1107499.1107503]:
 
 **Data Isolation and Fragmentation**: Information is scattered across numerous separate files, often in different formats. Answering a single research question may require writing a complex script to find and integrate data from multiple, isolated sources.
 
