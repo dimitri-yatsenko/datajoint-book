@@ -1,4 +1,4 @@
-# The DataJoint Model: Databases as Computational Workflows
+# Databases as Workflows
 
 ## A Historical Rift
 
