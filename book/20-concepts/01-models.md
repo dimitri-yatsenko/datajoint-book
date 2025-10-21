@@ -14,7 +14,7 @@ A data model is defined by considering the following key aspects:
 
 Innovations in data models have spurred progress by creating new mental tools for us to think about data and to communicate with machines and with each other. Scientists and engineers who become well-versed in effective data models can collaborate more efficiently because they share a common conceptual framework.
 
-**This book focuses on DataJoint**, a data model that reinterprets relational database theory through the lens of **computational workflows**. While rooted in classical relational concepts, DataJoint introduces new constructs and semantics specifically designed for scientific computing, where tracking provenance and maintaining computational validity are as important as storing and querying data.
+DataJoint's *Entity-Workflow Model* reinterprets relational database theory through the lens of **human and computational workflows**. While rooted in classical relational concepts, DataJoint introduces new constructs and semantics specifically designed for scientific computing, where tracking provenance and maintaining computational validity are as important as storing and querying data.
 
 :::{hint} What data models do you already know?
 Before moving forward, take a moment to consider the different data models you're already familiar with. Perhaps you've worked with a spreadsheet, a database, or a programming language but didn't know that they were distinct data models.
