@@ -178,12 +178,40 @@ Practical database programmers speak of tables and rows while theoretical data m
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
 
-# The Entity-Relationship Model
+# Three Views of the Relational Model
 
-The relational data model, while powerful, offers a lot of flexibility that can be both a blessing and a curse. Experienced developers with strong conceptual skills can use this freedom to create highly effective database designs. However, this same flexibility can lead to a wide range of incompatible approaches to schema design and data queries, making it challenging for others to follow best practices and achieve proficiency.
+The relational data model, while powerful, offers considerable flexibility that can be both a blessing and a curse. This flexibility has led to the development of three distinct conceptual frameworks for understanding and applying relational databases. While these approaches share the same underlying syntax (tables, primary keys, foreign keys, etc.), they provide fundamentally different **semantics** that lead to distinct approaches to database design, data manipulation, and query formation.
 
-To address this challenge, [Peter Chen](https://en.wikipedia.org/wiki/Peter_Chen), a Taiwanese-born American computer scientist with a Ph.D. from Harvard, introduced the Entity-Relationship Model (ERM) in 1976: @10.1145/320434.320440, @10.1007/978-3-642-59412-0_17.
-His work on the ERM has had a lasting impact on the field, providing a systematic way to model real-world relationships and convert them into database schemas.
+## The Mathematical View: Predicate Calculus and Functional Dependencies
+
+The **mathematical view** of the relational model, championed by Edgar F. Codd, is rooted in **predicate calculus** and **set theory**. This approach treats relations as mathematical predicates—statements about variables that can be determined to be true or false.
+
+### Core Definitions
+
+**Relation as Predicate**: A table (relation) represents a logical predicate; it contains the complete set of all facts (propositions) that make the predicate true.
+
+**Tuple as Proposition**: Each row (tuple) is a specific set of attribute values that asserts a true proposition for the predicate. For example, if a table's predicate is "Employee $x$ works on Project $y$," the row (Alice, P1) asserts: "Employee Alice works on Project P1."
+
+**Functional Dependencies**: The core concept is the functional dependency: attribute `A` functionally determines attribute `B` (written `A → B`) if knowing the value of `A` allows you to determine the unique value of `B`.
+
+### Design Philosophy
+
+The mathematical approach frames database design as deciding **which predicates should become base relations (stored tables)** so that:
+- All other valid true propositions can be **most easily and efficiently derived** through relational operations
+- The total number of stored facts is minimized to reduce redundancy
+- The chance of making mistakes in creating true propositions (data anomalies) is minimized
+
+**Normalization Principle**: "Every non-key attribute must depend on the key, the whole key, and nothing but the key."
+
+### Characteristics
+- **Abstract**: Reasons about predicates and functional dependencies, not real-world entities
+- **Mathematical**: Provides formal, rigorous definitions and proofs
+- **Attribute-centric**: Focuses on relationships between attributes
+- **Prescriptive**: Provides clear rules (normal forms) to check compliance
+
+## The Entity-Relationship View: Domain Modeling
+
+The **entity-relationship view**, introduced by Peter Chen in 1976, revolutionized how we think about database design by shifting from abstract mathematical concepts to concrete domain modeling.
 
 ```{figure} ../images/PChen.jpeg
 :name: Peter Chen
@@ -191,27 +219,26 @@ His work on the ERM has had a lasting impact on the field, providing a systemati
 
 Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the Entity-Relationship Model.
 ```
-The ERM is based on the intuitive idea that the world can be understood in terms of *entities* (things we want to track) and the *relationships* between them.
-It prescribes a method for mapping this understanding directly into relational database concepts, making it easier to design and communicate database schemas.
 
-In ERM, the concept of a *relation* is most replaced with those of *entity sets* and *relationship sets*. 
+### Core Definitions
 
-The ERM provides:
+**Entity Set**: An unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key.
 
-1. **A General Approach for Problem Analysis and Conceptual Modeling:** The ERM offers a structured way to analyze problems and model them conceptually before diving into schema design. This ensures that the database accurately reflects the real-world relationships it’s meant to represent.
-   
-2. **Diagramming Notation for Schema Design:** The ERM introduces a visual way to represent entities, their attributes, and the relationships between them. These diagrams, known as ER diagrams, are invaluable tools for database designers, helping them visualize and communicate their designs effectively.
+**Relationship Set**: A collection of associations that link entities from different entity sets, defined by referential constraints (foreign keys).
 
-3. **Guidelines for Composing Meaningful Queries:** The ERM not only helps with schema design but also provides a method for forming valid data queries. These queries rely on foreign keys to match entities through the relationships they participate in, ensuring that the data retrieved is both accurate and meaningful.
+**Entity Type**: A well-defined category of things in the domain (e.g., Student, Course, Department).
 
-An **entity set** in the ERM is an unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key.
-These entity sets can participate in relationships with other entity sets, forming the backbone of a relational database.
+### Design Philosophy
 
-A **relationship set** in the ERM is a collection of associations that link entities from different entity sets. These associations are defined by referential constraints, also known as foreign keys, which ensure that relationships between entities are maintained consistently.
+The entity-relationship approach frames database design as identifying **what entity types exist** in the domain and **how they relate to each other**.
 
-Although the ERM is best known for its approach to schema design, it also plays a crucial role in query formation. By relying on foreign keys and clearly defined relationships, queries can accurately retrieve data based on the connections between entities.
+**Entity Normalization Principle**: "Each table represents exactly one well-defined entity type, identified by the table's primary key. All non-key attributes must describe that entity type directly, completely, and non-optionally."
 
-ERM diagrams have become an essential tool for database designers, enabling clear communication between designers, clients, and management. By providing a structured, visual approach to database design, the ERM has made it easier to build databases that are both effective and easy to understand.
+### Characteristics
+- **Concrete**: Starts with recognizable entities in the domain
+- **Intuitive**: Maps to how people naturally think about their domain
+- **Entity-centric**: Focuses on identifying entity types and their properties
+- **Constructive**: Provides guidance on how to decompose a domain
 
 ```{figure} ../images/employee-project-erd.svg
 :align: center 
@@ -232,17 +259,31 @@ erDiagram
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
 
-:::{figure}
-```{mermaid}
----
-title: Crow's Foot notation.
----
-erDiagram
-    EMPLOYEE ||--o{ EMP-PROJ : works-for
-    PROJECT ||--o{ EMP-PROJ  : is-run-by 
-```
-Entity-relationship diagram in Crow's Foot notation, including an explicit relationship set. 
-:::
+## The Entity-Workflow View: Temporal and Operational Modeling
+
+The **entity-workflow view**, pioneered by DataJoint, extends entity normalization with a sequential dimension: the **Entity-Workflow Model**. While traditional ERM focuses on **what entities exist**, DataJoint emphasizes **when and how entities are created** through workflow execution.
+
+### Core Definitions
+
+**Workflow Entity**: An entity that is created at a specific step in a workflow, representing an artifact of workflow execution.
+
+**Workflow Dependency**: A foreign key relationship that not only ensures referential integrity but also prescribes the order of operations (parent must be created before child).
+
+**Workflow Step**: A distinct phase in a workflow where specific entity types are created.
+
+**Directed Acyclic Graph (DAG)**: The schema structure that represents valid workflow execution sequences, prohibiting circular dependencies.
+
+### Design Philosophy
+
+The entity-workflow approach frames database design as mapping **workflow steps to tables** and ensuring **temporal coherence** in entity creation.
+
+**Workflow Normalization Principle**: "Every table represents an entity type that is created at a specific step in a workflow, and all attributes describe that entity as it exists at that workflow step."
+
+### Characteristics
+- **Temporal**: Views entities as artifacts created by operations
+- **Operational**: Focuses on workflow sequence and dependencies
+- **Workflow-centric**: Emphasizes when/how entities are created
+- **Immutability-oriented**: Treats workflow artifacts as immutable once created
 
 ```{figure} ../images/employee-project-datajoint.svg
 :align: center
@@ -250,39 +291,165 @@ Entity-relationship diagram in Crow's Foot notation, including an explicit relat
 DataJoint diagram for the same design
 ```
 
+## Semantic Differences and Convergence
 
-# The DataJoint Model
-DataJoint is a conceptual refinement of the relational data model offering a more expressive and rigorous framework for database programming [@10.48550/arXiv.1807.11104].
-The DataJoint model facilitates clear conceptual modeling, efficient schema design, and precise and flexible data queries. The model has emerged over a decade of continuous development of complex data pipelines for neuroscience experiments [@10.1101/031658]. DataJoint has allowed researchers with no prior knowledge of databases to collaborate effectively on common data pipelines sustaining data integrity and supporting flexible access. DataJoint is currently implemented as client libraries in MATLAB and Python. These libraries work by transpiling DataJoint queries into SQL before passing them on to conventional relational database systems that serve as the backend, in combination with bulk storage systems for storing large contiguous data objects.
+While all three views use the same underlying syntax (tables, primary keys, foreign keys), they provide fundamentally different **semantics**:
 
-DataJoint solves a major dilemma in how relational databases are taught today:
+### Different Semantics
 
-Compared to SQL and ERM, the DataJoint model focuses on **conceptual clarity, efficiency, and workflow management**. By enforcing **entity normalization**, simplifying dependency declarations, offering a rich query algebra, and visualizing relationships through schema diagrams, DataJoint makes relational database programming more intuitive and robust for complex data pipelines.
+| Aspect | Mathematical View | Entity-Relationship View | Entity-Workflow View |
+|--------|------------------|-------------------------|---------------------|
+| **Core Question** | "What functional dependencies exist?" | "What entity types exist?" | "When/how are entities created?" |
+| **Foreign Keys** | Referential integrity constraints | Entity relationship mappings | Workflow dependency + referential integrity |
+| **Time Dimension** | Not addressed | Not central | Fundamental |
+| **Design Method** | Identify dependencies, decompose | Identify entities, separate entity types | Identify workflow steps, separate by workflow steps |
+| **Reasoning Style** | Abstract, mathematical | Concrete, intuitive | Temporal, operational |
 
-## 1. **Entity Normalization**  
-- DataJoint enforces **entity normalization**, ensuring that every entity set (table) is well-defined, with each element belonging to the same type, sharing the same attributes, and distinguished by the same primary key.
-- This principle reduces redundancy and avoids data anomalies, similar to Boyce-Codd Normal Form, but with a more intuitive structure than traditional SQL.
+### Convergent Results
 
-## 2. **Simplified Schema Definition and Dependency Management**  
-- DataJoint introduces a **schema definition language** that is more expressive and less error-prone than SQL.  
-- Dependencies are explicitly declared using **arrow notation (->)**, making referential constraints easier to understand and visualize.
-- The dependency structure is enforced as an **acyclic directed graph**, which simplifies workflows by preventing circular dependencies.
+Despite their different conceptual foundations, all three approaches **converge on the same practical principles**:
 
-## 3. **Integrated Query Operators producing a Relational Algebra**  
-- DataJoint introduces **five query operators** (restrict, join, project, aggregate, and union) with algebraic closure, allowing them to be combined seamlessly.  
-- These operators are designed to maintain **operational entity normalization**, ensuring query outputs remain valid entity sets.
+1. **Elimination of Anomalies**: All approaches identify and eliminate update, insertion, and deletion anomalies
+2. **Reduction of Redundancy**: Each approach minimizes data duplication through proper decomposition
+3. **Clear Structure**: All lead to schemas that reflect domain organization
+4. **Data Integrity**: Each approach ensures consistency through appropriate constraints
 
-## 4. **Diagramming Notation for Conceptual Clarity**  
-- DataJoint’s **schema diagrams** simplify the representation of relationships between entity sets compared to ERM diagrams.  
-- Relationships are expressed as dependencies between entity sets, which are visualized using solid or dashed lines for **primary** and **secondary dependencies**, respectively.
+### Practical Implications
 
-## 5. **Unified Logic for Binary Operators**  
-- DataJoint simplifies **binary operations** by requiring attributes involved in joins or comparisons to be **homologous** (i.e., sharing the same origin).  
-- This avoids the ambiguity and pitfalls of **natural joins** in SQL, ensuring more predictable query results.
+**For Database Design**:
+- **Mathematical**: Start with functional dependency analysis
+- **Entity-Relationship**: Start with entity identification
+- **Entity-Workflow**: Start with workflow step identification
 
-## 6. **Optimized Data Pipelines for Scientific Workflows**  
-- DataJoint treats the database as a **data pipeline** where each entity set defines a step in the workflow. This makes it ideal for **scientific experiments** and **complex data processing**, such as in neuroscience.
-- Its **MATLAB and Python libraries** transpile DataJoint queries into SQL, bridging the gap between scientific programming and relational databases.
+**For Data Manipulation**:
+- **Mathematical**: Focus on maintaining functional dependency integrity
+- **Entity-Relationship**: Focus on maintaining entity coherence
+- **Entity-Workflow**: Focus on maintaining workflow sequence integrity
+
+**For Query Formation**:
+- **Mathematical**: Use relational algebra operations
+- **Entity-Relationship**: Use entity relationship traversal
+- **Entity-Workflow**: Use workflow dependency traversal
+
+## Choosing Your Perspective
+
+The choice of perspective depends on your context and needs:
+
+- **Mathematical View**: Best for theoretical foundations, automated schema verification, and formal analysis
+- **Entity-Relationship View**: Best for initial schema design, domain modeling, and intuitive understanding
+- **Entity-Workflow View**: Best for computational workflows, scientific data pipelines, and temporal data management
+
+All three approaches lead to robust, maintainable schemas that accurately represent your domain, but they provide different lenses for understanding what makes a schema well-designed.
+
+## Diagramming Notations and Implementation Gaps
+
+An important distinction between the three views lies in their support for **diagramming notations** and the **alignment between conceptual design and implementation**.
+
+### Diagramming Support
+
+**Mathematical View**: The mathematical approach provides **no diagramming notation**. It relies purely on functional dependency analysis and abstract reasoning about attribute relationships. Designers must work with dependency diagrams and normalization theory without visual schema representations.
+
+**Entity-Relationship View**: ERM introduced **comprehensive diagramming notation** through Entity-Relationship diagrams (ERDs). These diagrams provide:
+- Visual representation of entity types and their attributes
+- Clear depiction of relationships between entities
+- Multiple notation styles (Chen notation, Crow's Foot notation)
+- Standardized symbols for cardinality and participation
+
+**Entity-Workflow View**: DataJoint provides **integrated diagramming notation** through schema diagrams that:
+- Visualize workflow dependencies using solid/dashed lines
+- Show primary and secondary dependencies clearly
+- Represent the DAG structure of workflow execution
+- Integrate seamlessly with the data definition language
+
+### The Conceptual-Implementation Gap
+
+A significant challenge in current database practice stems from the **mismatch between conceptual design and implementation**:
+
+**ERM Dominance in Conceptual Design**: The Entity-Relationship Model has become the **dominant approach for conceptual database design**. Most database textbooks, design methodologies, and modeling tools are based on ERM principles. Designers naturally think in terms of entities and relationships.
+
+**SQL's Mathematical Foundation**: However, SQL and most relational database systems are designed around the **mathematical semantics** of Codd's original model. SQL queries operate on relations as mathematical predicates, not as entity sets. This creates a fundamental disconnect:
+
+- **Conceptual Design**: "What entities exist and how do they relate?"
+- **SQL Implementation**: "What functional dependencies exist and how can they be queried?"
+
+**The Gap**: This mismatch creates several problems:
+- **Translation Complexity**: Converting ERM designs to SQL schemas requires mental translation between entity concepts and relational predicates
+- **Query Complexity**: SQL queries often don't naturally express entity relationships, requiring complex joins and subqueries
+- **Maintenance Challenges**: Changes in entity understanding don't map directly to SQL schema modifications
+- **Learning Curve**: Developers must master both ERM concepts and SQL's mathematical semantics
+
+### DataJoint's Unified Approach
+
+DataJoint addresses this gap by providing **unified diagramming, definition, and query languages** that all support the Entity-Workflow Model:
+
+**Unified Design Language**: 
+- Schema diagrams directly represent the data definition
+- Arrow notation (`->`) in definitions corresponds to arrows in diagrams
+- No translation needed between conceptual design and implementation
+
+**Unified Query Language**:
+- Queries operate on entity sets, not abstract relations
+- Entity relationships are expressed through foreign key traversal
+- Query results maintain entity normalization properties
+
+**Unified Workflow Semantics**:
+- Diagrams show workflow dependencies
+- Definitions enforce workflow order through foreign keys
+- Queries respect workflow execution sequences
+
+**Practical Benefits**:
+- **Seamless Design-to-Implementation**: No conceptual gap between design and code
+- **Intuitive Query Formation**: Queries naturally express entity relationships
+- **Consistent Semantics**: Same entity-workflow concepts throughout the entire development process
+- **Reduced Learning Curve**: Single conceptual framework for design, implementation, and querying
+
+This unified approach eliminates the traditional disconnect between conceptual modeling and practical implementation, making database development more intuitive and consistent.
+
+## DataJoint Implementation: Bridging Theory and Practice
+
+DataJoint represents a practical implementation of the entity-workflow view, developed over a decade of neuroscience research to address the specific challenges of scientific data pipelines [@10.48550/arXiv.1807.11104].
+
+### Key Implementation Features
+
+**1. Entity Normalization Enforcement**
+- Every table represents exactly one entity type with consistent attributes
+- Primary keys uniquely identify entity instances
+- Reduces redundancy and eliminates data anomalies through intuitive entity-based reasoning
+
+**2. Simplified Schema Definition**
+- Schema definition language more expressive than SQL
+- Dependencies explicitly declared using arrow notation (`->`)
+- Dependency structure enforced as acyclic directed graph (DAG)
+
+**3. Integrated Query Algebra**
+- Five core operators: restrict, join, project, aggregate, and union
+- Algebraic closure allows seamless operator combination
+- Maintains operational entity normalization in query results
+
+**4. Workflow-Centric Design**
+- Database treated as data pipeline where each table defines a workflow step
+- Foreign keys represent both referential integrity and workflow dependencies
+- Schema diagrams visualize workflow dependencies using solid/dashed lines
+
+**5. Homologous Attribute Logic**
+- Binary operations require attributes to share the same origin
+- Eliminates ambiguity of natural joins in SQL
+- Ensures predictable and consistent query results
+
+**6. Scientific Workflow Optimization**
+- Ideal for computational workflows and scientific experiments
+- MATLAB and Python libraries transpile DataJoint queries to SQL
+- Bridges gap between scientific programming and relational databases
+
+### Practical Benefits
+
+DataJoint's implementation demonstrates how the entity-workflow view translates into practical advantages:
+
+- **Conceptual Clarity**: Entity-based reasoning makes schema design intuitive
+- **Workflow Integrity**: DAG structure prevents circular dependencies and ensures valid operation sequences  
+- **Data Consistency**: Immutable workflow artifacts maintain data integrity
+- **Collaborative Development**: Researchers without database expertise can effectively collaborate on data pipelines
+- **Scientific Provenance**: Natural preservation of workflow execution history
 
 # Exercises
 
