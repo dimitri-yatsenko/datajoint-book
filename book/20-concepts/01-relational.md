@@ -1,11 +1,6 @@
----
-title: Relational Theory
-date: 2024-08-20
-authors:
-  - name: Dimitri Yatsenko
----
+# Relational Model
 
-# Origins of  Relational Theory
+## Origins of  Relational Theory
 
 Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets are of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and $n^{th}$ order relations.
 
@@ -58,7 +53,7 @@ Cantor's set theory introduced the idea that relations could be seen as subsets 
 [Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) (1845-1918) reframed relations in the context of Set Theory
 ```
 
-#  Mathematical Foundations
+##  Mathematical Foundations
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
 
 One of the most important applications of relational theory is in the concept of **functions**. A function is a specific type of relation where each element in the domain (the first set) is associated with exactly one element in the codomain (the second set). Functions are essential in nearly every area of mathematics, from calculus to linear algebra.
@@ -77,7 +72,7 @@ In first-order logic, predicates represent relations, and the logical statements
 The equivalence between relational theory and first-order logic was notably formalized by Alfred Tarski in the 1930s.
 Tarski demonstrated that every relation can be described by a formula in first-order logic, establishing a profound connection between these mathematical frameworks that has since underpinned much of modern theoretical computer science and logic.
 
-# Relational Algebra and Calculus
+## Relational Algebra and Calculus
 
 **Relational algebra** is a set of operations that can be used to transform relations in a formal way.
 It provides the foundation for querying relational databases, allowing us to combine, modify, and retrieve data stored in tables (relations).
@@ -130,7 +125,7 @@ The query notation of the SQL programming language combines concepts from both r
 However, DataJoint's query language is based purely on relational algebra.
 :::
 
-# Relational Database Model
+## Relational Database Model
 The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
 Working at IBM, Codd explored the possibility of translating the mathematic rigor of relational theory into powerful system for large-scale data management and operation [@10.1145/362384.362685].
@@ -178,15 +173,15 @@ Practical database programmers speak of tables and rows while theoretical data m
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
 
-# Three Views of the Relational Model
+## Three Views of the Relational Model
 
 The relational data model, while powerful, offers considerable flexibility that can be both a blessing and a curse. This flexibility has led to the development of three distinct conceptual frameworks for understanding and applying relational databases. While these approaches share the same underlying syntax (tables, primary keys, foreign keys, etc.), they provide fundamentally different **semantics** that lead to distinct approaches to database design, data manipulation, and query formation.
 
-## The Mathematical View: Predicate Calculus and Functional Dependencies
+### The Mathematical View: Predicate Calculus and Functional Dependencies
 
 The **mathematical view** of the relational model, championed by Edgar F. Codd, is rooted in **predicate calculus** and **set theory**. This approach treats relations as mathematical predicates—statements about variables that can be determined to be true or false.
 
-### Core Definitions
+#### Core Definitions
 
 **Relation as Predicate**: A table (relation) represents a logical predicate; it contains the complete set of all facts (propositions) that make the predicate true.
 
@@ -194,7 +189,7 @@ The **mathematical view** of the relational model, championed by Edgar F. Codd, 
 
 **Functional Dependencies**: The core concept is the functional dependency: attribute `A` functionally determines attribute `B` (written `A → B`) if knowing the value of `A` allows you to determine the unique value of `B`.
 
-### Design Philosophy
+#### Design Philosophy
 
 The mathematical approach frames database design as deciding **which predicates should become base relations (stored tables)** so that:
 - All other valid true propositions can be **most easily and efficiently derived** through relational operations
@@ -203,15 +198,15 @@ The mathematical approach frames database design as deciding **which predicates 
 
 **Normalization Principle**: "Every non-key attribute must depend on the key, the whole key, and nothing but the key."
 
-### Characteristics
+#### Characteristics
 - **Abstract**: Reasons about predicates and functional dependencies, not real-world entities
 - **Mathematical**: Provides formal, rigorous definitions and proofs
 - **Attribute-centric**: Focuses on relationships between attributes
 - **Prescriptive**: Provides clear rules (normal forms) to check compliance
 
-## The Entity-Relationship View: Domain Modeling
+### The Entity-Relationship View: Domain Modeling
 
-The **entity-relationship view**, introduced by Peter Chen in 1976, revolutionized how we think about database design by shifting from abstract mathematical concepts to concrete domain modeling.
+The **entity-relationship view**, introduced by Peter Chen in 1976, revolutionized how we think about database design by shifting from abstract mathematical concepts to concrete domain modeling: @10.1145/320434.320440, @10.1007/978-3-642-59412-0_17
 
 ```{figure} ../images/PChen.jpeg
 :name: Peter Chen
@@ -220,7 +215,7 @@ The **entity-relationship view**, introduced by Peter Chen in 1976, revolutioniz
 Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the Entity-Relationship Model.
 ```
 
-### Core Definitions
+#### Core Definitions
 
 **Entity Set**: An unordered collection of identifiable items (entities) that share the same attributes and are distinguished by a primary key.
 
@@ -228,13 +223,13 @@ Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the
 
 **Entity Type**: A well-defined category of things in the domain (e.g., Student, Course, Department).
 
-### Design Philosophy
+#### Design Philosophy
 
 The entity-relationship approach frames database design as identifying **what entity types exist** in the domain and **how they relate to each other**.
 
 **Entity Normalization Principle**: "Each table represents exactly one well-defined entity type, identified by the table's primary key. All non-key attributes must describe that entity type directly, completely, and non-optionally."
 
-### Characteristics
+#### Characteristics
 - **Concrete**: Starts with recognizable entities in the domain
 - **Intuitive**: Maps to how people naturally think about their domain
 - **Entity-centric**: Focuses on identifying entity types and their properties
@@ -259,11 +254,11 @@ erDiagram
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
 
-## The Entity-Workflow View: Temporal and Operational Modeling
+### The Entity-Workflow View: Temporal and Operational Modeling
 
 The **entity-workflow view**, pioneered by DataJoint, extends entity normalization with a sequential dimension: the **Entity-Workflow Model**. While traditional ERM focuses on **what entities exist**, DataJoint emphasizes **when and how entities are created** through workflow execution.
 
-### Core Definitions
+#### Core Definitions
 
 **Workflow Entity**: An entity that is created at a specific step in a workflow, representing an artifact of workflow execution.
 
@@ -273,13 +268,13 @@ The **entity-workflow view**, pioneered by DataJoint, extends entity normalizati
 
 **Directed Acyclic Graph (DAG)**: The schema structure that represents valid workflow execution sequences, prohibiting circular dependencies.
 
-### Design Philosophy
+#### Design Philosophy
 
 The entity-workflow approach frames database design as mapping **workflow steps to tables** and ensuring **temporal coherence** in entity creation.
 
 **Workflow Normalization Principle**: "Every table represents an entity type that is created at a specific step in a workflow, and all attributes describe that entity as it exists at that workflow step."
 
-### Characteristics
+#### Characteristics
 - **Temporal**: Views entities as artifacts created by operations
 - **Operational**: Focuses on workflow sequence and dependencies
 - **Workflow-centric**: Emphasizes when/how entities are created
@@ -291,11 +286,11 @@ The entity-workflow approach frames database design as mapping **workflow steps 
 DataJoint diagram for the same design
 ```
 
-## Semantic Differences and Convergence
+### Semantic Differences and Convergence
 
-While all three views use the same underlying syntax (tables, primary keys, foreign keys), they provide fundamentally different **semantics**:
+While all three views rely on the same underlying constructs (tables, data types, primary keys, foreign keys), they provide fundamentally different **semantics**:
 
-### Different Semantics
+#### Different Semantics
 
 | Aspect | Mathematical View | Entity-Relationship View | Entity-Workflow View |
 |--------|------------------|-------------------------|---------------------|
@@ -305,7 +300,7 @@ While all three views use the same underlying syntax (tables, primary keys, fore
 | **Design Method** | Identify dependencies, decompose | Identify entities, separate entity types | Identify workflow steps, separate by workflow steps |
 | **Reasoning Style** | Abstract, mathematical | Concrete, intuitive | Temporal, operational |
 
-### Convergent Results
+#### Convergent Results
 
 Despite their different conceptual foundations, all three approaches **converge on the same practical principles**:
 
@@ -314,7 +309,7 @@ Despite their different conceptual foundations, all three approaches **converge 
 3. **Clear Structure**: All lead to schemas that reflect domain organization
 4. **Data Integrity**: Each approach ensures consistency through appropriate constraints
 
-### Practical Implications
+#### Practical Implications
 
 **For Database Design**:
 - **Mathematical**: Start with functional dependency analysis
@@ -331,7 +326,7 @@ Despite their different conceptual foundations, all three approaches **converge 
 - **Entity-Relationship**: Use entity relationship traversal
 - **Entity-Workflow**: Use workflow dependency traversal
 
-## Choosing Your Perspective
+### Choosing Your Perspective
 
 The choice of perspective depends on your context and needs:
 
