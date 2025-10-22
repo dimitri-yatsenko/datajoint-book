@@ -2,37 +2,43 @@
 
 ## The Entity-Workflow Model: A New Paradigm for Relational Databases
 
-This book introduces a revolutionary approach to relational database design and implementation: the **Entity-Workflow Model** embodied by DataJoint. 
-While traditional database education focuses on E.F. Codd's mathematical foundations and the Entity-Relationship Model, the Entity-Workflow Model represents a fundamental evolution that addresses the limitations of both approaches.
+The relational data model, while powerful, offers considerable semantic flexibility that can be both a blessing and a curse. This flexibility has led to the development of distinct conceptual frameworks for understanding and applying relational principles in database design and operations. While these approaches share common underlying constructs (tables, data types, primary keys, foreign keys, etc.), they operate on fundamentally different semantics that lead to distinct approaches to database design, data manipulation, and query formation.
 
-## The Evolution of Relational Database Thinking
+This book introduces a paradigm shift in how we think about relational database design and implementation: the **Entity-Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation.
 
 To understand the significance of the Entity-Workflow Model, we must first examine the two dominant paradigms that preceded it and their inherent limitations.
 
-### The Mathematical Foundation: Codd's Predicate Calculus Approach
+## The Mathematical Foundation: Codd's Predicate Calculus Approach
 
-Edgar F. Codd's relational model, rooted in **predicate calculus** and **set theory**, treats relations as mathematical predicates—statements about variables that can be determined to be true or false.
+### Core Concepts
+The **mathematical view** of the relational model, championed by Edgar F. Codd, is rooted in **predicate calculus**, **first-order logic**, and **set theory**. This approach treats relations as mathematical predicates—statements about variables that can be determined to be true or false.
 
-#### Core Concepts
+**Relation as Predicate**: In the mathematical view of relational databases, a table (relation) represents a logical predicate; it contains the complete set of all facts (propositions) that make the predicate true. For example, the table "EmployeeProject" represents the predicate "Employee $x$ works on Project $y$."
 
-**Relation as Predicate**: A table represents a logical predicate containing all facts that make the predicate true.
+**Tuple as Proposition**: Each row (tuple) is a specific set of attribute values that asserts a true proposition for the predicate. For example, if a table's predicate is "Employee $x$ works on Project $y$," the row `(Alice, P1)` asserts the truth: "Employee Alice works on Project P1."
 
-**Functional Dependencies**: The foundation of normalization theory, where attribute `A` functionally determines attribute `B` (written `A → B`).
+**Functional Dependencies between Attributes**: The core concept is the functional dependency: attribute `A` functionally determines attribute `B` (written `A → B`)  if knowing the value of `A` allows you to determine the unique value of `B`. For example, the attribute `department` functionally determines the attribute `department_chair` because knowing the department name allows you to determine the unique name of the department chair. Functional dependencies are helpful for reasoning about the structure of the database and for performing queries.
 
-**Normalization Principle**: "Every non-key attribute must depend on the key, the whole key, and nothing but the key."
+Then the database can be viewed as a collection of predicates and a mininmal complete set of true propositions from which all other true propositions can be derived. Data queries are viewed as logical inferences using the rules of predicate calculus. *Relational algebra* and *relational calculus* provide set of operations that can be used to perform these inferences. Under the Closed World Assumption (CWA), the database is assumed to contain all true propositions and all other propositions are assumed to be false. CWA is a simplifying assumption that allows us to reason about the data in the database in a more precise way.
 
-#### Limitations
+Then the question of database design is to choose a minimal complete set of true propositions from which all other true propositions can be effectively derived. This is the problem of *database normalization*, a collection of design principles—called *normal forms*—that ensure data integrity and maintainability and makes databases more amenable to analysis and inference.
 
-While mathematically rigorous, Codd's approach suffers from several practical limitations:
+SQL—the primary language for defining and querying relational databases—is based on the mathematical semantics of the relational model. However, in practice, even most experienced database programmers hardly rely on the mathematical semantics of the relational model. Educational materials typically use more intuitive design methodologies and then teach how to translate the conceptual design into SQL. 
 
-- **No Diagramming Notation**: Designers must work with abstract dependency analysis without visual representations
+### Limitations
+
+While mathematically rigorous, Codd's mathematical semantics approach suffers from several practical limitations:
+
 - **Abstract Reasoning**: Requires thinking in terms of predicates and functional dependencies rather than intuitive domain concepts
-- **Implementation Gap**: SQL's mathematical semantics don't align with how people naturally conceptualize domains
 - **Learning Curve**: Demands mastery of formal mathematical concepts that don't map to real-world thinking
+- **No Diagramming Notation**: Designers must work with abstract dependency analysis without visual representations
 
-### The Entity-Relationship Revolution: Chen's Domain Modeling
+As a result, even most proficient database programmers are rarely aware of the mathematical semantics of the relational model and design principles such as Codd's normal forms. They use on more intuitive design methodologies and then translate them into SQL.
 
-Peter Chen's Entity-Relationship Model (1976) revolutionized database design by shifting from abstract mathematical concepts to concrete domain modeling: @10.1145/320434.320440, @10.1007/978-3-642-59412-0_17
+## The Entity-Relationship Revolution
+
+Today, most common aproaches to database design are based on the Entity-Relationship Model (ERM), which shifts the focus from abstract mathematical reasoning to concrete domain modeling.
+Introduced by MIT professor Peter Chen [@10.1145/320434.320440], the ERM models the domain of interest as a collection of entities and relationships between them [@10.1007/978-3-642-59412-0_17].
 
 ```{figure} ../images/PChen.jpeg
 :name: Peter Chen
@@ -41,20 +47,30 @@ Peter Chen's Entity-Relationship Model (1976) revolutionized database design by 
 Peter Chen, born in 1943, Taiwanese-American computer scientist, inventor of the Entity-Relationship Model.
 ```
 
-#### Core Concepts
+### Core Concepts
+The key insight of the ERM is that the relational model can be viewed through the lens of entities and relationships between them.
+Tables in the database represent either sets of well-defined entity sets of the same type or relationships between entities, mapping the database schema to them domain of interest. 
+Foreign keys between tables define the cardinality and optionality of the relationships between entity sets.
 
-**Entity Set**: An unordered collection of identifiable items that share the same attributes and are distinguished by a primary key.
+One of ERM's most significant contributions is the ability to visualize the database schema as an Entity-Relationship Diagram (ERD).
+Several different notations have been developed, including Chen's original notation with rectangles and diamonds as well as Crow's Foot notation (see below).
 
-**Entity Normalization Principle**: "Each table represents exactly one well-defined entity type, identified by the table's primary key."
+```{figure} ../images/employee-project-erd.svg
+:align: center 
+```
 
-#### Achievements
+```{mermaid}
+---
+title: Crow's Foot notation.
+---
+erDiagram
+    EMPLOYEE }o--o{ PROJECT : assigned-to
+```
+Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
+:::
 
-ERM brought significant advances:
-- **Comprehensive Diagramming**: Visual ERDs with multiple notation styles
-- **Intuitive Design**: Maps naturally to how people think about domains
-- **Dominant Paradigm**: Became the standard for conceptual database design
 
-#### Persistent Limitations
+### Limitations
 
 Despite its success, ERM still suffers from fundamental gaps:
 
