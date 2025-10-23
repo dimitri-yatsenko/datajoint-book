@@ -59,6 +59,8 @@ Several different notations have been developed, including Chen's original notat
 :align: center 
 ```
 
+:::{figure}
+:align: center
 ```{mermaid}
 ---
 title: Crow's Foot notation.
@@ -68,8 +70,6 @@ erDiagram
 ```
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
-```
-
 
 ### Limitations
 
