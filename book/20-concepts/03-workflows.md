@@ -1,12 +1,12 @@
-# A New Paradigm
+# Relational Workflows
 
-## The Entity-Workflow Model: A New Paradigm for Relational Databases
+## A New Paradigm for Relational Databases
 
 The relational data model, while powerful, offers considerable semantic flexibility that can be both a blessing and a curse. This flexibility has led to the development of distinct conceptual frameworks for understanding and applying relational principles in database design and operations. While these approaches share common underlying constructs (tables, data types, primary keys, foreign keys, etc.), they operate on fundamentally different semantics that lead to distinct approaches to database design, data manipulation, and query formation.
 
-This book introduces a paradigm shift in how we think about relational database design and implementation: the **Entity-Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation.
+This book introduces a paradigm shift in how we think about relational database design and implementation: the **Relational Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation.
 
-To understand the significance of the Entity-Workflow Model, we must first examine the two dominant paradigms that preceded it and their inherent limitations.
+To understand the significance of the Relational Workflow Model, we must first examine the two dominant paradigms that preceded it and their inherent limitations.
 
 ## The Mathematical Foundation: Codd's Predicate Calculus Approach
 
@@ -68,6 +68,7 @@ erDiagram
 ```
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
+```
 
 
 ### Limitations
@@ -79,9 +80,9 @@ Despite its success, ERM still suffers from fundamental gaps:
 - **Static Relationships**: Treats relationships as static rather than operational
 - **Translation Complexity**: Converting ERM designs to SQL requires mental translation between entity concepts and relational predicates
 
-## The Entity-Workflow Model: A Paradigm Shift
+## The Relational Workflow Model: A Paradigm Shift
 
-The **Entity-Workflow Model**, pioneered by DataJoint, represents a fundamental evolution that addresses the limitations of both previous approaches while building on their strengths.
+The **Relational Workflow Model**, pioneered by DataJoint, represents a fundamental evolution that addresses the limitations of both previous approaches while building on their strengths.
 
 ### Revolutionary Core Concepts
 
@@ -99,9 +100,9 @@ The **Entity-Workflow Model**, pioneered by DataJoint, represents a fundamental 
 
 This principle extends entity normalization with temporal and operational dimensions, creating a unified framework for design, implementation, and querying.
 
-### Why the Entity-Workflow Model Matters
+### Why the Relational Workflow Model Matters
 
-The Entity-Workflow Model addresses the fundamental challenges that have plagued relational database practice:
+The Relational Workflow Model addresses the fundamental challenges that have plagued relational database practice:
 
 #### 1. **Unified Design and Implementation**
 
@@ -114,7 +115,7 @@ Unlike the ERM-SQL gap, DataJoint provides **unified diagramming, definition, an
 
 #### 2. **Temporal and Operational Awareness**
 
-While ERM focuses on "what entities exist," the Entity-Workflow Model asks "when and how are entities created?" This temporal dimension is crucial for:
+While ERM focuses on "what entities exist," the Relational Workflow Model asks "when and how are entities created?" This temporal dimension is crucial for:
 
 - **Scientific Workflows**: Where data processing follows strict sequences
 - **Business Processes**: Where operations must occur in specific orders
@@ -144,7 +145,7 @@ DataJoint diagram showing workflow dependencies
 
 ## Comparing the Three Paradigms
 
-| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Entity-Workflow (DataJoint)** |
+| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Relational Workflow (Yatsenko)** |
 |--------|-------------------|-------------------------|-------------------------------|
 | **Core Question** | "What functional dependencies exist?" | "What entity types exist?" | **"When/how are entities created?"** |
 | **Diagramming** | None | Comprehensive ERDs | **Integrated workflow diagrams** |
@@ -155,11 +156,11 @@ DataJoint diagram showing workflow dependencies
 
 ## The DataJoint Implementation: Theory Made Practical
 
-DataJoint represents the practical embodiment of the Entity-Workflow Model, developed over a decade of neuroscience research [@10.48550/arXiv.1807.11104].
+DataJoint represents the practical embodiment of the Relational Workflow Model, developed over a decade of neuroscience research [@10.48550/arXiv.1807.11104].
 
 ### The Schema as Executable Specification
 
-The Entity-Workflow Model has a profound implication: **the database schema itself becomes an executable specification** of your workflow.
+The Relational Workflow Model has a profound implication: **the database schema itself becomes an executable specification** of your workflow.
 
 When you define a DataJoint schema, you simultaneously:
 - **Design** the conceptual model (what are the workflow steps?)
@@ -245,7 +246,7 @@ Unlike SQL's natural joins that can produce unexpected results when tables share
 
 ### Practical Benefits
 
-The Entity-Workflow Model delivers unprecedented advantages:
+The Relational Workflow Model delivers unprecedented advantages:
 
 - **Seamless Design-to-Implementation**: No conceptual gap between design and code
 - **Intuitive Query Formation**: Queries naturally express entity relationships
@@ -294,7 +295,7 @@ This makes DataJoint a **specialized dialect** of the relational model, optimize
 
 ## The Future of Database Design
 
-The Entity-Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases.
+The Relational Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases.
 
 ### Why This Matters Now
 
@@ -308,14 +309,14 @@ The Entity-Workflow Model represents more than an incremental improvement—it's
 
 ### The Path Forward
 
-This book demonstrates how the Entity-Workflow Model, embodied in DataJoint, provides:
+This book demonstrates how the Relational Workflow Model, embodied in DataJoint, provides:
 
 1. **A unified conceptual framework** for database design, implementation, and querying
 2. **Native support for temporal and operational aspects** that previous models ignored
 3. **Practical tools** that eliminate the traditional design-implementation gap
 4. **A foundation** for the next generation of database applications
 
-The Entity-Workflow Model isn't just another approach to relational databases—it's the evolution that makes relational databases truly fit for modern computational workflows and collaborative data science.
+The Relational Workflow Model isn't just another approach to relational databases—it's the evolution that makes relational databases truly fit for modern computational workflows and collaborative data science.
 
 ## Exercises
 
