@@ -2,11 +2,10 @@
 
 ## A New Paradigm for Relational Databases
 
+
+This book introduces a paradigm shift in how we think about relational database design and implementation: the **Relational Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation. The key insight of the Relational Workflow Model is that the database schema itself becomes an executable specification of your workflow. In this chapter, we introduce key concepts of relational workflows and contrast this model with traditional apporaches to database modeling and implementation.
+
 The relational data model, while powerful, offers considerable semantic flexibility that can be both a blessing and a curse. This flexibility has led to the development of distinct conceptual frameworks for understanding and applying relational principles in database design and operations. While these approaches share common underlying constructs (tables, data types, primary keys, foreign keys, etc.), they operate on fundamentally different semantics that lead to distinct approaches to database design, data manipulation, and query formation.
-
-This book introduces a paradigm shift in how we think about relational database design and implementation: the **Relational Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation.
-
-To understand the significance of the Relational Workflow Model, we must first examine the two dominant paradigms that preceded it and their inherent limitations.
 
 ## The Mathematical Foundation: Codd's Predicate Calculus Approach
 
@@ -70,6 +69,21 @@ erDiagram
 ```
 Entity-relationship diagram in [Crow's Foot notation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html).
 :::
+
+Or using an explicit association table:
+:::{figure}
+:align: center
+```{mermaid}
+---
+title: Crow's Foot notation.
+---
+erDiagram
+    EMPLOYEE ||--o{ ASSIGNMENT : works-on
+    ASSIGNMENT }o--|| PROJECT : assigned-to
+```
+Equivalent ERD with an explicit association entity (ASSIGNMENT).
+:::
+
 
 ### Limitations
 
