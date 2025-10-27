@@ -193,10 +193,3 @@ What will be the cardinality (number of tuples) of the result?
 3. Imagine that we decide to remove the domain `Species` from the relation `Clinic-Species-Treatment`, producing a new binary relation `Clinic-Treatment`.  How will the number of tuples be affected? What will be the 
 What would be the rules for this operation?
 How would the cardinality (number of elements) change in the result?
-
-4. Work through the example of a database model in Chen's EM notation in @10.1093/jamia/ocx033.  
-  What are its entities and relationships? Explain what operations this database supports.
-
-5. Work through the example of an multiplayer online role-playing game  database model in Chen's EM notation listed on the [ERM Wikipedia page](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Crow's_foot_notation)
-
-5. Learn to create diagrams in Crow's Foot notation using Mermaid: https://mermaid.js.org/syntax/entityRelationshipDiagram.html
