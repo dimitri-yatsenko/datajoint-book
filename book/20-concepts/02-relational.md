@@ -1,8 +1,8 @@
 # Relational Model
 
-## Origins of  Relational Theory
+## Origins of Relational Theory
 
-Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets are of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and $n^{th}$ order relations.
+Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and $n^{th}$ order relations.
 
 If you are conversant in Set Theory, then an $n^{th}$ order relation is formally defined as a subset of a Cartesian product of $n$ sets. 
 Many useful operations can be modeled as operations on such relations.
@@ -15,7 +15,7 @@ A relation between these two sets would indicate, for example, which clinics tre
 :width: 75 %
 :alt: mathematical relations
 
-Relations are mappings of elements of one set to elements of another domain (binary relations). Higher order relations map elements of three, four and and more sets.
+Relations are mappings of elements of one set to elements of another domain (binary relations). Higher order relations map elements of three, four and more sets.
 ```
 
 This diagram illustrates two different relations between "Clinics" and "Species."
@@ -28,7 +28,7 @@ This diagram shows binary relations.
 Relations can be binary, ternary, or of higher orders.
 
 Mathematically, a relation between two sets: $A$ (e.g., *clinics*) and $B$ (e.g., *species*) is a subset of their Cartesian product $A \times B$.
-This means the relation is a collection of ordered pairs $a, b$, where each $a$ is an element from set $A$, and each $b$ is an element from set $B$.
+This means the relation is a collection of ordered pairs $(a, b)$, where each $a$ is an element from set $A$, and each $b$ is an element from set $B$.
 In the context of the diagram, each pair represents a specific connection, such as (Clinic 1, Dog) or (Clinic 3, Cow).
 
 These relations are not fixed and can change depending on the context or criteria, as shown by the two different values in the diagram. The flexibility and simplicity of relations make them a powerful tool for representing and analyzing connections in various domains.
@@ -53,7 +53,8 @@ Cantor's set theory introduced the idea that relations could be seen as subsets 
 [Georg Cantor](https://en.wikipedia.org/wiki/Georg_Cantor) (1845-1918) reframed relations in the context of Set Theory
 ```
 
-##  Mathematical Foundations
+## Mathematical Foundations
+
 Relational theory is not just a mathematical curiosity; it is a powerful tool that underpins many important concepts in mathematics and computer science. The ability to describe and analyze how different objects are connected is fundamental to many areas of study.
 
 One of the most important applications of relational theory is in the concept of **functions**. A function is a specific type of relation where each element in the domain (the first set) is associated with exactly one element in the codomain (the second set). Functions are essential in nearly every area of mathematics, from calculus to linear algebra.
@@ -66,7 +67,7 @@ Thus theorems discovered or proven in relational theory also apply to graphs.
 
 Relational theory also extends to concepts like **equivalence relations** and **order relations**. Equivalence relations partition a set into disjoint subsets called equivalence classes, while order relations arrange elements in a sequence. These concepts are fundamental in areas such as algebra, topology, and analysis.
 
-Relational theory has been shown to deeply interconnected to  **first-order logic** and **predicate calculus** at the foundations of mathematics and logic.
+Relational theory has been shown to be deeply interconnected to **first-order logic** and **predicate calculus** at the foundations of mathematics and logic.
 Relational theory, which focuses on the study of relations between elements of sets, forms the basis for the predicates used in first-order logic and predicate calculus.
 In first-order logic, predicates represent relations, and the logical statements describe how these relations interact.
 The equivalence between relational theory and first-order logic was notably formalized by Alfred Tarski in the 1930s.
@@ -85,7 +86,7 @@ Examples of relational operators:
 - **Set Difference (−):** Returns the tuples that are in one relation but not in another.
 - **Cartesian Product (×):** Combines every tuple from one relation with every tuple from another.
 - **Rename (ρ):** Renames the attributes of a relation.
-- **Join (⨝):** Combines related tuples from two relations based on a common attribute.
+- **Join (⋈):** Combines related tuples from two relations based on a common attribute.
 
 Such operators together represent an algebra: ways to transform relations into other relations.
 Some operators are binary, i.e. they accept two relations as inputs to produce another relation as output.
@@ -93,7 +94,7 @@ The operators are *algebraically closed*, i.e. the operators take relations as i
 This means elementary operators can be combined in sophisticated ways to compose complex expressions.
 **Algebraic closure** is an important concept behind the expressive power of relational operators.
 
-To illustrate a relational operator, let’s consider the **union operator (∪)** using the two relational values from the diagram. The union of these two relations would combine all the connections from both diagrams into a single relation.
+To illustrate a relational operator, let's consider the **union operator (∪)** using the two relational values from the diagram. The union of these two relations would combine all the connections from both diagrams into a single relation.
 
 In the first value (left side of the diagram), we have the following connections:
 
@@ -117,7 +118,7 @@ This operation effectively merges the connections from both sets of values, prov
 
 Relational algebra, with its powerful operators, allows us to query and manipulate data in a structured and efficient way, forming the backbone of modern database systems. By understanding and applying these operators, we can perform complex data analysis and retrieval tasks with precision and clarity.
 
-Another formal language for deriving new relations from scratch or from from other  relations is **relational calculus**. 
+Another formal language for deriving new relations from scratch or from other relations is **relational calculus**. 
 Rather than using relational operators, it relies on a *set-building notation* to generate relations.
 
 :::{note}
@@ -126,9 +127,10 @@ However, DataJoint's query language is based purely on relational algebra.
 :::
 
 ## Relational Database Model
-The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd.](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigeous Turing Award in 1981.
 
-Working at IBM, Codd explored the possibility of translating the mathematic rigor of relational theory into powerful system for large-scale data management and operation [@10.1145/362384.362685].
+The **relational data model** is the brainchild of the British-American mathematician and engineer [Edgar F. Codd](https://amturing.acm.org/award_winners/codd_1000892.cfm), earning him the prestigious Turing Award in 1981.
+
+Working at IBM, Codd explored the possibility of translating the mathematical rigor of relational theory into a powerful system for large-scale data management and operation [@10.1145/362384.362685].
 
 ```{figure} ../images/Ted-Codd.jpg
 :name: Edgar F. Codd
@@ -144,14 +146,14 @@ For this reason, early work on relational databases has an abstract academic fee
 The design principles were defined through the rigorous but rather abstract principles, the **normal forms** [@10.1145/358024.358054].
 
 The relational data model is one of the most powerful and precise ways to store and manage structured data.
-At its core, this model organizes all data into tables--representing mathematical relations---where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
+At its core, this model organizes all data into tables—representing mathematical relations—where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
 
 The relational model is built on several key principles, including:
 
 - **Data Representation:** All data is represented in the form of simple tables, with each table having a unique name and a well-defined structure.
 - **Domain Constraints:** Each column in a table is associated with a specific domain (or *datatype*, a set of possible values), ensuring that the data entered is valid.
-- **Uniqueness Constraints:** ensure that each row in a table is unique, enforced through a primary key.
-- **Referential Constraints:** ensure that relationships between tables remain consistent, enforced through foreign keys.
+- **Uniqueness Constraints:** Ensure that each row in a table is unique, enforced through a primary key.
+- **Referential Constraints:** Ensure that relationships between tables remain consistent, enforced through foreign keys.
 - **Declarative Queries:** The model allows users to write queries that specify *what* data they want rather than *how* the database will retrieve it.
 
 The most common way to interact with relational databases is through the Structured Query Language (SQL).
@@ -161,7 +163,7 @@ It includes sublanguages for defining data structure, manipulating data, and que
 When speaking with database programmers and computer scientists, you will often run into different terminologies.
 Practical database programmers speak of tables and rows while theoretical data modelers may describe the same things as *relations* and *tuples*.
 
-:::{table} The difference in terminology  used in relational theory and relational databases.
+:::{table} The difference in terminology used in relational theory and relational databases.
 :widths: auto
 :align: center
 |  Relational Theory | Database Programming & SQL  | Description  |
@@ -173,11 +175,47 @@ Practical database programmers speak of tables and rows while theoretical data m
 | **Tuple**                      | **Record** or **Row**  | A single element of a relation, containing a value for each attribute.  |
 :::
 
-# Exercises
+## Why Relational Databases for Science?
 
-1.  Extend the binary relation  `Clinic-Species` to a higher order, e.g. a ternary relation.
+The mathematical rigor of relational theory might seem abstract, but it provides precisely what scientific research needs: **a formal framework for ensuring data integrity and enabling complex queries**.
 
-:::{hint} Possible soluton 
+### The Scientific Case for Relational Databases
+
+**Data Integrity Through Constraints**: Referential integrity prevents orphaned data and inconsistent relationships—critical when each data point represents hours of expensive experiments or computation. Foreign keys ensure that relationships between entities remain valid, primary keys guarantee uniqueness, and data type constraints prevent invalid values from entering the system.
+
+**Declarative Queries**: SQL's declarative nature means you specify *what* you want, not *how* to get it. This maps naturally to scientific questions: "Show me all neurons with firing rate > 10Hz" rather than writing loops and conditionals. The database optimizer determines the most efficient execution plan, freeing you to focus on your scientific questions rather than implementation details.
+
+**Mathematical Foundation Enables Optimization**: Query optimizers can automatically find efficient execution plans because the mathematical properties of relational algebra enable formal reasoning about query equivalence. Two queries that ask for the same data can be proven mathematically equivalent, allowing the system to choose the fastest approach. This optimization happens automatically, without requiring you to understand the underlying algorithms.
+
+**Structured Flexibility**: Schemas can evolve as your understanding grows. Unlike rigid file formats, databases allow controlled schema evolution while maintaining integrity. You can add new tables, modify existing structures, and migrate data systematically. The schema serves as documentation of your data structure, making it easier for collaborators to understand and contribute to your work.
+
+**Concurrent Access and Consistency**: Multiple researchers can work with the same data simultaneously without conflicts. The database ensures that everyone sees a consistent view of the data, handles concurrent updates safely, and prevents race conditions that could corrupt your results.
+
+**Scalability**: Relational databases can handle datasets from megabytes to petabytes. As your research grows, the database scales with you, maintaining performance through indexing, query optimization, and efficient storage management.
+
+### From Theory to Practice: The DataJoint Extension
+
+Traditional relational databases excel at storage and retrieval but weren't designed for the computational workflows central to research. They can't express:
+
+- **"This result was computed FROM this input"**: Foreign keys establish relationships but don't capture computational dependencies. The database knows `NeuralUnit` references `Recording` but doesn't understand that spike rates are *derived from* the recording data.
+
+- **"Recompute everything downstream when inputs change"**: When you correct an error in source data, the database won't automatically identify and recompute dependent results. You must manually track dependencies and orchestrate recomputation.
+
+- **"Run this analysis automatically on all new data"**: There's no mechanism for "when a new Recording appears, automatically compute NeuralUnits." The database stores data; external scripts perform computations, requiring manual workflow coordination.
+
+- **"Track how this result was computed"**: Provenance—knowing which code version, parameters, and inputs produced a result—must be implemented separately if at all. The database doesn't distinguish between manually entered data and computed results.
+
+- **"Ensure computational validity"**: You can UPDATE a computed result without recomputing it, silently breaking the connection between inputs and outputs. The database maintains referential integrity (no orphaned records) but not computational validity (results consistent with their sources).
+
+This is where DataJoint enters. The next chapters show how DataJoint extends relational theory with **workflow semantics**—turning your database schema into an executable specification of your scientific pipeline while preserving all the benefits of relational rigor.
+
+**The key insight**: Your database schema becomes your workflow specification. Tables represent workflow steps, foreign keys express computational dependencies, and the system ensures that results remain valid as data evolves. This transforms databases from passive storage systems into active workflow managers that understand the computational nature of scientific work.
+
+## Exercises
+
+1. Extend the binary relation `Clinic-Species` to a higher order, e.g. a ternary relation.
+
+:::{hint} Possible solution
 
 Add a third domain, `Treatment`, for the treatments that clinics offer for each species.
 This will allow forming a ternary relation `Clinic-Species-Treatment`.
@@ -190,6 +228,10 @@ How can these two binary relations be joined into a ternary relation: `Clinic-Sp
 What would the rules be for forming this result?
 What will be the cardinality (number of tuples) of the result?
 
-3. Imagine that we decide to remove the domain `Species` from the relation `Clinic-Species-Treatment`, producing a new binary relation `Clinic-Treatment`.  How will the number of tuples be affected? What will be the 
-What would be the rules for this operation?
-How would the cardinality (number of elements) change in the result?
+3. Imagine that we decide to remove the domain `Species` from the relation `Clinic-Species-Treatment`, producing a new binary relation `Clinic-Treatment`. How will the number of tuples be affected? What would be the rules for this operation? How would the cardinality (number of elements) change in the result?
+
+4. Consider a scientific workflow you know well. Identify where relational database principles would help:
+   - What entities exist and how are they related?
+   - What constraints would prevent invalid data?
+   - What queries would you need to answer scientific questions?
+   - Where would traditional relational databases fall short?

@@ -1,11 +1,33 @@
 # Relational Workflows
 
+## The Problem DataJoint Solves
+
+In the previous chapter, we saw how traditional relational databases excel at storing and querying data but struggle with scientific workflows. When you update an input measurement, downstream analyses become stale. When you want to process new data, you must manually track dependencies and run computations in the correct order. When someone asks "how was this result computed?", you rely on external documentation that may be out of date.
+
+**DataJoint solves these problems by treating your database schema as an executable workflow specification.** Your table definitions don't just describe data structure—they prescribe how data flows through your pipeline, when computations run, and how results depend on inputs.
+
+This chapter introduces the Relational Workflow Model—a fundamental extension of relational theory that makes databases workflow-aware while preserving all the mathematical rigor of Codd's model.
+
 ## A New Paradigm for Relational Databases
 
-
-This book introduces a paradigm shift in how we think about relational database design and implementation: the **Relational Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation. The key insight of the Relational Workflow Model is that the database schema itself becomes an executable specification of your workflow. In this chapter, we introduce key concepts of relational workflows and contrast this model with traditional apporaches to database modeling and implementation.
+This book introduces a paradigm shift in how we think about relational database design and implementation: the **Relational Workflow Model**. This model is embodied by DataJoint and affects how we think about database design, data manipulation, and query formation. The key insight of the Relational Workflow Model is that the database schema itself becomes an executable specification of your workflow. In this chapter, we introduce key concepts of relational workflows and contrast this model with traditional approaches to database modeling and implementation.
 
 The relational data model, while powerful, offers considerable semantic flexibility that can be both a blessing and a curse. This flexibility has led to the development of distinct conceptual frameworks for understanding and applying relational principles in database design and operations. While these approaches share common underlying constructs (tables, data types, primary keys, foreign keys, etc.), they operate on fundamentally different semantics that lead to distinct approaches to database design, data manipulation, and query formation.
+
+## Comparing the Three Paradigms
+
+Before diving deep into the Relational Workflow Model, let's see how it compares to the two major approaches we've discussed:
+
+| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Relational Workflow (Yatsenko)** |
+|--------|-------------------|-------------------------|-------------------------------|
+| **Core Question** | "What functional dependencies exist?" | "What entity types exist?" | **"When/how are entities created?"** |
+| **Diagramming** | None | Comprehensive ERDs | **Integrated workflow diagrams** |
+| **Time Dimension** | Not addressed | Not central | **Fundamental** |
+| **Implementation Gap** | High (abstract to SQL) | High (ERM to SQL) | **None (unified approach)** |
+| **Workflow Support** | None | None | **Native workflow modeling** |
+| **Learning Curve** | Steep (mathematical) | Moderate (intuitive design, complex SQL) | **Gentle (unified concepts)** |
+
+[Rest of the chapter continues as written in the original 03-workflows.md...]
 
 ## The Mathematical Foundation: Codd's Predicate Calculus Approach
 
@@ -16,13 +38,14 @@ The **mathematical view** of the relational model, championed by Edgar F. Codd, 
 
 **Tuple as Proposition**: Each row (tuple) is a specific set of attribute values that asserts a true proposition for the predicate. For example, if a table's predicate is "Employee $x$ works on Project $y$," the row `(Alice, P1)` asserts the truth: "Employee Alice works on Project P1."
 
-**Functional Dependencies between Attributes**: The core concept is the functional dependency: attribute `A` functionally determines attribute `B` (written `A → B`)  if knowing the value of `A` allows you to determine the unique value of `B`. For example, the attribute `department` functionally determines the attribute `department_chair` because knowing the department name allows you to determine the unique name of the department chair. Functional dependencies are helpful for reasoning about the structure of the database and for performing queries.
+**Functional Dependencies between Attributes**: The core concept is the functional dependency: attribute `A` functionally determines attribute `B` (written `A → B`) if knowing the value of `A` allows you to determine the unique value of `B`. For example, the attribute `department` functionally determines the attribute `department_chair` because knowing the department name allows you to determine the unique name of the department chair. Functional dependencies are helpful for reasoning about the structure of the database and for performing queries.
 
-Then the database can be viewed as a collection of predicates and a mininmal complete set of true propositions from which all other true propositions can be derived. Data queries are viewed as logical inferences using the rules of predicate calculus. *Relational algebra* and *relational calculus* provide set of operations that can be used to perform these inferences. Under the Closed World Assumption (CWA), the database is assumed to contain all true propositions and all other propositions are assumed to be false. CWA is a simplifying assumption that allows us to reason about the data in the database in a more precise way.
+Then the database can be viewed as a collection of predicates and a minimal complete set of true propositions from which all other true propositions can be derived. Data queries are viewed as logical inferences using the rules of predicate calculus. *Relational algebra* and *relational calculus* provide set of operations that can be used to perform these inferences. Under the Closed World Assumption (CWA), the database is assumed to contain all true propositions and all other propositions are assumed to be false. CWA is a simplifying assumption that allows us to reason about the data in the database in a more precise way.
 
 Then the question of database design is to choose a minimal complete set of true propositions from which all other true propositions can be effectively derived. This is the problem of *database normalization*, a collection of design principles—called *normal forms*—that ensure data integrity and maintainability and makes databases more amenable to analysis and inference.
 
-SQL—the primary language for defining and querying relational databases—is based on the mathematical semantics of the relational model. However, in practice, even most experienced database programmers hardly rely on the mathematical semantics of the relational model. Educational materials typically use more intuitive design methodologies and then teach how to translate the conceptual design into SQL. 
+SQL—the primary language for defining and querying relational databases—is based on the mathematical semantics of the relational model. However, in practice, even most experienced database programmers hardly rely on the mathematical semantics of the relational model.
+Educational materials typically use more intuitive design methodologies and then teach how to translate the conceptual design into SQL.
 
 ### Limitations
 
