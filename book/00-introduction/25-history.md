@@ -2,6 +2,7 @@
 title: DataJoint History
 ---
 
+DataJoint's evolution from lab tool to commercial platform reflects its growing role in scientific research.
 
 ```{image} ../images/cave-art.jpg
 ---

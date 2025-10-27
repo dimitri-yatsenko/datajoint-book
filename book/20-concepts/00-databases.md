@@ -85,3 +85,9 @@ Since its meteoric rise between 2008 and 2015, the term "NoSQL" has gradually fa
 The website [DB-Engines Ranking](https://db-engines.com/en/ranking) tracks the popularity of various database management systems. While the relational data model continues to dominate, many popular databases now support multiple data models, allowing for deviations from strict relational structures.
 
 Notably, the two most popular open-source relational databases, MySQL (along with its sister MariaDB) and PostgreSQL, remain at the forefront of this evolving landscape.
+
+## Preview: DataJoint and This Book
+
+This book focuses on **DataJoint**, a framework that extends relational databases specifically for scientific workflows. DataJoint builds on the solid foundation of relational theory while adding capabilities essential for research: automated computation, data provenance, and reproducibility.
+
+We'll first introduce relational database concepts and operations, then show how DataJoint transforms these concepts into a powerful tool for scientific computing. By the end, you'll understand both the mathematical foundations and their practical application to your research.

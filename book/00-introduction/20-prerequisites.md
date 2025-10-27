@@ -1,6 +1,6 @@
 # Prerequisites and Essential Skills
 
-To get the most out of this course, you should be comfortable with a set of tools that form the bedrock of modern data science.
+This book teaches DataJoint and SQL for scientific data workflows. To get the most out of this course, you should be comfortable with a set of tools that form the bedrock of modern data science.
 While we will focus on database principles, we assume a working knowledge of the following.
 If you're new to these, we highly recommend exploring MIT's ["The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/) to get up to speed.
 

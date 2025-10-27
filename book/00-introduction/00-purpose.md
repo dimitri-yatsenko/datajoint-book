@@ -2,13 +2,21 @@
 title: Purpose
 ---
 
+## What is DataJoint?
+
+**DataJoint is a computational database language and platform that enables scientists to design, implement, and manage data operations for research by unifying data structures and analysis code.** It provides data integrity, automated computation, reproducibility, and seamless collaboration through a relational database approach that coordinates relational databases, code repositories, and object storage.
+
+## Who This Book Is For
+
+Scientists and engineers working with data-intensive research—neuroscience, machine learning, bioinformatics, or any field where data complexity demands rigor. We assume you know Python but have never touched databases. By the end of this book, you'll be fluent in both DataJoint and SQL, building robust data workflows using relational databases, Python code, Git, and object storage.
+
 ## Why This Book Exists
 
 Most research starts with scripts, spreadsheets, and folder structures—an approach that works until it doesn't. For small projects with a single researcher, these ad-hoc methods suffice. But as data grows and teams expand, the cracks appear: lost data, irreproducible results, and pipelines that break whenever priorities shift.
 
 This reality hit hard during **MICrONS (Machine Intelligence from Cortical Networks)** [@10.1038/s41586-025-08790-w], a nine-year effort to map brain circuitry that generated petabytes of data from electron microscopy, neurophysiology, and behavior. Traditional methods collapsed under this complexity. The project demanded something better: a framework that could maintain data integrity, track computational provenance, and enable a large team to collaborate effectively.
 
-That framework was **DataJoint**—a tool that brings the rigor of relational databases to the dynamic, evolving world of scientific research. This book teaches you to build the same kind of robust, scalable data workflows, whether you're processing terabytes or gigabytes, working solo or in a team. 
+That framework was **DataJoint**—the tool that brings the rigor of relational databases to the dynamic, evolving world of scientific research. This book teaches you to build the same kind of robust, scalable data workflows, whether you're processing terabytes or gigabytes, working solo or in a team. 
 
 ```{admonition} Key Innovation
 DataJoint treats computational dependencies as a first-class feature of the database. You define not just data structures, but entire processing pipelines—from raw inputs through intermediate steps to final results. Every computation is trackable, reproducible, and automatically managed. [@10.48550/arXiv.1807.11104]
@@ -27,7 +35,7 @@ Traditional databases store and retrieve data. DataJoint does that too, but it a
 
 This workflow perspective shapes everything:
 
-**Schema as Map**: Your database diagram becomes a visual flowchart showing exactly how data moves from raw inputs to final results. Dependencies are explicit, not hidden in scattered scripts.
+**Schema as a Map**: Your database diagram becomes a visual flowchart showing exactly how data moves from raw inputs to final results. Dependencies are explicit, not hidden in scattered scripts.
 
 **Intelligent Diagrams**: Different table types get distinct visual styles. One glance tells you what's manual, what's automatic, and how everything connects.
 
@@ -51,9 +59,6 @@ DataJoint emphasizes clarity: your database structure should directly reflect yo
 
 This book provides the skills to transform research operations: from fragile scripts to robust, queryable, collaborative systems. Not because you need enterprise-scale infrastructure, but because clear thinking and good design make science better.
 
-## Who This Book Is For
-
-Scientists and engineers working with data-intensive research—neuroscience, machine learning, bioinformatics, or any field where data complexity demands rigor. We assume you know Python but have never touched databases. By the end, you'll be fluent in both DataJoint and SQL.
 
 ## DataJoint and SQL: Two Languages, One Foundation
 
