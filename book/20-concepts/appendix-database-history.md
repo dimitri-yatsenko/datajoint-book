@@ -1,5 +1,5 @@
 ---
-title: "Appendix: NoSQL and Database Evolution"
+title: "Appendix:Database Revolutions"
 ---
 
 This appendix provides historical context on the evolution of database systems, particularly the rise of NoSQL databases and the continued evolution of relational systems. This material complements Chapter 1 but isn't essential for understanding DataJoint.
