@@ -1,8 +1,4 @@
----
-title: Knowledge Check: Database Concepts
----
-
-# Knowledge Test: Database Concepts
+# Knowledge Check: Concepts
 
 This assessment covers Chapters 0-4 of the Database Concepts section. Questions include both single-answer and multiple-answer formats.
 
