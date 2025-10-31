@@ -81,7 +81,7 @@ Modern databases typically separate data management from data use through distin
 ### Common Architectures
 
 **Server-Client Architecture** (most common): A database server program manages all data operations, while client programs (your scripts, applications, notebooks) connect to request data or submit changes. The server enforces all rules and access permissions consistently for every client. This is like a library where the librarian (server) manages the books and enforces checkout policies, while patrons (clients) request materials.
-The two most popular open-source relational database systems: MySQL and Postgres implement a server-client architecture.
+The two most popular open-source relational database systems: MySQL and PostgreSQL implement a server-client architecture.
 
 **Embedded Databases**: The database engine runs within your application itself—no separate server. This works for single-user applications like mobile apps or desktop software, but doesn't support multiple users accessing shared data simultaneously.
 SQLite is a common embedded database @10.14778/3554821.3554842.

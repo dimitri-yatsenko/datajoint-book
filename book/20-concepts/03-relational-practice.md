@@ -67,7 +67,7 @@ erDiagram
     
     RESEARCHER {
         int researcher_id PK
-        string name
+        string researcher_name
         string email
         string lab_role
     }
@@ -89,16 +89,17 @@ erDiagram
     }
     
     RECORDING {
+        int experiment_id PK, FK
         int recording_id PK
-        int experiment_id FK
         datetime recording_time
         string file_path
         string recording_quality
     }
     
     NEURAL_UNIT {
+        int experiment_id PK, FK
+        int recording_id PK, FK        
         int unit_id PK
-        int recording_id FK
         float spike_rate
         float receptive_field_size
     }
@@ -118,47 +119,50 @@ The ER diagram translates almost directly to SQL table definitions:
 
 ```sql
 CREATE TABLE Researcher (
-    researcher_id INT PRIMARY KEY AUTO_INCREMENT,
+    researcher_id INT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
-    lab_role VARCHAR(50)
+    lab_role VARCHAR(50),
+    PRIMARY KEY(researcher_id)
 );
 
 CREATE TABLE AnimalSubject (
-    subject_id INT PRIMARY KEY AUTO_INCREMENT,
+    subject_id INT PRIMARY KEY,
     species VARCHAR(50) NOT NULL,
     date_of_birth DATE,
     sex ENUM('M', 'F', 'Unknown')
 );
 
 CREATE TABLE Experiment (
-    experiment_id INT PRIMARY KEY AUTO_INCREMENT,
+    experiment_id INT,
     researcher_id INT NOT NULL,
     subject_id INT NOT NULL,
     experiment_date DATE NOT NULL,
     description TEXT,
     protocol VARCHAR(100),
+    PRIMARY KEY (experiment_id),
     FOREIGN KEY (researcher_id) REFERENCES Researcher(researcher_id),
     FOREIGN KEY (subject_id) REFERENCES AnimalSubject(subject_id)
 );
 
 CREATE TABLE Recording (
-    recording_id INT PRIMARY KEY AUTO_INCREMENT,
     experiment_id INT NOT NULL,
+    recording_id INT NOT NULL,
     recording_time DATETIME NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     recording_quality ENUM('excellent', 'good', 'fair', 'poor'),
+    PRIMARY KEY (experiment_id, recording_id),
     FOREIGN KEY (experiment_id) REFERENCES Experiment(experiment_id)
-        ON DELETE CASCADE
 );
 
 CREATE TABLE NeuralUnit (
-    unit_id INT PRIMARY KEY AUTO_INCREMENT,
+    experiment_id INT NOT NULL,
     recording_id INT NOT NULL,
-    spike_rate FLOAT,
-    receptive_field_size FLOAT,
-    FOREIGN KEY (recording_id) REFERENCES Recording(recording_id)
-        ON DELETE CASCADE
+    unit_id INT NOT NULL,
+    spike_rate FLOAT NOT NULL,
+    receptive_field_size FLOAT NOT NULL,
+    PRIMARY KEY (experiment_id, recording_id, unit_id),
+    FOREIGN KEY (experiment_id, recording_id) REFERENCES Recording(experiment_id, recording_id)
 );
 ```
 
@@ -166,7 +170,6 @@ Note the key features:
 - **PRIMARY KEY**: Ensures each row has a unique identifier
 - **FOREIGN KEY**: Enforces referential integrity—you can't reference a non-existent entity
 - **NOT NULL**: Requires certain attributes to have values
-- **ON DELETE CASCADE**: Automatically removes dependent records when parent is deleted
 - **Data types**: Constrain what values can be stored (INT, VARCHAR, DATE, etc.)
 
 ### Populating with Sample Data
@@ -175,31 +178,31 @@ Let's add some sample data to see the database in action:
 
 ```sql
 -- Add researchers
-INSERT INTO Researcher (name, email, lab_role) VALUES
-    ('Dr. Sarah Chen', 'schen@university.edu', 'Principal Investigator'),
-    ('Alex Martinez', 'amartinez@university.edu', 'Postdoc'),
-    ('Jamie Park', 'jpark@university.edu', 'Graduate Student');
+INSERT INTO Researcher (researcher_id, name, email, lab_role) VALUES
+    (1, 'Dr. Sarah Chen', 'schen@university.edu', 'Principal Investigator'),
+    (2, 'Alex Martinez', 'amartinez@university.edu', 'Postdoc'),
+    (3, 'Jamie Park', 'jpark@university.edu', 'Graduate Student');
 
 -- Add animal subjects
-INSERT INTO AnimalSubject (species, date_of_birth, sex) VALUES
+INSERT INTO AnimalSubject (subject_id, aspecies, date_of_birth, sex) VALUES
     ('Mouse', '2024-01-15', 'M'),
     ('Mouse', '2024-01-20', 'F'),
     ('Mouse', '2024-02-03', 'M');
 
 -- Add an experiment
-INSERT INTO Experiment (researcher_id, subject_id, experiment_date, description, protocol) VALUES
-    (2, 1, '2024-08-15', 'Visual cortex recording during grating stimuli', 'Protocol-V1-001');
+INSERT INTO Experiment (experiment_id, researcher_id, subject_id, experiment_date, description, protocol) VALUES
+    (1, 2, 1, '2024-08-15', 'Visual cortex recording during grating stimuli', 'Protocol-V1-001');
 
 -- Add recordings from that experiment
-INSERT INTO Recording (experiment_id, recording_time, file_path, recording_quality) VALUES
-    (1, '2024-08-15 10:30:00', '/data/2024/08/15/rec001.dat', 'excellent'),
-    (1, '2024-08-15 11:45:00', '/data/2024/08/15/rec002.dat', 'good');
+INSERT INTO Recording (experiment_id, recording_id, recording_time, file_path, recording_quality) VALUES
+    (1, 1, '2024-08-15 10:30:00', '/data/2024/08/15/rec001.dat', 'excellent'),
+    (1, 2, '2024-08-15 11:45:00', '/data/2024/08/15/rec002.dat', 'good');
 
 -- Add neural units identified in first recording
-INSERT INTO NeuralUnit (recording_id, spike_rate, receptive_field_size) VALUES
-    (1, 15.3, 2.5),
-    (1, 8.7, 3.1),
-    (1, 22.4, 1.8);
+INSERT INTO NeuralUnit (experiment_id, recording_id, unit_id, spike_rate, receptive_field_size) VALUES
+    (1, 1, 1, 15.3, 2.5),
+    (1, 1, 2, 8.7, 3.1),
+    (1, 1, 3, 22.4, 1.8);
 ```
 
 ## Common Database Operations
