@@ -294,7 +294,7 @@ Surrogate keys are especially useful for entities that exist only in digital for
 
 ## Universally Unique Identifiers (UUIDs)
 
-**UUIDs** (Universally Unique Identifiers) are 128-bit identifiers that are designed to be globally unique across time and space. They are standardized by RFC 4122 and provide a reliable way to generate surrogate keys without coordination between different systems.
+**UUIDs** (Universally Unique Identifiers) are 128-bit identifiers that are designed to be globally unique across time and space. They are standardized by [RFC 9562](https://www.rfc-editor.org/rfc/rfc9562.html) (which obsoletes RFC 4122) and provide a reliable way to generate surrogate keys without coordination between different systems.
 
 ### UUID Format
 
@@ -386,6 +386,10 @@ print(uuid3_value)  # Different from UUID5 but also deterministic
 - File system identifiers
 
 ### Practical UUID Examples
+
+For detailed examples of using UUIDs in DataJoint tables, including table definitions, insertion code, and working with UUIDs in foreign key relationships, see [UUIDs in DataJoint](025-uuid.ipynb).
+
+Here are some conceptual examples showing UUIDs as primary keys:
 
 #### Example 1: Social Media Posts
 (DataJoint)
@@ -497,32 +501,7 @@ Different databases handle UUIDs differently:
 - **SQLite**: TEXT or BLOB
 - **SQL Server**: UNIQUEIDENTIFIER type
 
-(DataJoint)
-```python
-@schema
-class User(dj.Manual):
-    definition = """
-    user_id : uuid
-    ---
-    username : varchar(50)
-    """
-```
-
-(Equivalent SQL)
-```sql
--- MySQL
-CREATE TABLE user (
-    user_id BINARY(16),
-    username VARCHAR(50) NOT NULL,
-    PRIMARY KEY (user_id)
-);
-
--- PostgreSQL
-CREATE TABLE user (
-    user_id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    username VARCHAR(50) NOT NULL
-);
-```
+In DataJoint, UUIDs are automatically stored as `BINARY(16)` in MySQL for efficient storage. See [UUIDs in DataJoint](025-uuid.ipynb) for practical implementation examples.
 
 
 # Practical Examples of Ensuring Entity Integrity

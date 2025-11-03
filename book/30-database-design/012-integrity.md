@@ -84,17 +84,19 @@ Completeness prevents missing values that could invalidate analyses:
 ---
 
 ## 3. Entity Integrity
-**Each entity has a unique, reliable identifier.**
+**Each real-world entity corresponds to exactly one database record, and each database record corresponds to exactly one real-world entity.**
 
-Entity integrity ensures one-to-one mapping between database records and real-world entities:
-- **Primary keys** uniquely identify each row
-- **Uniqueness constraints** prevent duplicates
-- **Identification strategies** (auto-increment, UUIDs, natural keys)
+Entity integrity ensures a **one-to-one correspondence** between real-world entities and their digital representations in the database. This is not simply about having unique identifiers—it's about establishing a reliable, bidirectional mapping where:
+- Each real-world entity must be represented by exactly one unique record in the database
+- Each database record must correspond to a single, distinct real-world entity
+- **Primary keys** uniquely identify each row and enable this correspondence
+- **Uniqueness constraints** prevent duplicate records for the same entity
+- **Identification strategies** (auto-increment, UUIDs, natural keys) support reliable entity matching
 
-**Example:** Each mouse has exactly one unique ID.
+**Example:** Each mouse in the lab has exactly one unique ID, and that ID refers to exactly one mouse—never two different mice sharing the same ID, and never one mouse having multiple IDs.
 
 **Covered in:**
-- [Primary Keys](025-primary-key.md) — Identification strategies
+- [Primary Keys](020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
 - [UUID](030-uuid.ipynb) — Universally unique identifiers
 
 ---
