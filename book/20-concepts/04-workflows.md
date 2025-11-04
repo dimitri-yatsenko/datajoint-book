@@ -27,8 +27,6 @@ Before diving deep into the Relational Workflow Model, let's see how it compares
 | **Workflow Support** | None | None | **Native workflow modeling** |
 | **Learning Curve** | Steep (mathematical) | Moderate (intuitive design, complex SQL) | **Gentle (unified concepts)** |
 
-[Rest of the chapter continues as written in the original 03-workflows.md...]
-
 ## The Mathematical Foundation: Codd's Predicate Calculus Approach
 
 ### Core Concepts
@@ -159,17 +157,6 @@ Finally, **workflow integrity** is maintained through the DAG structure, which e
 
 DataJoint diagram showing workflow dependencies
 ```
-
-## Comparing the Three Paradigms
-
-| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Relational Workflow (Yatsenko)** |
-|--------|-------------------|-------------------------|-------------------------------|
-| **Core Question** | "What functional dependencies exist?" | "What entity types exist?" | **"When/how are entities created?"** |
-| **Diagramming** | None | Comprehensive ERDs | **Integrated workflow diagrams** |
-| **Time Dimension** | Not addressed | Not central | **Fundamental** |
-| **Implementation Gap** | High (abstract to SQL) | High (ERM to SQL) | **None (unified approach)** |
-| **Workflow Support** | None | None | **Native workflow modeling** |
-| **Learning Curve** | Steep (mathematical) | Moderate (intuitive design, complex SQL) | **Gentle (unified concepts)** |
 
 ## The DataJoint Implementation: Theory Made Practical
 
