@@ -51,7 +51,7 @@ Relational databases excel at expressing and enforcing such rules through **inte
 
 # Types of Data Integrity Constraints
 
-This section introduces six fundamental types of integrity constraints. Each will be covered in detail in subsequent chapters, with DataJoint implementation examples.
+This section introduces seven fundamental types of integrity constraints. Each will be covered in detail in subsequent chapters, with DataJoint implementation examples.
 
 ## 1. Domain Integrity
 **Ensures values are within valid ranges and types.**
@@ -73,13 +73,12 @@ Domain integrity restricts attribute values to predefined valid sets using:
 Completeness prevents missing values that could invalidate analyses:
 - **Required fields** cannot be left empty (non-nullable)
 - **Default values** provide sensible fallbacks
-- **NOT NULL constraints** enforce data presence
 
 **Example:** Every experiment must have a start date.
 
 **Covered in:** 
 - [Tables](015-table.ipynb) — Required vs. optional attributes
-- [Default Values](020-default-values.ipynb) — Handling optional data
+- [Default Values](070-default-values.ipynb) — Handling optional data
 
 ---
 
@@ -97,7 +96,7 @@ Entity integrity ensures a **one-to-one correspondence** between real-world enti
 
 **Covered in:**
 - [Primary Keys](020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
-- [UUID](030-uuid.ipynb) — Universally unique identifiers
+- [UUID](025-uuid.ipynb) — Universally unique identifiers
 
 ---
 
@@ -112,7 +111,7 @@ Referential integrity maintains logical associations across tables:
 **Example:** A recording session cannot reference a non-existent mouse.
 
 **Covered in:**
-- [Foreign Keys](035-foreign-keys.ipynb) — Cross-table relationships
+- [Foreign Keys](030-foreign-keys.ipynb) — Cross-table relationships
 - [Relationships](050-relationships.ipynb) — Dependency patterns
 
 ---
@@ -147,6 +146,28 @@ Consistency provides a unified view during concurrent access:
 - [Concurrency](../operations/050-concurrency.ipynb) — Multi-user operations
 - [Transactions](../operations/045-transactions.ipynb) — ACID guarantees
 
+---
+
+## 7. Workflow Integrity
+**Operations execute in valid sequences that respect enterprise processes.**
+
+Workflow integrity extends referential integrity by enforcing not just *what* relationships exist, but *when* and *how* entities are created through operational sequences. While traditional databases ensure that a recording session references a valid mouse (referential integrity), workflow integrity also ensures that the mouse must be created *before* the recording session can be created—preserving the temporal and operational order of your enterprise processes.
+
+Workflow integrity maintains valid operation sequences through:
+- **Workflow dependencies** that extend foreign keys with operational semantics—parent entities must exist before child entities can be created
+- **Directed Acyclic Graph (DAG) structure** that prevents circular dependencies and ensures workflows can always execute
+- **Enforced temporal order** that guarantees operations occur in sequences that reflect real-world processes
+- **Computational validity** that ensures downstream results remain consistent with upstream inputs throughout the workflow
+
+**Example:** An analysis pipeline cannot compute results before acquiring raw data. If `NeuronAnalysis` depends on `SpikeData`, which depends on `RecordingSession`, the database enforces that recordings are created before spike detection, which occurs before analysis—maintaining the integrity of the entire scientific workflow.
+
+**Covered in:**
+- [Relational Workflows](../concepts/04-workflows.md) — The Relational Workflow Model and workflow dependencies
+- [Foreign Keys](030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
+- [Computation](../operations/010-computation.ipynb) — Automatic workflow execution and dependency resolution
+
+---
+
 # The Power of Declarative Constraints
 
 Unlike application-level validation (checking rules in Python code), database constraints are:
@@ -175,7 +196,8 @@ if mouse_id not in existing_mice:
 DataJoint builds on SQL's integrity mechanisms with additional features:
 
 - **Automatic foreign keys** from table dependencies
-- **Cascading deletes** that respect data pipelines
+- **Workflow integrity** through DAG-enforced operation sequences
+- **Cascading deletes** that respect data pipelines and maintain computational validity
 - **Transaction management** for atomic operations
 - **Schema validation** catching errors before database creation
 - **Entity relationships** expressed in intuitive Python syntax
