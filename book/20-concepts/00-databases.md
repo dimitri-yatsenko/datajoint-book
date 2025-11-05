@@ -106,6 +106,8 @@ Separating data management from data use provides critical advantages:
 
 This book focuses on **DataJoint**, a framework that extends relational databases specifically for scientific workflows. DataJoint builds on the solid foundation of relational theory while adding capabilities essential for research: automated computation, data provenance, and reproducibility.
 
+**DataJoint introduces a new class of databases called Computational Databases**, where computational transformations are first-class citizens of the data model. Just as electronic spreadsheets automatically recalculate formulas when you enter new data, computational databases trigger cascades of computations specified by the schema whenever new data enters the system. In this model, the database schema doesn't just describe data structure—it encodes executable workflows where computations automatically execute when their dependencies are satisfied.
+
 The relational data model—introduced by Edgar F. Codd in 1970—revolutionized data management by organizing data into tables with well-defined relationships. This model has dominated database systems for over five decades due to its mathematical rigor and versatility. Modern relational databases like MySQL and PostgreSQL continue to evolve, incorporating new capabilities for scalability and security while maintaining the core principles that make them reliable and powerful.
 
 DataJoint extends this proven foundation with workflow-aware capabilities that scientific computing requires. Throughout this book, you'll learn how to:

@@ -6,6 +6,8 @@ In the previous chapter, we saw how traditional relational databases excel at st
 
 **DataJoint solves these problems by treating your database schema as an executable workflow specification.** Your table definitions don't just describe data structure—they prescribe how data flows through your pipeline, when computations run, and how results depend on inputs.
 
+**The Relational Workflow Model defines a new class of databases, {index}`Computational Databases <computational database>`**, where computational transformations are first-class citizens of the data model. Just as electronic spreadsheets automatically recalculate formulas when you enter new data, computational databases trigger cascades of computations specified by the schema whenever new data enters the system. In this model, entering a new experimental session automatically triggers the computation of all downstream analyses that depend on it—no manual orchestration required.
+
 This chapter introduces the Relational Workflow Model—a fundamental extension of relational theory that makes databases workflow-aware while preserving all the mathematical rigor of Codd's model.
 
 ## A New Paradigm for Relational Databases
@@ -165,6 +167,8 @@ DataJoint represents the practical embodiment of the Relational Workflow Model, 
 ### The Schema as Executable Specification
 
 The Relational Workflow Model introduces a profound shift in perspective: the database schema itself becomes an executable specification of your workflow. This represents a fundamental departure from traditional database design, where conceptual modeling, implementation, and documentation are separate activities requiring translation between different representations.
+
+**The Relational Workflow Model defines Computational Databases**—systems where computational transformations are first-class citizens of the data model. Like electronic spreadsheets that automatically recalculate when you enter new values, computational databases automatically execute computations when new data enters the system. When you insert a new recording session, the database doesn't just store it—it identifies all downstream computations that should run and executes them in the correct order, ensuring that every analysis remains consistent with its inputs.
 
 When you define a DataJoint schema, you accomplish four critical tasks simultaneously. First, you design the conceptual model by identifying what workflow steps exist in your domain. Second, you implement the database structure by defining tables, attributes, and foreign keys that capture these workflow steps. Third, you specify the computations through `make()` methods that define how each workflow step transforms its inputs into outputs. Finally, you document the pipeline because the schema itself serves as the complete documentation of your workflow.
 
