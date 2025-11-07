@@ -11,7 +11,7 @@ class Student(dj.Manual):
     ---
     first_name      : varchar(40)
     last_name       : varchar(40)
-    sex             : enum('F', 'M', 'U')
+    sex             : enum('F', 'M')
     date_of_birth   : date
     home_address    : varchar(120) # mailing street address
     home_city       : varchar(60)  # mailing address
