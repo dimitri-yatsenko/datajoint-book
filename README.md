@@ -91,6 +91,18 @@ Every time changes are pushed to the `main` branch, a GitHub Actions workflow:
 
 You can monitor the build and deployment status via the badge at the top of this README or by viewing the [Actions tab](https://github.com/dimitri-yatsenko/datajoint-book/actions) in the repository. This automated CI/CD pipeline ensures that the published version always reflects the latest content in the repository.
 
+### Manual Workflow Execution
+
+You can also manually trigger the "Build and Deploy DataJoint Book" workflow from the GitHub Actions interface:
+
+1. Navigate to the [Actions tab](https://github.com/dimitri-yatsenko/datajoint-book/actions) in the repository
+2. Select the "Build and Deploy DataJoint Book" workflow from the left sidebar
+3. Click the "Run workflow" button (on the right side)
+4. Select the branch you want to run the workflow on (typically `main`)
+5. Click "Run workflow" to start the build and deployment process
+
+This is useful when you want to rebuild and redeploy the book without making a new commit, or when testing workflow changes on a feature branch.
+
 # Contributions 
 We welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor.
 All contributions will be gratefully acknowledged.
