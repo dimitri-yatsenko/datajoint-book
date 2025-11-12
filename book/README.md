@@ -6,7 +6,7 @@ authors:
 
 © DataJoint Inc., 2024-2025. All rights reserved.
 
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 
 # Welcome
@@ -25,12 +25,14 @@ This is an **executable book**, following the principles of the [Executable Book
 
 # License
 
-This work is licensed under the [CC BY-NC-ND 4.0 International License](LICENSE.md).
+This work is licensed under the [CC BY 4.0 International License](LICENSE.md).
 
-You may share the content as long as you
-* give appropriate credit
-* do not use it for commercial purposes
-* do not make modifications
+You may:
+* share the content in any medium or format
+* adapt, remix, transform, and build upon the material for any purpose
+
+Provided that you:
+* give appropriate credit and indicate if changes were made
 
 # Official Documentation
 Official documentation for DataJoint can be found here:
@@ -45,5 +47,5 @@ Official documentation for DataJoint can be found here:
 
 We welcome and appreciate your contributions to this book, whether as a reviewer or as a contributor.
 All contributions will be gratefully acknowledged.
-You may suggest modifications by submitting an issue in the main [GitHub repository](https://github.com/dimitri-yatsenko/datajoint-book/issues) for this book.
+You may suggest modifications by submitting an issue in the main [GitHub repository](https://github.com/datajoint/datajoint-book/issues) for this book.
 For more substrantial contributions and collaborations, including co-authorship and publications, please contact Dimitri Yatsenko. 
