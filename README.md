@@ -95,7 +95,7 @@ You can monitor the build and deployment status via the badge at the top of this
 
 You can also manually trigger the "Build and Deploy DataJoint Book" workflow from the GitHub Actions interface:
 
-1. Navigate to the [Actions tab](https://github.com/dimitri-yatsenko/datajoint-book/actions) in the repository
+1. Navigate to the [Actions tab](https://github.com/datajoint/datajoint-book/actions) in the repository
 2. Select the "Build and Deploy DataJoint Book" workflow from the left sidebar
 3. Click the "Run workflow" button (on the right side)
 4. Select the branch you want to run the workflow on (typically `main`)
