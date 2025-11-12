@@ -89,7 +89,7 @@ Every time changes are pushed to the `main` branch, a GitHub Actions workflow:
 2. Deploys the generated HTML to GitHub Pages
 3. Makes the updated book immediately available online
 
-You can monitor the build and deployment status via the badge at the top of this README or by viewing the [Actions tab](https://github.com/dimitri-yatsenko/datajoint-book/actions) in the repository. This automated CI/CD pipeline ensures that the published version always reflects the latest content in the repository.
+You can monitor the build and deployment status via the badge at the top of this README or by viewing the [Actions tab](https://github.com/datajoint/datajoint-book/actions) in the repository. This automated CI/CD pipeline ensures that the published version always reflects the latest content in the repository.
 
 ### Manual Workflow Execution
 
