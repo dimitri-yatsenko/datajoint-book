@@ -1,4 +1,4 @@
-© Dimitri Yatsenko, 2024. All rights reserved.
+© DataJoint Inc., 2024-2025. All rights reserved.
 
 # Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License
 
