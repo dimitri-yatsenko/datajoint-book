@@ -1,4 +1,4 @@
-[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Build and Deploy](https://github.com/dimitri-yatsenko/datajoint-book/actions/workflows/main.yml/badge.svg)](https://github.com/dimitri-yatsenko/datajoint-book/actions/workflows/main.yml)
 
 
@@ -6,11 +6,13 @@
 
 © DataJoint Inc., 2024-2025, All rights reserved.
 
-This work is licensed under the [CC BY-NC-ND 4.0 License](LICENSE.md).
-You may share the content as long as you 
-* give appropriate credit
-* do not use it for commercial purposes
-* do not make modifications.
+This work is licensed under the [CC BY 4.0 License](LICENSE.md).
+You may:
+* share the content in any medium or format
+* adapt, remix, transform, and build upon the material for any purpose
+
+Provided that you:
+* give appropriate credit and indicate if changes were made
 
 
 # DataJoint Book
