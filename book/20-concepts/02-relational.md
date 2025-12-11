@@ -203,7 +203,6 @@ The most common way to interact with relational databases is through the Structu
 When speaking with database programmers and computer scientists, you will often run into different terminologies. Practical database programmers speak of tables and rows while theoretical data modelers may describe the same things as *relations* and *tuples*.
 
 :::{table} The difference in terminology used in relational theory and relational databases.
-:widths: auto
 :align: center
 |  Relational Theory | Database Programming & SQL  | Description  |
 |:--|:--|:--|

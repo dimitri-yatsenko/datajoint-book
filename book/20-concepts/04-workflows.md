@@ -84,9 +84,6 @@ Several different notations have been developed, including Chen's original notat
 :::{figure}
 :align: center
 ```{mermaid}
----
-title: Crow's Foot notation.
----
 erDiagram
     EMPLOYEE }o--o{ PROJECT : assigned-to
 ```
@@ -97,9 +94,6 @@ Or using an explicit association table:
 :::{figure}
 :align: center
 ```{mermaid}
----
-title: Crow's Foot notation.
----
 erDiagram
     EMPLOYEE ||--o{ ASSIGNMENT : works-on
     ASSIGNMENT }o--|| PROJECT : assigned-to

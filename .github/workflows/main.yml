@@ -1,12 +1,14 @@
 name: Build and Deploy DataJoint Book
 
-# Run on pushes to the main branch and on pull requests 
+# Run on pushes to the main branch, on pull requests, and manual triggers
 on:
   push:
     # Runs on pushes targeting the default branch
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    # Allows manual triggering from the Actions tab
 
 env:
 # `BASE_URL` determines the website served from, including CSS and JS assets
