@@ -1,6 +1,5 @@
 ---
 title: Development Environment
-date: 2024-08-20
 ---
 This book is designed to teach database programming for scientific operations, using the most popular scientific programming language today—[Python](https://www.python.org/).
 
@@ -31,9 +30,9 @@ There are two main methods to build and activate the DevContainer:
 
 Detailed instructions for working with DevContainers can be found in the documentation for MyST, Visual Studio Code, and GitHub CodeSpaces. Readers are encouraged to explore these resources for guidance on setting up and operating the environment.
 
-### DataJoint Works
+### The DataJoint Cloud Platform
 
-For real-life projects, consider setting up an account on [DataJoint Works](https://datajoint.com). This platform provides the computational infrastructure and programming environment needed to implement collaborative data pipelines, either in the cloud or on local infrastructure. DataJoint Works integrates:
+For real-life projects, consider setting up an account on [the DataJoint cloud platform](https://datajoint.com). This platform provides the computational infrastructure and programming environment needed to implement collaborative data pipelines, either in the cloud or on local infrastructure. The DataJoint cloud platform integrates:
 
 - Code management
 - User access management
