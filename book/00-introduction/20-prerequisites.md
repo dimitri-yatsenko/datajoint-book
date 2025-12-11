@@ -1,8 +1,8 @@
-# Prerequisites and Essential Skills
+# Prerequisites
 
-This book teaches DataJoint and SQL for scientific data workflows. To get the most out of this course, you should be comfortable with a set of tools that form the bedrock of modern data science.
-While we will focus on database principles, we assume a working knowledge of the following.
-If you're new to these, we highly recommend exploring MIT's ["The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/) to get up to speed.
+This book teaches the concept of relational data workflows in DataJoint.
+We provide some equivalent SQL for reference, but SQL knowledge is not required.
+To get the most out of this course, you should be comfortable with the following tools.
 
 ### Command-Line Proficiency
 
@@ -19,3 +19,5 @@ In collaborative science and software, version control is non-negotiable. We exp
 ### Jupyter Notebooks
 
 This textbook itself is built using Jupyter. You should know how to launch, navigate, and run code within Jupyter Notebooks or JupyterLab. The concept of "literate programming"—mixing executable code, text, and results—is central to reproducible science.
+
+(If you're new to these tools, MIT's ["The Missing Semester of Your CS Education"](https://missing.csail.mit.edu/) is an excellent resource.)
