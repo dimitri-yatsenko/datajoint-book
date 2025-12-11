@@ -13,13 +13,6 @@ authors:
 
 Welcome to **The DataJoint Book**. It book provides a complete introduction to database programming for scientific data and computations. 
 
-```{image} ./images/neuron.png
-:alt: contemplating neuron
-:class: bg-primary mb-1
-:width: 400px
-:align: center
-```
-
 This is an **executable book**, following the principles of the [Executable Books Project](https://executablebooks.org/en/latest/). It includes a complete development environment, including all dependencies, tools, and extensions already set up. This includes a MySQL database server, [MyST](https://mystmd.org/) for generating the book, Python and Jupyter for programming examples, MySQL client and [`jupysql`](https://ploomber.io/blog/jupysql/) for executing SQL commands, the DataJoint client library, and essential scientific programming libraries.
 
 

@@ -4,12 +4,6 @@ title: DataJoint History
 
 DataJoint's evolution from lab tool to commercial platform reflects its growing role in scientific research.
 
-```{image} ../images/cave-art.jpg
----
-alt: cave painting
-width: 600px
----
-```
 ## Academic Origins: From Lab Tool to Open-Source Project
 
 The story of DataJoint begins in 2008 in Dr. Andreas Tolias's neuroscience lab at Baylor College of Medicine. The lab was tackling complex neurophysiology experiments, and a group including **Alex Ecker**, **Philipp Berens**, **Andreas Hoenselaar**, and **R. James Cotton** had already created a MATLAB library called "Steinbruch" that used MySQL to manage data.
