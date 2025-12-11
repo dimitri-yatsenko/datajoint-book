@@ -244,7 +244,7 @@ This combination makes DataJoint a specialized dialect of the relational model, 
 
 ## The Future of Database Design
 
-The Relational Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases.
+The Relational Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases. The next chapter shows how this model scales from individual workflows to complete **scientific data pipelines**—comprehensive systems that integrate the computational database core with tools, infrastructure, and processes needed for real-world scientific research.
 
 ### Why This Matters Now
 

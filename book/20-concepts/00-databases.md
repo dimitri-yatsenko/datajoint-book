@@ -113,5 +113,6 @@ The following chapters build the conceptual foundation you need to understand Da
 - **Relational Theory**: The mathematical foundations that make relational databases powerful
 - **Relational Practice**: Hands-on experience with database operations
 - **Relational Workflows**: How DataJoint extends relational theory for computational pipelines
+- **Scientific Data Pipelines**: How workflows scale into complete research data operations systems
 
 By the end, you'll understand both the mathematical foundations and their practical application to your research.
