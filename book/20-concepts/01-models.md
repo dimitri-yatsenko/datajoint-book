@@ -73,7 +73,15 @@ In contrast, self-describing or schemaless data models do not require a predefin
 
 ### Choosing Between Structured and Schemaless Models
 
-Both structured and schemaless data formats can be attractive in various scenarios. The choice between using a structured or schemaless data model often depends on the specific needs of the application:
+Both structured and schemaless data formats can be attractive in various scenarios. The choice between using a structured or schemaless data model often depends on the specific needs of the application.
+
+These two approaches are sometimes called **schema-on-write** and **schema-on-read**:
+
+- **Schema-on-write** refers to structured data models where the schema is defined and enforced *before* data is stored. Data must conform to the schema at write time, ensuring consistency and integrity from the moment data enters the system. Relational databases exemplify this approach.
+
+- **Schema-on-read** refers to schemaless or self-describing data models where structure is interpreted *when* data is read rather than when it is written. Data can be ingested rapidly in its raw form, with structure applied later during analysis. Data lakes and document stores often follow this approach.
+
+Each approach has its strengths:
 
 **Use structured models when:**
 - Data consistency and integrity are paramount
@@ -104,7 +112,7 @@ Think of metadata like tagging a passenger with her desired destination and putt
 
 A formal schema expresses and enforces relationships as an intrinsic, verifiable part of the data system. Foreign key constraints don't just describe a link; they actively prevent data operations that would violate that link, ensuring referential integrity is maintained by the database itself.
 
-**A schema is what guarantees her assigned seat on the correct flight**, preventing someone else from taking it, and ensuring that her luggage makes the same transfers. The database won't allow her seat to be double-booked, won't let her board without a valid ticket, and won't let her luggage transfer to a different destination. These aren't suggestions or documentation—they're enforced rules.
+Continuing our traveling passenger analogy, **a schema is what guarantees her assigned seat on the correct flight**, preventing someone else from taking it, and ensuring that her luggage makes the same transfers. The database won't allow her seat to be double-booked, won't let her board without a valid ticket, and won't let her luggage transfer to a different destination. These aren't suggestions or documentation—they're enforced rules.
 
 ### Active Enforcement vs. Passive Description
 
