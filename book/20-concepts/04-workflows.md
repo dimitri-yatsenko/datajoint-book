@@ -178,6 +178,10 @@ This tiered structure creates a natural dependency hierarchy that reflects the l
 
 The visual representation of this structure through color-coded diagrams provides immediate insight into your workflow. Green represents manual tables where human expertise enters the system, blue shows imported tables where automated data acquisition occurs, red indicates computed tables where algorithmic processing happens, and gray denotes lookup tables containing reference information. At a glance, you can see where data enters your system and trace how it flows through each processing step.
 
+:::{tip}
+For a hands-on demonstration of all table tiers working together in a computational pipeline, see the [Julia Fractals](../80-examples/070-fractals.ipynb) example, which shows Manual tables for experimental parameters, Lookup tables for denoising methods, and Computed tables for derived fractal images and processed results.
+:::
+
 ### Relationships Emerge from Workflow Convergence
 
 One of the most elegant aspects of the Relational Workflow Model is how it handles relationships between entities. Unlike traditional Entity-Relationship modeling, which requires explicit notation and concepts for relationships, DataJoint allows relationships to emerge naturally from the convergence of workflows. This approach eliminates the artificial distinction between entities and relationships that has long complicated database design.
