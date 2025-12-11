@@ -1,15 +1,15 @@
 # Knowledge Check: Concepts
 
-This assessment covers Chapters 0-4 of the Database Concepts section. Questions include both single-answer and multiple-answer formats.
+This assessment covers Chapters 0-5 of the Database Concepts section. Questions include both single-answer and multiple-answer formats.
 
 **Instructions:**
 - **Single-answer questions [SA]**: Select the ONE best answer
 - **Multiple-answer questions [MA]**: Select ALL that apply
 - Click "Show Answer" to reveal the correct answer and explanation
 
-**Scoring:** 70 points maximum
-- Single Answer: 40 questions (1 point each)
-- Multiple Answer: 15 questions (2 points each if all correct)
+**Scoring:** 82 points maximum
+- Single Answer: 46 questions (1 point each)
+- Multiple Answer: 18 questions (2 points each if all correct)
 
 ---
 
@@ -977,9 +977,196 @@ D) Databases should transform into spreadsheets
 
 ---
 
+## Chapter 5: Scientific Data Pipelines
+
+### Question 6.1 [SA]
+What is a scientific data pipeline according to the book?
+
+A) Just a database with additional tables
+B) A comprehensive data operations system managing the complete lifecycle of scientific data
+C) A file backup system for research data
+D) A programming language for scientists
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** A scientific data pipeline is more than just a database—it's a comprehensive system that manages data from acquisition to publication, integrates diverse tools, and enables collaboration across teams.
+```
+
+---
+
+### Question 6.2 [MA]
+What are the three components of the DataJoint open-source core? (Select all that apply)
+
+A) Relational database
+B) Web browser
+C) Code repository
+D) Object store
+E) Spreadsheet software
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** A, C, D
+
+**Explanation:** The open-source core consists of the relational database (system of record), code repository (schema definitions and computational methods), and object store (for large scientific data objects).
+```
+
+---
+
+### Question 6.3 [SA]
+What role does the relational database play in the DataJoint Platform architecture?
+
+A) It only stores configuration files
+B) It serves as the system of record with structured storage and referential integrity
+C) It handles only user authentication
+D) It replaces the need for any code
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** The relational database serves as the system of record, providing structured tabular storage, referential integrity through foreign keys, ACID-compliant transactions, and declarative query capabilities.
+```
+
+---
+
+### Question 6.4 [MA]
+What are the four categories of functional extensions in the DataJoint Platform? (Select all that apply)
+
+A) Interactions
+B) Database migration
+C) Infrastructure provisioning
+D) Automation
+E) Orchestration
+F) File compression
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** A, C, D, E
+
+**Explanation:** The four functional extension categories are: Interactions (visual tools, ELN, IDE), Infrastructure provisioning (security, compute resources), Automation (AI agents, populate), and Orchestration (ingest, collaboration, publishing).
+```
+
+---
+
+### Question 6.5 [SA]
+What is the purpose of the object store in the DataJoint architecture?
+
+A) To replace the relational database entirely
+B) To manage large scientific datasets while maintaining relational integrity
+C) To store only text files
+D) To provide email functionality
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** The object store handles large scientific data (images, recordings, videos) using scalable storage while the database maintains metadata and referential integrity—a hybrid approach combining scalability with query power.
+```
+
+---
+
+### Question 6.6 [SA]
+What does the book mean by "the schema is central" in scientific data pipelines?
+
+A) Schemas are stored in the center of the database
+B) The schema defines data structures, dependencies, and computational flow as a single source of truth
+C) Only database administrators can access schemas
+D) Schemas must be written in a central location
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** The schema is central because it's the single source of truth—defining not just data structures but also dependencies and computational flow. Every component from import scripts to dashboards operates on the same schema-defined structures.
+```
+
+---
+
+### Question 6.7 [MA]
+According to the comparison table, what advantages does a DataJoint pipeline have over file-based approaches? (Select all that apply)
+
+A) Data structure is explicit in schema definition
+B) Provenance is automatic through referential integrity
+C) Files are always smaller
+D) Queries use composable algebra
+E) Collaboration uses concurrent database access
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** A, B, D, E
+
+**Explanation:** DataJoint pipelines offer explicit schemas (A), automatic provenance (B), composable queries (D), and concurrent access (E). File size is not inherently smaller with DataJoint (C is false).
+```
+
+---
+
+### Question 6.8 [SA]
+What triggers automated computations in the DataJoint pipeline workflow?
+
+A) Manual execution of each step
+B) The `populate()` mechanism that identifies missing computations
+C) Email notifications to researchers
+D) Random scheduling
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** The `populate()` mechanism automatically identifies missing computations and executes them in dependency order. When new data enters the system, downstream computations propagate automatically.
+```
+
+---
+
+### Question 6.9 [MA]
+What does the "Interactions" category of functional extensions include? (Select all that apply)
+
+A) Pipeline Navigator for visual exploration
+B) Electronic Lab Notebook integration
+C) Database backup systems
+D) Integrated Development Environment support
+E) Visualization dashboards
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** A, B, D, E
+
+**Explanation:** Interactions include: Pipeline Navigator (schema exploration), ELN (lab documentation), IDE support (Jupyter, VS Code), and Visualization Dashboards (exploring results). Backups are part of infrastructure, not interactions.
+```
+
+---
+
+### Question 6.10 [SA]
+What does the DataJoint Specs 2.0 document define?
+
+A) Marketing materials for DataJoint
+B) Standards, conventions, and best practices for designing DataJoint pipelines
+C) Hardware requirements for servers
+D) Pricing information
+
+```{admonition} Show Answer
+:class: dropdown
+
+**Answer:** B
+
+**Explanation:** DataJoint Specs 2.0 formally defines standards for pipeline structure, table tiers, attribute types, query operators, computation models, and object storage—ensuring interoperability and consistent best practices.
+```
+
+---
+
 ## Comprehensive Questions
 
-### Question 6.1 [MA]
+### Question 7.1 [MA]
 Which statements accurately describe the progression from metadata to schemas to workflows? (Select all that apply)
 
 A) Metadata describes relationships externally  
@@ -998,7 +1185,7 @@ E) All three approaches can work together
 
 ---
 
-### Question 6.2 [SA]
+### Question 7.2 [SA]
 A scientist discovers that a raw measurement file was corrupted. In a DataJoint workflow, what's the proper response?
 
 A) UPDATE all dependent results to mark them as questionable  
@@ -1016,7 +1203,7 @@ D) Only fix the measurement and hope results are still valid
 
 ---
 
-### Question 6.3 [MA]
+### Question 7.3 [MA]
 What advantages does DataJoint provide over traditional relational databases for scientific computing? (Select all that apply)
 
 A) Faster raw query performance  
@@ -1035,7 +1222,7 @@ E) No need for any documentation
 
 ---
 
-### Question 6.4 [SA]
+### Question 7.4 [SA]
 If you see this in a DataJoint diagram: `Session → Recording → Analysis`, what does it mean?
 
 A) These are three unrelated tables  
@@ -1053,7 +1240,7 @@ D) They have the same structure
 
 ---
 
-### Question 6.5 [MA]
+### Question 7.5 [MA]
 Why is the mathematical foundation of relational databases important for science? (Select all that apply)
 
 A) It enables provable query optimization  
@@ -1080,31 +1267,32 @@ E) It eliminates all human judgment
 * - Score Range
   - Percentage
   - Assessment
-* - 63-70 points
+* - 74-82 points
   - 90-100%
   - Excellent mastery of database concepts
-* - 56-62 points
+* - 66-73 points
   - 80-89%
   - Good understanding with minor gaps
-* - 49-55 points
+* - 57-65 points
   - 70-79%
   - Adequate comprehension, review some topics
-* - 42-48 points
+* - 49-56 points
   - 60-69%
   - Basic familiarity, significant review needed
-* - Below 42
+* - Below 49
   - <60%
   - Comprehensive review recommended
 ```
 
-**Total Points:** 70
-- Single Answer: 40 questions × 1 point = 40 points
-- Multiple Answer: 15 questions × 2 points = 30 points
+**Total Points:** 82
+- Single Answer: 46 questions × 1 point = 46 points
+- Multiple Answer: 18 questions × 2 points = 36 points
 
 **Topic Coverage:**
-- Chapter 0 (Databases): 6% (4 questions)
-- Chapter 1 (Data Models): 28% (11 questions)
+- Chapter 0 (Databases): 5% (4 questions)
+- Chapter 1 (Data Models): 20% (11 questions)
 - Chapter 2 (Relational Model): 24% (13 questions)
 - Chapter 3 (Practical Implementation): 15% (8 questions)
-- Chapter 4 (Workflow Model): 24% (16 questions)
-- Synthesis Questions: 3% (3 questions)
+- Chapter 4 (Workflow Model): 29% (16 questions)
+- Chapter 5 (Scientific Data Pipelines): 18% (10 questions)
+- Synthesis Questions: 9% (5 questions)
