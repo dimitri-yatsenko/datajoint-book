@@ -1076,7 +1076,6 @@ E) It eliminates all human judgment
 
 ```{list-table} Grade Scale
 :header-rows: 1
-:widths: 20 20 60
 
 * - Score Range
   - Percentage

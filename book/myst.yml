@@ -14,10 +14,8 @@ project:
     
 site:
   template: book-theme
-  options: 
+  options:
     path_prefix: /datajoint-book
-
-options:
-  favicon: favicon.ico
-  logo: site_logo.png
+    favicon: favicon.ico
+    logo: site_logo.png
 

@@ -6,8 +6,8 @@ DataJoint's evolution from lab tool to commercial platform reflects its growing 
 
 ```{image} ../images/cave-art.jpg
 ---
-:alt: cave painting
-:width: 600px
+alt: cave painting
+width: 600px
 ---
 ```
 ## Academic Origins: From Lab Tool to Open-Source Project
