@@ -108,7 +108,7 @@ DataJoint is designed for organizations where:
 - **Teams collaborate**: Multiple people work with shared data and build on each other's analyses
 - **Scale is growing**: What worked for one researcher doesn't work for a team; what worked for one project doesn't work for ten
 
-DataJoint has been proven at scale: the MICrONS project used it to coordinate petabytes of electron microscopy data across nine years of collaborative research. It's equally effective for smaller teams seeking rigor without complexity.
+DataJoint is used in over a hundred neuroscience labs worldwide, supporting projects of varying sizes and complexity—from single-investigator studies to large multi-site collaborations. It handles multimodal data spanning neurophysiology, imaging, behavior, sequencing, and machine learning, scaling from gigabytes to petabytes while maintaining the same rigor.
 
 ## Getting Started
 
