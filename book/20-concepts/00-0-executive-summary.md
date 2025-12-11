@@ -36,6 +36,14 @@ Structured metadata lives in the relational database (MySQL/PostgreSQL). Large b
 
 The **DataJoint Platform** implements this model through a layered architecture:
 
+```{figure} ../images/Platform.png
+:name: platform-architecture
+:align: center
+:width: 80%
+
+The DataJoint Platform architecture: an open-source core (relational database, code repository, object store) surrounded by functional extensions for interactions, infrastructure, automation, and orchestration.
+```
+
 **Open-Source Core**
 - Relational database (MySQL/PostgreSQL) as system of record
 - Code repository (Git) containing schema definitions and compute methods
@@ -106,6 +114,8 @@ DataJoint has been proven at scale: the MICrONS project used it to coordinate pe
 
 The remaining chapters in this Concepts section build the theoretical foundation. If you prefer to learn by doing, the hands-on tutorial in **Relational Practice** provides immediate experience with a working database. The **Design** section then covers practical schema construction.
 
-For evaluation purposes, the [Julia Fractals example](../80-examples/070-fractals.ipynb) demonstrates a complete pipeline with all table tiers (Manual, Lookup, Imported, Computed) working together, providing a concrete reference implementation.
+The [Blob Detection example](../80-examples/075-blob-detection.ipynb) demonstrates a complete image processing pipeline with all table tiers (Manual, Lookup, Imported, Computed) working together, providing a concrete reference implementation.
 
 The [DataJoint Specs 2.0](../95-reference/SPECS_2_0.md) provides the formal specification for those requiring precise technical definitions.
+
+To evaluate DataJoint for your organization, visit [datajoint.com](https://datajoint.com) to subscribe to a pilot project and experience the platform firsthand with guided support.
