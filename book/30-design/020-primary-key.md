@@ -387,7 +387,7 @@ print(uuid3_value)  # Different from UUID5 but also deterministic
 
 ### Practical UUID Examples
 
-For detailed examples of using UUIDs in DataJoint tables, including table definitions, insertion code, and working with UUIDs in foreign key relationships, see [UUIDs in DataJoint](025-uuid.ipynb).
+For detailed examples of using UUIDs in DataJoint tables, including table definitions, insertion code, and working with UUIDs in foreign key relationships, see [UUIDs in DataJoint](../85-special-topics/025-uuid.ipynb).
 
 Here are some conceptual examples showing UUIDs as primary keys:
 
@@ -501,7 +501,7 @@ Different databases handle UUIDs differently:
 - **SQLite**: TEXT or BLOB
 - **SQL Server**: UNIQUEIDENTIFIER type
 
-In DataJoint, UUIDs are automatically stored as `BINARY(16)` in MySQL for efficient storage. See [UUIDs in DataJoint](025-uuid.ipynb) for practical implementation examples.
+In DataJoint, UUIDs are automatically stored as `BINARY(16)` in MySQL for efficient storage. See [UUIDs in DataJoint](../85-special-topics/025-uuid.ipynb) for practical implementation examples.
 
 
 # Practical Examples of Ensuring Entity Integrity
