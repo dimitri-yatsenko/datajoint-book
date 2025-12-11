@@ -26,7 +26,7 @@ In 2017, Vathes received a Phase I SBIR grant, allowing Edgar and me to balance 
 
 The year 2020 was pivotal. A major 5-year NIH grant enabled the development of **DataJoint Elements**—a collection of curated data pipelines for neuroscience. This initiative was advanced by **Dr. Kabilar Gunalan**, who joined the team as a regular contributor. In 2021, we rebranded the company as **DataJoint** to reflect our core product and shifted our focus to commercial technology for research collaboration, at which point I transitioned to a full-time role as CEO.
 
-In 2022, a Phase II SBIR commercialization grant from the NIH funded the development of our online collaborative platform: the **DataJoint Platform**. **Monty Kosma**, who joined that year, spearheaded the platform's development, eventually becoming a co-founder and President and guiding the company's transformation into a product-focused enterprise. Monty left the company in September 2025.
+In 2022, a Phase II SBIR commercialization grant from the NIH funded the development of our online collaborative platform: the **DataJoint Platform**. **Monty Kosma**, who joined that year, spearheaded the platform's development, eventually becoming a co-founder and President and guiding the company's transformation into a product-focused enterprise (Monty left the company in September 2025).
 
 The **DataJoint Platform** officially launched in 2024, empowering its first cohort of labs. In the fall of that year, the company entered a new phase of growth with the addition of **Jim Olson**, former CEO of the data operations platform Flywheel.io. Jim's appointment as CEO in December 2024 brought fresh strategic vision to scale the company's impact.
 
