@@ -61,7 +61,7 @@ The core is fully open source. Organizations can build DIY solutions or use mana
 
 This book provides comprehensive coverage of DataJoint from foundations through advanced applications:
 
-**Part I: Concepts** (this section)
+**Part I: Concepts**
 - Database fundamentals and why they matter for scientific work
 - Data models: schema-on-write vs. schema-on-read, and why schemas enable mathematical guarantees
 - Relational theory: the 150-year mathematical foundation from De Morgan through Codd
@@ -112,7 +112,7 @@ DataJoint has been proven at scale: the MICrONS project used it to coordinate pe
 
 ## Getting Started
 
-The remaining chapters in this Concepts section build the theoretical foundation. If you prefer to learn by doing, the hands-on tutorial in **Relational Practice** provides immediate experience with a working database. The **Design** section then covers practical schema construction.
+The **Concepts** section builds the theoretical foundation. If you prefer to learn by doing, the hands-on tutorial in **Relational Practice** provides immediate experience with a working database. The **Design** section then covers practical schema construction.
 
 The [Blob Detection example](../80-examples/075-blob-detection.ipynb) demonstrates a complete image processing pipeline with all table tiers (Manual, Lookup, Imported, Computed) working together, providing a concrete reference implementation.
 
