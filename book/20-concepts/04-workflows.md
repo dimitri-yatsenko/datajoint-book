@@ -1,14 +1,12 @@
 # Relational Workflows
 
-## The Problem DataJoint Solves
+## From Storage to Workflow
 
-In the previous chapter, we saw how traditional relational databases excel at storing and querying data but struggle with scientific workflows. When you update an input measurement, downstream analyses become stale. When you want to process new data, you must manually track dependencies and run computations in the correct order. When someone asks "how was this result computed?", you rely on external documentation that may be out of date.
+The previous chapters established that traditional relational databases excel at storing and querying data but struggle with the computational workflows central to scientific research. The practical chapter demonstrated these limitations firsthand: you can store inputs and outputs, but the database doesn't understand that outputs were *computed from* inputs, doesn't automatically recompute when inputs change, and doesn't track provenance.
 
 **DataJoint solves these problems by treating your database schema as an executable workflow specification.** Your table definitions don't just describe data structure—they prescribe how data flows through your pipeline, when computations run, and how results depend on inputs.
 
-**The Relational Workflow Model defines a new class of databases, {index}`Computational Databases <computational database>`**, where computational transformations are first-class citizens of the data model. Just as electronic spreadsheets automatically recalculate formulas when you enter new data, computational databases trigger cascades of computations specified by the schema whenever new data enters the system. In this model, entering a new experimental session automatically triggers the computation of all downstream analyses that depend on it—no manual orchestration required.
-
-This chapter introduces the Relational Workflow Model—a fundamental extension of relational theory that makes databases workflow-aware while preserving all the mathematical rigor of Codd's model.
+This chapter introduces the **Relational Workflow Model**—a fundamental extension of relational theory that makes databases workflow-aware while preserving all the mathematical rigor of Codd's model. The Relational Workflow Model defines a new class of databases called **{index}`Computational Databases <computational database>`**, where computational transformations are first-class citizens of the data model. Just as electronic spreadsheets automatically recalculate formulas when you enter new data, computational databases trigger cascades of computations specified by the schema whenever new data enters the system.
 
 ## A New Paradigm for Relational Databases
 
@@ -20,7 +18,7 @@ The relational data model, while powerful, offers considerable semantic flexibil
 
 Before diving deep into the Relational Workflow Model, let's see how it compares to the two major approaches we've discussed:
 
-| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Relational Workflow (Yatsenko)** |
+| Aspect | Mathematical (Codd) | Entity-Relationship (Chen) | **Relational Workflow (DataJoint)** |
 |--------|-------------------|-------------------------|-------------------------------|
 | **Core Question** | "What functional dependencies exist?" | "What entity types exist?" | **"When/how are entities created?"** |
 | **Diagramming** | None | Comprehensive ERDs | **Integrated workflow diagrams** |
@@ -178,6 +176,10 @@ This tiered structure creates a natural dependency hierarchy that reflects the l
 
 The visual representation of this structure through color-coded diagrams provides immediate insight into your workflow. Green represents manual tables where human expertise enters the system, blue shows imported tables where automated data acquisition occurs, red indicates computed tables where algorithmic processing happens, and gray denotes lookup tables containing reference information. At a glance, you can see where data enters your system and trace how it flows through each processing step.
 
+:::{tip}
+For a hands-on demonstration of all table tiers working together in a computational pipeline, see the [Julia Fractals](../80-examples/070-fractals.ipynb) example, which shows Manual tables for experimental parameters, Lookup tables for denoising methods, and Computed tables for derived fractal images and processed results.
+:::
+
 ### Relationships Emerge from Workflow Convergence
 
 One of the most elegant aspects of the Relational Workflow Model is how it handles relationships between entities. Unlike traditional Entity-Relationship modeling, which requires explicit notation and concepts for relationships, DataJoint allows relationships to emerge naturally from the convergence of workflows. This approach eliminates the artificial distinction between entities and relationships that has long complicated database design.
@@ -242,7 +244,7 @@ This combination makes DataJoint a specialized dialect of the relational model, 
 
 ## The Future of Database Design
 
-The Relational Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases.
+The Relational Workflow Model represents more than an incremental improvement—it's a **paradigm shift** that addresses fundamental limitations in how we think about and implement relational databases. The next chapter shows how this model scales from individual workflows to complete **scientific data pipelines**—comprehensive systems that integrate the computational database core with tools, infrastructure, and processes needed for real-world scientific research.
 
 ### Why This Matters Now
 

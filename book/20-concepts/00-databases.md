@@ -106,17 +106,13 @@ Separating data management from data use provides critical advantages:
 
 This book focuses on **DataJoint**, a framework that extends relational databases specifically for scientific workflows. DataJoint builds on the solid foundation of relational theory while adding capabilities essential for research: automated computation, data provenance, and reproducibility.
 
-**DataJoint introduces a new class of databases called Computational Databases**, where computational transformations are first-class citizens of the data model. Just as electronic spreadsheets automatically recalculate formulas when you enter new data, computational databases trigger cascades of computations specified by the schema whenever new data enters the system. In this model, the database schema doesn't just describe data structure—it encodes executable workflows where computations automatically execute when their dependencies are satisfied.
-
 The relational data model—introduced by Edgar F. Codd in 1970—revolutionized data management by organizing data into tables with well-defined relationships. This model has dominated database systems for over five decades due to its mathematical rigor and versatility. Modern relational databases like MySQL and PostgreSQL continue to evolve, incorporating new capabilities for scalability and security while maintaining the core principles that make them reliable and powerful.
 
-DataJoint extends this proven foundation with workflow-aware capabilities that scientific computing requires. Throughout this book, you'll learn how to:
-- Design database schemas that represent your research workflows
-- Leverage the server-client architecture for collaborative research
-- Use access control to manage sensitive research data appropriately
-- Ensure data integrity and computational validity
-- Build reproducible data pipelines
+The following chapters build the conceptual foundation you need to understand DataJoint's approach:
+- **Data Models**: What data models are and why schemas matter for scientific work
+- **Relational Theory**: The mathematical foundations that make relational databases powerful
+- **Relational Practice**: Hands-on experience with database operations
+- **Relational Workflows**: How DataJoint extends relational theory for computational pipelines
+- **Scientific Data Pipelines**: How workflows scale into complete research data operations systems
 
-We'll first introduce relational database concepts and operations, then show how DataJoint transforms these concepts into a powerful tool for scientific computing. By the end, you'll understand both the mathematical foundations and their practical application to your research.
-
-The next chapters explore what data models are, why the relational model is particularly well-suited for scientific work, and how DataJoint builds on relational theory to support the computational workflows central to modern research.
+By the end, you'll understand both the mathematical foundations and their practical application to your research.

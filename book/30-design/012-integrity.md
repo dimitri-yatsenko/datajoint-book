@@ -78,7 +78,7 @@ Completeness prevents missing values that could invalidate analyses:
 
 **Covered in:** 
 - [Tables](015-table.ipynb) — Required vs. optional attributes
-- [Default Values](070-default-values.ipynb) — Handling optional data
+- [Default Values](017-default-values.ipynb) — Handling optional data
 
 ---
 
@@ -96,7 +96,7 @@ Entity integrity ensures a **one-to-one correspondence** between real-world enti
 
 **Covered in:**
 - [Primary Keys](020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
-- [UUID](025-uuid.ipynb) — Universally unique identifiers
+- [UUID](../85-special-topics/025-uuid.ipynb) — Universally unique identifiers
 
 ---
 
@@ -126,9 +126,9 @@ Compositional integrity ensures multi-part entities are never partially stored:
 
 **Example:** An imaging session's metadata and all acquired frames are stored together or not at all.
 
-**Covered in:** 
-- [Part Tables](055-part-tables.ipynb) — Hierarchical compositions
-- [Transactions](../operations/045-transactions.ipynb) — Atomic operations
+**Covered in:**
+- [Master-Part Relationships](053-master-part.ipynb) — Hierarchical compositions
+- [Transactions](../40-operations/040-transactions.ipynb) — Atomic operations
 
 ---
 
@@ -142,9 +142,8 @@ Consistency provides a unified view during concurrent access:
 
 **Example:** Two researchers inserting experiments simultaneously don't create duplicates.
 
-**Covered in:** 
-- [Concurrency](../operations/050-concurrency.ipynb) — Multi-user operations
-- [Transactions](../operations/045-transactions.ipynb) — ACID guarantees
+**Covered in:**
+- [Transactions](../40-operations/040-transactions.ipynb) — ACID guarantees and multi-user operations
 
 ---
 
@@ -162,9 +161,8 @@ Workflow integrity maintains valid operation sequences through:
 **Example:** An analysis pipeline cannot compute results before acquiring raw data. If `NeuronAnalysis` depends on `SpikeData`, which depends on `RecordingSession`, the database enforces that recordings are created before spike detection, which occurs before analysis—maintaining the integrity of the entire scientific workflow.
 
 **Covered in:**
-- [Relational Workflows](../concepts/04-workflows.md) — The Relational Workflow Model and workflow dependencies
 - [Foreign Keys](030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
-- [Computation](../operations/010-computation.ipynb) — Automatic workflow execution and dependency resolution
+- [Computation](../60-computation/010-computation.ipynb) — Automatic workflow execution and dependency resolution
 
 ---
 
@@ -212,8 +210,8 @@ As you progress through the following chapters, you'll see how DataJoint impleme
 Now that you understand *why* integrity matters, the following chapters show *how* to implement each constraint type:
 
 1. **[Tables](015-table.ipynb)** — Basic structure with domain integrity
-2. **[Primary Keys](025-primary-key.md)** — Entity integrity through unique identification
-3. **[Foreign Keys](035-foreign-keys.ipynb)** — Referential integrity across tables
+2. **[Primary Keys](020-primary-key.md)** — Entity integrity through unique identification
+3. **[Foreign Keys](030-foreign-keys.ipynb)** — Referential integrity across tables
 
 Each chapter builds on these foundational integrity concepts.
 ```
