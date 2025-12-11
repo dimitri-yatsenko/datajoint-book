@@ -2,6 +2,8 @@
 title: Data Models
 ---
 
+The previous chapter introduced databases as dynamic systems that enforce rules, maintain integrity, and provide secure, concurrent access. But what principles guide how we organize data within a database? That's where **data models** come in.
+
 ## Why Data Models Matter
 
 Every time you organize data, you're using a data model—whether you realize it or not. When you create a spreadsheet, write a Python dictionary, or save files in folders, you're working within the constraints and capabilities of that model's structure.
@@ -234,15 +236,7 @@ Most importantly, spreadsheets provide no referential integrity. If cell B2 cont
 
 The **relational data model**, introduced by Edgar F. Codd in 1970, revolutionized data management by organizing data into tables (relations) with well-defined relationships. This model emphasizes data integrity, consistency, and powerful query capabilities through a formal mathematical foundation.
 
-The relational model organizes all data into tables representing mathematical relations, where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
-
-The relational model is built on several key principles:
-
-- **Data Representation**: All data is represented in the form of simple tables, with each table having a unique name and a well-defined structure.
-- **Domain Constraints**: Each column in a table is associated with a specific domain (or *datatype*, a set of possible values), ensuring that the data entered is valid.
-- **Uniqueness Constraints**: Ensure that each row in a table is unique, enforced through a primary key.
-- **Referential Constraints**: Ensure that relationships between tables remain consistent, enforced through foreign keys.
-- **Declarative Queries**: The model allows users to write queries that specify *what* data they want rather than *how* the database will retrieve it.
+The relational model organizes all data into tables representing mathematical relations, where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*). Key principles include data type constraints, uniqueness enforcement through primary keys, referential integrity through foreign keys, and declarative queries. The next chapter explores these principles in depth.
 
 The most common way to interact with relational databases is through the Structured Query Language (SQL), a language specifically designed to define, manipulate, and query data within relational databases.
 
@@ -352,74 +346,13 @@ Science isn't just about storing data—it's about transforming raw observations
 
 This is where DataJoint's reinterpretation of relational databases becomes essential. By treating computational dependencies as first-class schema elements, DataJoint provides the mathematical rigor of structured data while capturing the workflow semantics that science requires.
 
-## DataJoint: Relational Databases as Computational Workflows
+## DataJoint: Bridging the Gap
 
-**DataJoint** represents a distinctive reinterpretation of the relational data model, specifically designed for scientific computing. While built on Codd's relational theory, DataJoint introduces a fundamentally different perspective: **databases as computational workflows that mix manual and automated steps**.
+**DataJoint** addresses the computational workflow gap by reinterpreting relational databases specifically for scientific computing. While built on Codd's relational theory, DataJoint introduces a fundamentally different perspective: **databases as computational workflows that mix manual and automated steps**.
 
-### Key Innovation: Workflows, Not Just Storage
+The key innovation is treating the **schema itself as the workflow specification**. Table definitions don't just describe data structure—they prescribe how data flows through your pipeline, when computations run, and how results depend on inputs. When upstream data changes, downstream results are automatically invalidated, ensuring that every analysis reflects current inputs.
 
-Traditional relational databases focus on **storing and retrieving data**. They excel at maintaining referential integrity—ensuring that relationships between entities remain valid. But they treat all data equivalently: a manually entered measurement and an automatically computed result have the same status.
-
-DataJoint extends this to explicitly model **computational pipelines** with provenance tracking and computational validity. What makes DataJoint unique is treating the **schema itself as the workflow specification**.
-
-```
-Session (manual) 
-    ↓
-Recording (imported from instruments)
-    ↓
-FilteredRecording (computed automatically)
-    ↓
-SpikeSorting (computed automatically)
-    ↓
-NeuronStatistics (computed automatically)
-```
-
-This isn't just documentation—it's the actual dependency structure enforced by the database. The arrows represent more than foreign keys; they represent computational dependencies:
-
-- **Recording** is derived by importing from the instrument specified in **Session**
-- **FilteredRecording** is computed from **Recording** using defined signal processing
-- **SpikeSorting** is computed from **FilteredRecording** using spike detection algorithms
-- **NeuronStatistics** are computed from **SpikeSorting** results
-
-When upstream data changes, downstream results **must** be recomputed or deleted. There's no way to silently invalidate the pipeline. The database actively prevents you from having **FilteredRecording** results from a deleted **Recording**, or **NeuronStatistics** computed from outdated **SpikeSorting**.
-
-This transforms ad-hoc research workflows into **rigorous, reproducible scientific operations**, bridging the gap between exploratory science and production-grade data management.
-
-### DataJoint as a Distinct Data Model
-
-While rooted in relational theory, DataJoint constitutes a **distinct data model** because it:
-
-1. **Redefines the purpose**: From data storage → workflow specification
-2. **Introduces new constructs**: Table types with computational roles (Manual, Imported, Computed, Lookup)
-3. **Changes operational semantics**: Immutability as the default, UPDATE as exception
-4. **Adds new operations**: `populate()` for automatic computation
-5. **Enforces new constraints**: Computational validity, not just relational consistency
-
-**Computational validity** means: if Result R was computed from Input I, then either:
-- I still exists and R remains valid, OR
-- I was deleted and R must be deleted too (or recomputed from corrected input)
-
-This guarantee goes beyond referential integrity. Traditional databases ensure relationships are valid (foreign keys exist), but DataJoint ensures **computational relationships are valid** (results correspond to their current inputs).
-
-### Schema and Metadata Working Together
-
-DataJoint demonstrates how schemas and metadata complement each other rather than competing:
-
-**Schema enforces:**
-- Table structure and types
-- Computational dependencies
-- Referential and computational integrity
-- Automatic cascade operations
-
-**Metadata enriches:**
-- Table and column descriptions
-- Parameter documentation
-- Method descriptions and references
-- Contextual information for humans
-
-The schema provides the mathematical guarantees, while metadata provides the semantic context. Together they create a system that's both rigorously correct and humanly understandable.
-
-DataJoint demonstrates that data discipline can start early in research projects, even during fast-evolving exploratory phases. By providing structured, workflow-aware data management that can evolve alongside the science, DataJoint offers researchers the best of both worlds: the freedom to explore and the rigor to ensure their findings remain valid and reproducible.
+This transforms ad-hoc research workflows into **rigorous, reproducible scientific operations**, bridging the gap between exploratory science and production-grade data management. The Relational Workflows chapter explores this paradigm in detail.
 
 ## Moving Forward: The Relational Foundation
 

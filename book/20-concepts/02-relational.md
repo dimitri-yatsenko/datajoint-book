@@ -1,5 +1,7 @@
 # Relational Model
 
+The previous chapter surveyed data models and established why structured, schema-enforced approaches are essential for scientific research. Among these, the **relational model** stands out for its mathematical rigor, powerful query capabilities, and proven track record. This chapter explores its theoretical foundations.
+
 ## Origins of Relational Theory
 
 Relations are a key concept in mathematics, representing how different elements from one set are connected to elements of another set. When two sets of elements are related to each other, this forms a *second-order* or *binary* relation. Higher orders are also possible: third, fourth, and $n^{th}$ order relations.
