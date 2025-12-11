@@ -16,7 +16,7 @@ A **scientific data pipeline** is more than a database with computations. It is 
 
 The DataJoint Platform implements scientific data pipelines through a layered architecture built around an open-source core. This architecture reflects the principle that robust scientific workflows require both a rigorous computational foundation and flexible integration with the broader research ecosystem.
 
-```{figure} ../95-reference/figures/dj-platform.png
+```{figure} ../95-reference/figures/Platform.png
 :name: datajoint-platform
 :align: center
 :width: 80%
