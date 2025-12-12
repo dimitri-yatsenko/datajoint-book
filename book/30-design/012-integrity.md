@@ -53,7 +53,7 @@ Relational databases excel at expressing and enforcing such rules through **inte
 
 This section introduces seven fundamental types of integrity constraints. Each will be covered in detail in subsequent chapters, with DataJoint implementation examples.
 
-## 1. Domain Integrity
+## 1. {index}`Domain integrity`
 **Ensures values are within valid ranges and types.**
 
 Domain integrity restricts attribute values to predefined valid sets using:
@@ -82,7 +82,7 @@ Completeness prevents missing values that could invalidate analyses:
 
 ---
 
-## 3. Entity Integrity
+## 3. {index}`Entity integrity`
 **Each real-world entity corresponds to exactly one database record, and each database record corresponds to exactly one real-world entity.**
 
 Entity integrity ensures a **one-to-one correspondence** between real-world entities and their digital representations in the database. This is not simply about having unique identifiers—it's about establishing a reliable, bidirectional mapping where:
@@ -132,13 +132,13 @@ Compositional integrity ensures multi-part entities are never partially stored:
 
 ---
 
-## 6. Consistency
+## 6. {index}`Consistency`
 **All users see the same valid data state.**
 
 Consistency provides a unified view during concurrent access:
 - **Isolation levels** control transaction visibility
 - **Locking mechanisms** prevent conflicting updates
-- **ACID properties** guarantee reliable state transitions
+- **{index}`ACID` properties** guarantee reliable state transitions
 
 **Example:** Two researchers inserting experiments simultaneously don't create duplicates.
 

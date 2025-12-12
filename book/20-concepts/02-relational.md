@@ -92,7 +92,7 @@ The evolution of relational database thinking provides three complementary level
 
 Codd's relational algebra and calculus provide formal operations on relations with provable properties. Query optimization relies on these mathematical foundations to prove that two different queries produce equivalent results, allowing the system to choose the most efficient implementation.
 
-**2. Conceptual Modeling (Chen, 1976):** Building upon Codd's foundation, **Peter Chen** introduced the Entity-Relationship Model (ERM). While Codd's model provided the rigorous mathematical underpinnings, Chen's ERM offered a more intuitive, conceptual way to think about and design databases, particularly during initial planning stages.
+**2. Conceptual Modeling (Chen, 1976):** Building upon Codd's foundation, **{index}`Peter Chen`** introduced the {index}`Entity-Relationship Model` (ERM). While Codd's model provided the rigorous mathematical underpinnings, Chen's ERM offered a more intuitive, conceptual way to think about and design databases, particularly during initial planning stages.
 
 *Like architectural blueprints that translate engineering principles into buildable structures.*
 
@@ -128,7 +128,7 @@ The next sections show how this mathematical rigor translates into practical dat
 
 ## Relational Algebra and Calculus
 
-**Relational algebra** is a set of operations that can be used to transform relations in a formal way. It provides the foundation for querying relational databases, allowing us to combine, modify, and retrieve data stored in tables (relations).
+**{index}`Relational algebra`** is a set of operations that can be used to transform relations in a formal way. It provides the foundation for querying relational databases, allowing us to combine, modify, and retrieve data stored in tables (relations).
 
 Examples of relational operators:
 
@@ -165,7 +165,7 @@ This operation effectively merges the connections from both sets of values, prov
 
 Relational algebra, with its powerful operators, allows us to query and manipulate data in a structured and efficient way, forming the backbone of modern database systems. By understanding and applying these operators, we can perform complex data analysis and retrieval tasks with precision and clarity.
 
-Another formal language for deriving new relations from scratch or from other relations is **relational calculus**. Rather than using relational operators, it relies on a *set-building notation* to generate relations.
+Another formal language for deriving new relations from scratch or from other relations is **{index}`relational calculus`**. Rather than using relational operators, it relies on a *set-building notation* to generate relations.
 
 :::{note}
 The query notation of the SQL programming language combines concepts from both relational algebra and relational calculus. However, DataJoint's query language is based purely on relational algebra.
@@ -188,7 +188,7 @@ Codd's model was derived from relational theory but differed sufficiently in its
 
 Through the 1970s, before relational databases became practical, theorists derived fundamental rules for rigorous data organization and queries from first principles using mathematical proofs and derivations. For this reason, early work on relational databases has an abstract academic feel to it with rather simple toy examples: the ubiquitous employees/departments, products/orders, and students/courses.
 
-The design principles were defined through the rigorous but rather abstract principles, the **normal forms** [@10.1145/358024.358054]. These normal forms provide mathematically precise rules for organizing data to minimize redundancy and maintain integrity.
+The design principles were defined through the rigorous but rather abstract principles, the **{index}`normal form`s** [@10.1145/358024.358054]. These normal forms provide mathematically precise rules for organizing data to minimize redundancy and maintain integrity.
 
 The relational data model is one of the most powerful and precise ways to store and manage structured data. At its core, this model organizes all data into tables—representing mathematical relations—where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*).
 
