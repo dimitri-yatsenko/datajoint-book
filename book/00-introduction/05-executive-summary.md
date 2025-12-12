@@ -11,7 +11,7 @@ Standard database solutions address storage and querying but not computation. Da
 
 ## The DataJoint Solution
 
-**DataJoint introduces the {index}`Relational Workflow Model`**—an extension of classical relational theory that treats computational transformations as first-class citizens of the data model. The database {index}`schema` becomes an executable specification: it defines not just what data exists, but how data flows through the pipeline and when computations should run.
+**DataJoint introduces the Relational Workflow Model**—an extension of classical relational theory that treats computational transformations as first-class citizens of the data model. The database schema becomes an executable specification: it defines not just what data exists, but how data flows through the pipeline and when computations should run.
 
 This creates what we call a **Computational Database**: a system where inserting new raw data automatically triggers all downstream analyses in dependency order, maintaining computational validity throughout. Think of it as a spreadsheet that auto-recalculates, but with the rigor of a relational database and the scale of distributed computing.
 
@@ -21,16 +21,16 @@ This creates what we call a **Computational Database**: a system where inserting
 Unlike Entity-Relationship modeling that requires translation to SQL, DataJoint schemas are directly executable. The diagram *is* the implementation. Schema changes propagate immediately. Documentation cannot drift from reality because the schema is the documentation.
 
 **Workflow-Aware Foreign Keys**
-Foreign keys in DataJoint do more than enforce {index}`referential integrity`—they encode computational dependencies. A computed result that references raw data will be automatically deleted if that raw data is removed, preventing stale or orphaned results. This maintains *{index}`computational validity`*, not just *referential integrity*.
+Foreign keys in DataJoint do more than enforce referential integrity—they encode computational dependencies. A computed result that references raw data will be automatically deleted if that raw data is removed, preventing stale or orphaned results. This maintains *computational validity*, not just *referential integrity*.
 
 **Declarative Computation**
-Computations are defined declaratively through {index}`make() method`s attached to table definitions. The {index}`populate()` operation identifies all missing results and executes computations in dependency order. Parallelization, error handling, and job distribution are handled automatically.
+Computations are defined declaratively through make() methods attached to table definitions. The populate() operation identifies all missing results and executes computations in dependency order. Parallelization, error handling, and job distribution are handled automatically.
 
-**{index}`Immutability` by Design**
+**Immutability by Design**
 Computed results are immutable. Correcting upstream data requires deleting dependent results and recomputing—ensuring the database always represents a consistent computational state. This naturally provides complete provenance: every result can be traced to its source data and the exact code that produced it.
 
 **Hybrid Storage Model**
-Structured metadata lives in the relational database ({index}`MySQL`/{index}`PostgreSQL`). Large binary objects (images, recordings, arrays) live in scalable {index}`object storage` (S3, GCS, filesystem) with the database maintaining the mapping. Queries operate on metadata; computation accesses objects transparently.
+Structured metadata lives in the relational database (MySQL/PostgreSQL). Large binary objects (images, recordings, arrays) live in scalable object storage (S3, GCS, filesystem) with the database maintaining the mapping. Queries operate on metadata; computation accesses objects transparently.
 
 ## Architecture Overview
 
@@ -70,9 +70,9 @@ This book provides comprehensive coverage of DataJoint from foundations through 
 
 **Part II: Design**
 - Schema design principles and table definitions
-- {index}`Primary key`s, foreign keys, and dependency structures
-- {index}`Master-part relationship`s for hierarchical data
-- {index}`Normalization` through the lens of workflow entities
+- Primary keys, foreign keys, and dependency structures
+- Master-part relationships for hierarchical data
+- Normalization through the lens of workflow entities
 - Schema evolution and migration strategies
 
 **Part III: Operations**
@@ -80,7 +80,7 @@ This book provides comprehensive coverage of DataJoint from foundations through 
 - Caching strategies for performance optimization
 
 **Part IV: Queries**
-- DataJoint's five-operator {index}`query algebra`: {index}`restriction`, {index}`projection`, {index}`join`, {index}`aggregation`, {index}`union`
+- DataJoint's five-operator query algebra: restriction, projection, join, aggregation, union
 - Comparison with SQL and when to use each
 - Complex query patterns and optimization
 

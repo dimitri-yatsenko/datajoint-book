@@ -192,7 +192,7 @@ This flexibility in entity integrity allows businesses to balance strict data ru
 
 ## Using Natural Keys
 
-A table can be designed with a **{index}`natural key`**, which is an identifier that exists in the real world. For example, a Social Security Number (SSN) can serve as a natural key for a person because it is a unique number used and recognized in real-world systems.
+A table can be designed with a **natural key**, which is an identifier that exists in the real world. For example, a Social Security Number (SSN) can serve as a natural key for a person because it is a unique number used and recognized in real-world systems.
 
 In some cases, a natural key already exists, or one can be specifically created for data management purposes and then introduced into the real world to be permanently associated with physical entities.
 
@@ -204,7 +204,7 @@ Phone numbers, in particular, have become popular as identifiers as mobile phone
 
 # Composite Primary Keys
 
-Sometimes, a single column cannot uniquely identify a record. In these cases, we use a **{index}`composite primary key`**—a primary key made up of multiple columns that together uniquely identify each row.
+Sometimes, a single column cannot uniquely identify a record. In these cases, we use a **composite primary key**—a primary key made up of multiple columns that together uniquely identify each row.
 
 ## Example: U.S. House of Representatives
 
@@ -286,7 +286,7 @@ Use composite primary keys when:
 
 # Using Surrogate Keys
 
-In many cases, it makes more sense to use a **{index}`surrogate key`** as the primary key in a database. A surrogate key has no relationship to the real world and is used solely within the database for identification purposes. These keys are often generated automatically as an **auto-incrementing number** or a **random string** like a UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier).
+In many cases, it makes more sense to use a **surrogate key** as the primary key in a database. A surrogate key has no relationship to the real world and is used solely within the database for identification purposes. These keys are often generated automatically as an **auto-incrementing number** or a **random string** like a UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier).
 
 When using surrogate keys, entity integrity can still be maintained by using other unique attributes (such as secondary unique indexes) to help identify and match entities to their digital representations.
 
@@ -294,7 +294,7 @@ Surrogate keys are especially useful for entities that exist only in digital for
 
 ## Universally Unique Identifiers (UUIDs)
 
-**{index}`UUID`s** (Universally Unique Identifiers) are 128-bit identifiers that are designed to be globally unique across time and space. They are standardized by [RFC 9562](https://www.rfc-editor.org/rfc/rfc9562.html) (which obsoletes RFC 4122) and provide a reliable way to generate surrogate keys without coordination between different systems.
+**UUIDs** (Universally Unique Identifiers) are 128-bit identifiers that are designed to be globally unique across time and space. They are standardized by [RFC 9562](https://www.rfc-editor.org/rfc/rfc9562.html) (which obsoletes RFC 4122) and provide a reliable way to generate surrogate keys without coordination between different systems.
 
 ### UUID Format
 

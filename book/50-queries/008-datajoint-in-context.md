@@ -48,7 +48,7 @@ Codd identified this inflexibility as a symptom of a deeper problem and articula
 
 **Access Path Dependence**: The most significant issue was the reliance on predefined access paths. In a hierarchical or network model, a program's logic for retrieving data was inextricably linked to the specific parent-child or owner-member relationships defined in the schema. If a business requirement changed—for example, altering the relationship between Projects and Parts in a manufacturing database—the application programs that navigated the old structure would become logically impaired and cease to function correctly.
 
-Codd's central argument was that users and applications needed to be "protected from having to know how the data is organized in the machine". This protection, which he termed "{index}`data independence`," was the foundational goal of his new model.
+Codd's central argument was that users and applications needed to be "protected from having to know how the data is organized in the machine". This protection, which he termed "data independence," was the foundational goal of his new model.
 
 ### A Relational Model for Data: Core Principles of Relations, Tuples, and Domains
 
@@ -81,7 +81,7 @@ Having defined the data structure, Codd and his colleagues subsequently develope
 
 From these primitives, other useful operators like Join (⋈) and Intersection (∩) can be derived. Two properties of this algebra are particularly crucial for understanding its power and elegance.
 
-First is the **{index}`Closure property`**. This principle states that the result of any operation in relational algebra is itself a relation. This is a profoundly important feature. Because the output of an operation is the same type of object as the input, operators can be composed and nested to form expressions of arbitrary complexity. A query can be built up from sub-queries, each of which produces a valid relation that can be fed into the next operation. This property is the foundation of modern query languages like SQL.
+First is the **Closure property**. This principle states that the result of any operation in relational algebra is itself a relation. This is a profoundly important feature. Because the output of an operation is the same type of object as the input, operators can be composed and nested to form expressions of arbitrary complexity. A query can be built up from sub-queries, each of which produces a valid relation that can be fed into the next operation. This property is the foundation of modern query languages like SQL.
 
 Second is the concept of **Relational Completeness**. Relational algebra serves as a theoretical benchmark for the expressive power of any database query language. A language is said to be "relationally complete" if it can be used to formulate any query that is expressible in relational algebra (or its declarative equivalent, relational calculus). This provides a formal yardstick to measure whether a language is sufficiently powerful to perform any standard relational query without needing to resort to procedural constructs like loops or branching.
 
@@ -205,7 +205,7 @@ To ensure clarity in the subsequent technical discussion, the following table pr
 
 ### Core Properties: Algebraic Closure and Entity Integrity Preservation
 
-The principle of {index}`entity normalization` is not merely a guideline for schema design; it is a strict constraint on DataJoint's query language. DataJoint implements a complete relational algebra with five primary operators: restrict (`&`), join (`*`), project (`proj`), aggregate (`aggr`), and union (`+`). This algebra is designed around two critical properties that work in concert to maintain semantic cohesion:
+The principle of entity normalization is not merely a guideline for schema design; it is a strict constraint on DataJoint's query language. DataJoint implements a complete relational algebra with five primary operators: restrict (`&`), join (`*`), project (`proj`), aggregate (`aggr`), and union (`+`). This algebra is designed around two critical properties that work in concert to maintain semantic cohesion:
 
 **Algebraic Closure**: Like classical relational algebra, DataJoint's algebra possesses the closure property. All operators take entity sets as input and produce a valid entity set as output. This allows for the seamless composition and nesting of query expressions.
 

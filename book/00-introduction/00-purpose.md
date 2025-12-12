@@ -4,7 +4,7 @@ title: Purpose
 
 ## What is DataJoint?
 
-**{index}`DataJoint` is a {index}`computational database` language and platform that enables scientists to design, implement, and manage data operations for research by unifying data structures and analysis code.** It provides {index}`data integrity`, {index}`automated computation`, {index}`reproducibility`, and seamless collaboration through a {index}`relational database` approach that coordinates relational databases, code repositories, and object storage.
+**DataJoint is a computational database language and platform that enables scientists to design, implement, and manage data operations for research by unifying data structures and analysis code.** It provides data integrity, automated computation, reproducibility, and seamless collaboration through a relational database approach that coordinates relational databases, code repositories, and object storage.
 
 ## Who This Book Is For
 
@@ -28,10 +28,10 @@ Here's what makes DataJoint different: **your database schema IS your data proce
 
 Traditional databases store and retrieve data. DataJoint does that too, but it also tracks what gets computed from what. Each table plays a specific role in your workflow:
 
-- **{index}`Manual table`s**: Source data entered by researchers
-- **{index}`Imported table`s**: Data acquired from instruments or external sources
-- **{index}`Computed table`s**: Results automatically derived from upstream data
-- **{index}`Lookup table`s**: Reference data and parameters
+- **Manual tables**: Source data entered by researchers
+- **Imported tables**: Data acquired from instruments or external sources
+- **Computed tables**: Results automatically derived from upstream data
+- **Lookup tables**: Reference data and parameters
 
 This workflow perspective shapes everything:
 
@@ -39,7 +39,7 @@ This workflow perspective shapes everything:
 
 **Intelligent Diagrams**: Different table types get distinct visual styles. One glance tells you what's manual, what's automatic, and how everything connects.
 
-**{index}`Provenance`, Not Just Integrity**: {index}`Foreign key`s mean more than "this ID exists." They mean "this result was computed FROM this input." When upstream data changes, DataJoint ensures you can't accidentally keep stale downstream results. This is why DataJoint emphasizes INSERT and DELETE over UPDATE—changing input data without recomputing outputs breaks your science, even if the database technically remains consistent.
+**Provenance, Not Just Integrity**: Foreign keys mean more than "this ID exists." They mean "this result was computed FROM this input." When upstream data changes, DataJoint ensures you can't accidentally keep stale downstream results. This is why DataJoint emphasizes INSERT and DELETE over UPDATE—changing input data without recomputing outputs breaks your science, even if the database technically remains consistent.
 
 For scientific computing, this workflow-centric design is transformative. Your database doesn't just store results—it guarantees they're valid, reproducible, and traceable back to their origins.
 
@@ -62,7 +62,7 @@ This book provides the skills to transform research operations: from fragile scr
 
 ## DataJoint and SQL: Two Languages, One Foundation
 
-**{index}`SQL` (Structured Query Language)** powers virtually every relational database. DataJoint wraps SQL in Pythonic syntax, automatically translating your code into optimized queries.
+**SQL (Structured Query Language)** powers virtually every relational database. DataJoint wraps SQL in Pythonic syntax, automatically translating your code into optimized queries.
 
 You could learn DataJoint without ever seeing SQL. But this book teaches both, side by side. You'll understand not just *what* works but *why*—and you'll be able to work directly with SQL when needed.
 
