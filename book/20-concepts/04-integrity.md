@@ -127,7 +127,7 @@ Compositional integrity ensures multi-part entities are never partially stored:
 **Example:** An imaging session's metadata and all acquired frames are stored together or not at all.
 
 **Covered in:**
-- [Master-Part Relationships](../30-design/053-master-part.ipynb) — Hierarchical compositions
+- [Master-Part](../30-design/053-master-part.ipynb) — Hierarchical compositions
 - [Transactions](../40-operations/040-transactions.ipynb) — Atomic operations
 
 ---
