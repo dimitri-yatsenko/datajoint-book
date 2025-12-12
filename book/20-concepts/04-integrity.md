@@ -162,7 +162,7 @@ Workflow integrity maintains valid operation sequences through:
 
 **Covered in:**
 - [Foreign Keys](../30-design/030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
-- [Computation](../60-computation/010-computation.ipynb) — Automatic workflow execution and dependency resolution
+- [Populate](../40-operations/050-populate.ipynb) — Automatic workflow execution and dependency resolution
 
 ---
 
