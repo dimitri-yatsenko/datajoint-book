@@ -15,7 +15,7 @@ This chapter introduces data models conceptually, explores the critical distinct
 ## Definition
 
 ```{card} Data Model
-A *data model* is a conceptual framework that defines how data is organized, represented, and transformed. It gives us the components for creating blueprints for the structure and operations of data management systems, ensuring consistency and efficiency in data handling.
+A *{index}`data model`* is a conceptual framework that defines how data is organized, represented, and transformed. It gives us the components for creating blueprints for the structure and operations of data management systems, ensuring consistency and efficiency in data handling.
 
 Data management systems are built to accommodate these models, allowing us to manage data according to the principles laid out by the model. If you're studying data science or engineering, you've likely encountered different data models, each providing a unique approach to organizing and manipulating data.
 
@@ -77,9 +77,9 @@ Both structured and schemaless data formats can be attractive in various scenari
 
 These two approaches are sometimes called **schema-on-write** and **schema-on-read**:
 
-- **Schema-on-write** refers to structured data models where the schema is defined and enforced *before* data is stored. Data must conform to the schema at write time, ensuring consistency and integrity from the moment data enters the system. Relational databases exemplify this approach.
+- **{index}`Schema-on-write`** refers to structured data models where the schema is defined and enforced *before* data is stored. Data must conform to the schema at write time, ensuring consistency and integrity from the moment data enters the system. Relational databases exemplify this approach.
 
-- **Schema-on-read** refers to schemaless or self-describing data models where structure is interpreted *when* data is read rather than when it is written. Data can be ingested rapidly in its raw form, with structure applied later during analysis. Data lakes and document stores often follow this approach.
+- **{index}`Schema-on-read`** refers to schemaless or self-describing data models where structure is interpreted *when* data is read rather than when it is written. Data can be ingested rapidly in its raw form, with structure applied later during analysis. Data lakes and document stores often follow this approach.
 
 Each approach has its strengths:
 
@@ -244,7 +244,7 @@ Most importantly, spreadsheets provide no referential integrity. If cell B2 cont
 
 The **relational data model**, introduced by Edgar F. Codd in 1970, revolutionized data management by organizing data into tables (relations) with well-defined relationships. This model emphasizes data integrity, consistency, and powerful query capabilities through a formal mathematical foundation.
 
-The relational model organizes all data into tables representing mathematical relations, where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*). Key principles include data type constraints, uniqueness enforcement through primary keys, referential integrity through foreign keys, and declarative queries. The next chapter explores these principles in depth.
+The relational model organizes all data into {index}`table`s representing mathematical {index}`relation`s, where each table consists of rows (representing mathematical *{index}`tuple`s*) and columns (often called *{index}`attribute`s*). Key principles include {index}`data type` constraints, uniqueness enforcement through primary keys, referential integrity through foreign keys, and {index}`declarative query`. The next chapter explores these principles in depth.
 
 The most common way to interact with relational databases is through the Structured Query Language (SQL), a language specifically designed to define, manipulate, and query data within relational databases.
 
@@ -261,7 +261,7 @@ The rest of this book focuses on the relational model, but specifically through 
 
 ### Example: Document Databases (JSON)
 
-The Document Data Model, commonly exemplified by JSON (JavaScript Object Notation), organizes data as key-value pairs within structured documents. This flexible, text-based format is widely used for data interchange between systems, particularly in web applications and APIs.
+The Document Data Model, commonly exemplified by {index}`JSON` (JavaScript Object Notation), organizes data as key-value pairs within structured documents. This flexible, text-based format is widely used for data interchange between systems, particularly in web applications and APIs.
 
 #### Structure
 
@@ -313,7 +313,7 @@ The key insight: while initial ingestion might be flexible (schema-on-read), the
 
 In recent years, concerns about scientific integrity have brought greater attention to proper data management as the foundation for reproducible science and valid findings. As science becomes more complex and interconnected, meticulous data handling—including reproducibility and data provenance—has become critical.
 
-**Data provenance**—the detailed history of how data is collected, processed, and analyzed—provides transparency and accountability. But provenance tracked through metadata alone can break:
+**{index}`Data provenance`**—the detailed history of how data is collected, processed, and analyzed—provides transparency and accountability. But provenance tracked through metadata alone can break:
 - Tags pointing to deleted files
 - Descriptions of outdated relationships
 - Manual records that fall out of sync with actual data
