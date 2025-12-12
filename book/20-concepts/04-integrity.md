@@ -63,7 +63,7 @@ Domain integrity restricts attribute values to predefined valid sets using:
 
 **Example:** Recording temperature must be between 20-25°C.
 
-**Covered in:** [Tables](015-table.ipynb) — Data type specification
+**Covered in:** [Tables](../30-design/015-table.ipynb) — Data type specification
 
 ---
 
@@ -76,9 +76,9 @@ Completeness prevents missing values that could invalidate analyses:
 
 **Example:** Every experiment must have a start date.
 
-**Covered in:** 
-- [Tables](015-table.ipynb) — Required vs. optional attributes
-- [Default Values](017-default-values.ipynb) — Handling optional data
+**Covered in:**
+- [Tables](../30-design/015-table.ipynb) — Required vs. optional attributes
+- [Default Values](../30-design/017-default-values.ipynb) — Handling optional data
 
 ---
 
@@ -95,7 +95,7 @@ Entity integrity ensures a **one-to-one correspondence** between real-world enti
 **Example:** Each mouse in the lab has exactly one unique ID, and that ID refers to exactly one mouse—never two different mice sharing the same ID, and never one mouse having multiple IDs.
 
 **Covered in:**
-- [Primary Keys](020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
+- [Primary Keys](../30-design/020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
 - [UUID](../85-special-topics/025-uuid.ipynb) — Universally unique identifiers
 
 ---
@@ -111,8 +111,8 @@ Referential integrity maintains logical associations across tables:
 **Example:** A recording session cannot reference a non-existent mouse.
 
 **Covered in:**
-- [Foreign Keys](030-foreign-keys.ipynb) — Cross-table relationships
-- [Relationships](050-relationships.ipynb) — Dependency patterns
+- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — Cross-table relationships
+- [Relationships](../30-design/050-relationships.ipynb) — Dependency patterns
 
 ---
 
@@ -127,7 +127,7 @@ Compositional integrity ensures multi-part entities are never partially stored:
 **Example:** An imaging session's metadata and all acquired frames are stored together or not at all.
 
 **Covered in:**
-- [Master-Part Relationships](053-master-part.ipynb) — Hierarchical compositions
+- [Master-Part Relationships](../30-design/053-master-part.ipynb) — Hierarchical compositions
 - [Transactions](../40-operations/040-transactions.ipynb) — Atomic operations
 
 ---
@@ -161,7 +161,7 @@ Workflow integrity maintains valid operation sequences through:
 **Example:** An analysis pipeline cannot compute results before acquiring raw data. If `NeuronAnalysis` depends on `SpikeData`, which depends on `RecordingSession`, the database enforces that recordings are created before spike detection, which occurs before analysis—maintaining the integrity of the entire scientific workflow.
 
 **Covered in:**
-- [Foreign Keys](030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
+- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
 - [Computation](../60-computation/010-computation.ipynb) — Automatic workflow execution and dependency resolution
 
 ---
@@ -207,11 +207,13 @@ As you progress through the following chapters, you'll see how DataJoint impleme
 ```{admonition} Next Steps
 :class: tip
 
-Now that you understand *why* integrity matters, the following chapters show *how* to implement each constraint type:
+Now that you understand *why* integrity matters, the next chapter introduces how DataJoint's **Relational Workflow Model** builds on these integrity concepts to create computational databases where workflows are first-class citizens.
 
-1. **[Tables](015-table.ipynb)** — Basic structure with domain integrity
-2. **[Primary Keys](020-primary-key.md)** — Entity integrity through unique identification
-3. **[Foreign Keys](030-foreign-keys.ipynb)** — Referential integrity across tables
+The [Design](../30-design/010-schema.ipynb) section then shows *how* to implement each constraint type:
+
+1. **[Tables](../30-design/015-table.ipynb)** — Basic structure with domain integrity
+2. **[Primary Keys](../30-design/020-primary-key.md)** — Entity integrity through unique identification
+3. **[Foreign Keys](../30-design/030-foreign-keys.ipynb)** — Referential integrity across tables
 
 Each chapter builds on these foundational integrity concepts.
 ```
