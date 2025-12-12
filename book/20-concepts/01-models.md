@@ -244,7 +244,7 @@ Most importantly, spreadsheets provide no referential integrity. If cell B2 cont
 
 The **relational data model**, introduced by Edgar F. Codd in 1970, revolutionized data management by organizing data into tables (relations) with well-defined relationships. This model emphasizes data integrity, consistency, and powerful query capabilities through a formal mathematical foundation.
 
-The relational model organizes all data into tables representing mathematical relations, where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*). Key principles include data type constraints, uniqueness enforcement through primary keys, referential integrity through foreign keys, and declarative queries. The next chapter explores these principles in depth.
+The relational model organizes all data into tables representing mathematical relations, where each table consists of rows (representing mathematical *tuples*) and columns (often called *attributes*). Key principles include data type constraints, uniqueness enforcement through primary keys, referential integrity through foreign keys, and declarative query. The next chapter explores these principles in depth.
 
 The most common way to interact with relational databases is through the Structured Query Language (SQL), a language specifically designed to define, manipulate, and query data within relational databases.
 

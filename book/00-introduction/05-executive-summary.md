@@ -24,7 +24,7 @@ Unlike Entity-Relationship modeling that requires translation to SQL, DataJoint 
 Foreign keys in DataJoint do more than enforce referential integrity—they encode computational dependencies. A computed result that references raw data will be automatically deleted if that raw data is removed, preventing stale or orphaned results. This maintains *computational validity*, not just *referential integrity*.
 
 **Declarative Computation**
-Computations are defined declaratively through `make()` methods attached to table definitions. The `populate()` operation identifies all missing results and executes computations in dependency order. Parallelization, error handling, and job distribution are handled automatically.
+Computations are defined declaratively through make() methods attached to table definitions. The populate() operation identifies all missing results and executes computations in dependency order. Parallelization, error handling, and job distribution are handled automatically.
 
 **Immutability by Design**
 Computed results are immutable. Correcting upstream data requires deleting dependent results and recomputing—ensuring the database always represents a consistent computational state. This naturally provides complete provenance: every result can be traced to its source data and the exact code that produced it.

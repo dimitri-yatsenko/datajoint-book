@@ -192,7 +192,7 @@ This flexibility in entity integrity allows businesses to balance strict data ru
 
 ## Using Natural Keys
 
-A table can be designed with a **natural primary key**, which is an identifier that exists in the real world. For example, a Social Security Number (SSN) can serve as a natural key for a person because it is a unique number used and recognized in real-world systems.
+A table can be designed with a **natural key**, which is an identifier that exists in the real world. For example, a Social Security Number (SSN) can serve as a natural key for a person because it is a unique number used and recognized in real-world systems.
 
 In some cases, a natural key already exists, or one can be specifically created for data management purposes and then introduced into the real world to be permanently associated with physical entities.
 

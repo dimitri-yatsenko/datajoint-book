@@ -25,7 +25,7 @@ Databases are crucial for the smooth and organized operation of various entities
 ## Database Management Systems (DBMS)
 
 ```{card} Database Management System
-A Database Management System is a software system that serves as the computational engine powering a database.
+A Database Management System (DBMS) is a software system that serves as the computational engine powering a database.
 It defines and enforces the structure of the data, ensuring that the organization's rules are consistently applied.
 A DBMS manages data storage and efficiently executes data updates and queries while safeguarding the data's structure and integrity, particularly in environments with multiple concurrent users.
 
@@ -50,7 +50,7 @@ One of the most critical features distinguishing databases from simple file stor
 
 ### Authentication and Authorization
 
-Before you can work with a database, you must **authenticate**—prove your identity with a username and password. Once authenticated, the database enforces **authorization** rules that determine what you can do:
+Before you can work with a database, you must **authentication**—prove your identity with a username and password. Once authenticated, the database enforces **authorization** rules that determine what you can do:
 
 - **Read**: View specific tables or columns
 - **Write**: Add new data to certain tables  
@@ -80,10 +80,10 @@ Modern databases typically separate data management from data use through distin
 
 ### Common Architectures
 
-**Server-Client Architecture** (most common): A database server program manages all data operations, while client programs (your scripts, applications, notebooks) connect to request data or submit changes. The server enforces all rules and access permissions consistently for every client. This is like a library where the librarian (server) manages the books and enforces checkout policies, while patrons (clients) request materials.
+**Server-client architecture** (most common): A database server program manages all data operations, while client programs (your scripts, applications, notebooks) connect to request data or submit changes. The server enforces all rules and access permissions consistently for every client. This is like a library where the librarian (server) manages the books and enforces checkout policies, while patrons (clients) request materials.
 The two most popular open-source relational database systems: MySQL and PostgreSQL implement a server-client architecture.
 
-**Embedded Databases**: The database engine runs within your application itself—no separate server. This works for single-user applications like mobile apps or desktop software, but doesn't support multiple users accessing shared data simultaneously.
+**Embedded databases**: The database engine runs within your application itself—no separate server. This works for single-user applications like mobile apps or desktop software, but doesn't support multiple users accessing shared data simultaneously.
 SQLite is a common embedded database @10.14778/3554821.3554842.
 
 **Distributed Databases**: Data and processing are spread across multiple servers working together. This provides high availability and can handle massive scale, but adds significant complexity. Systems like Google Spanner, Amazon DynamoDB, and CockroachDB use this approach.
