@@ -2,7 +2,7 @@
 
 ## From Storage to Workflow
 
-The previous chapters established that traditional relational databases excel at storing and querying data but struggle with the computational workflows central to scientific research. The practical chapter demonstrated these limitations firsthand: you can store inputs and outputs, but the database doesn't understand that outputs were *computed from* inputs, doesn't automatically recompute when inputs change, and doesn't track provenance.
+The previous chapters established that traditional relational databases excel at storing and querying data but struggle with the computational workflows central to scientific research. The practical chapter demonstrated these limitations firsthand: you can store inputs and outputs, but the database doesn't understand that outputs were *computed from* inputs, doesn't automatically recompute when inputs change, and doesn't track provenance. The [Data Integrity](04-integrity.md) chapter introduced the seven types of integrity constraints that databases enforce, culminating in **workflow integrity**—the guarantee that operations execute in valid sequences.
 
 **DataJoint solves these problems by treating your database schema as an executable workflow specification.** Your table definitions don't just describe data structure—they prescribe how data flows through your pipeline, when computations run, and how results depend on inputs.
 
