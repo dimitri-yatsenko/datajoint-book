@@ -8,17 +8,21 @@ Your schema defines *what* entities exist, *how* they depend on each other, and 
 
 In DataJoint, operations fall into two categories:
 
-1. **Manual operations** — Human-initiated actions using `insert`, `delete`, and occasionally `update`
-2. **Automatic operations** — System-driven population using `populate` for Imported and Computed tables
+1. **Manual operations** — Actions initiated *outside* the pipeline using `insert`, `delete`, and occasionally `update`
+2. **Automatic operations** — Pipeline-driven population using `populate` for Imported and Computed tables
+
+The term "manual" does not imply human involvement—it means the operation originates *external to the pipeline*.
+A script that parses instrument files and inserts session records is performing manual operations, even though no human is involved.
+The key distinction is *who initiates the action*: external processes (manual) versus the pipeline's own `populate` mechanism (automatic).
 
 This distinction maps directly to the table tiers introduced in the [Relational Workflow Model](../20-concepts/05-workflows.md):
 
 | Table Tier | How Data Enters | Typical Operations |
 |------------|-----------------|-------------------|
 | **Lookup** | Schema definition | `insert` (once, at setup) |
-| **Manual** | Human entry | `insert`, `delete` |
-| **Imported** | Automatic acquisition | `populate` |
-| **Computed** | Automatic computation | `populate` |
+| **Manual** | External to pipeline | `insert`, `delete` |
+| **Imported** | Pipeline-driven acquisition | `populate` |
+| **Computed** | Pipeline-driven computation | `populate` |
 
 ## Lookup Tables: Part of the Schema
 
@@ -49,20 +53,25 @@ BlobParamSet.insert([
 
 ## Manual Tables: The Workflow Entry Points
 
-**Manual tables** are where the workflow begins.
-They capture information that originates outside the computational pipeline:
+**Manual tables** are where new information enters the workflow from external sources.
+The term "manual" refers to the data's origin—*outside the pipeline*—not to how it gets there.
+
+Manual tables capture information that originates external to the computational pipeline:
 
 - Experimental subjects and sessions
-- Human observations and annotations
+- Observations and annotations
 - External system identifiers
 - Curated selections and decisions
 
-Data enters Manual tables through explicit `insert` operations, typically from:
-- User interfaces and data entry forms
-- Import scripts that parse external files
-- Integration with laboratory information systems
+Data enters Manual tables through explicit `insert` operations from various sources:
+
+- **Human entry**: Data entry forms, lab notebooks, manual curation
+- **Automated scripts**: Parsing instrument files, syncing from external databases
+- **External systems**: Laboratory information management systems (LIMS), scheduling software
+- **Integration pipelines**: ETL processes that import data from other sources
 
 Each insert into a Manual table potentially triggers downstream computations—this is the "data enters the system" event that drives the pipeline forward.
+Whether a human clicks a button or a cron job runs a script, the effect is the same: new data enters the pipeline and becomes available for automatic processing.
 
 ## Automatic Population: The Workflow Engine
 
