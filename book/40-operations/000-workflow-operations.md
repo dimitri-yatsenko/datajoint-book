@@ -19,7 +19,7 @@ This distinction maps directly to the table tiers introduced in the [Relational 
 
 | Table Tier | How Data Enters | Typical Operations |
 |------------|-----------------|-------------------|
-| **Lookup** | Schema definition | `insert` (once, at setup) |
+| **Lookup** | Schema definition (`contents` property) | None—predefined |
 | **Manual** | External to pipeline | `insert`, `delete` |
 | **Imported** | Pipeline-driven acquisition | `populate` |
 | **Computed** | Pipeline-driven computation | `populate` |
@@ -29,10 +29,10 @@ This distinction maps directly to the table tiers introduced in the [Relational 
 **Lookup tables are not part of the workflow**—they are part of the schema definition itself.
 
 Lookup tables contain reference data, controlled vocabularies, parameter sets, and configuration values that define the *context* in which the workflow operates.
-This data is typically:
+This data is:
 
-- Inserted once when the schema is deployed
-- Rarely modified after initial setup
+- Defined in the table class using the `contents` property
+- Automatically present when the schema is activated
 - Shared across all workflow executions
 
 Examples include:
@@ -41,15 +41,26 @@ Examples include:
 - Processing parameter sets
 - Instrument configurations
 
-Because lookup data defines the problem space rather than recording workflow execution, it should be populated as part of schema initialization—not as an ongoing workflow step.
+Because lookup data defines the problem space rather than recording workflow execution, it is specified declaratively as part of the table definition:
 
 ```python
-# Lookup tables are populated at schema setup time
-BlobParamSet.insert([
-    {"blob_paramset": 1, "min_sigma": 1, "max_sigma": 5, "threshold": 0.1},
-    {"blob_paramset": 2, "min_sigma": 2, "max_sigma": 10, "threshold": 0.05},
-], skip_duplicates=True)
+@schema
+class BlobParamSet(dj.Lookup):
+    definition = """
+    blob_paramset : int
+    ---
+    min_sigma : float
+    max_sigma : float
+    threshold : float
+    """
+    contents = [
+        (1, 1.0, 5.0, 0.1),
+        (2, 2.0, 10.0, 0.05),
+    ]
 ```
+
+When the schema is activated, an "empty" pipeline already has its lookup tables populated.
+This ensures that reference data is always available and consistent across all installations of the pipeline.
 
 ## Manual Tables: The Workflow Entry Points
 
@@ -98,9 +109,7 @@ Detection.populate(display_progress=True)
 
 ### Insert: Adding Data
 
-The `insert` operation adds new entities to the database.
-For Manual tables, this represents new information entering the workflow.
-For Lookup tables, this establishes reference data.
+The `insert` operation adds new entities to Manual tables, representing new information entering the workflow from external sources.
 
 ```python
 # Single row
@@ -161,13 +170,13 @@ A typical DataJoint workflow follows this pattern:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  1. SCHEMA SETUP                                            │
+│  1. SCHEMA ACTIVATION                                       │
 │     - Define tables and dependencies                        │
-│     - Populate Lookup tables with reference data            │
+│     - Lookup tables are automatically populated (contents)  │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  2. MANUAL DATA ENTRY                                       │
+│  2. EXTERNAL DATA ENTRY                                     │
 │     - Insert subjects, sessions, trials into Manual tables  │
 │     - Each insert is a potential trigger for downstream     │
 └─────────────────────────────────────────────────────────────┘
@@ -201,7 +210,7 @@ This ensures that the database always represents a consistent state—there are 
 
 The following chapters detail each operation:
 
-- **[Insert](010-insert.ipynb)** — Adding data to Manual and Lookup tables
+- **[Insert](010-insert.ipynb)** — Adding data to Manual tables
 - **[Delete](020-delete.ipynb)** — Removing data with cascading dependencies
 - **[Updates](030-updates.ipynb)** — Rare in-place modifications
 - **[Transactions](040-transactions.ipynb)** — ACID semantics and consistency
