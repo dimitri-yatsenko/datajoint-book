@@ -6,7 +6,7 @@ authors:
 
 # Organizing a Data Pipeline Project
 
-A DataJoint **data pipeline** is more than just a database—it is a structured system for managing scientific data, its dependencies, associated computations, and execution workflows. The project structure ensures that data, computations, and their interdependencies are organized, traceable, and reproducible.
+A DataJoint **data pipeline** is more than just a database—it is a structured system for managing scientific data, its dependencies, associated computations, and execution workflows. Before diving into schema and table design, it's important to understand how to organize the entire project.
 
 This chapter describes the conventions for organizing a complete data pipeline project.
 
@@ -81,7 +81,7 @@ my_pipeline/
 
 ## Database Schema ≡ Python Module
 
-Each database schema in a DataJoint pipeline **SHALL** correspond to a distinct Python module within `src/workflow/`. This one-to-one mapping is a fundamental convention:
+Each database schema in a DataJoint pipeline corresponds to a distinct Python module within `src/workflow/`. This one-to-one mapping is a fundamental convention:
 
 | Database Construct | Python Construct |
 |---|---|
@@ -92,41 +92,7 @@ Each database schema in a DataJoint pipeline **SHALL** correspond to a distinct 
 ![Schema Design](../95-reference/figures/schema-illustration.png)
 *Each database schema corresponds to a Python module containing related table definitions.*
 
-### The `schema` Property
-
-Each module **MUST** define a `schema` property that creates the schema namespace:
-
-```python
-# src/workflow/subject.py
-
-import datajoint as dj
-
-schema = dj.Schema('subject')
-
-@schema
-class Subject(dj.Manual):
-    definition = """
-    subject_id : int
-    ---
-    subject_name : varchar(100)
-    species : varchar(50)
-    """
-
-@schema
-class SubjectNote(dj.Manual):
-    definition = """
-    -> Subject
-    note_date : date
-    ---
-    note : varchar(1000)
-    """
-```
-
-The `schema` property serves multiple purposes:
-
-1. **Decorator** — Used as `@schema` to associate table classes with the database schema
-2. **Diagram generation** — Enables visualization of all tables in the schema
-3. **Schema operations** — Provides methods for schema-level operations (e.g., `schema.drop()`)
+Each module defines a `schema` property and uses it to declare tables. For details on creating schemas and tables, see [Create Schemas](010-schema.ipynb).
 
 ## Pipeline as a DAG of Modules
 
@@ -137,19 +103,7 @@ A DataJoint pipeline adheres to a **Directed Acyclic Graph (DAG)** structure at 
 
 ### 1. Table-Level DAG
 
-Within each schema, tables form a DAG through their foreign key relationships:
-
-```python
-# Tables within a schema form a DAG
-@schema
-class Session(dj.Manual):
-    definition = """
-    -> Subject
-    session_id : int
-    ---
-    session_date : date
-    """
-```
+Within each schema, tables form a DAG through their foreign key relationships. See [Foreign Keys](030-foreign-keys.ipynb) for details.
 
 ### 2. Module-Level DAG
 
@@ -177,7 +131,6 @@ class Scan(dj.Manual):
     scan_id : int
     ---
     scan_date : date
-    scan_notes : varchar(500)
     """
 ```
 
@@ -201,15 +154,6 @@ This constraint ensures:
 - Unidirectional data flow throughout the pipeline
 - Predictable dependency resolution
 - Clean module imports without circular references
-
-```python
-# VALID: Downstream imports upstream
-# processing.py imports acquisition.py
-# acquisition.py imports subject.py
-
-# INVALID: Circular imports
-# subject.py imports analysis.py (which imports processing.py, which imports subject.py)
-```
 
 ## Project Configuration with pyproject.toml
 
@@ -292,92 +236,6 @@ class Recording(dj.Imported):
     ---
     raw_data : object@main           # Stored in 'main' store
     """
-
-@schema
-class ProcessedRecording(dj.Computed):
-    definition = """
-    -> Recording
-    ---
-    processed_data : object@processed  # Stored in 'processed' store
-    """
-```
-
-## Module Dependency Example
-
-Here is a complete example showing how modules depend on each other:
-
-### src/workflow/subject.py (upstream, no dependencies)
-
-```python
-import datajoint as dj
-
-schema = dj.Schema('subject')
-
-@schema
-class Subject(dj.Manual):
-    definition = """
-    subject_id : int
-    ---
-    subject_name : varchar(100)
-    """
-```
-
-### src/workflow/acquisition.py (depends on subject)
-
-```python
-import datajoint as dj
-from . import subject
-
-schema = dj.Schema('acquisition')
-
-@schema
-class Session(dj.Manual):
-    definition = """
-    -> subject.Subject
-    session_id : int
-    ---
-    session_date : date
-    """
-
-@schema
-class Scan(dj.Imported):
-    definition = """
-    -> Session
-    scan_idx : int
-    ---
-    scan_data : object@main
-    """
-```
-
-### src/workflow/processing.py (depends on acquisition)
-
-```python
-import datajoint as dj
-from . import acquisition
-
-schema = dj.Schema('processing')
-
-@schema
-class ProcessedScan(dj.Computed):
-    definition = """
-    -> acquisition.Scan
-    ---
-    processed_data : object@processed
-    quality_score : float
-    """
-
-    def make(self, key):
-        # Fetch raw data from upstream table
-        scan_data = (acquisition.Scan & key).fetch1('scan_data')
-
-        # Process the data
-        processed = self.process(scan_data)
-        quality = self.compute_quality(processed)
-
-        # Insert results
-        self.insert1({**key,
-                      'processed_data': processed,
-                      'quality_score': quality})
 ```
 
 ## Docker Configuration
@@ -469,28 +327,11 @@ from . import subject
 from . import acquisition
 ```
 
-### 4. Document Dependencies
-
-Use docstrings to document the schema's role and its dependencies:
-
-```python
-"""
-Processing schema for neural signal analysis.
-
-Dependencies:
-    - acquisition: Source of raw recording data
-
-Provides:
-    - ProcessedRecording: Filtered and normalized signals
-    - SpikeDetection: Detected spike events
-"""
-```
-
-### 5. Version Control Configuration
+### 4. Version Control Configuration
 
 Store connection-independent configuration in `pyproject.toml`, but keep credentials and environment-specific settings in environment variables or local configuration files excluded from version control.
 
-### 6. Use the src Layout
+### 5. Use the src Layout
 
 Place pipeline code in `src/workflow/` to:
 - Prevent accidental imports from the project root
@@ -511,10 +352,10 @@ A well-organized DataJoint pipeline project:
 8. Provides **docs/** for comprehensive documentation
 9. Contains **docker/** configurations for reproducible deployment
 
-This structure ensures that pipelines are reproducible, maintainable, and can scale with growing data and team sizes.
+With the project structure in place, you're ready to define schemas and tables within `src/workflow/`.
 
 :::{seealso}
-- [Schema Definition](../30-design/010-schema.ipynb) — Creating and managing schemas
-- [Orchestration](060-orchestration.ipynb) — Running pipelines at scale
+- [Create Schemas](010-schema.ipynb) — Declaring schemas and the `schema` object
+- [Create Tables](015-table.ipynb) — Defining tables within schemas
 - [DataJoint Specs](../95-reference/SPECS_2_0.md) — Complete specification reference
 :::
