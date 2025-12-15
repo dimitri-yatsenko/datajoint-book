@@ -4,35 +4,40 @@ authors:
   - name: Dimitri Yatsenko
 ---
 
-# Organizing a Data Pipeline Project
+# Pipeline Projects
 
-A DataJoint **data pipeline** is more than just a database—it is a structured system for managing scientific data, its dependencies, associated computations, and execution workflows. Before diving into schema and table design, it's important to understand how to organize the entire project.
+DataJoint pipelines can range from simple scripts to full-fledged software projects. This chapter describes how to organize a pipeline for **production deployment**.
 
-This chapter describes the conventions for organizing a complete data pipeline project.
+## When Do You Need a Full Project?
+
+**Simple scripts and notebooks** work well for:
+- Learning DataJoint
+- Exploratory analysis
+- Small pipelines with a single user
+- Examples and tutorials (like those in this book)
+
+**A full project structure** is recommended when you need:
+- Version control with Git for the pipeline code
+- Multiple collaborators working on the same pipeline
+- Automated computation workers
+- Reproducible deployment with Docker
+- Object storage configuration
+- Installation as a Python package
 
 ## Pipeline ≡ Git Repository
 
-A DataJoint pipeline **SHALL** be implemented as a dedicated **Git repository** containing a Python package. This repository serves as the single source of truth for the entire pipeline definition, including:
+A production DataJoint pipeline is implemented as a dedicated **Git repository** containing a Python package. This repository serves as the single source of truth for the entire pipeline definition:
 
 - **Schema definitions** — Table structures and relationships
 - **Computation logic** — The `make` methods for automated tables
-- **Configuration** — Database connection and object storage settings
+- **Configuration** — Object storage settings
 - **Dependencies** — Required packages and environment specifications
 - **Documentation** — Usage guides and API references
 - **Containerization** — Docker configurations for reproducible environments
 
-The repository structure enables:
+## Standard Project Structure
 
-- **Version control** — Track all changes to the pipeline definition
-- **Collaboration** — Multiple developers can work on the pipeline simultaneously
-- **Reproducibility** — Any state of the pipeline can be reconstructed from its commit history
-- **Deployment** — The pipeline can be installed as a Python package
-
-## Pipeline ≡ Python Package
-
-Within the Git repository, the pipeline is organized as a **Python package** located in `src/workflow/`. This follows the modern Python packaging convention of using a `src` layout, which prevents accidental imports from the local directory during development.
-
-### Standard Project Structure
+The pipeline code lives in `src/workflow/`, following the modern Python `src` layout:
 
 ```
 my_pipeline/
@@ -49,15 +54,12 @@ my_pipeline/
 │       ├── processing.py    # processing schema module
 │       └── analysis.py      # analysis schema module
 │
-├── notebooks/               # Jupyter notebooks for exploration and tutorials
+├── notebooks/               # Jupyter notebooks for exploration
 │   ├── 01-data-entry.ipynb
-│   ├── 02-queries.ipynb
-│   └── 03-analysis.ipynb
+│   └── 02-analysis.ipynb
 │
 ├── docs/                    # Documentation sources
-│   ├── index.md
-│   ├── installation.md
-│   └── api/
+│   └── index.md
 │
 ├── docker/                  # Docker configurations
 │   ├── Dockerfile
@@ -65,7 +67,6 @@ my_pipeline/
 │   └── .env.example
 │
 └── tests/                   # Test suite
-    ├── __init__.py
     └── test_pipeline.py
 ```
 
@@ -74,96 +75,76 @@ my_pipeline/
 | Directory | Purpose |
 |-----------|---------|
 | `src/workflow/` | Pipeline code — schema modules with table definitions |
-| `notebooks/` | Interactive exploration, tutorials, and analysis notebooks |
-| `docs/` | Sphinx or MkDocs documentation sources |
-| `docker/` | Containerization for reproducible environments |
+| `notebooks/` | Interactive exploration and analysis notebooks |
+| `docs/` | Documentation sources |
+| `docker/` | Containerization for reproducible deployment |
 | `tests/` | Unit and integration tests |
 
 ## Database Schema ≡ Python Module
 
-Each database schema in a DataJoint pipeline corresponds to a distinct Python module within `src/workflow/`. This one-to-one mapping is a fundamental convention:
+Each database schema corresponds to a Python module within `src/workflow/`:
 
 | Database Construct | Python Construct |
 |---|---|
 | Database schema | Python module (`.py` file) |
 | Database table | Python class |
-| Schema name | Module name (conventionally similar) |
 
 ![Schema Design](../95-reference/figures/schema-illustration.png)
 *Each database schema corresponds to a Python module containing related table definitions.*
 
-Each module defines a `schema` property and uses it to declare tables. For details on creating schemas and tables, see [Create Schemas](010-schema.ipynb).
+Each module defines a `schema` object and uses it to declare tables:
+
+```python
+# src/workflow/subject.py
+import datajoint as dj
+
+schema = dj.Schema('subject')
+
+@schema
+class Subject(dj.Manual):
+    definition = """
+    subject_id : int
+    ---
+    subject_name : varchar(100)
+    """
+```
 
 ## Pipeline as a DAG of Modules
 
-A DataJoint pipeline adheres to a **Directed Acyclic Graph (DAG)** structure at two levels:
+A pipeline forms a **Directed Acyclic Graph (DAG)** where:
+
+- **Nodes** are schema modules
+- **Edges** represent dependencies (Python imports and foreign key bundles)
 
 ![Pipeline Design](../95-reference/figures/pipeline-illustration.png)
-*A pipeline forms a DAG where nodes are schema modules and edges represent dependencies (both Python imports and foreign key bundles).*
+*Schemas form a DAG where edges represent both Python imports and foreign key relationships.*
 
-### 1. Table-Level DAG
-
-Within each schema, tables form a DAG through their foreign key relationships. See [Foreign Keys](030-foreign-keys.ipynb) for details.
-
-### 2. Module-Level DAG
-
-The schemas themselves form a higher-level DAG, where:
-
-- **Nodes** represent Python modules (database schemas)
-- **Edges** represent dependencies between modules
-
-These dependencies include:
-- **Python import dependencies** — One module imports another
-- **Foreign key bundles** — Tables in one schema reference tables in another schema
+Downstream modules import upstream modules:
 
 ```python
 # src/workflow/acquisition.py
-
 import datajoint as dj
-from . import subject  # Import dependency on upstream module
+from . import subject  # Import upstream module
 
 schema = dj.Schema('acquisition')
 
 @schema
-class Scan(dj.Manual):
+class Session(dj.Manual):
     definition = """
-    -> subject.Subject        # Foreign key to upstream schema
-    scan_id : int
+    -> subject.Subject    # Foreign key to upstream schema
+    session_id : int
     ---
-    scan_date : date
+    session_date : date
     """
 ```
 
-### Visualizing the Pipeline
+**Cyclic dependencies are prohibited** — both Python imports and foreign keys must form a DAG.
 
-The `dj.Diagram` class can render the pipeline at multiple levels of detail:
+## Project Configuration
 
-- **Full detail** — All tables with their foreign key relationships
-- **Schema level** — Schemas as grouped nodes with edges bundling the foreign keys between them
+### pyproject.toml
 
-This high-level view makes it easy to understand the overall data flow in complex pipelines with many tables.
-
-## Acyclicity Constraint
-
-**Cyclic dependencies are strictly prohibited** at both levels:
-
-1. **Within a schema** — Foreign keys between tables must form a DAG
-2. **Between schemas** — Module imports and foreign keys must form a DAG
-
-This constraint ensures:
-- Unidirectional data flow throughout the pipeline
-- Predictable dependency resolution
-- Clean module imports without circular references
-
-## Project Configuration with pyproject.toml
-
-Each pipeline project uses a `pyproject.toml` file for configuration. This file defines:
-
-1. **Project metadata** — Name, version, authors
-2. **Dependencies** — Required packages including datajoint
-3. **Object storage configuration** — Where large data objects are stored
-
-### Example pyproject.toml
+The `pyproject.toml` file defines project metadata, dependencies, and object storage configuration:
 
 ```toml
 [build-system]
@@ -173,51 +154,32 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "my-pipeline"
 version = "0.1.0"
-description = "A DataJoint pipeline for neurophysiology experiments"
+description = "A DataJoint pipeline for experiments"
 readme = "README.md"
 license = {file = "LICENSE"}
-authors = [
-    {name = "Your Name", email = "your.email@example.com"}
-]
 requires-python = ">=3.9"
 dependencies = [
     "datajoint>=0.14",
     "numpy",
-    "scipy",
 ]
 
 [project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "jupyter",
-]
-docs = [
-    "sphinx",
-    "myst-parser",
-]
+dev = ["pytest", "jupyter"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.datajoint]
 # Object storage configuration
 [tool.datajoint.stores.main]
 protocol = "s3"
 endpoint = "s3.amazonaws.com"
 bucket = "my-pipeline-data"
 location = "raw"
-
-[tool.datajoint.stores.processed]
-protocol = "s3"
-endpoint = "s3.amazonaws.com"
-bucket = "my-pipeline-data"
-location = "processed"
 ```
 
-### Object Storage Configuration
+### Object Storage
 
-The `[tool.datajoint.stores]` section configures external storage for large data objects. Each store defines:
+The `[tool.datajoint.stores]` section configures external storage for large data objects:
 
 | Setting | Description |
 |---------|-------------|
@@ -226,45 +188,40 @@ The `[tool.datajoint.stores]` section configures external storage for large data
 | `bucket` | Bucket or root directory name |
 | `location` | Subdirectory within the bucket |
 
-Tables can reference specific stores for their `object` attributes:
+Tables reference stores for `object` attributes:
 
 ```python
 @schema
 class Recording(dj.Imported):
     definition = """
-    -> acquisition.Scan
+    -> Session
     ---
-    raw_data : object@main           # Stored in 'main' store
+    raw_data : object@main    # Stored in 'main' store
     """
 ```
 
-## Docker Configuration
+## Docker Deployment
 
-The `docker/` directory contains configurations for containerized deployment:
-
-### docker/Dockerfile
+### Dockerfile
 
 ```dockerfile
 FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     default-libmysqlclient-dev \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python package
 COPY pyproject.toml README.md LICENSE ./
 COPY src/ ./src/
 RUN pip install -e .
 
-# Default command runs the worker
 CMD ["python", "-m", "workflow.worker"]
 ```
 
-### docker/docker-compose.yaml
+### docker-compose.yaml
 
 ```yaml
 services:
@@ -308,54 +265,36 @@ volumes:
 
 ## Best Practices
 
-### 1. One Schema Per Module
+1. **One schema per module** — Never define multiple schemas in one module
 
-Maintain strict correspondence between Python modules and database schemas. Never define multiple schemas in one module.
+2. **Clear naming** — Schema names use lowercase with underscores; table classes use CamelCase
 
-### 2. Clear Naming Conventions
+3. **Explicit imports** — Import upstream modules at the top of each file:
+   ```python
+   from . import subject
+   from . import acquisition
+   ```
 
-- Schema names: lowercase with underscores (e.g., `subject_management`)
-- Module names: lowercase, matching schema names where practical
-- Table classes: CamelCase (e.g., `SubjectSession`)
+4. **Credentials in environment** — Keep database credentials in environment variables, not in code
 
-### 3. Explicit Imports
-
-Import upstream modules explicitly at the top of each module:
-
-```python
-from . import subject
-from . import acquisition
-```
-
-### 4. Version Control Configuration
-
-Store connection-independent configuration in `pyproject.toml`, but keep credentials and environment-specific settings in environment variables or local configuration files excluded from version control.
-
-### 5. Use the src Layout
-
-Place pipeline code in `src/workflow/` to:
-- Prevent accidental imports from the project root
-- Ensure tests run against the installed package
-- Follow modern Python packaging conventions
+5. **Use the src layout** — Prevents accidental imports from the project root
 
 ## Summary
 
-A well-organized DataJoint pipeline project:
+A production DataJoint pipeline project:
 
-1. Lives in a **Git repository** as the single source of truth
-2. Contains a **LICENSE** file specifying usage terms
-3. Places pipeline code in **`src/workflow/`** following Python packaging conventions
-4. Maps each **database schema to a Python module** with a `schema` property
-5. Forms a **DAG at both table and module levels**, with no cyclic dependencies
-6. Configures **object storage in pyproject.toml** for large data management
-7. Includes **notebooks/** for interactive exploration and tutorials
-8. Provides **docs/** for comprehensive documentation
-9. Contains **docker/** configurations for reproducible deployment
+1. Lives in a **Git repository**
+2. Contains a **LICENSE** file
+3. Places code in **`src/workflow/`**
+4. Maps **one schema to one module**
+5. Forms a **DAG** with no cyclic dependencies
+6. Configures **object storage** in `pyproject.toml`
+7. Includes **Docker** configurations for deployment
 
-With the project structure in place, you're ready to define schemas and tables within `src/workflow/`.
+For simple scripts and learning, see the examples throughout this book. Use this full project structure when you're ready for production deployment.
 
 :::{seealso}
-- [Create Schemas](010-schema.ipynb) — Declaring schemas and the `schema` object
-- [Create Tables](015-table.ipynb) — Defining tables within schemas
+- [Create Schemas](010-schema.ipynb) — Declaring schemas and tables
+- [Orchestration](../40-operations/060-orchestration.ipynb) — Running pipelines at scale
 - [DataJoint Specs](../95-reference/SPECS_2_0.md) — Complete specification reference
 :::
