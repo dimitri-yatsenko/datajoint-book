@@ -109,11 +109,11 @@ This book focuses on **DataJoint**, a framework that extends relational database
 The relational data model—introduced by Edgar F. Codd in 1970—revolutionized data management by organizing data into tables with well-defined relationships. This model has dominated database systems for over five decades due to its mathematical rigor and versatility. Modern relational databases like MySQL and PostgreSQL continue to evolve, incorporating new capabilities for scalability and security while maintaining the core principles that make them reliable and powerful.
 
 The following chapters build the conceptual foundation you need to understand DataJoint's approach:
-- **Data Models**: What data models are and why schemas matter for scientific work
-- **Relational Theory**: The mathematical foundations that make relational databases powerful
-- **Relational Practice**: Hands-on experience with database operations
-- **Relational Workflows**: How DataJoint extends relational theory for computational pipelines
-- **Scientific Data Pipelines**: How workflows scale into complete research data operations systems
+- [Data Models](01-models.md): What data models are and why schemas matter for scientific work
+- [Relational Theory](02-relational.md): The mathematical foundations that make relational databases powerful
+- [Data Integrity](04-integrity.md): Hands-on experience with database operations
+- [Relational Workflows](05-workflows.md): How DataJoint extends relational theory for computational pipelines
+- [Scientific Data Pipelines](06-pipelines.md): How workflows scale into complete research data operations systems
 
 By the end, you'll understand both the mathematical foundations and their practical application to your research.
 
