@@ -89,8 +89,12 @@ Each database schema corresponds to a Python module within `src/workflow/`:
 | Database schema | Python module (`.py` file) |
 | Database table | Python class |
 
-![Schema Design](../95-reference/figures/schema-illustration.png)
-*Each database schema corresponds to a Python module containing related table definitions.*
+```{figure} ../95-reference/figures/schema-illustration.png
+:width: 600px
+:align: center
+
+Each database schema corresponds to a Python module containing related table definitions.
+```
 
 Each module defines a `schema` object and uses it to declare tables:
 
@@ -116,8 +120,12 @@ A pipeline forms a **Directed Acyclic Graph (DAG)** where:
 - **Nodes** are schema modules
 - **Edges** represent dependencies (Python imports and foreign key bundles)
 
-![Pipeline Design](../95-reference/figures/pipeline-illustration.png)
-*Schemas form a DAG where edges represent both Python imports and foreign key relationships.*
+```{figure} ../95-reference/figures/pipeline-illustration.png
+:width: 600px
+:align: center
+
+Schemas form a DAG where edges represent both Python imports and foreign key relationships.
+```
 
 Downstream modules import upstream modules:
 
