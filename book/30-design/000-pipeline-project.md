@@ -263,6 +263,18 @@ volumes:
   minio_data:
 ```
 
+## Managed Deployment with DataJoint Platform
+
+For teams that prefer managed infrastructure over DIY deployment, the [DataJoint Platform](https://datajoint.com) is specifically designed for hosting and managing full DataJoint projects. The platform provides:
+
+- Managed databases and object storage
+- Automated computation orchestration
+- Web-based data exploration and visualization
+- Team collaboration tools
+- Enterprise support
+
+This eliminates the need to configure and maintain your own database servers, storage backends, and worker infrastructure while following the same project conventions described in this chapter.
+
 ## Best Practices
 
 1. **One schema per module** — Never define multiple schemas in one module
