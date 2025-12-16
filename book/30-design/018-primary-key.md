@@ -48,6 +48,12 @@ Without entity integrity, databases become unreliable:
 | Multiple entities, same record | Mixed data, privacy violations |
 | Cannot match entity to record | Lost data, broken workflows |
 
+Imagine what kinds of difficulties would arise if entity integrity broke down in the systems you interact with every day:
+
+- What would happen if your university or company HR department had two different identifiers for you in their records?
+- What would happen if your HR department occasionally updated your records with another person's information?
+- What if the same occurred in your dentist's office?
+
 **Example:** If your university had two student records for you, your transcript might show incomplete courses, financial aid could be miscalculated, and graduation requirements might be incorrectly tracked.
 
 # The Three Questions of Entity Integrity
@@ -80,6 +86,31 @@ class Mouse(dj.Manual):
     """
 ```
 
+## Example: University Student Database
+
+Consider a university registrar's office tracking students:
+
+| Question | Answer |
+|----------|--------|
+| Prevent duplicates? | Each student gets a unique ID at enrollment; verification against existing records using name, date of birth, and government ID |
+| Prevent sharing? | Photo ID cards issued; IDs are never reused even after graduation |
+| Match entities? | Student presents ID card → look up record by student ID |
+
+```python
+@schema
+class Student(dj.Manual):
+    definition = """
+    student_id : char(8)   # unique student ID (e.g., 'S2024001')
+    ---
+    first_name : varchar(50)
+    last_name : varchar(50)
+    date_of_birth : date
+    enrollment_date : date
+    """
+```
+
+Notice how both examples follow the same pattern: a real-world identification system (ear tags, student IDs) enables the three questions to be answered consistently.
+
 The database enforces the first two questions automatically through the primary key constraint. The third question requires a **physical identification system**—ear tags, barcodes, or RFID chips that link physical entities to database records.
 
 ```{admonition} Entity Integrity Requires Real-World Systems
@@ -92,6 +123,23 @@ The database can enforce uniqueness, but cannot create it. You must establish id
 - Citizens: government IDs, SSNs
 
 The primary key in the database mirrors and enforces the real-world identification system.
+```
+
+```{admonition} Historical Example: The Social Security Number
+:class: note dropdown
+
+Establishing the Social Security system in the United States required reliable identification of workers by all employers to report their income across their entire careers. For this purpose, in 1936, the Federal Government established a new process to ensure that each US worker would be assigned a unique number—the Social Security Number (SSN).
+
+The SSN would be assigned at birth or upon entering the country for employment, and no person would be allowed to have two such numbers. Establishing and enforcing such a system is not easy and takes considerable effort.
+
+**Questions to consider:**
+- Why do you think the US government did not need to assign unique identifiers to taxpayers when it began levying federal taxes in 1913?
+- What abuses would become possible if a person could obtain two SSNs, or if two persons could share the same SSN?
+
+**Learn more** about the history and uses of the SSN:
+- [History of establishing the SSN](https://www.ssa.gov/history/ssn/firstcard.html)
+- [How the SSN works](https://www.ssa.gov/policy/docs/ssb/v69n2/v69n2p55.html)
+- [IRS timeline](https://www.irs.gov/irs-history-timeline)
 ```
 
 # Types of Primary Keys
@@ -146,6 +194,18 @@ class Mouse(dj.Manual):
 - May change (though ideally should not)
 - Privacy concerns for personal identifiers
 - Format inconsistencies across sources
+
+```{admonition} Real-World Identification Standards
+:class: seealso dropdown
+
+Establishing rigorous identification systems often requires costly standardization efforts with many systems for enforcement and coordination. Examples include:
+
+- [Vehicle Identification Number (VIN)](https://www.iso.org/standard/52200.html) — regulated by the International Organization for Standardization
+- [Radio-Frequency Identification for Animals (ISO 11784/11785)](https://en.wikipedia.org/wiki/ISO_11784_and_ISO_11785) — standards for implanted microchips in animals
+- [US Aircraft Registration Numbers](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/forming_nnumber) — the N-numbers seen on aircraft tails, regulated by the FAA
+
+When a science lab establishes a data management process, the first step is often to establish a uniform system for identifying test subjects, experiments, protocols, and treatments. Standard nomenclatures exist to standardize names across institutions, and labs must be aware of them and follow them.
+```
 
 ## Surrogate Keys
 
