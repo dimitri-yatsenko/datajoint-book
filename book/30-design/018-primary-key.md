@@ -262,12 +262,13 @@ Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15
 # Running the same insert again produces a duplicate key error, not a second record
 ```
 
-**Surrogate key alternatives**: When you need generated identifiers, use client-side generation methods such as:
-- **UUID/ULID/NANOID**: Generate unique identifiers client-side before insertion
-- **Client-side counters**: Query the max value and increment before insertion
-- **External ID services**: Use institutional or laboratory ID assignment systems
+**Generating surrogate keys**: Since DataJoint requires explicit key values, how do you generate unique surrogate keys? Use client-side generation methods:
 
-These approaches maintain explicit key specification while providing unique identifiers.
+- **UUIDs and related systems**: Generate universally unique identifiers client-side before insertion. UUIDs (UUID1, UUID4, UUID5), ULIDs (sortable), and NANOIDs (compact) all provide collision-resistant unique identifiers. See [UUIDs](../85-special-topics/025-uuid.ipynb) for implementation details and guidance on choosing the right type.
+- **Client-side counters**: Query the current maximum value and increment before insertion.
+- **External ID services**: Use institutional or laboratory ID assignment systems that generate unique identifiers.
+
+These approaches maintain DataJoint's requirement for explicit key specification while providing unique identifiers for surrogate keys.
 `````
 
 ## Composite Keys in Hierarchical Relationships
