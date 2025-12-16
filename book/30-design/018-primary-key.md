@@ -15,8 +15,8 @@ In the [Tables](015-table.ipynb) chapter, we learned that attributes above the `
 By the end of this chapter, you will:
 - Understand entity integrity and its importance
 - Apply the "three questions" framework for designing primary keys
-- Choose between natural keys, composite keys, and surrogate keys
-- Know when to use auto-increment IDs vs. UUIDs
+- Choose between natural keys and surrogate keys
+- Understand when keys become composite (multiple attributes)
 - Design primary keys that reflect real-world identification systems
 ```
 
@@ -95,15 +95,26 @@ The primary key in the database mirrors and enforces the real-world identificati
 
 # Types of Primary Keys
 
+Primary keys can be classified along two independent dimensions:
+
+1. **Origin**: Natural keys (from the real world) vs. Surrogate keys (artificially created)
+2. **Composition**: Simple keys (one attribute) vs. Composite keys (multiple attributes)
+
+These dimensions are independent—a natural key can be simple or composite, and so can a surrogate key.
+
 ## Natural Keys
 
 A **natural key** is an identifier that exists in the real world independently of the database.
 
-**Examples:**
-- Social Security Number (for US persons)
+**Examples of simple natural keys:**
 - ISBN (for books)
 - VIN (for vehicles)
-- Email address (for user accounts)
+- Social Security Number (for US persons)
+
+**Examples of composite natural keys:**
+- (State, District) for U.S. Congressional Districts
+- (Country, Postal Code) for geographic regions
+- (Building, Room Number) for rooms
 
 **Advantages:**
 - Meaningful to users
@@ -128,13 +139,9 @@ class Book(dj.Manual):
     """
 ```
 
-## Composite Primary Keys
+**Example: Composite Natural Key**
 
-When no single attribute uniquely identifies an entity, use a **composite primary key**—multiple attributes that together provide uniqueness.
-
-**Example: U.S. Congressional Districts**
-
-A district number alone isn't unique (every state has a "District 1"). You need both state and district:
+A district number alone isn't unique (every state has a "District 1"). The natural identifier requires both state and district:
 
 ```python
 @schema
@@ -148,38 +155,9 @@ class CongressionalDistrict(dj.Manual):
     """
 ```
 
-**Example: Course Enrollment**
-
-A student can enroll in many courses; a course has many students. The enrollment is uniquely identified by the combination:
-
-```python
-@schema
-class Enrollment(dj.Manual):
-    definition = """
-    -> Student
-    -> Course
-    ---
-    enrollment_date : date
-    grade = null : decimal(3,2)
-    """
-```
-
-```{admonition} When to Use Composite Keys
-:class: tip
-
-Use composite primary keys when:
-- The entity is defined by a *relationship* between other entities
-- Multiple attributes together form the natural identifier
-- A single surrogate key would obscure the entity's meaning
-```
-
 ## Surrogate Keys
 
-A **surrogate key** is an artificial identifier created solely for the database, with no real-world meaning.
-
-**Common surrogate key types:**
-- Auto-incrementing integers (`1, 2, 3, ...`)
-- UUIDs (Universally Unique Identifiers)
+A **surrogate key** is an artificial identifier created solely for the database, with no inherent real-world meaning.
 
 **Advantages:**
 - Always available (don't depend on external systems)
@@ -188,74 +166,89 @@ A **surrogate key** is an artificial identifier created solely for the database,
 - No privacy concerns
 
 **Disadvantages:**
-- Meaningless to users
+- Meaningless to users without additional context
 - Requires secondary indexes for natural lookups
-- Auto-increment reveals insertion order (security concern in some contexts)
 
-### Auto-Increment Keys
+```{admonition} Explicitly Defined Surrogate Keys
+:class: important
 
-The simplest surrogate key is an auto-incrementing integer:
-
-```python
-@schema
-class Experiment(dj.Manual):
-    definition = """
-    experiment_id : int auto_increment
-    ---
-    experiment_date : date
-    protocol : varchar(100)
-    notes : varchar(1000)
-    """
-```
-
-The database automatically assigns the next available integer when you insert without specifying the key.
-
-### UUIDs
-
-**UUIDs** (Universally Unique Identifiers) are 128-bit identifiers designed to be globally unique without coordination:
+In DataJoint, we prefer explicitly defined surrogate keys over auto-generated ones. When you create an entity like a "session," you should explicitly specify its identifier:
 
 ```python
 @schema
 class Session(dj.Manual):
     definition = """
-    session_id : uuid
-    ---
     -> Subject
-    session_datetime : datetime
+    session : smallint unsigned  # session number for this subject
+    ---
+    session_date : date
+    notes : varchar(1000)
     """
 ```
 
-**When to use UUIDs instead of auto-increment:**
-- Distributed systems (multiple servers inserting simultaneously)
-- Data merging from multiple sources
-- Security (don't reveal record count or insertion order)
-- Entities created before database insertion (offline/mobile apps)
+This approach:
+- Prevents accidental duplicate entries when code is run multiple times
+- Makes the identifier meaningful (e.g., "session 1", "session 2" for each subject)
+- Maintains entity integrity by requiring users to think about what they're inserting
+
+Avoid using `auto_increment` for identifiers, as it can lead to entity integrity violations when users accidentally insert duplicate records representing the same real-world entity.
+```
+
+## Composite Keys in Hierarchical Relationships
+
+Composite primary keys commonly arise when tables inherit foreign keys as part of their primary key. This creates hierarchical relationships where child entities are identified within the context of their parent.
+
+```python
+@schema
+class Subject(dj.Manual):
+    definition = """
+    subject_id : varchar(12)   # subject identifier
+    ---
+    species : varchar(30)
+    """
+
+@schema
+class Session(dj.Manual):
+    definition = """
+    -> Subject
+    session : smallint unsigned  # session number within subject
+    ---
+    session_date : date
+    """
+```
+
+In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.ipynb) chapter.
 
 ```{seealso}
-For detailed UUID implementation, including UUID types (UUID1, UUID4, UUID5) and DataJoint examples, see [UUIDs](../85-special-topics/025-uuid.ipynb).
+For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.ipynb).
 ```
 
 # Choosing the Right Primary Key Strategy
 
-| Scenario | Recommended Key Type |
+| Scenario | Recommended Approach |
 |----------|---------------------|
-| Established external ID system | Natural key |
-| Entity defined by relationships | Composite key |
-| Simple sequential records | Auto-increment |
-| Distributed/merged data | UUID |
-| Privacy-sensitive context | Surrogate (not natural) |
+| Established external ID system exists | Use the natural key |
+| Entity naturally identified by multiple attributes | Use composite natural key |
+| Entity identified within parent context | Inherit foreign key + add local identifier |
+| No natural identifier exists | Create explicit surrogate key |
+| Privacy-sensitive context | Surrogate key (not natural) |
 
 ## Decision Framework
 
 ```{mermaid}
 flowchart TD
     A[New Table] --> B{Reliable external ID?}
-    B -->|Yes| C[Natural Key]
-    B -->|No| D{Defined by relationships?}
-    D -->|Yes| E[Composite Key]
-    D -->|No| F{Distributed system?}
-    F -->|Yes| G[UUID]
-    F -->|No| H[Auto-increment]
+    B -->|Yes, single attribute| C[Simple Natural Key]
+    B -->|Yes, multiple attributes| D[Composite Natural Key]
+    B -->|No| E{Part of hierarchy?}
+    E -->|Yes| F[FK + Local Identifier]
+    E -->|No| G[Explicit Surrogate Key]
+```
+
+```{admonition} Avoid Auto-Increment
+:class: warning
+
+While many databases offer auto-increment for generating keys, DataJoint workflows avoid this pattern. Auto-increment can lead to entity integrity violations when users accidentally run insertion code multiple times, creating duplicate records for the same real-world entity. Always explicitly define your identifiers.
 ```
 
 # Entity Integrity Varies by Context
@@ -279,7 +272,7 @@ Design your primary keys to match your application's integrity requirements—do
 
 Primary keys have special significance in DataJoint queries:
 
-1. **Joins match on primary keys** — When you join tables with `*`, DataJoint matches on shared primary key attributes
+1. **Semantic matching in joins** — When you join tables with `*`, DataJoint uses *semantic matching*: attributes are matched when they share both the same name and trace to the same original definition through foreign key dependencies
 2. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
 3. **Results always have primary keys** — Every query result is itself a valid relation with a primary key
 
@@ -288,7 +281,17 @@ Primary keys have special significance in DataJoint queries:
 Mouse & {'ear_tag': 'M00142'}
 
 # The result of any query has a well-defined primary key
-(Mouse * Session).primary_key  # ['ear_tag', 'session_id']
+(Mouse * Session).primary_key  # Combines keys based on semantic matching
+```
+
+```{admonition} Semantic Matching
+:class: note
+
+DataJoint's join differs from SQL's `NATURAL JOIN`. Two attributes are matched only when:
+1. They have the **same name** in both tables
+2. They trace to the **same original definition** through foreign key chains
+
+This prevents accidental joins on attributes that happen to share a name but have different meanings. For details, see the [Join](../50-queries/040-join.ipynb) chapter.
 ```
 
 # Summary
@@ -299,16 +302,16 @@ Primary keys are the foundation of entity integrity in relational databases:
 |---------|------------|
 | **Entity Integrity** | 1:1 correspondence between entities and records |
 | **Three Questions** | Prevent duplicates, prevent sharing, enable matching |
-| **Natural Keys** | Real-world identifiers (ISBN, SSN, email) |
-| **Composite Keys** | Multiple attributes for relationship-based entities |
-| **Surrogate Keys** | Database-generated (auto-increment, UUID) |
+| **Natural Keys** | Real-world identifiers (ISBN, SSN); can be simple or composite |
+| **Surrogate Keys** | Explicitly defined identifiers when no natural key exists |
+| **Composite Keys** | Multiple attributes forming the key (applies to both natural and surrogate) |
 
 ```{admonition} Design Principles
 :class: tip
 
 1. **Mirror reality** — Primary keys should reflect how entities are identified in the real world
 2. **Enforce externally** — Establish identification systems outside the database
-3. **Match requirements** — Choose key type based on your integrity needs
+3. **Define explicitly** — Avoid auto-increment; always specify identifiers explicitly to maintain entity integrity
 4. **Keep it simple** — Don't over-engineer; use the simplest key that works
 ```
 
