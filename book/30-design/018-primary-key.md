@@ -48,6 +48,12 @@ Without entity integrity, databases become unreliable:
 | Multiple entities, same record | Mixed data, privacy violations |
 | Cannot match entity to record | Lost data, broken workflows |
 
+Imagine what kinds of difficulties would arise if entity integrity broke down in the systems you interact with every day:
+
+- What would happen if your university or company HR department had two different identifiers for you in their records?
+- What would happen if your HR department occasionally updated your records with another person's information?
+- What if the same occurred in your dentist's office?
+
 **Example:** If your university had two student records for you, your transcript might show incomplete courses, financial aid could be miscalculated, and graduation requirements might be incorrectly tracked.
 
 # The Three Questions of Entity Integrity
@@ -80,6 +86,31 @@ class Mouse(dj.Manual):
     """
 ```
 
+## Example: University Student Database
+
+Consider a university registrar's office tracking students:
+
+| Question | Answer |
+|----------|--------|
+| Prevent duplicates? | Each student gets a unique ID at enrollment; verification against existing records using name, date of birth, and government ID |
+| Prevent sharing? | Photo ID cards issued; IDs are never reused even after graduation |
+| Match entities? | Student presents ID card → look up record by student ID |
+
+```python
+@schema
+class Student(dj.Manual):
+    definition = """
+    student_id : char(8)   # unique student ID (e.g., 'S2024001')
+    ---
+    first_name : varchar(50)
+    last_name : varchar(50)
+    date_of_birth : date
+    enrollment_date : date
+    """
+```
+
+Notice how both examples follow the same pattern: a real-world identification system (ear tags, student IDs) enables the three questions to be answered consistently.
+
 The database enforces the first two questions automatically through the primary key constraint. The third question requires a **physical identification system**—ear tags, barcodes, or RFID chips that link physical entities to database records.
 
 ```{admonition} Entity Integrity Requires Real-World Systems
@@ -92,6 +123,23 @@ The database can enforce uniqueness, but cannot create it. You must establish id
 - Citizens: government IDs, SSNs
 
 The primary key in the database mirrors and enforces the real-world identification system.
+```
+
+```{admonition} Historical Example: The Social Security Number
+:class: note dropdown
+
+Establishing the Social Security system in the United States required reliable identification of workers by all employers to report their income across their entire careers. For this purpose, in 1936, the Federal Government established a new process to ensure that each US worker would be assigned a unique number—the Social Security Number (SSN).
+
+The SSN would be assigned at birth or upon entering the country for employment, and no person would be allowed to have two such numbers. Establishing and enforcing such a system is not easy and takes considerable effort.
+
+**Questions to consider:**
+- Why do you think the US government did not need to assign unique identifiers to taxpayers when it began levying federal taxes in 1913?
+- What abuses would become possible if a person could obtain two SSNs, or if two persons could share the same SSN?
+
+**Learn more** about the history and uses of the SSN:
+- [History of establishing the SSN](https://www.ssa.gov/history/ssn/firstcard.html)
+- [How the SSN works](https://www.ssa.gov/policy/docs/ssb/v69n2/v69n2p55.html)
+- [IRS timeline](https://www.irs.gov/irs-history-timeline)
 ```
 
 # Types of Primary Keys
@@ -147,6 +195,18 @@ class Mouse(dj.Manual):
 - Privacy concerns for personal identifiers
 - Format inconsistencies across sources
 
+```{admonition} Real-World Identification Standards
+:class: seealso dropdown
+
+Establishing rigorous identification systems often requires costly standardization efforts with many systems for enforcement and coordination. Examples include:
+
+- [Vehicle Identification Number (VIN)](https://www.iso.org/standard/52200.html) — regulated by the International Organization for Standardization
+- [Radio-Frequency Identification for Animals (ISO 11784/11785)](https://en.wikipedia.org/wiki/ISO_11784_and_ISO_11785) — standards for implanted microchips in animals
+- [US Aircraft Registration Numbers](https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/forming_nnumber) — the N-numbers seen on aircraft tails, regulated by the FAA
+
+When a science lab establishes a data management process, the first step is often to establish a uniform system for identifying test subjects, experiments, protocols, and treatments. Standard nomenclatures exist to standardize names across institutions, and labs must be aware of them and follow them.
+```
+
 ## Surrogate Keys
 
 A **surrogate key** is an identifier used *primarily inside* the database, with minimal or no exposure to end users. Users typically don't search for entities by surrogate keys or use them in conversation.
@@ -174,10 +234,16 @@ class InternalRecord(dj.Manual):
 - Privacy-sensitive contexts where natural identifiers shouldn't be stored
 - Internal system records that users never reference directly
 
-```{admonition} Explicitly Defined Keys in DataJoint
+```{admonition} No Default Values in Primary Keys
 :class: important
 
-Whether using natural or surrogate keys, DataJoint workflows prefer **explicitly defined** identifiers over auto-generated ones. When inserting a record, you should specify the key value:
+**DataJoint prohibits default values for primary key attributes.** Every primary key value must be explicitly provided by the client when inserting a new record. This includes prohibiting the use of `auto_increment`, which is commonly used in other frameworks.
+
+This design enforces entity integrity at the point of data entry:
+
+- **Explicit identification required**: The client must communicate the identifying information for each new entity. This forces users to think about entity identity *before* insertion.
+- **Prevents communication errors**: If a client fails to provide a key value, the insertion fails rather than silently creating a record with a generated key that may not correspond to the intended entity.
+- **Prevents duplicate entities**: Running the same insertion code multiple times with the same explicit key produces an error (duplicate key) rather than creating multiple records for the same entity.
 
 ```python
 @schema
@@ -189,14 +255,19 @@ class Session(dj.Manual):
     session_date : date
     notes : varchar(1000)
     """
+
+# Explicit key required - this is the DataJoint way
+Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15', 'notes': ''})
+
+# Running the same insert again produces a duplicate key error, not a second record
 ```
 
-This approach:
-- Prevents accidental duplicate entries when code is run multiple times
-- Forces users to think about entity identity before insertion
-- Maintains entity integrity by design
+**Surrogate key alternatives**: When you need generated identifiers, use client-side generation methods such as:
+- **UUID/ULID/NANOID**: Generate unique identifiers client-side before insertion
+- **Client-side counters**: Query the max value and increment before insertion
+- **External ID services**: Use institutional or laboratory ID assignment systems
 
-Avoid using `auto_increment` for identifiers, as it bypasses this safeguard and can lead to duplicate records representing the same real-world entity.
+These approaches maintain explicit key specification while providing unique identifiers.
 ```
 
 ## Composite Keys in Hierarchical Relationships
@@ -366,10 +437,10 @@ flowchart TD
     E -->|No| G[Explicit Surrogate Key]
 ```
 
-```{admonition} Avoid Auto-Increment
+```{admonition} No Default Values in Primary Keys
 :class: warning
 
-While many databases offer auto-increment for generating keys, DataJoint workflows avoid this pattern. Auto-increment can lead to entity integrity violations when users accidentally run insertion code multiple times, creating duplicate records for the same real-world entity. Always explicitly define your identifiers.
+DataJoint prohibits default values (including `auto_increment`) for primary key attributes. All key values must be explicitly provided at insertion. See [No Default Values in Primary Keys](#no-default-values-in-primary-keys) above for details and alternatives.
 ```
 
 # Entity Integrity Varies by Context
