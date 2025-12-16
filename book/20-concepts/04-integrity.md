@@ -95,7 +95,7 @@ Entity integrity ensures a **one-to-one correspondence** between real-world enti
 **Example:** Each mouse in the lab has exactly one unique ID, and that ID refers to exactly one mouse—never two different mice sharing the same ID, and never one mouse having multiple IDs.
 
 **Covered in:**
-- [Primary Keys](../30-design/020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
+- [Primary Keys](../30-design/018-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
 - [UUID](../85-special-topics/025-uuid.ipynb) — Universally unique identifiers
 
 ---
@@ -212,7 +212,7 @@ Now that you understand *why* integrity matters, the next chapter introduces how
 The [Design](../30-design/010-schema.ipynb) section then shows *how* to implement each constraint type:
 
 1. **[Tables](../30-design/015-table.ipynb)** — Basic structure with domain integrity
-2. **[Primary Keys](../30-design/020-primary-key.md)** — Entity integrity through unique identification
+2. **[Primary Keys](../30-design/018-primary-key.md)** — Entity integrity through unique identification
 3. **[Foreign Keys](../30-design/030-foreign-keys.ipynb)** — Referential integrity across tables
 
 Each chapter builds on these foundational integrity concepts.
