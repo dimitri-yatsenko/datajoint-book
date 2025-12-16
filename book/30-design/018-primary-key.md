@@ -234,7 +234,7 @@ class InternalRecord(dj.Manual):
 - Privacy-sensitive contexts where natural identifiers shouldn't be stored
 - Internal system records that users never reference directly
 
-```{admonition} No Default Values in Primary Keys
+`````{admonition} No Default Values in Primary Keys
 :class: important
 
 **DataJoint prohibits default values for primary key attributes.** Every primary key value must be explicitly provided by the client when inserting a new record. This includes prohibiting the use of `auto_increment`, which is commonly used in other frameworks.
@@ -268,7 +268,7 @@ Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15
 - **External ID services**: Use institutional or laboratory ID assignment systems
 
 These approaches maintain explicit key specification while providing unique identifiers.
-```
+`````
 
 ## Composite Keys in Hierarchical Relationships
 
