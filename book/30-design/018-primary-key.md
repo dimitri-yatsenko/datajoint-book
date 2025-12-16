@@ -15,8 +15,9 @@ In the [Tables](015-table.ipynb) chapter, we learned that attributes above the `
 By the end of this chapter, you will:
 - Understand entity integrity and its importance
 - Apply the "three questions" framework for designing primary keys
-- Choose between natural keys, composite keys, and surrogate keys
-- Know when to use auto-increment IDs vs. UUIDs
+- Choose between natural keys and surrogate keys
+- Understand when keys become composite (multiple attributes)
+- Recognize schema dimensions and their role in semantic matching
 - Design primary keys that reflect real-world identification systems
 ```
 
@@ -95,15 +96,26 @@ The primary key in the database mirrors and enforces the real-world identificati
 
 # Types of Primary Keys
 
+Primary keys can be classified along two independent dimensions:
+
+1. **Origin**: Natural keys (from the real world) vs. Surrogate keys (artificially created)
+2. **Composition**: Simple keys (one attribute) vs. Composite keys (multiple attributes)
+
+These dimensions are independent—a natural key can be simple or composite, and so can a surrogate key.
+
 ## Natural Keys
 
 A **natural key** is an identifier that exists in the real world independently of the database.
 
-**Examples:**
-- Social Security Number (for US persons)
+**Examples of simple natural keys:**
 - ISBN (for books)
 - VIN (for vehicles)
-- Email address (for user accounts)
+- Social Security Number (for US persons)
+
+**Examples of composite natural keys:**
+- (State, District) for U.S. Congressional Districts
+- (Country, Postal Code) for geographic regions
+- (Building, Room Number) for rooms
 
 **Advantages:**
 - Meaningful to users
@@ -128,13 +140,9 @@ class Book(dj.Manual):
     """
 ```
 
-## Composite Primary Keys
+**Example: Composite Natural Key**
 
-When no single attribute uniquely identifies an entity, use a **composite primary key**—multiple attributes that together provide uniqueness.
-
-**Example: U.S. Congressional Districts**
-
-A district number alone isn't unique (every state has a "District 1"). You need both state and district:
+A district number alone isn't unique (every state has a "District 1"). The natural identifier requires both state and district:
 
 ```python
 @schema
@@ -148,38 +156,9 @@ class CongressionalDistrict(dj.Manual):
     """
 ```
 
-**Example: Course Enrollment**
-
-A student can enroll in many courses; a course has many students. The enrollment is uniquely identified by the combination:
-
-```python
-@schema
-class Enrollment(dj.Manual):
-    definition = """
-    -> Student
-    -> Course
-    ---
-    enrollment_date : date
-    grade = null : decimal(3,2)
-    """
-```
-
-```{admonition} When to Use Composite Keys
-:class: tip
-
-Use composite primary keys when:
-- The entity is defined by a *relationship* between other entities
-- Multiple attributes together form the natural identifier
-- A single surrogate key would obscure the entity's meaning
-```
-
 ## Surrogate Keys
 
-A **surrogate key** is an artificial identifier created solely for the database, with no real-world meaning.
-
-**Common surrogate key types:**
-- Auto-incrementing integers (`1, 2, 3, ...`)
-- UUIDs (Universally Unique Identifiers)
+A **surrogate key** is an artificial identifier created solely for the database, with no inherent real-world meaning.
 
 **Advantages:**
 - Always available (don't depend on external systems)
@@ -188,74 +167,205 @@ A **surrogate key** is an artificial identifier created solely for the database,
 - No privacy concerns
 
 **Disadvantages:**
-- Meaningless to users
+- Meaningless to users without additional context
 - Requires secondary indexes for natural lookups
-- Auto-increment reveals insertion order (security concern in some contexts)
 
-### Auto-Increment Keys
+```{admonition} Explicitly Defined Surrogate Keys
+:class: important
 
-The simplest surrogate key is an auto-incrementing integer:
-
-```python
-@schema
-class Experiment(dj.Manual):
-    definition = """
-    experiment_id : int auto_increment
-    ---
-    experiment_date : date
-    protocol : varchar(100)
-    notes : varchar(1000)
-    """
-```
-
-The database automatically assigns the next available integer when you insert without specifying the key.
-
-### UUIDs
-
-**UUIDs** (Universally Unique Identifiers) are 128-bit identifiers designed to be globally unique without coordination:
+In DataJoint, we prefer explicitly defined surrogate keys over auto-generated ones. When you create an entity like a "session," you should explicitly specify its identifier:
 
 ```python
 @schema
 class Session(dj.Manual):
     definition = """
-    session_id : uuid
-    ---
     -> Subject
-    session_datetime : datetime
+    session : smallint unsigned  # session number for this subject
+    ---
+    session_date : date
+    notes : varchar(1000)
     """
 ```
 
-**When to use UUIDs instead of auto-increment:**
-- Distributed systems (multiple servers inserting simultaneously)
-- Data merging from multiple sources
-- Security (don't reveal record count or insertion order)
-- Entities created before database insertion (offline/mobile apps)
+This approach:
+- Prevents accidental duplicate entries when code is run multiple times
+- Makes the identifier meaningful (e.g., "session 1", "session 2" for each subject)
+- Maintains entity integrity by requiring users to think about what they're inserting
+
+Avoid using `auto_increment` for identifiers, as it can lead to entity integrity violations when users accidentally insert duplicate records representing the same real-world entity.
+```
+
+## Composite Keys in Hierarchical Relationships
+
+Composite primary keys commonly arise when tables inherit foreign keys as part of their primary key. This creates hierarchical relationships where child entities are identified within the context of their parent.
+
+```python
+@schema
+class Subject(dj.Manual):
+    definition = """
+    subject_id : varchar(12)   # subject identifier
+    ---
+    species : varchar(30)
+    """
+
+@schema
+class Session(dj.Manual):
+    definition = """
+    -> Subject
+    session : smallint unsigned  # session number within subject
+    ---
+    session_date : date
+    """
+```
+
+In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.ipynb) chapter.
 
 ```{seealso}
-For detailed UUID implementation, including UUID types (UUID1, UUID4, UUID5) and DataJoint examples, see [UUIDs](../85-special-topics/025-uuid.ipynb).
+For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.ipynb).
+```
+
+# Schema Dimensions
+
+A **schema dimension** is created when a table defines a new primary key attribute directly, rather than inheriting it through a foreign key. Tables that introduce new primary key attributes are said to create new schema dimensions.
+
+## Identifying Schema Dimensions
+
+Consider this hierarchy:
+
+```python
+@schema
+class Subject(dj.Manual):
+    definition = """
+    subject_id : varchar(12)   # NEW DIMENSION: defines subject identity
+    ---
+    species : varchar(30)
+    """
+
+@schema
+class Session(dj.Manual):
+    definition = """
+    -> Subject                         # inherits subject_id dimension
+    session : smallint unsigned        # NEW DIMENSION: defines session identity within subject
+    ---
+    session_date : date
+    """
+
+@schema
+class Scan(dj.Manual):
+    definition = """
+    -> Session                         # inherits subject_id and session dimensions
+    scan : smallint unsigned           # NEW DIMENSION: defines scan identity within session
+    ---
+    scan_time : time
+    """
+```
+
+In this example:
+- `Subject` creates the `subject_id` dimension
+- `Session` inherits `subject_id` and creates the `session` dimension
+- `Scan` inherits both `subject_id` and `session`, and creates the `scan` dimension
+
+## Diagram Notation
+
+In DataJoint diagrams, tables that introduce new schema dimensions have their names **underlined**. Tables that only inherit their primary key through foreign keys (without adding new attributes) are not underlined—they represent the same identity as their parent.
+
+```{admonition} Underlined Names in Diagrams
+:class: tip
+
+When viewing a schema diagram:
+- **Underlined table names** indicate tables that introduce new dimensions
+- **Non-underlined table names** indicate tables whose identity is fully determined by their parent(s)
+
+This visual distinction helps you quickly identify which tables define new entity types versus which extend existing ones.
+```
+
+## Why Schema Dimensions Matter
+
+Schema dimensions are fundamental to how DataJoint performs **semantic matching** in queries. When you join tables or use one table to restrict another, DataJoint matches rows based on shared schema dimensions—not just attributes with the same name.
+
+Two attributes match semantically when they:
+1. Have the **same name**
+2. Trace back to the **same original dimension** through foreign key chains
+
+This is why `subject_id` in `Subject`, `Session`, and `Scan` all refer to the same dimension and will be matched in joins, while an unrelated `subject_id` in a completely separate table hierarchy would not match.
+
+## Schema Dimensions and Auto-Populated Tables
+
+Auto-populated tables (`dj.Computed` and `dj.Imported`) have a special constraint: **they cannot introduce new schema dimensions directly**. Their primary key must be fully determined by their upstream dependencies through foreign keys.
+
+This constraint ensures that auto-populated tables compute results for entities that are already defined elsewhere in the pipeline. The `make` method receives a key from the key source (derived from parent tables), and the computation produces results for that specific key.
+
+```python
+@schema
+class ProcessedScan(dj.Computed):
+    definition = """
+    -> Scan                    # inherits subject_id, session, scan dimensions
+    ---                        # NO new primary key attributes allowed here
+    processed_data : longblob
+    quality_score : float
+    """
+```
+
+However, **part tables can introduce new dimensions**. When a computation produces multiple related results (e.g., detecting multiple cells in an image), the part table can add a new dimension to distinguish them:
+
+```python
+@schema
+class CellDetection(dj.Computed):
+    definition = """
+    -> Scan                    # master table inherits dimensions
+    ---
+    detection_method : varchar(60)
+    """
+
+    class Cell(dj.Part):
+        definition = """
+        -> master
+        cell_id : smallint unsigned   # NEW DIMENSION: identifies cells within scan
+        ---
+        cell_x : float
+        cell_y : float
+        cell_type : varchar(30)
+        """
+```
+
+In this example, `CellDetection` (the master) cannot introduce new dimensions, but `CellDetection.Cell` (the part table) introduces the `cell_id` dimension to identify individual detected cells.
+
+```{admonition} Why This Constraint Exists
+:class: note
+
+This design ensures that:
+- Computations are reproducible and traceable to their inputs
+- The key source for auto-populated tables is well-defined
+- New entity types are introduced through manual or lookup tables, not through automated computation
+- Part tables handle the case where a single computation produces multiple output entities
 ```
 
 # Choosing the Right Primary Key Strategy
 
-| Scenario | Recommended Key Type |
+| Scenario | Recommended Approach |
 |----------|---------------------|
-| Established external ID system | Natural key |
-| Entity defined by relationships | Composite key |
-| Simple sequential records | Auto-increment |
-| Distributed/merged data | UUID |
-| Privacy-sensitive context | Surrogate (not natural) |
+| Established external ID system exists | Use the natural key |
+| Entity naturally identified by multiple attributes | Use composite natural key |
+| Entity identified within parent context | Inherit foreign key + add local identifier |
+| No natural identifier exists | Create explicit surrogate key |
+| Privacy-sensitive context | Surrogate key (not natural) |
 
 ## Decision Framework
 
 ```{mermaid}
 flowchart TD
     A[New Table] --> B{Reliable external ID?}
-    B -->|Yes| C[Natural Key]
-    B -->|No| D{Defined by relationships?}
-    D -->|Yes| E[Composite Key]
-    D -->|No| F{Distributed system?}
-    F -->|Yes| G[UUID]
-    F -->|No| H[Auto-increment]
+    B -->|Yes, single attribute| C[Simple Natural Key]
+    B -->|Yes, multiple attributes| D[Composite Natural Key]
+    B -->|No| E{Part of hierarchy?}
+    E -->|Yes| F[FK + Local Identifier]
+    E -->|No| G[Explicit Surrogate Key]
+```
+
+```{admonition} Avoid Auto-Increment
+:class: warning
+
+While many databases offer auto-increment for generating keys, DataJoint workflows avoid this pattern. Auto-increment can lead to entity integrity violations when users accidentally run insertion code multiple times, creating duplicate records for the same real-world entity. Always explicitly define your identifiers.
 ```
 
 # Entity Integrity Varies by Context
@@ -279,16 +389,33 @@ Design your primary keys to match your application's integrity requirements—do
 
 Primary keys have special significance in DataJoint queries:
 
-1. **Joins match on primary keys** — When you join tables with `*`, DataJoint matches on shared primary key attributes
-2. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
-3. **Results always have primary keys** — Every query result is itself a valid relation with a primary key
+1. **Semantic matching in joins** — When you join tables with `*`, DataJoint matches on shared schema dimensions, not just attribute names
+2. **Semantic matching in restrictions** — When you restrict a table by another (`A & B`), matching is performed on shared schema dimensions
+3. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
+4. **Results always have primary keys** — Every query result is itself a valid relation with a well-defined primary key
 
 ```python
 # Efficient: restriction by primary key
 Mouse & {'ear_tag': 'M00142'}
 
+# Join matches on shared schema dimensions
+Subject * Session * Scan  # All three share the subject_id dimension
+
 # The result of any query has a well-defined primary key
-(Mouse * Session).primary_key  # ['ear_tag', 'session_id']
+(Subject * Session).primary_key  # Combines dimensions from both tables
+```
+
+```{admonition} Semantic Matching via Schema Dimensions
+:class: note
+
+DataJoint's join and restriction operations differ from SQL's `NATURAL JOIN`. Two attributes are matched only when they belong to the **same schema dimension**:
+
+1. They have the **same name** in both tables
+2. They trace back to the **same original definition** through foreign key chains
+
+This prevents accidental matches on attributes that happen to share a name but originate from different dimensions. For example, two tables might both have a `name` attribute, but if one refers to a person's name and the other to a course name, they represent different dimensions and will not be matched.
+
+For details, see the [Join](../50-queries/040-join.ipynb) chapter.
 ```
 
 # Summary
@@ -299,16 +426,18 @@ Primary keys are the foundation of entity integrity in relational databases:
 |---------|------------|
 | **Entity Integrity** | 1:1 correspondence between entities and records |
 | **Three Questions** | Prevent duplicates, prevent sharing, enable matching |
-| **Natural Keys** | Real-world identifiers (ISBN, SSN, email) |
-| **Composite Keys** | Multiple attributes for relationship-based entities |
-| **Surrogate Keys** | Database-generated (auto-increment, UUID) |
+| **Natural Keys** | Real-world identifiers (ISBN, SSN); can be simple or composite |
+| **Surrogate Keys** | Explicitly defined identifiers when no natural key exists |
+| **Composite Keys** | Multiple attributes forming the key (applies to both natural and surrogate) |
+| **Schema Dimensions** | New primary key attributes define dimensions; inherited attributes share them |
+| **Semantic Matching** | Joins and restrictions match on shared schema dimensions |
 
 ```{admonition} Design Principles
 :class: tip
 
 1. **Mirror reality** — Primary keys should reflect how entities are identified in the real world
 2. **Enforce externally** — Establish identification systems outside the database
-3. **Match requirements** — Choose key type based on your integrity needs
+3. **Define explicitly** — Avoid auto-increment; always specify identifiers explicitly to maintain entity integrity
 4. **Keep it simple** — Don't over-engineer; use the simplest key that works
 ```
 
