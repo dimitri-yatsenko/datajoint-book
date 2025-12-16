@@ -289,6 +289,57 @@ Two attributes match semantically when they:
 
 This is why `subject_id` in `Subject`, `Session`, and `Scan` all refer to the same dimension and will be matched in joins, while an unrelated `subject_id` in a completely separate table hierarchy would not match.
 
+## Schema Dimensions and Auto-Populated Tables
+
+Auto-populated tables (`dj.Computed` and `dj.Imported`) have a special constraint: **they cannot introduce new schema dimensions directly**. Their primary key must be fully determined by their upstream dependencies through foreign keys.
+
+This constraint ensures that auto-populated tables compute results for entities that are already defined elsewhere in the pipeline. The `make` method receives a key from the key source (derived from parent tables), and the computation produces results for that specific key.
+
+```python
+@schema
+class ProcessedScan(dj.Computed):
+    definition = """
+    -> Scan                    # inherits subject_id, session, scan dimensions
+    ---                        # NO new primary key attributes allowed here
+    processed_data : longblob
+    quality_score : float
+    """
+```
+
+However, **part tables can introduce new dimensions**. When a computation produces multiple related results (e.g., detecting multiple cells in an image), the part table can add a new dimension to distinguish them:
+
+```python
+@schema
+class CellDetection(dj.Computed):
+    definition = """
+    -> Scan                    # master table inherits dimensions
+    ---
+    detection_method : varchar(60)
+    """
+
+    class Cell(dj.Part):
+        definition = """
+        -> master
+        cell_id : smallint unsigned   # NEW DIMENSION: identifies cells within scan
+        ---
+        cell_x : float
+        cell_y : float
+        cell_type : varchar(30)
+        """
+```
+
+In this example, `CellDetection` (the master) cannot introduce new dimensions, but `CellDetection.Cell` (the part table) introduces the `cell_id` dimension to identify individual detected cells.
+
+```{admonition} Why This Constraint Exists
+:class: note
+
+This design ensures that:
+- Computations are reproducible and traceable to their inputs
+- The key source for auto-populated tables is well-defined
+- New entity types are introduced through manual or lookup tables, not through automated computation
+- Part tables handle the case where a single computation produces multiple output entities
+```
+
 # Choosing the Right Primary Key Strategy
 
 | Scenario | Recommended Approach |
