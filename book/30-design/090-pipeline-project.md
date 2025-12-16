@@ -314,7 +314,7 @@ A production DataJoint pipeline project:
 For simple scripts and learning, see the examples throughout this book. Use this full project structure when you're ready for production deployment.
 
 :::{seealso}
-- [Create Schemas](010-schema.ipynb) — Declaring schemas and tables
+- [Schemas](010-schema.ipynb) — Declaring schemas and tables
 - [Orchestration](../40-operations/060-orchestration.ipynb) — Running pipelines at scale
 - [DataJoint Specs](../95-reference/SPECS_2_0.md) — Complete specification reference
 :::
