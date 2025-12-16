@@ -17,6 +17,7 @@ By the end of this chapter, you will:
 - Apply the "three questions" framework for designing primary keys
 - Choose between natural keys and surrogate keys
 - Understand when keys become composite (multiple attributes)
+- Recognize schema dimensions and their role in semantic matching
 - Design primary keys that reflect real-world identification systems
 ```
 
@@ -223,6 +224,71 @@ In this example, `Session` has a composite primary key `(subject_id, session)`. 
 For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.ipynb).
 ```
 
+# Schema Dimensions
+
+A **schema dimension** is created when a table defines a new primary key attribute directly, rather than inheriting it through a foreign key. Tables that introduce new primary key attributes are said to create new schema dimensions.
+
+## Identifying Schema Dimensions
+
+Consider this hierarchy:
+
+```python
+@schema
+class Subject(dj.Manual):
+    definition = """
+    subject_id : varchar(12)   # NEW DIMENSION: defines subject identity
+    ---
+    species : varchar(30)
+    """
+
+@schema
+class Session(dj.Manual):
+    definition = """
+    -> Subject                         # inherits subject_id dimension
+    session : smallint unsigned        # NEW DIMENSION: defines session identity within subject
+    ---
+    session_date : date
+    """
+
+@schema
+class Scan(dj.Manual):
+    definition = """
+    -> Session                         # inherits subject_id and session dimensions
+    scan : smallint unsigned           # NEW DIMENSION: defines scan identity within session
+    ---
+    scan_time : time
+    """
+```
+
+In this example:
+- `Subject` creates the `subject_id` dimension
+- `Session` inherits `subject_id` and creates the `session` dimension
+- `Scan` inherits both `subject_id` and `session`, and creates the `scan` dimension
+
+## Diagram Notation
+
+In DataJoint diagrams, tables that introduce new schema dimensions have their names **underlined**. Tables that only inherit their primary key through foreign keys (without adding new attributes) are not underlined—they represent the same identity as their parent.
+
+```{admonition} Underlined Names in Diagrams
+:class: tip
+
+When viewing a schema diagram:
+- **Underlined table names** indicate tables that introduce new dimensions
+- **Non-underlined table names** indicate tables whose identity is fully determined by their parent(s)
+
+This visual distinction helps you quickly identify which tables define new entity types versus which extend existing ones.
+```
+
+## Why Schema Dimensions Matter
+
+Schema dimensions are fundamental to how DataJoint performs **semantic matching** in queries. When you join tables or use one table to restrict another, DataJoint matches rows based on shared schema dimensions—not just attributes with the same name.
+
+Two attributes match semantically when they:
+1. Have the **same name**
+2. Trace back to the **same original dimension** through foreign key chains
+
+This is why `subject_id` in `Subject`, `Session`, and `Scan` all refer to the same dimension and will be matched in joins, while an unrelated `subject_id` in a completely separate table hierarchy would not match.
+
 # Choosing the Right Primary Key Strategy
 
 | Scenario | Recommended Approach |
@@ -272,26 +338,33 @@ Design your primary keys to match your application's integrity requirements—do
 
 Primary keys have special significance in DataJoint queries:
 
-1. **Semantic matching in joins** — When you join tables with `*`, DataJoint uses *semantic matching*: attributes are matched when they share both the same name and trace to the same original definition through foreign key dependencies
-2. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
-3. **Results always have primary keys** — Every query result is itself a valid relation with a primary key
+1. **Semantic matching in joins** — When you join tables with `*`, DataJoint matches on shared schema dimensions, not just attribute names
+2. **Semantic matching in restrictions** — When you restrict a table by another (`A & B`), matching is performed on shared schema dimensions
+3. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
+4. **Results always have primary keys** — Every query result is itself a valid relation with a well-defined primary key
 
 ```python
 # Efficient: restriction by primary key
 Mouse & {'ear_tag': 'M00142'}
 
+# Join matches on shared schema dimensions
+Subject * Session * Scan  # All three share the subject_id dimension
+
 # The result of any query has a well-defined primary key
-(Mouse * Session).primary_key  # Combines keys based on semantic matching
+(Subject * Session).primary_key  # Combines dimensions from both tables
 ```
 
-```{admonition} Semantic Matching
+```{admonition} Semantic Matching via Schema Dimensions
 :class: note
 
-DataJoint's join differs from SQL's `NATURAL JOIN`. Two attributes are matched only when:
-1. They have the **same name** in both tables
-2. They trace to the **same original definition** through foreign key chains
+DataJoint's join and restriction operations differ from SQL's `NATURAL JOIN`. Two attributes are matched only when they belong to the **same schema dimension**:
 
-This prevents accidental joins on attributes that happen to share a name but have different meanings. For details, see the [Join](../50-queries/040-join.ipynb) chapter.
+1. They have the **same name** in both tables
+2. They trace back to the **same original definition** through foreign key chains
+
+This prevents accidental matches on attributes that happen to share a name but originate from different dimensions. For example, two tables might both have a `name` attribute, but if one refers to a person's name and the other to a course name, they represent different dimensions and will not be matched.
+
+For details, see the [Join](../50-queries/040-join.ipynb) chapter.
 ```
 
 # Summary
@@ -305,6 +378,8 @@ Primary keys are the foundation of entity integrity in relational databases:
 | **Natural Keys** | Real-world identifiers (ISBN, SSN); can be simple or composite |
 | **Surrogate Keys** | Explicitly defined identifiers when no natural key exists |
 | **Composite Keys** | Multiple attributes forming the key (applies to both natural and surrogate) |
+| **Schema Dimensions** | New primary key attributes define dimensions; inherited attributes share them |
+| **Semantic Matching** | Joins and restrictions match on shared schema dimensions |
 
 ```{admonition} Design Principles
 :class: tip
