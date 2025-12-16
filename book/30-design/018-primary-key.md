@@ -234,10 +234,16 @@ class InternalRecord(dj.Manual):
 - Privacy-sensitive contexts where natural identifiers shouldn't be stored
 - Internal system records that users never reference directly
 
-```{admonition} Explicitly Defined Keys in DataJoint
+```{admonition} No Default Values in Primary Keys
 :class: important
 
-Whether using natural or surrogate keys, DataJoint workflows prefer **explicitly defined** identifiers over auto-generated ones. When inserting a record, you should specify the key value:
+**DataJoint prohibits default values for primary key attributes.** Every primary key value must be explicitly provided by the client when inserting a new record. This includes prohibiting the use of `auto_increment`, which is commonly used in other frameworks.
+
+This design enforces entity integrity at the point of data entry:
+
+- **Explicit identification required**: The client must communicate the identifying information for each new entity. This forces users to think about entity identity *before* insertion.
+- **Prevents communication errors**: If a client fails to provide a key value, the insertion fails rather than silently creating a record with a generated key that may not correspond to the intended entity.
+- **Prevents duplicate entities**: Running the same insertion code multiple times with the same explicit key produces an error (duplicate key) rather than creating multiple records for the same entity.
 
 ```python
 @schema
@@ -249,14 +255,19 @@ class Session(dj.Manual):
     session_date : date
     notes : varchar(1000)
     """
+
+# Explicit key required - this is the DataJoint way
+Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15', 'notes': ''})
+
+# Running the same insert again produces a duplicate key error, not a second record
 ```
 
-This approach:
-- Prevents accidental duplicate entries when code is run multiple times
-- Forces users to think about entity identity before insertion
-- Maintains entity integrity by design
+**Surrogate key alternatives**: When you need generated identifiers, use client-side generation methods such as:
+- **UUID/ULID/NANOID**: Generate unique identifiers client-side before insertion
+- **Client-side counters**: Query the max value and increment before insertion
+- **External ID services**: Use institutional or laboratory ID assignment systems
 
-Avoid using `auto_increment` for identifiers, as it bypasses this safeguard and can lead to duplicate records representing the same real-world entity.
+These approaches maintain explicit key specification while providing unique identifiers.
 ```
 
 ## Composite Keys in Hierarchical Relationships
@@ -426,10 +437,10 @@ flowchart TD
     E -->|No| G[Explicit Surrogate Key]
 ```
 
-```{admonition} Avoid Auto-Increment
+```{admonition} No Default Values in Primary Keys
 :class: warning
 
-While many databases offer auto-increment for generating keys, DataJoint workflows avoid this pattern. Auto-increment can lead to entity integrity violations when users accidentally run insertion code multiple times, creating duplicate records for the same real-world entity. Always explicitly define your identifiers.
+DataJoint prohibits default values (including `auto_increment`) for primary key attributes. All key values must be explicitly provided at insertion. See [No Default Values in Primary Keys](#no-default-values-in-primary-keys) above for details and alternatives.
 ```
 
 # Entity Integrity Varies by Context
