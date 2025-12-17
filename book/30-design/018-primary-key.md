@@ -426,18 +426,6 @@ This design ensures that:
 | No natural identifier exists | Create explicit surrogate key |
 | Privacy-sensitive context | Surrogate key (not natural) |
 
-## Decision Framework
-
-```{mermaid}
-flowchart TD
-    A[New Table] --> B{Reliable external ID?}
-    B -->|Yes, single attribute| C[Simple Natural Key]
-    B -->|Yes, multiple attributes| D[Composite Natural Key]
-    B -->|No| E{Part of hierarchy?}
-    E -->|Yes| F[FK + Local Identifier]
-    E -->|No| G[Explicit Surrogate Key]
-```
-
 ```{admonition} No Default Values in Primary Keys
 :class: warning
 
