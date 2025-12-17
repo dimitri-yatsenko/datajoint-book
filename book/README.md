@@ -1,7 +1,5 @@
 ---
 title: The DataJoint Book
-authors:
-  - name: Dimitri Yatsenko
 ---
 
 © DataJoint Inc., 2024-2025. All rights reserved.

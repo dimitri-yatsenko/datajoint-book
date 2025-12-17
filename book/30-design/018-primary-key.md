@@ -1,8 +1,5 @@
 ---
 title: Primary Keys
-authors:
-  - name: Dimitri Yatsenko
-date: 2025-10-31
 ---
 
 # Primary Keys: Ensuring Entity Integrity
@@ -286,7 +283,8 @@ class InternalRecord(dj.Manual):
 :sync: sql
 ```sql
 CREATE TABLE internal_record (
-    record_id INT UNSIGNED NOT NULL COMMENT 'internal identifier, not exposed to users',
+    record_id INT UNSIGNED NOT NULL
+        COMMENT 'internal identifier, not exposed to users',
     created_timestamp TIMESTAMP NOT NULL,
     data LONGBLOB NOT NULL,
     PRIMARY KEY (record_id)
@@ -328,7 +326,10 @@ class Session(dj.Manual):
     """
 
 # Explicit key required - this is the DataJoint way
-Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15', 'notes': ''})
+Session.insert1({
+    'subject_id': 'M001', 'session': 1,
+    'session_date': '2024-01-15', 'notes': ''
+})
 
 # Running the same insert again produces a duplicate key error, not a second record
 ```
@@ -467,7 +468,8 @@ CREATE TABLE subject (
 -- inherits subject_id dimension; NEW DIMENSION: session
 CREATE TABLE session (
     subject_id VARCHAR(12) NOT NULL,
-    session SMALLINT UNSIGNED NOT NULL COMMENT 'defines session identity within subject',
+    session SMALLINT UNSIGNED NOT NULL
+        COMMENT 'defines session identity within subject',
     session_date DATE NOT NULL,
     PRIMARY KEY (subject_id, session),
     FOREIGN KEY (subject_id) REFERENCES subject(subject_id)
@@ -477,10 +479,12 @@ CREATE TABLE session (
 CREATE TABLE scan (
     subject_id VARCHAR(12) NOT NULL,
     session SMALLINT UNSIGNED NOT NULL,
-    scan SMALLINT UNSIGNED NOT NULL COMMENT 'defines scan identity within session',
+    scan SMALLINT UNSIGNED NOT NULL
+        COMMENT 'defines scan identity within session',
     scan_time TIME NOT NULL,
     PRIMARY KEY (subject_id, session, scan),
-    FOREIGN KEY (subject_id, session) REFERENCES session(subject_id, session)
+    FOREIGN KEY (subject_id, session)
+        REFERENCES session(subject_id, session)
 );
 ```
 ````
@@ -546,7 +550,8 @@ CREATE TABLE processed_scan (
     processed_data LONGBLOB NOT NULL,
     quality_score FLOAT NOT NULL,
     PRIMARY KEY (subject_id, session, scan),
-    FOREIGN KEY (subject_id, session, scan) REFERENCES scan(subject_id, session, scan)
+    FOREIGN KEY (subject_id, session, scan)
+        REFERENCES scan(subject_id, session, scan)
 );
 ```
 ````
@@ -587,7 +592,8 @@ CREATE TABLE cell_detection (
     scan SMALLINT UNSIGNED NOT NULL,
     detection_method VARCHAR(60) NOT NULL,
     PRIMARY KEY (subject_id, session, scan),
-    FOREIGN KEY (subject_id, session, scan) REFERENCES scan(subject_id, session, scan)
+    FOREIGN KEY (subject_id, session, scan)
+        REFERENCES scan(subject_id, session, scan)
 );
 
 -- Part table: adds cell_id as NEW DIMENSION
@@ -595,12 +601,14 @@ CREATE TABLE cell_detection__cell (
     subject_id VARCHAR(12) NOT NULL,
     session SMALLINT UNSIGNED NOT NULL,
     scan SMALLINT UNSIGNED NOT NULL,
-    cell_id SMALLINT UNSIGNED NOT NULL COMMENT 'identifies cells within scan',
+    cell_id SMALLINT UNSIGNED NOT NULL
+        COMMENT 'identifies cells within scan',
     cell_x FLOAT NOT NULL,
     cell_y FLOAT NOT NULL,
     cell_type VARCHAR(30) NOT NULL,
     PRIMARY KEY (subject_id, session, scan, cell_id),
-    FOREIGN KEY (subject_id, session, scan) REFERENCES cell_detection(subject_id, session, scan)
+    FOREIGN KEY (subject_id, session, scan)
+        REFERENCES cell_detection(subject_id, session, scan)
 );
 ```
 ````

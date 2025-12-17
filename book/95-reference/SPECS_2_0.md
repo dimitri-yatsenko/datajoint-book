@@ -804,13 +804,15 @@ Example:
 ```python
 Student.insert([
     {'student_id': 1000, 'first_name': 'Rebecca', 'last_name': 'Sanchez',
-     'sex': 'F', 'date_of_birth': '1997-09-13', 'home_address': '6604 Gentry Turnpike Suite 513',
-     'home_city': 'Andreaport', 'home_state': 'MN', 'home_zipcode': '29376',
-     'home_phone': '(250)428-1836'},
+     'sex': 'F', 'date_of_birth': '1997-09-13',
+     'home_address': '6604 Gentry Turnpike Suite 513',
+     'home_city': 'Andreaport', 'home_state': 'MN',
+     'home_zipcode': '29376', 'home_phone': '(250)428-1836'},
     {'student_id': 1001, 'first_name': 'Matthew', 'last_name': 'Gonzales',
-     'sex': 'M', 'date_of_birth': '1997-05-17', 'home_address': '1432 Jessica Freeway Apt. 545',
-     'home_city': 'Frazierberg', 'home_state': 'NE', 'home_zipcode': '60485',
-     'home_phone': '(699)755-6306x996'}
+     'sex': 'M', 'date_of_birth': '1997-05-17',
+     'home_address': '1432 Jessica Freeway Apt. 545',
+     'home_city': 'Frazierberg', 'home_state': 'NE',
+     'home_zipcode': '60485', 'home_phone': '(699)755-6306x996'}
 ])
 ```
 
@@ -997,10 +999,14 @@ The restriction operator filters the rows of a table based on specified conditio
     To combine conditions using logical AND (conjunction), conditions MAY be applied sequentially or by using a `dj.AndList` object.
     ```python
     # Select young students from outside California (sequential application).
-    young_non_ca_students = Student & "home_state <> 'CA'" & "date_of_birth >= '2010-01-01'"
+    young_non_ca_students = (Student
+        & "home_state <> 'CA'"
+        & "date_of_birth >= '2010-01-01'")
 
     # Equivalent using dj.AndList.
-    young_non_ca_students_alt = Student & dj.AndList(["home_state <> 'CA'", "date_of_birth >= '2010-01-01'"])
+    young_non_ca_students_alt = Student & dj.AndList([
+        "home_state <> 'CA'", "date_of_birth >= '2010-01-01'"
+    ])
     ```
 
 5.  **Restriction by a Subquery:**
@@ -1051,7 +1057,8 @@ The projection operator selects a subset of attributes from a table. It can also
     # Compute 'full_name' and 'age'.
     student_derived_info = Student.proj(
         full_name='CONCAT(first_name, " ", last_name)',
-        age='TIMESTAMPDIFF(CURDATE(), date_of_birth) / 365.25' # Example, exact function varies by SQL dialect
+        # Example age calculation (exact function varies by SQL dialect)
+        age='TIMESTAMPDIFF(CURDATE(), date_of_birth) / 365.25'
     )
     # Result includes primary key attributes, full_name, and age.
     ```
@@ -1181,10 +1188,12 @@ Universal sets, denoted by `dj.U(...)`, are symbolic constructs representing the
 3. **Aggregation by arbitary groupings:** `dj.U(<attribites>)` creates a new grouping entity with an arbitrary primary key for use in aggregations for which no existing entity type fits that purpose.
 
     ```python
-    # count how many students were born in each year and month 
+    # count how many students were born in each year and month
     student_counts = dj.U('year_of_birth', 'month_of_birth').aggr(
-      Student.proj(year_of_birth='YEAR(date_of_birth)', month_of_birth='MONTH(date_of_birth)'), 
-      n_students='COUNT(*)'
+        Student.proj(
+            year_of_birth='YEAR(date_of_birth)',
+            month_of_birth='MONTH(date_of_birth)'),
+        n_students='COUNT(*)'
     )
     ```
     In this case, the rules os semantic matching are lifted.
