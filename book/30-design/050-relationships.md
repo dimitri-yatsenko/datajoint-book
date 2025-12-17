@@ -132,6 +132,12 @@ class Account(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE customer (
+    customer_id INT UNSIGNED NOT NULL,
+    full_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (customer_id)
+);
+
 CREATE TABLE account (
     customer_id INT UNSIGNED NOT NULL,
     account_num INT UNSIGNED NOT NULL COMMENT 'account number within customer',
@@ -237,6 +243,12 @@ class CustomerPreferences(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE customer (
+    customer_id INT UNSIGNED NOT NULL,
+    full_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (customer_id)
+);
+
 CREATE TABLE customer_preferences (
     customer_id INT UNSIGNED NOT NULL,
     theme VARCHAR(20) NOT NULL,
@@ -289,6 +301,12 @@ class ParkingSpot(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE employee (
+    employee_id INT UNSIGNED NOT NULL,
+    full_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (employee_id)
+);
+
 CREATE TABLE parking_spot (
     spot_id INT UNSIGNED NOT NULL,
     employee_id INT UNSIGNED NOT NULL,
@@ -382,6 +400,18 @@ class Enrollment(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE student (
+    student_id INT UNSIGNED NOT NULL,
+    student_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (student_id)
+);
+
+CREATE TABLE course (
+    course_code CHAR(8) NOT NULL,
+    course_title VARCHAR(100) NOT NULL,
+    PRIMARY KEY (course_code)
+);
+
 CREATE TABLE enrollment (
     student_id INT UNSIGNED NOT NULL,
     course_code CHAR(8) NOT NULL,
@@ -672,6 +702,19 @@ class EnhancedImage(dj.Computed):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE image (
+    image_id INT UNSIGNED NOT NULL,
+    raw_image LONGBLOB NOT NULL,
+    PRIMARY KEY (image_id)
+);
+
+CREATE TABLE enhance_method (
+    method_id INT UNSIGNED NOT NULL,
+    method_name VARCHAR(30) NOT NULL,
+    method_description VARCHAR(255) NOT NULL,
+    PRIMARY KEY (method_id)
+);
+
 CREATE TABLE enhanced_image (
     image_id INT UNSIGNED NOT NULL,
     method_id INT UNSIGNED NOT NULL,
@@ -724,6 +767,13 @@ class Synapse(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE neuron (
+    neuron_id INT UNSIGNED NOT NULL,
+    neuron_type ENUM('excitatory', 'inhibitory') NOT NULL,
+    layer TINYINT UNSIGNED NOT NULL,
+    PRIMARY KEY (neuron_id)
+);
+
 CREATE TABLE synapse (
     synapse_id INT UNSIGNED NOT NULL,
     presynaptic INT UNSIGNED NOT NULL,
@@ -786,6 +836,12 @@ class City(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE state (
+    state CHAR(2) NOT NULL,
+    state_name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (state)
+);
+
 CREATE TABLE city (
     state CHAR(2) NOT NULL,
     city_name VARCHAR(60) NOT NULL,
