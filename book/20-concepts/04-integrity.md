@@ -109,7 +109,7 @@ Referential integrity maintains logical associations across tables:
 
 **Covered in:**
 - [Foreign Keys](../30-design/030-foreign-keys.md) — Cross-table relationships
-- [Relationships](../30-design/050-relationships.md) — Dependency patterns
+- [Relationships](../30-design/050-relationships.ipynb) — Dependency patterns
 
 ---
 

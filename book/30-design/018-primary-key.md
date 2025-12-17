@@ -410,10 +410,10 @@ CREATE TABLE session (
 ````
 `````
 
-In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.md) chapter.
+In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.ipynb) chapter.
 
 ```{seealso}
-For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.md).
+For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.ipynb).
 ```
 
 # Schema Dimensions
