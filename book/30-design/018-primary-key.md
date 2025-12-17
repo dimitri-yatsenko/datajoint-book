@@ -1,8 +1,5 @@
 ---
 title: Primary Keys
-authors:
-  - name: Dimitri Yatsenko
-date: 2025-10-31
 ---
 
 # Primary Keys: Ensuring Entity Integrity

@@ -1,8 +1,5 @@
 ---
 title: Data Integrity
-date: 2025-10-31
-authors:
-  - name: Dimitri Yatsenko
 ---
 
 # Why Data Integrity Matters
