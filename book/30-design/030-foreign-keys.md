@@ -238,9 +238,8 @@ By default, foreign key attributes are **required** (NOT NULL)—every child rec
 The `nullable` modifier makes the relationship **optional**, allowing child records to exist without a parent reference.
 
 ```{card} Nullable Foreign Key Syntax
-```python
--> [nullable] ParentTable
-```
+`-> [nullable] ParentTable`
+
 This creates foreign key attributes that accept NULL values, indicating "no associated parent."
 ```
 
@@ -291,7 +290,7 @@ VALUES (1001, NULL, '2024-01-15', 0.00);
 - Products that may not have a designated supplier
 - Tasks that have not yet been assigned to an employee
 
-```{admonition} Primary Key Foreign Keys Cannot Be Nullable
+````{admonition} Primary Key Foreign Keys Cannot Be Nullable
 :class: warning
 
 Foreign keys that are part of the **primary key** (declared above the `---` line) **cannot be made nullable**.
@@ -310,7 +309,7 @@ class Session(dj.Manual):
 ```
 
 Only foreign keys in **secondary attributes** (below the `---` line) can be nullable.
-```
+````
 
 ## The `unique` Modifier
 
@@ -318,9 +317,8 @@ By default, a secondary foreign key allows **many-to-one** relationships—multi
 The `unique` modifier restricts this to **one-to-one**—at most one child can reference each parent.
 
 ```{card} Unique Foreign Key Syntax
-```python
--> [unique] ParentTable
-```
+`-> [unique] ParentTable`
+
 This adds a unique constraint on the foreign key attributes, ensuring each parent is referenced by at most one child.
 ```
 
@@ -391,11 +389,8 @@ CREATE TABLE parking_spot (
 The `nullable` and `unique` modifiers can be combined to create an **optional one-to-one** relationship:
 
 ```{card} Combined Modifier Syntax
-```python
--> [nullable, unique] ParentTable
-# or equivalently:
--> [unique, nullable] ParentTable
-```
+`-> [nullable, unique] ParentTable` or `-> [unique, nullable] ParentTable`
+
 This creates an optional relationship where each parent can be referenced by at most one child (or none).
 ```
 
