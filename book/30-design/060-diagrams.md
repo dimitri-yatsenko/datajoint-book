@@ -81,6 +81,12 @@ class CustomerPreferences(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE customer (
+    customer_id INT UNSIGNED NOT NULL,
+    customer_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (customer_id)
+);
+
 CREATE TABLE customer_preferences (
     customer_id INT UNSIGNED NOT NULL,
     theme VARCHAR(20) NOT NULL,
@@ -128,6 +134,12 @@ class Account(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE customer (
+    customer_id INT UNSIGNED NOT NULL,
+    customer_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (customer_id)
+);
+
 CREATE TABLE account (
     customer_id INT UNSIGNED NOT NULL,
     account_num INT UNSIGNED NOT NULL,
@@ -175,6 +187,12 @@ class Employee(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE department (
+    dept_id INT UNSIGNED NOT NULL,
+    dept_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (dept_id)
+);
+
 CREATE TABLE employee (
     employee_id INT UNSIGNED NOT NULL,
     dept_id INT UNSIGNED NOT NULL,
@@ -312,6 +330,18 @@ class Enrollment(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE student (
+    student_id INT UNSIGNED NOT NULL,
+    student_name VARCHAR(60) NOT NULL,
+    PRIMARY KEY (student_id)
+);
+
+CREATE TABLE course (
+    course_code CHAR(8) NOT NULL,
+    course_title VARCHAR(100) NOT NULL,
+    PRIMARY KEY (course_code)
+);
+
 CREATE TABLE enrollment (
     student_id INT UNSIGNED NOT NULL,
     course_code CHAR(8) NOT NULL,
@@ -360,6 +390,12 @@ class Synapse(dj.Manual):
 ````{tab-item} SQL
 :sync: sql
 ```sql
+CREATE TABLE neuron (
+    neuron_id INT UNSIGNED NOT NULL,
+    neuron_type ENUM('excitatory', 'inhibitory') NOT NULL,
+    PRIMARY KEY (neuron_id)
+);
+
 CREATE TABLE synapse (
     synapse_id INT UNSIGNED NOT NULL,
     presynaptic INT UNSIGNED NOT NULL,
