@@ -410,10 +410,10 @@ CREATE TABLE session (
 ````
 `````
 
-In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.ipynb) chapter.
+In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.md) chapter.
 
 ```{seealso}
-For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.ipynb).
+For detailed coverage of composite keys through foreign key inheritance and hierarchical relationships, see [Relationships](050-relationships.md).
 ```
 
 # Schema Dimensions
@@ -776,5 +776,5 @@ Primary keys are the foundation of entity integrity in relational databases:
 
 Now that you understand how primary keys ensure entity integrity, the next chapters explore:
 - **[Lookup Tables](020-lookup-tables.ipynb)** — Reference data with pre-populated primary keys
-- **[Foreign Keys](030-foreign-keys.ipynb)** — How primary keys enable referential integrity across tables
+- **[Foreign Keys](030-foreign-keys.md)** — How primary keys enable referential integrity across tables
 ```

@@ -108,8 +108,8 @@ Referential integrity maintains logical associations across tables:
 **Example:** A recording session cannot reference a non-existent mouse.
 
 **Covered in:**
-- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — Cross-table relationships
-- [Relationships](../30-design/050-relationships.ipynb) — Dependency patterns
+- [Foreign Keys](../30-design/030-foreign-keys.md) — Cross-table relationships
+- [Relationships](../30-design/050-relationships.md) — Dependency patterns
 
 ---
 
@@ -158,7 +158,7 @@ Workflow integrity maintains valid operation sequences through:
 **Example:** An analysis pipeline cannot compute results before acquiring raw data. If `NeuronAnalysis` depends on `SpikeData`, which depends on `RecordingSession`, the database enforces that recordings are created before spike detection, which occurs before analysis—maintaining the integrity of the entire scientific workflow.
 
 **Covered in:**
-- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
+- [Foreign Keys](../30-design/030-foreign-keys.md) — How foreign keys encode workflow dependencies
 - [Populate](../40-operations/050-populate.ipynb) — Automatic workflow execution and dependency resolution
 
 ---
@@ -210,7 +210,7 @@ The [Design](../30-design/010-schema.ipynb) section then shows *how* to implemen
 
 1. **[Tables](../30-design/015-table.ipynb)** — Basic structure with domain integrity
 2. **[Primary Keys](../30-design/018-primary-key.md)** — Entity integrity through unique identification
-3. **[Foreign Keys](../30-design/030-foreign-keys.ipynb)** — Referential integrity across tables
+3. **[Foreign Keys](../30-design/030-foreign-keys.md)** — Referential integrity across tables
 
 Each chapter builds on these foundational integrity concepts.
 ```
