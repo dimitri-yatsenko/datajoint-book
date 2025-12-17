@@ -74,9 +74,10 @@ Consider a neuroscience lab tracking mice:
 | Prevent sharing? | Ear tags are never reused; retired tags are archived |
 | Match entities? | Read the ear tag → look up record by primary key |
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Mouse(dj.Manual):
     definition = """
@@ -87,8 +88,10 @@ class Mouse(dj.Manual):
     strain : varchar(50)
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE mouse (
     ear_tag CHAR(6) NOT NULL COMMENT 'unique ear tag (e.g., M00142)',
     date_of_birth DATE NOT NULL,
@@ -98,6 +101,7 @@ CREATE TABLE mouse (
 );
 ```
 ````
+`````
 
 ## Example: University Student Database
 
@@ -109,9 +113,10 @@ Consider a university registrar's office tracking students:
 | Prevent sharing? | Photo ID cards issued; IDs are never reused even after graduation |
 | Match entities? | Student presents ID card → look up record by student ID |
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Student(dj.Manual):
     definition = """
@@ -123,8 +128,10 @@ class Student(dj.Manual):
     enrollment_date : date
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE student (
     student_id CHAR(8) NOT NULL COMMENT 'unique student ID (e.g., S2024001)',
     first_name VARCHAR(50) NOT NULL,
@@ -135,6 +142,7 @@ CREATE TABLE student (
 );
 ```
 ````
+`````
 
 Notice how both examples follow the same pattern: a real-world identification system (ear tags, student IDs) enables the three questions to be answered consistently.
 
@@ -194,9 +202,10 @@ Even when a database or management system *generates* the identifier, if that id
 
 A colony management system might generate animal IDs like `M00142`. Once that ID is printed on an ear tag and attached to a mouse, it becomes the natural key. The real-world mechanism (the ear tag) maintains the association between the physical mouse and its identifier.
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Mouse(dj.Manual):
     definition = """
@@ -207,8 +216,10 @@ class Mouse(dj.Manual):
     strain : varchar(50)
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE mouse (
     animal_id CHAR(6) NOT NULL COMMENT 'colony-assigned ID (e.g., M00142)',
     date_of_birth DATE NOT NULL,
@@ -218,6 +229,7 @@ CREATE TABLE mouse (
 );
 ```
 ````
+`````
 
 **Examples of composite natural keys:**
 - (State, District) for U.S. Congressional Districts
@@ -256,9 +268,10 @@ A **surrogate key** is an identifier used *primarily inside* the database, with 
 - Database row identifiers that never appear in user interfaces
 - System-generated UUIDs for internal tracking
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class InternalRecord(dj.Manual):
     definition = """
@@ -268,8 +281,10 @@ class InternalRecord(dj.Manual):
     data : longblob
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE internal_record (
     record_id INT UNSIGNED NOT NULL COMMENT 'internal identifier, not exposed to users',
     created_timestamp TIMESTAMP NOT NULL,
@@ -278,6 +293,7 @@ CREATE TABLE internal_record (
 );
 ```
 ````
+`````
 
 **Key distinction from natural keys:** Surrogate keys don't require external identification systems because users don't need to match physical entities to records by these keys. The database maintains uniqueness, but the key itself isn't used for entity identification in the real world.
 
@@ -286,7 +302,7 @@ CREATE TABLE internal_record (
 - Privacy-sensitive contexts where natural identifiers shouldn't be stored
 - Internal system records that users never reference directly
 
-`````{admonition} No Default Values in Primary Keys
+``````{admonition} No Default Values in Primary Keys
 :class: important
 
 **DataJoint prohibits default values for primary key attributes.** Every primary key value must be explicitly provided by the client when inserting a new record. This includes prohibiting the use of `auto_increment`, which is commonly used in other frameworks.
@@ -297,9 +313,10 @@ This design enforces entity integrity at the point of data entry:
 - **Prevents communication errors**: If a client fails to provide a key value, the insertion fails rather than silently creating a record with a generated key that may not correspond to the intended entity.
 - **Prevents duplicate entities**: Running the same insertion code multiple times with the same explicit key produces an error (duplicate key) rather than creating multiple records for the same entity.
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Session(dj.Manual):
     definition = """
@@ -315,8 +332,10 @@ Session.insert1({'subject_id': 'M001', 'session': 1, 'session_date': '2024-01-15
 
 # Running the same insert again produces a duplicate key error, not a second record
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE session (
     subject_id VARCHAR(12) NOT NULL,
     session SMALLINT UNSIGNED NOT NULL COMMENT 'session number for this subject',
@@ -333,6 +352,7 @@ VALUES ('M001', 1, '2024-01-15', '');
 -- Running the same insert again produces a duplicate key error, not a second record
 ```
 ````
+`````
 
 **Generating surrogate keys**: Since DataJoint requires explicit key values, how do you generate unique surrogate keys? Use client-side generation methods:
 
@@ -341,15 +361,16 @@ VALUES ('M001', 1, '2024-01-15', '');
 - **External ID services**: Use institutional or laboratory ID assignment systems that generate unique identifiers.
 
 These approaches maintain DataJoint's requirement for explicit key specification while providing unique identifiers for surrogate keys.
-`````
+``````
 
 ## Composite Keys in Hierarchical Relationships
 
 Composite primary keys commonly arise when tables inherit foreign keys as part of their primary key. This creates hierarchical relationships where child entities are identified within the context of their parent.
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Subject(dj.Manual):
     definition = """
@@ -367,8 +388,10 @@ class Session(dj.Manual):
     session_date : date
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 CREATE TABLE subject (
     subject_id VARCHAR(12) NOT NULL COMMENT 'subject identifier',
     species VARCHAR(30) NOT NULL,
@@ -384,6 +407,7 @@ CREATE TABLE session (
 );
 ```
 ````
+`````
 
 In this example, `Session` has a composite primary key `(subject_id, session)`. Each session is uniquely identified by *which subject* and *which session number*. This pattern is covered in detail in the [Relationships](050-relationships.ipynb) chapter.
 
@@ -399,9 +423,10 @@ A **schema dimension** is created when a table defines a new primary key attribu
 
 Consider this hierarchy:
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class Subject(dj.Manual):
     definition = """
@@ -428,8 +453,10 @@ class Scan(dj.Manual):
     scan_time : time
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 -- NEW DIMENSION: defines subject identity
 CREATE TABLE subject (
     subject_id VARCHAR(12) NOT NULL COMMENT 'defines subject identity',
@@ -457,6 +484,7 @@ CREATE TABLE scan (
 );
 ```
 ````
+`````
 
 In this example:
 - `Subject` creates the `subject_id` dimension
@@ -493,9 +521,10 @@ Auto-populated tables (`dj.Computed` and `dj.Imported`) have a special constrain
 
 This constraint ensures that auto-populated tables compute results for entities that are already defined elsewhere in the pipeline. The `make` method receives a key from the key source (derived from parent tables), and the computation produces results for that specific key.
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class ProcessedScan(dj.Computed):
     definition = """
@@ -505,8 +534,10 @@ class ProcessedScan(dj.Computed):
     quality_score : float
     """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 -- Primary key inherits all dimensions from scan; no new dimensions added
 CREATE TABLE processed_scan (
     subject_id VARCHAR(12) NOT NULL,
@@ -519,12 +550,14 @@ CREATE TABLE processed_scan (
 );
 ```
 ````
+`````
 
 However, **part tables can introduce new dimensions**. When a computation produces multiple related results (e.g., detecting multiple cells in an image), the part table can add a new dimension to distinguish them:
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 @schema
 class CellDetection(dj.Computed):
     definition = """
@@ -543,8 +576,10 @@ class CellDetection(dj.Computed):
         cell_type : varchar(30)
         """
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 -- Master table: inherits dimensions from scan
 CREATE TABLE cell_detection (
     subject_id VARCHAR(12) NOT NULL,
@@ -569,6 +604,7 @@ CREATE TABLE cell_detection__cell (
 );
 ```
 ````
+`````
 
 In this example, `CellDetection` (the master) cannot introduce new dimensions, but `CellDetection.Cell` (the part table) introduces the `cell_id` dimension to identify individual detected cells.
 
@@ -660,9 +696,10 @@ Primary keys have special significance in DataJoint queries:
 3. **Restrictions are efficient** — Queries by primary key use indexes for fast lookups
 4. **Results always have primary keys** — Every query result is itself a valid relation with a well-defined primary key
 
-````{tab-set}
-```{tab-item} DataJoint
+`````{tab-set}
+````{tab-item} DataJoint
 :sync: datajoint
+```python
 # Efficient: restriction by primary key
 Mouse & {'ear_tag': 'M00142'}
 
@@ -672,8 +709,10 @@ Subject * Session * Scan  # All three share the subject_id dimension
 # The result of any query has a well-defined primary key
 (Subject * Session).primary_key  # Combines dimensions from both tables
 ```
-```{tab-item} SQL
+````
+````{tab-item} SQL
 :sync: sql
+```sql
 -- Efficient: restriction by primary key
 SELECT * FROM mouse WHERE ear_tag = 'M00142';
 
@@ -685,6 +724,7 @@ SELECT * FROM subject
 -- Combined primary key from joined tables: (subject_id, session, scan)
 ```
 ````
+`````
 
 ```{admonition} Semantic Matching via Schema Dimensions
 :class: note
