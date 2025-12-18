@@ -539,8 +539,8 @@ CREATE TABLE order_ (
 `````
 
 ```{seealso}
-For detailed coverage of relationship patterns created by different foreign key placements, see [Relationships](050-relationships.ipynb).
-For visual representation of these relationships, see [Diagramming](060-diagrams.ipynb).
+To see how these foreign key placements appear in schema diagrams, see [Diagramming](040-diagrams.ipynb).
+For detailed coverage of relationship patterns, see [Relationships](050-relationships.ipynb).
 ```
 
 # Association Tables: Many-to-Many Relationships
@@ -647,6 +647,6 @@ In DataJoint, they also establish **workflow dependencies** that prescribe the o
 :class: note
 
 Now that you understand foreign keys and their modifiers:
+- **[Diagramming](040-diagrams.ipynb)** — Learn to read and interpret schema diagrams
 - **[Relationships](050-relationships.ipynb)** — Explore relationship patterns: one-to-one, one-to-many, many-to-many
-- **[Diagramming](060-diagrams.ipynb)** — Learn to read and interpret schema diagrams
 ```
