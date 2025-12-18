@@ -1,7 +1,5 @@
 ---
 title: Pipeline Projects
-authors:
-  - name: Dimitri Yatsenko
 ---
 
 # Pipeline Projects

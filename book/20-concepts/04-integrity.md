@@ -1,8 +1,5 @@
 ---
 title: Data Integrity
-date: 2025-10-31
-authors:
-  - name: Dimitri Yatsenko
 ---
 
 # Why Data Integrity Matters
@@ -95,7 +92,7 @@ Entity integrity ensures a **one-to-one correspondence** between real-world enti
 **Example:** Each mouse in the lab has exactly one unique ID, and that ID refers to exactly one mouse—never two different mice sharing the same ID, and never one mouse having multiple IDs.
 
 **Covered in:**
-- [Primary Keys](../30-design/020-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
+- [Primary Keys](../30-design/018-primary-key.md) — Entity integrity and the 1:1 correspondence guarantee (elaborated in detail)
 - [UUID](../85-special-topics/025-uuid.ipynb) — Universally unique identifiers
 
 ---
@@ -111,7 +108,7 @@ Referential integrity maintains logical associations across tables:
 **Example:** A recording session cannot reference a non-existent mouse.
 
 **Covered in:**
-- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — Cross-table relationships
+- [Foreign Keys](../30-design/030-foreign-keys.md) — Cross-table relationships
 - [Relationships](../30-design/050-relationships.ipynb) — Dependency patterns
 
 ---
@@ -161,7 +158,7 @@ Workflow integrity maintains valid operation sequences through:
 **Example:** An analysis pipeline cannot compute results before acquiring raw data. If `NeuronAnalysis` depends on `SpikeData`, which depends on `RecordingSession`, the database enforces that recordings are created before spike detection, which occurs before analysis—maintaining the integrity of the entire scientific workflow.
 
 **Covered in:**
-- [Foreign Keys](../30-design/030-foreign-keys.ipynb) — How foreign keys encode workflow dependencies
+- [Foreign Keys](../30-design/030-foreign-keys.md) — How foreign keys encode workflow dependencies
 - [Populate](../40-operations/050-populate.ipynb) — Automatic workflow execution and dependency resolution
 
 ---
@@ -212,8 +209,8 @@ Now that you understand *why* integrity matters, the next chapter introduces how
 The [Design](../30-design/010-schema.ipynb) section then shows *how* to implement each constraint type:
 
 1. **[Tables](../30-design/015-table.ipynb)** — Basic structure with domain integrity
-2. **[Primary Keys](../30-design/020-primary-key.md)** — Entity integrity through unique identification
-3. **[Foreign Keys](../30-design/030-foreign-keys.ipynb)** — Referential integrity across tables
+2. **[Primary Keys](../30-design/018-primary-key.md)** — Entity integrity through unique identification
+3. **[Foreign Keys](../30-design/030-foreign-keys.md)** — Referential integrity across tables
 
 Each chapter builds on these foundational integrity concepts.
 ```
