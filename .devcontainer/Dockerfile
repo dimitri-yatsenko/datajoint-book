@@ -21,7 +21,9 @@ RUN conda init bash && \
     conda install -n base -c conda-forge python-graphviz jupyter jupysql 'nodejs>20,<21' && \
     pip install mystmd && \
     pip install jupyterlab_myst && \
-    pip install git+https://github.com/datajoint/datajoint-python.git 
+    pip install scikit-image pooch && \
+    pip uninstall -y datajoint || true && \
+    pip install git+https://github.com/datajoint/datajoint-python.git@claude/upgrade-adapted-type-1W3ap
 
 
 # Expose ports for JupyterLab and MySQL
